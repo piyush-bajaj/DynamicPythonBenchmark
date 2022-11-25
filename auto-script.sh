@@ -27,8 +27,24 @@ idx=1
 while read line
 do
     echo $line
+
     echo "Start time :" 
     timestamp
+
+    #create directory for project
+    mkdir -p "project$idx"
+    #clone the repo to project directory
+    git clone "$line" "project$idx"
+    #go into the project directory
+    cd "project$idx"
+    #create virtual env name vm
+    virtualenv vm
+    #activate virtual env
+    source vm/bin/activate
+    #install using setup.py file or requirements.txt
+
+    
+
     echo "End time : "
     timestamp
 
