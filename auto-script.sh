@@ -43,7 +43,18 @@ do
     source vm/bin/activate
     #install using setup.py file or requirements.txt
 
-    
+    if [ -e setup.py ]
+    then
+        python setup.py install
+    elif [ -e requirements.txt ]
+    then
+        pip install requirements.txt
+    else
+        echo "No setup.py file or requirements.txt found"
+    fi
+
+    #install pytest library
+    pip install pytest
 
     echo "End time : "
     timestamp
