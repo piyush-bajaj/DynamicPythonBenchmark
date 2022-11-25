@@ -22,6 +22,9 @@ fi
 mkdir -p "$PROJ_DIR"
 cd "$PROJ_DIR"
 
+#current working directory
+WORK_DIR=$(pwd) 
+
 #run a while loop to create vm for all projects
 idx=1
 while read line
@@ -31,6 +34,8 @@ do
     echo "Start time :" 
     timestamp
 
+    #change to working directory
+    cd $WORK_DIR
     #create directory for project
     mkdir -p "project$idx"
     #clone the repo to project directory
@@ -62,5 +67,5 @@ do
     #run tests
     
     ((idx++))
-    cd ..
+
 done <$URL_FILE
