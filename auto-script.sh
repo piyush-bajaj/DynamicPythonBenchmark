@@ -22,4 +22,18 @@ fi
 mkdir -p "$PROJ_DIR"
 cd "$PROJ_DIR"
 
+#run a while loop to create vm for all projects
+idx=1
+while read line
+do
+    echo $line
+    echo "Start time :" 
+    timestamp
+    echo "End time : "
+    timestamp
 
+    #run tests
+    
+    ((idx++))
+    cd ..
+done <$URL_FILE
