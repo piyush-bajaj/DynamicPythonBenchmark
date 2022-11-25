@@ -53,7 +53,7 @@ do
         python setup.py install
     elif [ -e requirements.txt ]
     then
-        pip install requirements.txt
+        pip install -r requirements.txt
     else
         echo "No setup.py file or requirements.txt found"
     fi
@@ -68,4 +68,4 @@ do
     
     ((idx++))
 
-done <$URL_FILE
+done < $URL_FILE
