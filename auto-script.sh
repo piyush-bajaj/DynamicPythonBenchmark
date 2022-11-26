@@ -33,7 +33,7 @@ do
 
     parts=($line)
     URL=${parts[0]}
-    REQ=${parts[1]}
+    FLAGS=${parts[1]}
 
     echo "Start time :" 
     timestamp
@@ -43,7 +43,7 @@ do
     #create directory for project
     mkdir -p "project$idx"
     #clone the repo to project directory
-    git clone "$url" "project$idx"
+    git clone "$URL" "project$idx"
     #go into the project directory
     cd "project$idx"
     #create virtual env name vm
@@ -64,7 +64,7 @@ do
     #    echo "No setup.py file or requirements.txt found"
     fi
 
-    if [ $req == "r" ]
+    if [[ $FLAGS == "r" || $FLAGS == "rt" ]]
     then
         REQ_FILE=${parts[2]}
         echo "Running pip install requirements"
@@ -78,7 +78,20 @@ do
     timestamp
 
     #run tests
-    
+    #if [ $URL == "https://github.com/lorien/grab.git" ]
+    if [ $FLAGS == "r" ]
+    then
+        python runtest.py --test-all
+    elif [ $FLAGS == "rt" ]
+    then
+        TEST_FOLDER=${parts[3]}
+        pytest $TEST_FOLDER
+    elif [ $FLAGS == "t" ]
+    then
+        TEST_FOLDER=${parts[2]}
+        pytest $TEST_FOLDER
+    fi    
+
     ((idx++))
 
 done < $URL_FILE
