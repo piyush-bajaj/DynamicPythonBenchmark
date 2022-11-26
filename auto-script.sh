@@ -35,7 +35,7 @@ do
     URL=${parts[0]}
     FLAGS=${parts[1]}
 
-    echo "Start time :" 
+    echo "\n--------------Setup Start Time--------------\n" 
     timestamp
 
     #change to working directory
@@ -74,10 +74,11 @@ do
     #install pytest library
     pip install pytest
 
-    echo "End time : "
+    echo "\n--------------Setup End Time--------------\n"
     timestamp
 
     #run tests
+    echo "\n--------------Test Time Start--------------\n"
     #if [ $URL == "https://github.com/lorien/grab.git" ]
     if [ $FLAGS == "r" ]
     then
@@ -90,7 +91,8 @@ do
     then
         TEST_FOLDER=${parts[2]}
         pytest $TEST_FOLDER
-    fi    
+    fi
+    echo "\n--------------Test Time End--------------\n"
 
     ((idx++))
 
