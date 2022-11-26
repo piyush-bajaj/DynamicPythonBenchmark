@@ -32,8 +32,8 @@ do
     echo $line
 
     parts=($line)
-    url=${parts[0]}
-    req=${parts[1]}
+    URL=${parts[0]}
+    REQ=${parts[1]}
 
     echo "Start time :" 
     timestamp
@@ -66,9 +66,9 @@ do
 
     if [ $req == "r" ]
     then
-        req_txt=${parts[2]}
+        REQ_FILE=${parts[2]}
         echo "Running pip install requirements"
-        pip install -r $req_txt
+        pip install -r $REQ_FILE
     fi
 
     #install pytest library
