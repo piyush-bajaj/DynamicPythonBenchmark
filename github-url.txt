@@ -1,7 +1,7 @@
 https://github.com/lorien/grab.git r requirements_dev.txt
 https://github.com/AtsushiSakai/PythonRobotics.git rt requirements/requirements.txt tests
 https://github.com/flask-api/flask-api.git t flask_api/tests
-https://github.com/dbader/schedule.git rt requirements_dev.txt test_schedule.py
+https://github.com/dbader/schedule.git rt requirements-dev.txt test_schedule.py
 https://github.com/python-pillow/Pillow.git t Tests
 https://github.com/Supervisor/supervisor.git t supervisor/tests
 https://github.com/Parsely/streamparse.git rt test-requirements.txt test
