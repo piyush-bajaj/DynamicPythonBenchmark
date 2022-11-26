@@ -67,6 +67,9 @@ do
     if [[ $FLAGS == "r" || $FLAGS == "rt" ]]
     then
         REQ_FILE=${parts[2]}
+        if [[ $URL == "https://github.com/spotify/dh-virtualenv.git" ]]
+        then
+            sed -i.bak '0,/invoke==0.13.0/s//invoke/' dev-requirements.txt  #fix for dependency conflict issue
         echo "Running pip install requirements"
         pip install -r $REQ_FILE
     fi
@@ -82,7 +85,7 @@ do
     #if [ $URL == "https://github.com/lorien/grab.git" ]
     if [ $FLAGS == "r" ]
     then
-        python runtest.py --test-all
+        python runtest.py --test-all    #tests for grab project are not named correctly and run from a py file
     elif [ $FLAGS == "rt" ]
     then
         TEST_FOLDER=${parts[3]}
