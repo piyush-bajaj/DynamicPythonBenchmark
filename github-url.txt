@@ -1,9 +1,9 @@
-https://github.com/lorien/grab.git
-https://github.com/AtsushiSakai/PythonRobotics.git
+https://github.com/lorien/grab.git r requirements_dev.txt
+https://github.com/AtsushiSakai/PythonRobotics.git r requirements/requirements.txt
 https://github.com/flask-api/flask-api.git
-https://github.com/dbader/schedule.git
+https://github.com/dbader/schedule.git r requirements_dev.txt
 https://github.com/python-pillow/Pillow.git
 https://github.com/Supervisor/supervisor.git
-https://github.com/Parsely/streamparse.git
-https://github.com/spotify/dh-virtualenv.git
-https://github.com/mitmproxy/pdoc.git
+https://github.com/Parsely/streamparse.git r test-requirements.txt
+https://github.com/spotify/dh-virtualenv.git r dev-requirements.txt
+https://github.com/mitmproxy/pdoc.git r requirements-dev.txt

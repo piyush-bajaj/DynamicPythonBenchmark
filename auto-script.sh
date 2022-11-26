@@ -31,6 +31,10 @@ while read line
 do
     echo $line
 
+    parts=($line)
+    url=${parts[0]}
+    req=${parts[1]}
+
     echo "Start time :" 
     timestamp
 
@@ -39,7 +43,7 @@ do
     #create directory for project
     mkdir -p "project$idx"
     #clone the repo to project directory
-    git clone "$line" "project$idx"
+    git clone "$url" "project$idx"
     #go into the project directory
     cd "project$idx"
     #create virtual env name vm
@@ -50,12 +54,21 @@ do
 
     if [ -e setup.py ]
     then
+        echo "Running setup install"
         python setup.py install
-    elif [ -e requirements.txt ]
+    #elif [ -e requirements.txt ]
+    #then
+    #    find ./ -name '*requirements.txt' -or -name 'requirements*.txt' -exec pip install -r {} \;
+    #    pip install -r requirements.txt
+    #else
+    #    echo "No setup.py file or requirements.txt found"
+    fi
+
+    if [ $req == "r" ]
     then
-        pip install -r requirements.txt
-    else
-        echo "No setup.py file or requirements.txt found"
+        req_txt=${parts[2]}
+        echo "Running pip install requirements"
+        pip install -r $req_txt
     fi
 
     #install pytest library
