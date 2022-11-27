@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Define a timestamp function
 timestamp() {
@@ -6,9 +6,12 @@ timestamp() {
 }
 echo "Starting the installation, setup and running of python projects and their test suites"
 
+#current working directory
+WORK_DIR=$(pwd)
+
 echo "Please provide the complete location of url file"
 #read URL_FILE
-URL_FILE=/home/bajajpn/Automation/github-url.txt
+URL_FILE=$WORK_DIR/github-url.txt
 
 # Create project folder to keep all the projects together inside one parent folder
 PROJ_DIR=Project
@@ -22,8 +25,7 @@ fi
 mkdir -p "$PROJ_DIR"
 cd "$PROJ_DIR"
 
-#current working directory
-WORK_DIR=$(pwd) 
+WORK_DIR=$(pwd)
 
 #run a while loop to create vm for all projects
 idx=1
@@ -37,6 +39,7 @@ do
 
     echo "\n--------------Setup Start Time--------------\n" 
     timestamp
+    echo "\n--------------Setup Start Time--------------\n"
 
     #change to working directory
     cd $WORK_DIR
@@ -70,6 +73,7 @@ do
         if [[ $URL == "https://github.com/spotify/dh-virtualenv.git" ]]
         then
             sed -i.bak '0,/invoke==0.13.0/s//invoke/' dev-requirements.txt  #fix for dependency conflict issue
+        fi
         echo "Running pip install requirements"
         pip install -r $REQ_FILE
     fi
@@ -79,9 +83,13 @@ do
 
     echo "\n--------------Setup End Time--------------\n"
     timestamp
+    echo "\n--------------Setup End Time--------------\n"
 
     #run tests
     echo "\n--------------Test Time Start--------------\n"
+    timestamp
+    echo "\n--------------Test Time Start--------------\n"
+    
     #if [ $URL == "https://github.com/lorien/grab.git" ]
     if [ $FLAGS == "r" ]
     then
@@ -95,8 +103,11 @@ do
         TEST_FOLDER=${parts[2]}
         pytest $TEST_FOLDER
     fi
+
+    echo "\n--------------Test Time End--------------\n"
+    timestamp
     echo "\n--------------Test Time End--------------\n"
 
     ((idx++))
 
-done < $URL_FILE
+done < "$URL_FILE"
