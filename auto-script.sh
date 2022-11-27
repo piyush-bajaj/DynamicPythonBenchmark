@@ -52,7 +52,13 @@ do
     #create virtual env name vm
     virtualenv vm
     #activate virtual env
-    source vm/bin/activate
+    if [ $1 == "ubuntu" ]
+    then
+        source vm/bin/activate
+    elif [ $1 == "docker" ]
+    then
+        source vm/local/bin/activate
+    fi
     #install using setup.py file or requirements.txt
 
     if [ -e setup.py ]
