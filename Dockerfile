@@ -20,4 +20,8 @@ COPY ./github-url.txt ./github-url.txt
 
 COPY ./auto-script.sh ./auto-script.sh
 
+RUN pip install libcst pytest pytest-xdist dynapyt
+
 #RUN ./auto-script.sh docker > out.log 2>&1
+
+#RUN ./auto-script.sh docker tests > out.log 2>&1
