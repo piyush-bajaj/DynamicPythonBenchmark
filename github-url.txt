@@ -7,3 +7,4 @@ https://github.com/Supervisor/supervisor.git t supervisor/tests
 https://github.com/Parsely/streamparse.git rt test-requirements.txt test
 https://github.com/spotify/dh-virtualenv.git rt dev-requirements.txt test
 https://github.com/mitmproxy/pdoc.git rt requirements-dev.txt test
+https://github.com/pallets/click.git rt requirements/tests.txt tests
