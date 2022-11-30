@@ -118,5 +118,6 @@ do
     fi
 
     ((idx++))
+    deactivate
 
 done < "$URL_FILE"
