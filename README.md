@@ -34,7 +34,7 @@ Master Thesis Project
     - docker start -i dypybench
     - ./auto-script.sh docker
 
-# Using DyPyBench
+## Using DyPyBench
 1. Run Test Suites of all projects
     - ./auto-test.sh ubuntu (running on ubuntu machine)
     - ./auto-test.sh docker (running on docker container)
