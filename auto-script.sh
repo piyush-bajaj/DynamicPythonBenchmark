@@ -94,32 +94,6 @@ do
     timestamp
     echo "\n--------------Setup End Time--------------\n"
 
-    #run tests
-    if [[ $2 == "tests" ]]
-    then
-        echo "\n--------------Test Time Start--------------\n"
-        timestamp
-        echo "\n--------------Test Time Start--------------\n"
-        
-        #if [ $URL == "https://github.com/lorien/grab.git" ]
-        if [ $FLAGS == "r" ]
-        then
-            python runtest.py --test-all    #tests for grab project are not named correctly and run from a py file
-        elif [ $FLAGS == "rt" ]
-        then
-            TEST_FOLDER=${parts[3]}
-            pytest $TEST_FOLDER
-        elif [ $FLAGS == "t" ]
-        then
-            TEST_FOLDER=${parts[2]}
-            pytest $TEST_FOLDER
-        fi
-
-        echo "\n--------------Test Time End--------------\n"
-        timestamp
-        echo "\n--------------Test Time End--------------\n"
-    fi
-
     ((idx++))
     deactivate
 
