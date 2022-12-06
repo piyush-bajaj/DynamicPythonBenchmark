@@ -6,12 +6,12 @@ timestamp() {
 }
 echo "Starting the installation, setup and running of python projects and their test suites"
 
-#current working directory
-WORK_DIR=$(pwd)
+#root directory
+ROOT_DIR=$(pwd)
 
 echo "Please provide the complete location of url file"
 #read URL_FILE
-URL_FILE=$WORK_DIR/github-url.txt
+URL_FILE=$ROOT_DIR/github-url.txt
 
 # Create project folder to keep all the projects together inside one parent folder
 PROJ_DIR=Project
@@ -121,3 +121,26 @@ do
     deactivate
 
 done < "$URL_FILE"
+
+
+#change to root directory and create directory for dynapyt
+cd "$ROOT_DIR"
+
+mkdir -p "$ROOT_DIR/dynapyt"
+cd "$ROOT_DIR/dynapyt"
+
+#create and activate vm
+virtualenv vm
+if [[ $1 == "ubuntu" ]]
+then
+    source vm/bin/activate
+elif [[ $1 == "docker" ]]
+then
+    source vm/local/bin/activate
+fi
+
+#install dynapyt and dependencies
+pip install dynapyt libcst pytest pytest-xdist
+
+#deactivate vm
+deactivate
