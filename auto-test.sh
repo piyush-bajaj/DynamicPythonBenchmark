@@ -82,16 +82,16 @@ do
     elif [[ $1 == "dynapyt.instrument" ]]
     then
 		echo "Run DynaPyt instrumentation"
-        pip install aiopg
-		python -m dynapyt.run_instrumentation --directory ./test/PythonRepos/flask/flask_api --analysis SimpleTaintAnalysis
+        #pip install aiopg
+		#python -m dynapyt.run_instrumentation --directory ./test/PythonRepos/flask/flask_api --analysis SimpleTaintAnalysis
     elif [[ $1 == "dynapyt.analysis" ]]
     then
 		echo "Run DynaPyt Analysis"
-		python -m dynapyt.run_analysis --entry run_all_tests.py --analysis SimpleTaintAnalysis
+		#python -m dynapyt.run_analysis --entry run_all_tests.py --analysis SimpleTaintAnalysis
 	elif [[ $1 == "dynapyt" ]]
 		echo "Run Dynapyt instrumentation and analysis"
-        pip install aiopg
-		python -m dynapyt.run_all --directory ./test/PythonRepos/flask/flask_api --entry run_all_tests.py --analysis SimpleTaintAnalysis
+        #pip install aiopg
+		#python -m dynapyt.run_all --directory ./test/PythonRepos/flask/flask_api --entry run_all_tests.py --analysis SimpleTaintAnalysis
     fi
 
     ((idx++))
