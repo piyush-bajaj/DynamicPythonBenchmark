@@ -52,15 +52,18 @@ do
     #create virtual env name vm
     virtualenv vm
     #activate virtual env
-    if [[ $1 == "ubuntu" ]]
-    then
-        source vm/bin/activate
-    elif [[ $1 == "docker" ]]
+    if [[ -d "vm/local" ]]
     then
         source vm/local/bin/activate
+    elif [[ -d "vm/bin" ]]
+    then
+        source vm/bin/activate
+    else
+        echo "Unable to create virtual env"
+        exit
     fi
-    #install using setup.py file or requirements.txt
 
+    #install using setup.py file or requirements.txt
     if [ -e setup.py ]
     then
         echo "Running setup install"
@@ -131,12 +134,15 @@ cd "$ROOT_DIR/dynapyt"
 
 #create and activate vm
 virtualenv vm
-if [[ $1 == "ubuntu" ]]
-then
-    source vm/bin/activate
-elif [[ $1 == "docker" ]]
+if [[ -d "vm/local" ]]
 then
     source vm/local/bin/activate
+elif [[ -d "vm/bin" ]]
+then
+    source vm/bin/activate
+else
+    echo "Unable to create virtual env"
+    exit
 fi
 
 #install dynapyt and dependencies
