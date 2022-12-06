@@ -19,7 +19,7 @@ Master Thesis Project
     - chmod 777 auto-script.sh
     - chmod 777 auto-test.sh
 3. Initialize DyPyBench (download the project repositories and dependencies inside python virtual environement for each project) : Ensure the requirements are met before proceeding with this step.
-    - ./auto-script.sh ubuntu > install.log 2>&1
+    - ./auto-script.sh > install.log 2>&1
 4. Check the installation
     - Check the file install.log to see if there are any errors
 
@@ -32,18 +32,14 @@ Master Thesis Project
     - docker run -itd --name dypybench dypybench
 4. Login to the docker image and execute the bash scripts.
     - docker start -i dypybench
-    - ./auto-script.sh docker
+    - ./auto-script.sh > install.log 2>&1
 
 ## Using DyPyBench
 1. Run Test Suites of all projects
-    - ./auto-test.sh ubuntu (running on ubuntu machine)
-    - ./auto-test.sh docker (running on docker container)
+    - ./auto-test.sh tests
 2. Run DynaPyt Instrumentation
-    - ./auto-test.sh ubuntu dynapyt.instrument (running on ubuntu machine)
-    - ./auto-test.sh docker dynapyt.instrument (running on docker container)
+    - ./auto-test.sh dynapyt.instrument
 3. Run DynaPyt Analysis
-    - ./auto-test.sh ubuntu dynapyt.analysis (running on ubuntu machine)
-    - ./auto-test.sh docker dynapyt.analysis (running on docker container)
+    - ./auto-test.sh dynapyt.analysis
 4. Run DynaPyt Instrumentation and Analysis
-    - ./auto-test.sh ubuntu dynapyt (running on ubuntu machine)
-    - ./auto-test.sh docker dynapyt (running on docker container)
+    - ./auto-test.sh dynapyt
