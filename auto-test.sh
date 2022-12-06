@@ -42,16 +42,19 @@ do
     #go into the project directory
     cd "project$idx"
     #activate virtual env
-    if [[ $1 == "ubuntu" ]]
-    then
-        source vm/bin/activate
-    elif [[ $1 == "docker" ]]
+    if [[ -d "vm/local" ]]
     then
         source vm/local/bin/activate
+    elif [[ -d "vm/bin" ]]
+    then
+        source vm/bin/activate
+    else
+        echo "Unable to create virtual env"
+        exit
     fi
 
     #run tests
-    if [[ $2 == "tests" ]]
+    if [[ $1 == "tests" ]]
     then
         echo "\n--------------Test Time Start--------------\n"
         timestamp
@@ -76,17 +79,19 @@ do
         echo "\n--------------Test Time End--------------\n"
 
     #instrument code for dynapyt analysis
-    elif [[ $2 == "dynapyt.instrument" ]]
+    elif [[ $1 == "dynapyt.instrument" ]]
     then
 		echo "Run DynaPyt instrumentation"
-		#python -m dynapyt.run_instrumentation --directory ./test/PythonRepos/rich --analysis $3
-    elif [[ $2 == "dynapyt.analysis" ]]
+        pip install aiopg
+		python -m dynapyt.run_instrumentation --directory ./test/PythonRepos/flask/flask_api --analysis SimpleTaintAnalysis
+    elif [[ $1 == "dynapyt.analysis" ]]
     then
 		echo "Run DynaPyt Analysis"
-		#python -m dynapyt.run_analysis --entry run_all_tests.py --analysis $3
-	elif [[ $2 == "dynapyt" ]]
+		python -m dynapyt.run_analysis --entry run_all_tests.py --analysis SimpleTaintAnalysis
+	elif [[ $1 == "dynapyt" ]]
 		echo "Run Dynapyt instrumentation and analysis"
-		#python -m dynapyt.run_all --directory ./test/PythonRepos/rich --entry ./test/PythonRepos/rich/run_all_tests.py --analysis TraceAll
+        pip install aiopg
+		python -m dynapyt.run_all --directory ./test/PythonRepos/flask/flask_api --entry run_all_tests.py --analysis SimpleTaintAnalysis
     fi
 
     ((idx++))
