@@ -20,9 +20,13 @@ COPY ./github-url.txt ./github-url.txt
 
 COPY ./auto-script.sh ./auto-script.sh
 
-COPY ./auto-test.sh ./auto-test.sh
+COPY ./run_dypybench.py ./run_dypybench.py
 
-RUN pip install libcst pytest pytest-xdist dynapyt
+COPY ./run-dynapyt-analysis.sh ./run-dynapyt-analysis.sh
+
+COPY ./run-test.sh ./run-test.sh
+
+COPY ./run-dynapyt-instrumentation.sh ./run-dynapyt-instrumentation.sh
 
 #RUN ./auto-script.sh docker > out.log 2>&1
 
