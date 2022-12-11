@@ -30,9 +30,19 @@ Master Thesis Project
     - docker build -t dypybench .
 3. Run the created docker image to start the container
     - docker run -itd --name dypybench dypybench
-4. Login to the docker image and execute the bash scripts.
-    - docker start -i dypybench
+4. Login to the docker container and execute the bash scripts.
+    - docker start -i dypybench (not required if container started with run command)
     - ./auto-script.sh > install.log 2>&1
+
+### Steps to use existing Docker Container of DyPyBench
+1. Download the required tar file
+    - Download the latest prepared docker image tar file from https://drive.google.com/drive/folders/1P2hrq-DisDwTtoVVMNblpztBbbZAPV5c?usp=sharing
+2. Run the docker load command to get the image in local docker images
+    - docker load -i dypybenchv<0.1>.tar
+3. Run the loaded docker image to start the container
+    - docker run -itd --name dypybench dypybenchv<0.1>
+4. Login to the container (not required if container started with run command)
+    - docker start -i dypybenchv<0.1>
 
 ## Using DyPyBench
 1. Run Test Suites of all projects
