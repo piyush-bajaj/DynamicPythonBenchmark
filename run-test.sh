@@ -43,3 +43,5 @@ fi
 echo "\n--------------Test Time End--------------\n"
 timestamp
 echo "\n--------------Test Time End--------------\n"
+
+deactivate
