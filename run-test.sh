@@ -10,8 +10,11 @@ echo "Running test suite of $1"
 #current working directory
 WORK_DIR=$(pwd)
 
+#create and change to temp folder
 mkdir "temp"
 cd "temp"
+
+#copy project folder to temp folder
 cp -r "$WORK_DIR/Project/project$2" .
 
 cd project$2
@@ -44,4 +47,5 @@ echo "\n--------------Test Time End--------------\n"
 timestamp
 echo "\n--------------Test Time End--------------\n"
 
+#deactivate vm
 deactivate
