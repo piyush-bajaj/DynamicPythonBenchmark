@@ -10,7 +10,7 @@ parser.add_argument(
 parser.add_argument(
     "--save", "-s", type=str, help="Specify file name to save the stdout and stderr combined")
 
-subparsers = parser.add_subparsers(title="dynapyt", description="sub commands for dynapyt", help="parser options related to dynapyt")
+subparsers = parser.add_subparsers()
 dynapyt_parser = subparsers.add_parser("dynapyt")
 dynapyt_parser.add_argument(
     "--instrument", "-i", type=int, nargs='+', help="Specify the project no. to run DynaPyt instrumentation"
