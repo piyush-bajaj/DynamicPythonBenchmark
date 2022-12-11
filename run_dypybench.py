@@ -10,24 +10,24 @@ parser.add_argument(
 parser.add_argument(
     "--save", "-s", type=str, help="Specify file name to save the stdout and stderr combined")
 
-subparsers = parser.add_subparsers()
-dynapyt_parser = subparsers.add_parser("dynapyt")
-dynapyt_parser.add_argument(
+#subparsers = parser.add_subparsers()
+#dynapyt_parser = subparsers.add_parser("dynapyt")
+parser.add_argument(
     "--instrument", "-i", type=int, nargs='+', help="Specify the project no. to run DynaPyt instrumentation"
 )
-dynapyt_parser.add_argument(
+parser.add_argument(
     "--directory", "-d", help="Specify the directory path to run the instrumentation"
 )
-dynapyt_parser.add_argument(
+parser.add_argument(
     "--files", "-f", help="Specify the file path to run the instrumentation"
 )
-dynapyt_parser.add_argument(
+parser.add_argument(
     "--analysis", "-a", help="Specify DynaPyt analysis to run"
 )
-dynapyt_parser.add_argument(
+parser.add_argument(
     "--entry", "-e", help="Specify entry file DynaPyt analysis"
 )
-dynapyt_parser.add_argument(
+parser.add_argument(
     "--run", "-r", type=int, nargs='+', help="Specify the project no. to run DynaPyt Analysis"
 )
 
