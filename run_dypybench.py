@@ -13,12 +13,17 @@ parser.add_argument(
 subparsers = parser.add_subparsers(title="dynapyt", description="sub commands for dynapyt", help="parser options related to dynapyt")
 dynapyt_parser = subparsers.add_parser("dynapyt")
 dynapyt_parser.add_argument(
-    "--instrument", "-i", help="Specify the path to the includes.txt or excludes.txt file to run instrumentation"
+    "--instrument", "-i", type=int, nargs='+', help="Specify the project no. to run DynaPyt instrumentation"
+)
+dynapyt_parser.add_argument(
+    "--directory", "-d", help="Specify the directory path to run the instrumentation"
+)
+dynapyt_parser.add_argument(
+    "--files", "-f", help="Specify the file path to run the instrumentation"
 )
 dynapyt_parser.add_argument(
     "--analysis", "-a", help="Specify DynaPyt analysis to run"
 )
-
 dynapyt_parser.add_argument(
     "--entry", "-e", help="Specify entry file DynaPyt analysis"
 )
@@ -80,4 +85,22 @@ if __name__ == '__main__':
                     ], shell=True, stderr=subprocess.STDOUT)"""
     
     if args.instrument:
-        print("includes")
+        projects = args.instrument
+        for project in projects:
+            if(project < 0 or project > 10):
+                print("Project number should be between 1 and 10")
+            else:
+                proj_name = str(data[project - 1][1])
+                proj_no = str(data[project - 1][0])
+                inst_dir = args.directory
+                analysis = args.analysis
+
+                if args.save:
+                    output = subprocess.run(["./run-dynapyt-instrumentation.sh %s %s %s %s" %(proj_name, proj_no, inst_dir, analysis)
+                    ], shell=True, stdout=open(args.save,'w+',1), stderr=subprocess.STDOUT)
+                else:
+                    output = subprocess.run(["./run-dynapyt-instrumentation.sh %s %s %s %s" %(proj_name, proj_no, inst_dir, analysis)
+                    ], shell=True, capture_output=True)
+                    #if output needs to be printed on the console then comment above and uncomment below
+                    """output = subprocess.run(["./run-dynapyt-instrumentation.sh %s %s %s %s" %(proj_name, proj_no, inst_dir, analysis)
+                    ], shell=True, stderr=subprocess.STDOUT)"""
