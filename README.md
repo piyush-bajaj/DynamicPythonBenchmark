@@ -38,18 +38,39 @@ Master Thesis Project
 1. Download the required tar file
     - Download the latest prepared docker image tar file from https://drive.google.com/drive/folders/1P2hrq-DisDwTtoVVMNblpztBbbZAPV5c?usp=sharing
 2. Run the docker load command to get the image in local docker images
-    - docker load -i dypybenchv<0.1>.tar
+    - docker load -i dypybenchv0.1.tar
 3. Run the loaded docker image to start the container
-    - docker run -itd --name dypybench dypybenchv<0.1>
+    - docker run -itd --name dypybench dypybenchv0.1
 4. Login to the container
-    - docker start -i dypybenchv<0.1>
+    - docker start -i dypybenchv0.1
 
 ## Using DyPyBench
-1. Run Test Suites of all projects
-    - ./auto-test.sh tests
+1. List the projects setup in DyPyBench
+    - python3 run_dypybench.py --list
+2. Run Test Suites of one or more available projects
+    - python3 run_dypybench.py --test 1 2 3 4
 2. Run DynaPyt Instrumentation
-    - ./auto-test.sh dynapyt.instrument
+    - python3 run_dypybench.py --instrument 1 2 3 4 --directory ./grab --analysis TraceAll
+    - python3 run_dypybench.py --instrument 1 2 3 4 --files ./test.py --analysis TraceAll
 3. Run DynaPyt Analysis
-    - ./auto-test.sh dynapyt.analysis
-4. Run DynaPyt Instrumentation and Analysis
-    - ./auto-test.sh dynapyt
+    - python3 run_dypybench.py --run 1 2 3 4 --entry ./run_all_tests.py --analysis TraceAll
+
+### Available flags
+1. --list / -l 
+    - list the projects
+2. --test / -t
+    - specify projects for test
+3. --instrument / -i
+    - specify projects for instrumentation
+4. --run / -r
+    - specify projects for analysis
+5. --directory / -d
+    - specify directory for instrumentation
+6. --files / -f
+    - specify file for instrumentation
+7. --analysis / -a
+    - name of the analysis to run
+8. --entry / -e
+    - entry file for analysis
+9. --save / -s
+    - specify the file to save output
