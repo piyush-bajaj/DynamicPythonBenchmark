@@ -7,6 +7,8 @@ parser.add_argument(
     "--list", "-l", action="store_true", help="List all the projects DyPyBench supports")
 parser.add_argument(
     "--test", "-t", type=int, nargs='+', help="Specify the project number to run test suite of the project")
+parser.add_argument(
+    "--save", "-s", type=str, help="Specify file name to save the stdout and stderr combined")
 
 def printAllProjects():
     print("{:<8} {:<20} {:<50}".format("Number", "Project Name", "Repository URL"))
@@ -54,5 +56,9 @@ if __name__ == '__main__':
                 elif(proj_flags == "r"):
                     proj_test_folder = ""
                 
-                output = subprocess.run(["./run-test.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
+                if args.save:
+                    output = subprocess.run(["./run-test.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
+                    ], shell=True, stdout=open(args.save,'w+',1), stderr=subprocess.STDOUT)
+                else:
+                    output = subprocess.run(["./run-test.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
                     ], shell=True, capture_output=True)
