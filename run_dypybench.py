@@ -27,6 +27,9 @@ dynapyt_parser.add_argument(
 dynapyt_parser.add_argument(
     "--entry", "-e", help="Specify entry file DynaPyt analysis"
 )
+dynapyt_parser.add_argument(
+    "--run", "-r", type=int, nargs='+', help="Specify the project no. to run DynaPyt Analysis"
+)
 
 def printAllProjects():
     print("{:<8} {:<20} {:<50}".format("Number", "Project Name", "Repository URL"))
@@ -103,4 +106,32 @@ if __name__ == '__main__':
                     ], shell=True, capture_output=True)
                     #if output needs to be printed on the console then comment above and uncomment below
                     """output = subprocess.run(["./run-dynapyt-instrumentation.sh %s %s %s %s" %(proj_name, proj_no, inst_dir, analysis)
+                    ], shell=True, stderr=subprocess.STDOUT)"""
+
+    if args.run:
+        projects = args.run
+        for project in projects:
+            if(project < 0 or project > 10):
+                print("Project number should be between 1 and 10")
+            else:
+                proj_name = str(data[project - 1][1])
+                proj_no = str(data[project - 1][0])
+                entry_file = args.entry
+                analysis = args.analysis
+                proj_flags = str(original_data[project - 1][1])
+                if(proj_flags == "rt"):
+                    proj_test_folder = str(original_data[project - 1][3])
+                elif(proj_flags == "t"):
+                    proj_test_folder = str(original_data[project - 1][2])
+                elif(proj_flags == "r"):
+                    proj_test_folder = ""
+
+                if args.save:
+                    output = subprocess.run(["./run-dynapyt-analysis.sh %s %s %s %s %s" %(proj_name, proj_no, entry_file, analysis, proj_test_folder)
+                    ], shell=True, stdout=open(args.save,'w+',1), stderr=subprocess.STDOUT)
+                else:
+                    output = subprocess.run(["./run-dynapyt-analysis.sh %s %s %s %s %s" %(proj_name, proj_no, entry_file, analysis, proj_test_folder)
+                    ], shell=True, capture_output=True)
+                    #if output needs to be printed on the console then comment above and uncomment below
+                    """output = subprocess.run(["./run-dynapyt-analysis.sh %s %s %s %s %s" %(proj_name, proj_no, entry_file, analysis, proj_test_folder)
                     ], shell=True, stderr=subprocess.STDOUT)"""
