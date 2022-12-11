@@ -10,6 +10,19 @@ parser.add_argument(
 parser.add_argument(
     "--save", "-s", type=str, help="Specify file name to save the stdout and stderr combined")
 
+subparsers = parser.add_subparsers(title="dynapyt", description="sub commands for dynapyt", help="parser options related to dynapyt")
+dynapyt_parser = subparsers.add_parser("dynapyt")
+dynapyt_parser.add_argument(
+    "--instrument", "-i", help="Specify the path to the includes.txt or excludes.txt file to run instrumentation"
+)
+dynapyt_parser.add_argument(
+    "--analysis", "-a", help="Specify DynaPyt analysis to run"
+)
+
+dynapyt_parser.add_argument(
+    "--entry", "-e", help="Specify entry file DynaPyt analysis"
+)
+
 def printAllProjects():
     print("{:<8} {:<20} {:<50}".format("Number", "Project Name", "Repository URL"))
     print("{:<8} {:<20} {:<50}".format("-------", "--------------", "---------------------------------"))
@@ -62,3 +75,9 @@ if __name__ == '__main__':
                 else:
                     output = subprocess.run(["./run-test.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
                     ], shell=True, capture_output=True)
+                    #if output needs to be printed on the console then comment above and uncomment below
+                    """output = subprocess.run(["./run-test.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
+                    ], shell=True, stderr=subprocess.STDOUT)"""
+    
+    if args.instrument:
+        print("includes")
