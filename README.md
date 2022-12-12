@@ -17,7 +17,9 @@ Master Thesis Project
     - git clone https://github.com/sola-st/master-thesis-piyush-bajaj.git
 2. Change the permissions for the bash files
     - chmod 777 auto-script.sh
-    - chmod 777 auto-test.sh
+    - chmod 777 run-test.sh
+    - chmod 777 run-dynapyt-analysis.sh
+    - chmod 777 run-dynapyt-instrumentation.sh
 3. Initialize DyPyBench (download the project repositories and dependencies inside python virtual environement for each project) : Ensure the requirements are met before proceeding with this step.
     - ./auto-script.sh > install.log 2>&1
 4. Check the installation
