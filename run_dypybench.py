@@ -79,7 +79,7 @@ if __name__ == '__main__':
                 
                 if args.save:
                     output = subprocess.run(["./run-test.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
-                    ], shell=True, stdout=open(args.save,'w+',1), stderr=subprocess.STDOUT)
+                    ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
                 else:
                     output = subprocess.run(["./run-test.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
                     ], shell=True, capture_output=True)
@@ -100,7 +100,7 @@ if __name__ == '__main__':
 
                 if args.save:
                     output = subprocess.run(["./run-dynapyt-instrumentation.sh %s %s %s %s" %(proj_name, proj_no, inst_dir, analysis)
-                    ], shell=True, stdout=open(args.save,'w+',1), stderr=subprocess.STDOUT)
+                    ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
                 else:
                     output = subprocess.run(["./run-dynapyt-instrumentation.sh %s %s %s %s" %(proj_name, proj_no, inst_dir, analysis)
                     ], shell=True, capture_output=True)
@@ -128,7 +128,7 @@ if __name__ == '__main__':
 
                 if args.save:
                     output = subprocess.run(["./run-dynapyt-analysis.sh %s %s %s %s %s" %(proj_name, proj_no, entry_file, analysis, proj_test_folder)
-                    ], shell=True, stdout=open(args.save,'w+',1), stderr=subprocess.STDOUT)
+                    ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
                 else:
                     output = subprocess.run(["./run-dynapyt-analysis.sh %s %s %s %s %s" %(proj_name, proj_no, entry_file, analysis, proj_test_folder)
                     ], shell=True, capture_output=True)
