@@ -35,13 +35,11 @@ Master Thesis Project
     - ./auto-script.sh > install.log 2>&1
 
 ### Steps to use existing Docker Container of DyPyBench
-1. Download the required tar file
-    - Download the latest prepared docker image tar file from https://drive.google.com/drive/folders/1P2hrq-DisDwTtoVVMNblpztBbbZAPV5c?usp=sharing
-2. Run the docker load command to get the image in local docker images
-    - docker load -i dypybenchv0.1.tar
-3. Run the loaded docker image to start the container
+1. Pull the docker image from dockerhub (use the provided docker credentials for access)
+    - docker pull dypybench/dypybench:v0.1
+2. Run the docker image to start the container
     - docker run -itd --name dypybench dypybenchv0.1
-4. Login to the container
+3. Login to the container
     - docker start -i dypybenchv0.1
 
 ## Using DyPyBench
