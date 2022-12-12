@@ -68,6 +68,10 @@ do
     then
         echo "Running setup install"
         python setup.py install
+    elif [ -e pyproject.toml ]
+    then
+        echo "Running pip install ."
+        pip install .
     #elif [ -e requirements.txt ]
     #then
     #    find ./ -name '*requirements.txt' -or -name 'requirements*.txt' -exec pip install -r {} \;
