@@ -32,10 +32,10 @@ else
     exit
 fi
 
-printf "import pytest\n\npytest.main(['--import-mode=importlib', '$WORK_DIR/temp/project$2/$5'])\n" > run_all_tests.py
+printf "import pytest\n\npytest.main(['--import-mode=importlib', '$WORK_DIR/temp/project$2/$4'])\n" > run_all_tests.py
 
 #run analysis on the given project
-python -m dynapyt.run_analysis --entry $3 --analysis $4
+python -m dynapyt.run_analysis --entry ./run_all_tests.py --analysis $3
 
 #deactivate vm
 deactivate
