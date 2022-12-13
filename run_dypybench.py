@@ -16,10 +16,7 @@ parser.add_argument(
     "--instrument", "-i", type=int, nargs='+', help="Specify the project no. to run DynaPyt instrumentation"
 )
 parser.add_argument(
-    "--directory", "-d", help="Specify the directory path to run the instrumentation"
-)
-parser.add_argument(
-    "--files", "-f", help="Specify the file path to run the instrumentation"
+    "--file", "-f", help="Specify the path to file containing the includes.txt file to run the instrumentation"
 )
 parser.add_argument(
     "--analysis", "-a", help="Specify DynaPyt analysis to run"
@@ -98,15 +95,20 @@ if __name__ == '__main__':
                 inst_dir = args.directory
                 analysis = args.analysis
 
-                if args.save:
-                    output = subprocess.run(["./run-dynapyt-instrumentation.sh %s %s %s %s" %(proj_name, proj_no, inst_dir, analysis)
-                    ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
-                else:
-                    output = subprocess.run(["./run-dynapyt-instrumentation.sh %s %s %s %s" %(proj_name, proj_no, inst_dir, analysis)
-                    ], shell=True, capture_output=True)
-                    #if output needs to be printed on the console then comment above and uncomment below
-                    """output = subprocess.run(["./run-dynapyt-instrumentation.sh %s %s %s %s" %(proj_name, proj_no, inst_dir, analysis)
-                    ], shell=True, stderr=subprocess.STDOUT)"""
+                with open(args.directory, 'r') as inst_file:
+                    csvReader = csv.reader(inst_file, delimiter=" ")
+                    for row in csvReader:
+                        project_no, flag, path = row
+                        if proj_no == project_no:
+                            if args.save:
+                                output = subprocess.run(["./run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
+                                ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
+                            else:
+                                output = subprocess.run(["./run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
+                                ], shell=True, capture_output=True)
+                                #if output needs to be printed on the console then comment above and uncomment below
+                                """output = subprocess.run(["./run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
+                                ], shell=True, stderr=subprocess.STDOUT)"""
 
     if args.run:
         projects = args.run

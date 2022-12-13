@@ -34,8 +34,15 @@ fi
 #install dynapyt dependencies
 pip install dynapyt libcst pytest-xdist
 
-#run instrumentation on the given directory
-python -m dynapyt.run_instrumentation --directory $3 --analysis $4
+if [[ $5 == "d" ]]
+then
+    #run instrumentation on the given directory
+    python -m dynapyt.run_instrumentation --directory $3 --analysis $4
+elif [[ $5 == "f" ]]
+then
+    #run instrumentation on the given file
+    python -m dynapyt.instrument.instrument --files $3 --analysis $4
+fi
 
 #deactivate vm
 deactivate
