@@ -50,10 +50,9 @@ Master Thesis Project
 2. Run Test Suites of one or more available projects
     - python3 run_dypybench.py --test 1 2 3 4
 2. Run DynaPyt Instrumentation
-    - python3 run_dypybench.py --instrument 1 2 3 4 --directory ./grab --analysis TraceAll
-    - python3 run_dypybench.py --instrument 1 2 3 4 --files ./test.py --analysis TraceAll
+    - python3 run_dypybench.py --instrument 1 2 3 4 --file ./includes.txt --analysis TraceAll
 3. Run DynaPyt Analysis
-    - python3 run_dypybench.py --run 1 2 3 4 --entry ./run_all_tests.py --analysis TraceAll
+    - python3 run_dypybench.py --run 1 2 3 4 --analysis TraceAll
 
 ### Available flags
 1. --list / -l 
@@ -64,13 +63,15 @@ Master Thesis Project
     - specify projects for instrumentation
 4. --run / -r
     - specify projects for analysis
-5. --directory / -d
-    - specify directory for instrumentation
-6. --files / -f
-    - specify file for instrumentation
-7. --analysis / -a
+5. --file / -f
+    - specify path of includes.txt file for instrumentation
+6. --analysis / -a
     - name of the analysis to run
-8. --entry / -e
-    - entry file for analysis
-9. --save / -s
+7. --save / -s
     - specify the file to save output
+
+## Structure of includes.txt
+    - proj_no flag path
+        - proj_no: Project number for which the entry is
+        - flag: d for directory path or f for file path
+        - path: path of the file/directory to instrument
