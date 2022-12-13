@@ -28,6 +28,8 @@ COPY ./run-test.sh ./run-test.sh
 
 COPY ./run-dynapyt-instrumentation.sh ./run-dynapyt-instrumentation.sh
 
+COPY ./includes.txt ./includes.txt
+
 #RUN ./auto-script.sh docker > out.log 2>&1
 
 #RUN ./auto-script.sh docker tests > out.log 2>&1
