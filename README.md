@@ -38,11 +38,11 @@ Master Thesis Project
 
 ### Steps to use existing Docker Container of DyPyBench
 1. Pull the docker image from dockerhub (use the provided docker credentials for access)
-    - docker pull dypybench/dypybench:v0.1
+    - docker pull dypybench/dypybench:v0.2
 2. Run the docker image to start the container
-    - docker run -itd --name dypybench dypybenchv0.1
+    - docker run -itd --name dypybenchv0.2 dypybench/dypybenchv0.2
 3. Login to the container
-    - docker start -i dypybenchv0.1
+    - docker start -i dypybenchv0.2
 
 ## Using DyPyBench
 1. List the projects setup in DyPyBench
