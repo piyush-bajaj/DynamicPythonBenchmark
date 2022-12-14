@@ -8,6 +8,8 @@ parser.add_argument(
 parser.add_argument(
     "--test", "-t", type=int, nargs='+', help="Specify the project number to run test suite of the project")
 parser.add_argument(
+    "--original", action="store_true", help="Run tests on original code")
+parser.add_argument(
     "--save", "-s", type=str, help="Specify file name to save the stdout and stderr combined")
 
 #subparsers = parser.add_subparsers()
@@ -64,6 +66,7 @@ if __name__ == '__main__':
                 proj_name = str(data[project - 1][1])
                 proj_no = str(data[project - 1][0])
                 proj_flags = str(original_data[project - 1][1])
+                copy_folder = args.original
                 if(proj_flags == "rt"):
                     proj_test_folder = str(original_data[project - 1][3])
                 elif(proj_flags == "t"):
@@ -72,13 +75,13 @@ if __name__ == '__main__':
                     proj_test_folder = ""
                 
                 if args.save:
-                    output = subprocess.run(["./run-test.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
+                    output = subprocess.run(["./run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
                     ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
                 else:
-                    output = subprocess.run(["./run-test.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
+                    output = subprocess.run(["./run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
                     ], shell=True, capture_output=True)
                     #if output needs to be printed on the console then comment above and uncomment below
-                    """output = subprocess.run(["./run-test.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
+                    """output = subprocess.run(["./run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder)
                     ], shell=True, stderr=subprocess.STDOUT)"""
     
     if args.instrument:

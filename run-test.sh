@@ -10,14 +10,19 @@ echo "Running test suite of $1"
 #current working directory
 WORK_DIR=$(pwd)
 
-#create and change to temp folder
-mkdir "temp"
-cd "temp"
+if [[ $4 == "False" ]]
+then
+    #create and change to temp folder
+    mkdir "temp"
+    cd "temp"
 
-#copy project folder to temp folder
-cp -r "$WORK_DIR/Project/project$2" .
+    #copy project folder to temp folder
+    cp -r "$WORK_DIR/Project/project$2" .
 
-cd project$2
+    cd project$2
+else
+    cd "$WORK_DIR/Project/project$2"
+fi
 
 #activate virtual env
 if [[ -d "vm/local" ]]
