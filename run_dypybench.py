@@ -18,7 +18,7 @@ parser.add_argument(
     "--instrument", "-i", type=int, nargs='+', help="Specify the project no. to run DynaPyt instrumentation"
 )
 parser.add_argument(
-    "--file", "-f", help="Specify the path to file containing the includes.txt file to run the instrumentation"
+    "--file", "-f", type=str, help="Specify the path to file containing the includes.txt file to run the instrumentation"
 )
 parser.add_argument(
     "--analysis", "-a", help="Specify DynaPyt analysis to run"
@@ -81,7 +81,7 @@ if __name__ == '__main__':
                     output = subprocess.run(["./run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
                     ], shell=True, capture_output=True)
                     #if output needs to be printed on the console then comment above and uncomment below
-                    """output = subprocess.run(["./run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder)
+                    """output = subprocess.run(["./run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
                     ], shell=True, stderr=subprocess.STDOUT)"""
     
     if args.instrument:
