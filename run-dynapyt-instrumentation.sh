@@ -11,8 +11,17 @@ echo "Running dynapyt instrumentation on $1"
 WORK_DIR=$(pwd)
 
 #create and change to temp folder
-mkdir "temp"
+if [[ ! -d "temp" ]]
+then
+    mkdir "temp"
+fi
+
 cd "temp"
+
+if [[ -d "project$2" ]]
+then
+    rm -rf "project$2"
+fi
 
 #copy project folder to temp folder
 cp -r "$WORK_DIR/Project/project$2" .
