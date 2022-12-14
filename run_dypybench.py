@@ -92,10 +92,10 @@ if __name__ == '__main__':
             else:
                 proj_name = str(data[project - 1][1])
                 proj_no = str(data[project - 1][0])
-                inst_dir = args.directory
+                inst_dir = args.file
                 analysis = args.analysis
 
-                with open(args.directory, 'r') as inst_file:
+                with open(args.file, 'r') as inst_file:
                     csvReader = csv.reader(inst_file, delimiter=" ")
                     for row in csvReader:
                         project_no, flag, path = row
