@@ -17,6 +17,7 @@ Master Thesis Project
     - git clone https://github.com/sola-st/master-thesis-piyush-bajaj.git
 2. Change the permissions for the bash files
     - chmod 777 auto-script.sh
+    - chmod 777 clear-project.sh
     - chmod 777 run-test.sh
     - chmod 777 run-dynapyt-analysis.sh
     - chmod 777 run-dynapyt-instrumentation.sh
@@ -38,11 +39,11 @@ Master Thesis Project
 
 ### Steps to use existing Docker Container of DyPyBench
 1. Pull the docker image from dockerhub (use the provided docker credentials for access)
-    - docker pull dypybench/dypybench:v0.2
+    - docker pull dypybench/dypybench:v0.3
 2. Run the docker image to start the container
-    - docker run -itd --name dypybenchv0.2 dypybench/dypybenchv0.2
+    - docker run -itd --name dypybenchv0.3 dypybench/dypybenchv0.3
 3. Login to the container
-    - docker start -i dypybenchv0.2
+    - docker start -i dypybenchv0.3
 
 ### Copying files between Docker Container and Local Machine
 1. Using volume to map local directory to container directory
