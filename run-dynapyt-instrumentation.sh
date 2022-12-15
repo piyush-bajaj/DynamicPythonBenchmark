@@ -18,13 +18,11 @@ fi
 
 cd "temp"
 
-if [[ -d "project$2" ]]
+if [[ ! -d "project$2" ]]
 then
-    rm -rf "project$2"
+    #copy project folder to temp folder
+    cp -r "$WORK_DIR/Project/project$2" .
 fi
-
-#copy project folder to temp folder
-cp -r "$WORK_DIR/Project/project$2" .
 
 cd project$2
 
