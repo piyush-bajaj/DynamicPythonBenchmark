@@ -44,6 +44,15 @@ Master Thesis Project
 3. Login to the container
     - docker start -i dypybenchv0.2
 
+### Copying files between Docker Container and Local Machine
+1. Using volume to map local directory to container directory
+    - Start the container with the --volume flag and provide full folder paths
+        - docker run -itd --volume local_folder:container_folder --name dypybenchv0.2 dypybench/dypybenchv0.2
+2. Copy files or folders individually from running container to local machine
+    - docker cp container_name:container_path local_path 
+3. Copy files or folders individually to running container from local machine
+    - docker cp local_path container_name:container_path
+
 ## Using DyPyBench
 1. List the projects setup in DyPyBench
     - python3 run_dypybench.py --list
