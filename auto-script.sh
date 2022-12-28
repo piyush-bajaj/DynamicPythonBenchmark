@@ -100,6 +100,15 @@ do
         elif [[ $URL == "https://github.com/errbotio/errbot.git" ]]
         then
             pip install mock #required for running tests
+        elif [[ $URL == "https://github.com/PyFilesystem/pyfilesystem2.git" ]]
+        then
+            pip install parameterized pyftpdlib #required for running tests
+        elif [[ $URL == "https://github.com/geopy/geopy.git" ]]
+        then
+            pip install docutils #required for running tests
+        elif [[ $URL == "https://github.com/gawel/pyquery.git" ]]
+        then
+            pip install webtest #required for running tests
         fi
         echo "Running pip install requirements"
         pip install -r $REQ_FILE
