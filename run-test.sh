@@ -41,12 +41,14 @@ timestamp
 echo "\n--------------Test Time Start--------------\n"
 
 #if [ $URL == "https://github.com/lorien/grab.git" ]
-if [ $1 == "grab" ]
-then
-    python runtest.py --test-all    #tests for grab project are not named correctly and run from a py file
-else
-    pytest $3
-fi
+# if [ $1 == "grab" ]
+# then
+#     python runtest.py --test-all    #tests for grab project are not named correctly and run from a py file
+# else
+#     pytest $3
+# fi
+
+pytest $3
 
 echo "\n--------------Test Time End--------------\n"
 timestamp
