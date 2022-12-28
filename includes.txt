@@ -56,3 +56,16 @@
 25 d ./tests
 26 d ./seaborn
 26 d ./tests
+27 d ./fs
+27 d ./tests
+28 d ./src/wtforms
+28 d ./tests
+29 d ./funcy
+29 d ./tests
+30 d ./graphene
+31 d ./geopy
+31 d ./test
+32 d ./pyquery
+32 d ./tests
+33 d ./requests
+33 d ./tests
