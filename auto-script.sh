@@ -63,22 +63,26 @@ do
         exit
     fi
 
+    #install using pip install . 
+    echo "Running pip install ."
+    pip install .
+
     #install using setup.py file or requirements.txt
-    if [ -e setup.py ]
-    then
-        echo "Running setup install"
-        python setup.py install
-    elif [ -e pyproject.toml ]
-    then
-        echo "Running pip install ."
-        pip install .
+    # if [ -e setup.py ]
+    # then
+    #     echo "Running setup install"
+    #     python setup.py install
+    # elif [ -e pyproject.toml ]
+    # then
+    #     echo "Running pip install ."
+    #     pip install .
     #elif [ -e requirements.txt ]
     #then
     #    find ./ -name '*requirements.txt' -or -name 'requirements*.txt' -exec pip install -r {} \;
     #    pip install -r requirements.txt
     #else
     #    echo "No setup.py file or requirements.txt found"
-    fi
+    # fi
 
     if [[ $FLAGS == "r" || $FLAGS == "rt" ]]
     then
@@ -94,6 +98,9 @@ do
     #install pytest library
     pip install pytest
 
+    #install dynapyt
+    pip install dynapyt libcst pytest pytest-xdist aiopg
+
     echo "\n--------------Setup End Time--------------\n"
     timestamp
     echo "\n--------------Setup End Time--------------\n"
@@ -102,29 +109,3 @@ do
     deactivate
 
 done < "$URL_FILE"
-
-
-#change to root directory and create directory for dynapyt
-cd "$ROOT_DIR"
-
-mkdir -p "$ROOT_DIR/dynapyt"
-cd "$ROOT_DIR/dynapyt"
-
-#create and activate vm
-virtualenv vm
-if [[ -d "vm/local" ]]
-then
-    source vm/local/bin/activate
-elif [[ -d "vm/bin" ]]
-then
-    source vm/bin/activate
-else
-    echo "Unable to create virtual env"
-    exit
-fi
-
-#install dynapyt and dependencies
-pip install dynapyt libcst pytest pytest-xdist
-
-#deactivate vm
-deactivate
