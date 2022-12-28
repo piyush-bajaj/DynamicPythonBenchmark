@@ -1,4 +1,4 @@
-https://github.com/lorien/grab.git r requirements.txt
+https://github.com/lorien/grab.git r requirements_dev.txt
 https://github.com/AtsushiSakai/PythonRobotics.git rt requirements/requirements.txt tests
 https://github.com/flask-api/flask-api.git t flask_api/tests
 https://github.com/dbader/schedule.git rt requirements-dev.txt test_schedule.py
@@ -8,3 +8,19 @@ https://github.com/Parsely/streamparse.git rt test-requirements.txt test
 https://github.com/spotify/dh-virtualenv.git rt dev-requirements.txt test
 https://github.com/mitmproxy/pdoc.git rt requirements-dev.txt test
 https://github.com/pallets/click.git rt requirements/tests.txt tests
+https://github.com/flask-admin/flask-admin.git rt requirments-dev.txt flask_admin/tests
+https://github.com/faif/python-patterns.git rt requirements-dev.txt tests
+https://github.com/encode/uvicorn.git rt requirements.txt tests
+https://github.com/jiaaro/pydub.git t test/test.py
+https://github.com/jpadilla/pyjwt.git t tests
+https://github.com/pyeve/cerberus.git t cerberus/tests
+https://github.com/grantjenks/python-diskcache.git rt requirements.txt tests
+https://github.com/errbotio/errbot.git rt requirements.txt tests
+https://github.com/psf/black.git rt test_requirements.txt tests
+https://github.com/nvbn/thefuck.git rt requirements.txt tests
+https://github.com/PythonCharmers/python-future.git t tests
+https://github.com/HBNetwork/python-decouple.git rt requirements.txt tests
+https://github.com/arrow-py/arrow.git rt requirements/requirements-tests.txt tests
+https://github.com/inducer/pudb.git rt requirements.dev.txt test
+https://github.com/akfamily/akshare.git rt requirements-dev.txt tests
+https://github.com/mwaskom/seaborn.git t tests
