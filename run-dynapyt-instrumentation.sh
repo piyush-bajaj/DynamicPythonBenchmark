@@ -39,7 +39,7 @@ else
 fi
 
 #install dynapyt dependencies
-pip install dynapyt libcst pytest-xdist aiopg
+#pip install dynapyt libcst pytest-xdist aiopg
 
 if [[ $5 == "d" ]]
 then
