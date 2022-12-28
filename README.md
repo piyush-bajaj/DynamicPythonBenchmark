@@ -79,6 +79,8 @@ Master Thesis Project
     - name of the analysis to run
 7. --save / -s
     - specify the file to save output
+8. --original
+    - run tests on code present in original folder
 
 ## Structure of includes.txt
     - proj_no flag path
