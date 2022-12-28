@@ -14,6 +14,8 @@ RUN apt install libjpeg8-dev -yq
 
 RUN apt install git -yq
 
+RUN apt-get install ffmpeg libavcodec-extra -yq
+
 RUN pip install --upgrade pip setuptools wheel
 
 COPY ./github-url.txt ./github-url.txt
@@ -25,6 +27,8 @@ COPY ./run_dypybench.py ./run_dypybench.py
 COPY ./run-dynapyt-analysis.sh ./run-dynapyt-analysis.sh
 
 COPY ./run-test.sh ./run-test.sh
+
+COPY ./run-install.sh ./run-install.sh
 
 COPY ./run-dynapyt-instrumentation.sh ./run-dynapyt-instrumentation.sh
 
