@@ -56,12 +56,12 @@ if __name__ == '__main__':
 
     if args.list:
         printAllProjects()
-    
+
     if args.test:
         projects = args.test
         for project in projects:
-            if(project < 0 or project > 10):
-                print("Project number should be between 1 and 10")
+            if(project < 0 or project > 50):
+                print("Project number should be between 1 and 50")
             else:
                 proj_name = str(data[project - 1][1])
                 proj_no = str(data[project - 1][0])
@@ -83,12 +83,12 @@ if __name__ == '__main__':
                     #if output needs to be printed on the console then comment above and uncomment below
                     """output = subprocess.run(["./run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
                     ], shell=True, stderr=subprocess.STDOUT)"""
-    
+
     if args.instrument:
         projects = args.instrument
         for project in projects:
-            if(project < 0 or project > 10):
-                print("Project number should be between 1 and 10")
+            if(project < 0 or project > 50):
+                print("Project number should be between 1 and 50")
             else:
                 proj_name = str(data[project - 1][1])
                 proj_no = str(data[project - 1][0])
@@ -132,8 +132,8 @@ if __name__ == '__main__':
     if args.run:
         projects = args.run
         for project in projects:
-            if(project < 0 or project > 10):
-                print("Project number should be between 1 and 10")
+            if(project < 0 or project > 50):
+                print("Project number should be between 1 and 50")
             else:
                 proj_name = str(data[project - 1][1])
                 proj_no = str(data[project - 1][0])
