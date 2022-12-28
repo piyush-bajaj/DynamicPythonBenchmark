@@ -90,6 +90,16 @@ do
         if [[ $URL == "https://github.com/spotify/dh-virtualenv.git" ]]
         then
             sed -i.bak '0,/invoke==0.13.0/s//invoke/' dev-requirements.txt  #fix for dependency conflict issue
+        elif [[ $URL == "https://github.com/flask-admin/flask-admin.git" ]]
+        then
+            sed -i.bak '0,/psycopg2/s//\n/' requirements-dev.txt #fix for dependency issue
+
+        elif [[ $URL == "https://github.com/psf/black.git" ]]
+        then
+            pip install aiohttp #required for running tests
+        elif [[ $URL == "https://github.com/errbotio/errbot.git" ]]
+        then
+            pip install mock #required for running tests
         fi
         echo "Running pip install requirements"
         pip install -r $REQ_FILE
