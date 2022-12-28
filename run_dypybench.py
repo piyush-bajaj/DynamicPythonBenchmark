@@ -1,6 +1,7 @@
 import argparse
 import subprocess
 import csv
+import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -147,9 +148,11 @@ if __name__ == '__main__':
                     proj_test_folder = ""
 
                 if args.save:
+                    # os.system("./run-dynapyt-analysis.sh %s %s %s %s >> %s 2>&1" %(proj_name, proj_no, analysis, proj_test_folder, args.save))
                     output = subprocess.run(["./run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
                     ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
                 else:
+                    # os.system("./run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder))
                     output = subprocess.run(["./run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
                     ], shell=True, capture_output=True)
                     #if output needs to be printed on the console then comment above and uncomment below
