@@ -48,7 +48,7 @@ echo "\n--------------Test Time Start--------------\n"
 #     pytest $3
 # fi
 
-if [[ $ URL == "https://github.com/scikit-learn/scikit-learn.git t sklearn/tests"]]
+if [[ $ URL == "https://github.com/scikit-learn/scikit-learn.git"]]
 then
     pytest --import-mode=importlib $3
 else
