@@ -69,3 +69,16 @@
 32 d ./tests
 33 d ./requests
 33 d ./tests
+34 d ./sklearn
+35 d ./blinker
+35 d ./tests
+36 d ./zerorpc
+36 d ./tests
+37 d ./elasticsearch_dsl
+37 d ./tests
+38 d ./src/marshmallow
+38 d ./tests
+39 d ./pypdf
+39 d ./tests
+40 d ./lektor
+40 d ./tests

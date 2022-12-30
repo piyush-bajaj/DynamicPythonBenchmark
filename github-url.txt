@@ -31,3 +31,10 @@ https://github.com/graphql-python/graphene.git t graphene/tests
 https://github.com/geopy/geopy.git t test
 https://github.com/gawel/pyquery.git t tests
 https://github.com/psf/requests.git rt requirements-dev.txt tests
+https://github.com/scikit-learn/scikit-learn.git t sklearn/tests
+https://github.com/pallets-eco/blinker.git t tests
+https://github.com/0rpc/zerorpc-python.git t tests
+https://github.com/elastic/elasticsearch-dsl-py.git t tests
+https://github.com/marshmallow-code/marshmallow.git t tests
+https://github.com/py-pdf/pypdf.git rt requirements/dev.txt tests
+https://github.com/lektor/lektor.git t tests
