@@ -48,7 +48,12 @@ echo "\n--------------Test Time Start--------------\n"
 #     pytest $3
 # fi
 
-pytest $3
+if [[ $ URL == "https://github.com/scikit-learn/scikit-learn.git t sklearn/tests"]]
+then
+    pytest --import-mode=importlib $3
+else
+    pytest $3
+fi
 
 echo "\n--------------Test Time End--------------\n"
 timestamp
