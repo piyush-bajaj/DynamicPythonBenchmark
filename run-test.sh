@@ -48,9 +48,10 @@ echo "\n--------------Test Time Start--------------\n"
 #     pytest $3
 # fi
 
-if [[ $ URL == "https://github.com/scikit-learn/scikit-learn.git" ]]
+#if [[ $ URL == "https://github.com/scikit-learn/scikit-learn.git" ]]
+if [[ $1 == "scikit-learn" ]]
 then
-    pytest --import-mode=importlib $3
+    pytest --import-mode=importlib $3 #tests for scikit-learn need importlib to locate conftest
 else
     pytest $3
 fi

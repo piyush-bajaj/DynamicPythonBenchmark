@@ -8,7 +8,7 @@ https://github.com/Parsely/streamparse.git rt test-requirements.txt test
 https://github.com/spotify/dh-virtualenv.git rt dev-requirements.txt test
 https://github.com/mitmproxy/pdoc.git rt requirements-dev.txt test
 https://github.com/pallets/click.git rt requirements/tests.txt tests
-https://github.com/flask-admin/flask-admin.git rt requirments-dev.txt flask_admin/tests
+https://github.com/flask-admin/flask-admin.git rt requirements-dev.txt flask_admin/tests
 https://github.com/faif/python-patterns.git rt requirements-dev.txt tests
 https://github.com/encode/uvicorn.git rt requirements.txt tests
 https://github.com/jiaaro/pydub.git t test/test.py
