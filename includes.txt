@@ -25,7 +25,8 @@
 9 d ./test
 10 d ./src
 10 d ./tests
-11 d ./flask_admin
+11 f ./delegator.py
+11 d ./tests
 12 d ./patterns
 12 d ./tests
 13 d ./uvicorn
