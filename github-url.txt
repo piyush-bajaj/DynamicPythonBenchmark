@@ -38,3 +38,13 @@ https://github.com/elastic/elasticsearch-dsl-py.git t tests
 https://github.com/marshmallow-code/marshmallow.git t tests
 https://github.com/py-pdf/pypdf.git rt requirements/dev.txt tests
 https://github.com/lektor/lektor.git t tests
+https://github.com/celery/celery.git rt requirements/test.txt t
+https://github.com/pallets/jinja.git rt requirements/dev.txt tests
+https://github.com/pytest-dev/pytest.git t testing
+https://github.com/rspeer/python-ftfy.git t tests
+https://github.com/gruns/furl.git t tests
+https://github.com/Zulko/moviepy.git t tests
+https://github.com/miracle2k/webassets.git rt requirements-dev.pip tests
+https://github.com/Alir3z4/html2text.git t test
+https://github.com/aaugustin/websockets.git t tests
+https://github.com/benoitc/gunicorn.git rt requirements_dev.txt tests
