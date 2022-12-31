@@ -119,6 +119,9 @@ do
         elif [[ $URL == "https://github.com/marshmallow-code/marshmallow.git" ]]
         then
             pip install pytz simplejson #required for running tests
+        elif [[ $URL == "https://github.com/pytest-dev/pytest.git" ]]
+        then
+            pip install hypothesis xmlschema #required for running tests
         fi
 
         #install pytest library
