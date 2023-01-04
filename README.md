@@ -16,13 +16,9 @@ Master Thesis Project
 1. Clone DyPyBench Repository
     - git clone https://github.com/sola-st/master-thesis-piyush-bajaj.git
 2. Change the permissions for the bash files
-    - chmod 777 auto-script.sh
-    - chmod 777 clear-project.sh
-    - chmod 777 run-test.sh
-    - chmod 777 run-dynapyt-analysis.sh
-    - chmod 777 run-dynapyt-instrumentation.sh
+    - chmod -R 777 ./scripts
 3. Initialize DyPyBench (download the project repositories and dependencies inside python virtual environement for each project) : Ensure the requirements are met before proceeding with this step.
-    - ./auto-script.sh > install.log 2>&1
+    - ./scripts/install-all-projects.sh > install.log 2>&1
 4. Check the installation
     - Check the file install.log to see if there are any errors
 
@@ -35,20 +31,20 @@ Master Thesis Project
     - docker run -itd --name dypybench dypybench
 4. Login to the docker container and execute the bash scripts.
     - docker start -i dypybench
-    - ./auto-script.sh > install.log 2>&1
+    - ./scripts/install-all-projects.sh > install.log 2>&1
 
 ### Steps to use existing Docker Container of DyPyBench
 1. Pull the docker image from dockerhub (use the provided docker credentials for access)
-    - docker pull dypybench/dypybench:v0.3
+    - docker pull dypybench/dypybench:v0.6
 2. Run the docker image to start the container
-    - docker run -itd --name dypybenchv0.3 dypybench/dypybenchv0.3
+    - docker run -itd --name dypybenchv0.6 dypybench/dypybenchv0.6
 3. Login to the container
-    - docker start -i dypybenchv0.3
+    - docker start -i dypybenchv0.6
 
 ### Copying files between Docker Container and Local Machine
 1. Using volume to map local directory to container directory
     - Start the container with the --volume flag and provide full folder paths
-        - docker run -itd --volume local_folder:container_folder --name dypybenchv0.2 dypybench/dypybenchv0.2
+        - docker run -itd --volume local_folder:container_folder --name dypybenchv0.6 dypybench/dypybenchv0.6
 2. Copy files or folders individually from running container to local machine
     - docker cp container_name:container_path local_path 
 3. Copy files or folders individually to running container from local machine
@@ -56,13 +52,13 @@ Master Thesis Project
 
 ## Using DyPyBench
 1. List the projects setup in DyPyBench
-    - python3 run_dypybench.py --list
+    - python3 dypybench.py --list
 2. Run Test Suites of one or more available projects
-    - python3 run_dypybench.py --test 1 2 3 4
+    - python3 dypybench.py --test 1 2 3 4
 2. Run DynaPyt Instrumentation
-    - python3 run_dypybench.py --instrument 1 2 3 4 --file ./includes.txt --analysis TraceAll
+    - python3 dypybench.py --instrument 1 2 3 4 --file ./text/includes.txt --analysis TraceAll
 3. Run DynaPyt Analysis
-    - python3 run_dypybench.py --run 1 2 3 4 --analysis TraceAll
+    - python3 dypybench.py --run 1 2 3 4 --analysis TraceAll
 
 ### Available flags
 1. --list / -l 

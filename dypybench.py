@@ -40,7 +40,7 @@ def setupProjects():
     global original_data
     data = []
     original_data = []
-    with open("./github-url.txt", "r") as csv_file:
+    with open("./text/github-url.txt", "r") as csv_file:
         csvReader = csv.reader(csv_file, delimiter=" ")
         for index, row in enumerate(csvReader):
             temp=[]

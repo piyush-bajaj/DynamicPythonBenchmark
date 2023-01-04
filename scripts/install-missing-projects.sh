@@ -11,7 +11,7 @@ ROOT_DIR=$(pwd)
 
 echo "Please provide the complete location of url file"
 #read URL_FILE
-URL_FILE=$ROOT_DIR/github-url.txt
+URL_FILE=$ROOT_DIR/text/github-url.txt
 
 # Create project folder to keep all the projects together inside one parent folder
 PROJ_DIR=Project
