@@ -8,7 +8,9 @@ Master Thesis Project
 - Python >= 3.8
 - pip >= 22.0
 - python3-virtualenv >= 20.16.6
+- ffmpeg (project requirement)
 - libjpeg8-dev (project requirement)
+- libavcodec-extra (project requirement)
 - Git >= 2.34
 - Docker >= 20.10
 
