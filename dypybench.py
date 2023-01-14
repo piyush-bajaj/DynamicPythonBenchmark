@@ -50,6 +50,18 @@ def setupProjects():
             data.append(temp)
             original_data.append(row)
 
+def get_project_name(proj_no):
+    for value in data:
+        no, name, url = value
+        if(proj_no == no):
+            return name
+
+def get_project_no(proj_name):
+    for value in data:
+        no, name, url = value
+        if(proj_name == name):
+            return no
+
 if __name__ == '__main__':
     args = parser.parse_args()
 
@@ -100,7 +112,8 @@ if __name__ == '__main__':
                     csvReader = csv.reader(inst_file, delimiter=" ")
                     instr_details = {}
                     for row in csvReader:
-                        project_no, flag, path = row
+                        project_name, flag, path = row
+                        project_no = get_project_no(project_name)
                         if project_no in instr_details.keys():
                             temp = instr_details[project_no]
                             temp.append(row)
