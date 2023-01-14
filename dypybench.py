@@ -76,13 +76,13 @@ if __name__ == '__main__':
                     proj_test_folder = ""
                 
                 if args.save:
-                    output = subprocess.run(["./run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
+                    output = subprocess.run(["./scripts/run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
                     ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
                 else:
-                    output = subprocess.run(["./run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
+                    output = subprocess.run(["./scripts/run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
                     ], shell=True, capture_output=True)
                     #if output needs to be printed on the console then comment above and uncomment below
-                    """output = subprocess.run(["./run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
+                    """output = subprocess.run(["./scripts/run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
                     ], shell=True, stderr=subprocess.STDOUT)"""
 
     if args.instrument:
@@ -109,25 +109,25 @@ if __name__ == '__main__':
                             instr_details[project_no] = [row]
 
                     if args.save:
-                        output = subprocess.run(["./clear-project.sh %s %s" %(proj_name, proj_no)
+                        output = subprocess.run(["./scripts/clear-project.sh %s %s" %(proj_name, proj_no)
                                 ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
                     else:
-                        output = subprocess.run(["./clear-project.sh %s %s" %(proj_name, proj_no)
+                        output = subprocess.run(["./scripts/clear-project.sh %s %s" %(proj_name, proj_no)
                         ], shell=True, capture_output=True)
                         #if output needs to be printed on the console then comment above and uncomment below
-                        """output = subprocess.run(["./clear-project.sh %s %s" %(proj_name, proj_no)
+                        """output = subprocess.run(["./scripts/clear-project.sh %s %s" %(proj_name, proj_no)
                         ], shell=True, stderr=subprocess.STDOUT)"""
 
                     for line in instr_details[proj_no]:
                         project_no, flag, path = line
                         if args.save:
-                            output = subprocess.run(["./run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
+                            output = subprocess.run(["./scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
                             ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
                         else:
-                            output = subprocess.run(["./run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
+                            output = subprocess.run(["./scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
                             ], shell=True, capture_output=True)
                             #if output needs to be printed on the console then comment above and uncomment below
-                            """output = subprocess.run(["./run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
+                            """output = subprocess.run(["./scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
                             ], shell=True, stderr=subprocess.STDOUT)"""
 
     if args.run:
@@ -148,13 +148,13 @@ if __name__ == '__main__':
                     proj_test_folder = ""
 
                 if args.save:
-                    # os.system("./run-dynapyt-analysis.sh %s %s %s %s >> %s 2>&1" %(proj_name, proj_no, analysis, proj_test_folder, args.save))
-                    output = subprocess.run(["./run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
+                    # os.system("./scripts/run-dynapyt-analysis.sh %s %s %s %s >> %s 2>&1" %(proj_name, proj_no, analysis, proj_test_folder, args.save))
+                    output = subprocess.run(["./scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
                     ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
                 else:
-                    # os.system("./run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder))
-                    output = subprocess.run(["./run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
+                    # os.system("./scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder))
+                    output = subprocess.run(["./scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
                     ], shell=True, capture_output=True)
                     #if output needs to be printed on the console then comment above and uncomment below
-                    """output = subprocess.run(["./run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
+                    """output = subprocess.run(["./scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
                     ], shell=True, stderr=subprocess.STDOUT)"""
