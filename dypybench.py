@@ -116,10 +116,10 @@ if __name__ == '__main__':
                         project_no = get_project_no(project_name)
                         if project_no in instr_details.keys():
                             temp = instr_details[project_no]
-                            temp.append(row)
+                            temp.append(project_no, flag, path)
                             instr_details[project_no] = temp
                         else:
-                            instr_details[project_no] = [row]
+                            instr_details[project_no] = [(project_no, flag, path)]
 
                     if args.save:
                         output = subprocess.run(["./scripts/clear-project.sh %s %s" %(proj_name, proj_no)
