@@ -60,7 +60,7 @@ def get_project_no(proj_name):
     for value in data:
         no, name, url = value
         if(proj_name == name):
-            return no
+            return str(no)
 
 if __name__ == '__main__':
     args = parser.parse_args()
