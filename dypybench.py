@@ -165,7 +165,7 @@ if __name__ == '__main__':
                     output = subprocess.run(["./scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
                     ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
                 else:
-                    # os.system("./run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder))
+                    # os.system("./scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder))
                     output = subprocess.run(["./scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
                     ], shell=True, capture_output=True)
                     #if output needs to be printed on the console then comment above and uncomment below
