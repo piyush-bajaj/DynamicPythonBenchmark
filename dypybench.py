@@ -116,7 +116,7 @@ if __name__ == '__main__':
                         project_no = get_project_no(project_name)
                         if project_no in instr_details.keys():
                             temp = instr_details[project_no]
-                            temp.append(project_no, flag, path)
+                            temp.append((project_no, flag, path))
                             instr_details[project_no] = temp
                         else:
                             instr_details[project_no] = [(project_no, flag, path)]
