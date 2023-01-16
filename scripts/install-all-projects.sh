@@ -99,7 +99,10 @@ do
     fi
 
     #some projects need extra requirements for running test suites
-    if [[ $URL == "https://github.com/psf/black.git" ]]
+    if [[ $URL == "https://github.com/lorien/grab.git" ]]
+    then
+        pip install cssselect pyquery pymongo fastrq #required for running tests
+    elif [[ $URL == "https://github.com/psf/black.git" ]]
     then
         pip install aiohttp #required for running tests
     elif [[ $URL == "https://github.com/errbotio/errbot.git" ]]
