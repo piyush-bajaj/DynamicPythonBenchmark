@@ -82,6 +82,6 @@ Master Thesis Project
 
 ## Structure of includes.txt
     - proj_no flag path
-        - proj_no: Project number for which the entry is
+        - proj_name: Project name for which the entry is
         - flag: d for directory path or f for file path
         - path: path of the file/directory to instrument
