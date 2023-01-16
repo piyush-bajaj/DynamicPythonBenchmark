@@ -49,6 +49,10 @@ do
     git clone "$URL" "project$idx"
     #go into the project directory
     cd "project$idx"
+    #check the git log for last commit on given date
+    CHECKOUT_ID = $('git log -n 1 --until=2023-01-10 --format="%H”')
+    #checkout the project to this date
+    git checkout $CHECKOUT_ID
     #create virtual env name vm
     virtualenv vm
     #activate virtual env
