@@ -114,7 +114,7 @@ do
         pip install mock #required for running tests
     elif [[ $URL == "https://github.com/PyFilesystem/pyfilesystem2.git" ]]
     then
-        pip install parameterized pyftpdlib #required for running tests
+        pip install parameterized pyftpdlib psutil #required for running tests
     elif [[ $URL == "https://github.com/geopy/geopy.git" ]]
     then
         pip install docutils #required for running tests
