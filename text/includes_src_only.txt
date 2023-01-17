@@ -18,7 +18,7 @@ flask-api f ./flask_api/exceptions.py
 flask-api f ./flask_api/mediatypes.py
 flask-api f ./flask_api/negotiation.py
 flask-api f ./flask_api/parsers.py
-flask-api f ./flask_api/renderes.py
+flask-api f ./flask_api/renderers.py
 flask-api f ./flask_api/requests.py
 flask-api f ./flask_api/response.py
 flask-api f ./flask_api/settings.py
