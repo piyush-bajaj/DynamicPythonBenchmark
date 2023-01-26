@@ -91,7 +91,7 @@ if __name__ == '__main__':
             ], shell=True, stderr=subprocess.STDOUT)"""
 
     if args.dynapyt_source:
-        print("Updating dynapyt module for all the projects from 1 to 50")
+        print("Downloading the dynapyt source from git")
         if args.save:
             output = subprocess.run(["./scripts/setup-dynapyt-src.sh"
             ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
