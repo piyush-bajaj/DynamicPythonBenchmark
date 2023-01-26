@@ -51,7 +51,7 @@ do
         cd "project$idx"
         #check the git log for last commit on given date
         #state of the projects was exported with a default date(2023-01-18), if you change this date projects might no longer function properly due to code changes in the repository.
-        CHECKOUT_ID=$('git log -n 1 --until=2023-01-18 --format="%H”')
+        CHECKOUT_ID=$('git log -n 1 --until=2023-01-18 --format="%H"')
         #checkout the project to this date
         git checkout $CHECKOUT_ID
         #create virtual env name vm
