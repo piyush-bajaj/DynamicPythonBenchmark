@@ -33,7 +33,7 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    "--dynapyt_source", action="store_true", help="get dynapyt source code"
+    "--update_dynapyt_source", action="store_true", help="get dynapyt source code"
 )
 
 def printAllProjects():
@@ -90,7 +90,7 @@ if __name__ == '__main__':
             """output = subprocess.run(["./scripts/update-dynapyt.sh"
             ], shell=True, stderr=subprocess.STDOUT)"""
 
-    if args.dynapyt_source:
+    if args.update_dynapyt_source:
         print("Downloading the dynapyt source from git")
         if args.save:
             output = subprocess.run(["./scripts/setup-dynapyt-src.sh"
