@@ -28,6 +28,14 @@ parser.add_argument(
     "--run", "-r", type=int, nargs='+', help="Specify the project no. to run DynaPyt Analysis"
 )
 
+parser.add_argument(
+    "--update_dynapyt", action="store_true", help="update dynapyt module in every project in original folder"
+)
+
+parser.add_argument(
+    "--dynapyt_source", action="store_true", help="get dynapyt source code"
+)
+
 def printAllProjects():
     print("{:<8} {:<20} {:<50}".format("Number", "Project Name", "Repository URL"))
     print("{:<8} {:<20} {:<50}".format("-------", "--------------", "---------------------------------"))
@@ -69,6 +77,30 @@ if __name__ == '__main__':
 
     if args.list:
         printAllProjects()
+
+    if args.update_dynapyt:
+        print("Updating dynapyt module for all the projects from 1 to 50")
+        if args.save:
+            output = subprocess.run(["./scripts/update-dynapyt.sh"
+            ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
+        else:
+            output = subprocess.run(["./scripts/update-dynapyt.sh"
+            ], shell=True, capture_output=True)
+            #if output needs to be printed on the console then comment above and uncomment below
+            """output = subprocess.run(["./scripts/update-dynapyt.sh"
+            ], shell=True, stderr=subprocess.STDOUT)"""
+
+    if args.dynapyt_source:
+        print("Updating dynapyt module for all the projects from 1 to 50")
+        if args.save:
+            output = subprocess.run(["./scripts/setup-dynapyt-src.sh"
+            ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
+        else:
+            output = subprocess.run(["./scripts/setup-dynapyt-src.sh"
+            ], shell=True, capture_output=True)
+            #if output needs to be printed on the console then comment above and uncomment below
+            """output = subprocess.run(["./scripts/setup-dynapyt-src.sh"
+            ], shell=True, stderr=subprocess.STDOUT)"""
 
     if args.test:
         projects = args.test
