@@ -10,5 +10,7 @@ else
     git pull
 fi
 
+cd $ROOT_DIR/DynaPyt
+
 #checkout the lastest code and analysis from the custom branch
 git checkout piyush-bajaj-dypybench-analysis
