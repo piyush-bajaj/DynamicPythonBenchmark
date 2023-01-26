@@ -8,7 +8,7 @@ timestamp() {
 echo "Running dynapyt instrumentation on $1"
 
 #current working directory
-WORK_DIR=$(pwd)
+ROOT_DIR=$(pwd)
 
 #create and change to temp folder
 if [[ ! -d "temp" ]]
@@ -21,10 +21,16 @@ cd "temp"
 if [[ ! -d "project$2" ]]
 then
     #copy project folder to temp folder
-    cp -r "$WORK_DIR/Project/project$2" .
+    cp -r "$ROOT_DIR/Project/project$2" .
 fi
 
 cd project$2
+
+#copy the dynypyt src if needed
+if [[ -d "$ROOT_DIR/DynaPyt" ]]
+then
+    cp -r "$ROOT_DIR/DynaPyt" "./DynaPyt"
+fi
 
 #activate virtual env
 if [[ -d "vm/local" ]]
@@ -40,6 +46,14 @@ fi
 
 #install dynapyt dependencies
 #pip install dynapyt libcst pytest-xdist aiopg
+
+#update dynapyt
+if [[ -d ./DynaPyt ]]
+then
+    pip install ./DynaPyt
+else
+    pip install dynapyt --upgrade
+fi
 
 if [[ $5 == "d" ]]
 then
