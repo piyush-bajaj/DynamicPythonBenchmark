@@ -5,7 +5,7 @@ timestamp() {
   date +"%Y-%m-%dT%T.%3N%z" # current time
 }
 
-echo "Clear Project folder for $1"
+echo "Clear project folder for $1"
 
 #current working directory
 WORK_DIR=$(pwd)
