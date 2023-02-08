@@ -12,6 +12,8 @@ parser.add_argument(
     "--original", action="store_true", help="Run tests on original code")
 parser.add_argument(
     "--save", "-s", type=str, help="Specify file name to save the stdout and stderr combined")
+parser.add_argument(
+    "--timeout", type=int, help="Specify timeout to be used in seconds for running test suite and analysis", default=(60*10))
 
 #subparsers = parser.add_subparsers()
 #dynapyt_parser = subparsers.add_parser("dynapyt")
@@ -121,13 +123,13 @@ if __name__ == '__main__':
                 
                 if args.save:
                     output = subprocess.run(["./scripts/run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
-                    ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
+                    ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT, timeout=args.timeout)
                 else:
                     output = subprocess.run(["./scripts/run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
-                    ], shell=True, capture_output=True)
+                    ], shell=True, capture_output=True, timeout=args.timeout)
                     #if output needs to be printed on the console then comment above and uncomment below
                     """output = subprocess.run(["./scripts/run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
-                    ], shell=True, stderr=subprocess.STDOUT)"""
+                    ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
 
     if args.instrument:
         projects = args.instrument
@@ -195,11 +197,11 @@ if __name__ == '__main__':
                 if args.save:
                     # os.system("./scripts/run-dynapyt-analysis.sh %s %s %s %s >> %s 2>&1" %(proj_name, proj_no, analysis, proj_test_folder, args.save))
                     output = subprocess.run(["./scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
-                    ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
+                    ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT, timeout=args.timeout)
                 else:
                     # os.system("./scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder))
                     output = subprocess.run(["./scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
-                    ], shell=True, capture_output=True)
+                    ], shell=True, capture_output=True, timeout=args.timeout)
                     #if output needs to be printed on the console then comment above and uncomment below
                     """output = subprocess.run(["./scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
-                    ], shell=True, stderr=subprocess.STDOUT)"""
+                    ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
