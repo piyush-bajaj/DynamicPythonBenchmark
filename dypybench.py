@@ -38,6 +38,10 @@ parser.add_argument(
     "--update_dynapyt_source", action="store_true", help="get dynapyt source code"
 )
 
+parser.add_argument(
+    "--update_LExecutor_source", action="store_true", help="get LExecutor source code"
+)
+
 def printAllProjects():
     print("{:<8} {:<20} {:<50}".format("Number", "Project Name", "Repository URL"))
     print("{:<8} {:<20} {:<50}".format("-------", "--------------", "---------------------------------"))
@@ -102,6 +106,18 @@ if __name__ == '__main__':
             ], shell=True, capture_output=True)
             #if output needs to be printed on the console then comment above and uncomment below
             """output = subprocess.run(["./scripts/setup-dynapyt-src.sh"
+            ], shell=True, stderr=subprocess.STDOUT)"""
+            
+    if args.update_LExecutor_source:
+        print("Downloading the dynapyt source from git")
+        if args.save:
+            output = subprocess.run(["./scripts/setup-LExecutor-src.sh"
+            ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
+        else:
+            output = subprocess.run(["./scripts/setup-LExecutor-src.sh"
+            ], shell=True, capture_output=True)
+            #if output needs to be printed on the console then comment above and uncomment below
+            """output = subprocess.run(["./scripts/setup-LExecutor-src.sh"
             ], shell=True, stderr=subprocess.STDOUT)"""
 
     if args.test:
