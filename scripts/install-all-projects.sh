@@ -150,3 +150,7 @@ do
     deactivate
 
 done < "$URL_FILE"
+
+
+# overwrite test files
+python3 "$ROOT_DIR/overwrite-test-files.py"
