@@ -34,7 +34,7 @@ if __name__ == '__main__':
 
     setupProjects()
     path = '/DyPyBench/overwrite_files'
-    override_folder = os.listdir('path')
+    override_folder = os.listdir(path)
 
     for dir in override_folder:
         p1 = os.path.join(path, dir) 
