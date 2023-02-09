@@ -39,7 +39,7 @@ if __name__ == '__main__':
     for dir in override_folder:
         p1 = os.path.join(path, dir) 
         p2 = '/DyPyBench/Project/project' + get_project_no(dir)
-        command = 'cp -r ' + p1 + ' ' + p2
+        command = 'cp -r ' + p1 + '/. ' + p2 + '/.'
         print(command)
         output = subprocess.run([command
             ], shell=True, stderr=subprocess.STDOUT)
