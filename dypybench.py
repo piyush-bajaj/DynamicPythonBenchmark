@@ -179,27 +179,27 @@ if __name__ == '__main__':
                         else:
                             instr_details[project_no] = [(project_no, flag, path)]
 
+                if args.save:
+                    output = subprocess.run(["./scripts/clear-project.sh %s %s" %(proj_name, proj_no)
+                            ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
+                else:
+                    output = subprocess.run(["./scripts/clear-project.sh %s %s" %(proj_name, proj_no)
+                    ], shell=True, capture_output=True)
+                    #if output needs to be printed on the console then comment above and uncomment below
+                    """output = subprocess.run(["./scripts/clear-project.sh %s %s" %(proj_name, proj_no)
+                    ], shell=True, stderr=subprocess.STDOUT)"""
+
+                for line in instr_details[proj_no]:
+                    project_no, flag, path = line
                     if args.save:
-                        output = subprocess.run(["./scripts/clear-project.sh %s %s" %(proj_name, proj_no)
-                                ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
+                        output = subprocess.run(["./scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
+                        ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
                     else:
-                        output = subprocess.run(["./scripts/clear-project.sh %s %s" %(proj_name, proj_no)
+                        output = subprocess.run(["./scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
                         ], shell=True, capture_output=True)
                         #if output needs to be printed on the console then comment above and uncomment below
-                        """output = subprocess.run(["./scripts/clear-project.sh %s %s" %(proj_name, proj_no)
+                        """output = subprocess.run(["./scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
                         ], shell=True, stderr=subprocess.STDOUT)"""
-
-                    for line in instr_details[proj_no]:
-                        project_no, flag, path = line
-                        if args.save:
-                            output = subprocess.run(["./scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
-                            ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
-                        else:
-                            output = subprocess.run(["./scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
-                            ], shell=True, capture_output=True)
-                            #if output needs to be printed on the console then comment above and uncomment below
-                            """output = subprocess.run(["./scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
-                            ], shell=True, stderr=subprocess.STDOUT)"""
 
     if args.run:
         projects = args.run
