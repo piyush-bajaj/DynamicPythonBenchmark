@@ -42,6 +42,14 @@ parser.add_argument(
     "--update_LExecutor_source", action="store_true", help="get LExecutor source code"
 )
 
+parser.add_argument(
+    "--lex_instrument", "-li", type=int, nargs='+', help="Specify the project no. to run LExecutor instrumentation"
+)
+parser.add_argument(
+    "--lex_file", "-lf", type=str, help="Specify the path to file containing the includes.txt file to run the instrumentation"
+)
+
+
 def printAllProjects():
     print("{:<8} {:<20} {:<50}".format("Number", "Project Name", "Repository URL"))
     print("{:<8} {:<20} {:<50}".format("-------", "--------------", "---------------------------------"))
@@ -221,3 +229,54 @@ if __name__ == '__main__':
                     #if output needs to be printed on the console then comment above and uncomment below
                     """output = subprocess.run(["./scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
                     ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
+                    
+    if args.lex_instrument:
+        projects = args.lex_instrument
+        for project in projects:
+            if(project < 0 or project > 50):
+                print("Project number should be between 1 and 50")
+            else:
+                proj_name = str(data[project - 1][1])
+                proj_no = str(data[project - 1][0])
+                instr_file = args.lex_file
+
+                with open(instr_file, 'r') as inst_file:
+                    csvReader = csv.reader(inst_file, delimiter=" ")
+                    instr_details = {}
+                    for row in csvReader:
+                        project_name, path = row
+                        project_no = get_project_no(project_name)
+                        if project_no in instr_details.keys():
+                            temp = instr_details[project_no]
+                            temp.append((project_no, path))
+                            instr_details[project_no] = temp
+                        else:
+                            instr_details[project_no] = [(project_no, path)]
+
+                if args.save:
+                    output = subprocess.run(["./scripts/clear-project.sh %s %s" %(proj_name, proj_no)
+                            ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
+                else:
+                    output = subprocess.run(["./scripts/clear-project.sh %s %s" %(proj_name, proj_no)
+                    ], shell=True, capture_output=True)
+                    #if output needs to be printed on the console then comment above and uncomment below
+                    """output = subprocess.run(["./scripts/clear-project.sh %s %s" %(proj_name, proj_no)
+                    ], shell=True, stderr=subprocess.STDOUT)"""
+
+                files = []
+                for line in instr_details[proj_no]:
+                    project_no, file_path = line
+                    files.append(file_path)
+
+                path = ' '.join([str(path) for path in files])
+
+                if args.save:
+                    output = subprocess.run(["./scripts/run-lexecutor-instrumentation.sh %s %s %s" %(proj_name, proj_no, path)
+                    ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
+                else:
+                    output = subprocess.run(["./scripts/run-lexecutor-instrumentation.sh %s %s %s" %(proj_name, proj_no, path)
+                    ], shell=True, capture_output=True)
+                    #if output needs to be printed on the console then comment above and uncomment below
+                    """output = subprocess.run(["./scripts/run-lexecutor-instrumentation.sh %s %s %s" %(proj_name, proj_no, path)
+                    ], shell=True, stderr=subprocess.STDOUT)"""
+
