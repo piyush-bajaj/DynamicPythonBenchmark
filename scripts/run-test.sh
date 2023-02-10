@@ -12,8 +12,12 @@ WORK_DIR=$(pwd)
 
 if [[ $4 == "False" ]]
 then
-    #create and change to temp folder
-    mkdir "temp"
+    if [[ ! -d temp ]]
+    then
+        #create and change to temp folder
+        mkdir "temp"
+    fi
+
     cd "temp"
 
     #copy project folder to temp folder
