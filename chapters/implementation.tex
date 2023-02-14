@@ -1,0 +1,26 @@
+In this section, we describe the various tools and libraries used to implement our approach. WE provide the entire benchmark inside a docker container, which contains all the required projects and dynamic analysis frameworks. We have used bash scripting to automate the repetitive tasks of setting up the projects and installing the required dependencies. Furthermore, we have also used python scripting to provide a single command line interface to the user with varied options to perform the various steps as needed. We have used the DynaPyt \cite{DynaPyt2022} and the LExecutor\cite{LExecutor_2023} projects in order to perform the analysis on the projects and generate logs as required for the machine learning model. The implementation details of the steps in the approach are explained in the following subsections.
+
+\section{Selected Python Projects}
+\label{impl:selection of projects}
+The programming language, Python, has a large and active community. This community has created a vast collection of libraries, tools, and frameworks that make it easy to perform a wide range of tasks. For example, there are libraries for machine learning, data analysis, web development, and more. These libraries and tools make it easy to accomplish complex tasks with just a few lines of code, making Python a powerful and productive language to use. One such community project is Awesome Python \cite{awesome_python_github}, which provides a curated list of awesome Python framework, libraries, software and resources. These frameworks, libraries and software are open source projects, which are available with their source code. The Awesome Python project also provides us with a category and sub-category of these projects based on the common domains of usage of these projects. Since, we aim to cover projects from a vast range of domains in our benchmark, we use Awesome Python and its categories as a guiding factor.
+
+Listing provides the details of the projects and categories as per the awesome python website
+
+We select the projects from this curated list as mentioned above while adding some more selection criteria to make the projects compatible with our benchmark. These additional selection criteria and why we use them is listed below:
+1, Stars on github: Ensure that the community has accepted this project
+2, Available test suites: To be able to run dynamic analysis out of box
+3. Ability to run tests using pytest: We and also the dynamic analysis framework use pytest for execution of test suites
+
+We select 50 python projects, which satify the above criteria from the awesome python project and store the github url, requirement file location (if any) and test files location in a text file name github-urls.txt. This file also specifies the flags for requirements and test.
+Combining the different categories provided by awesome python and the additional selelction criteria, we select 50 python projects which 
+
+\section{Setup and Installation}
+\label{impl:setup and installation}
+
+\section{Command Line Interface}
+\label{impl:command line interface}
+
+\section{Dynamic Analysis}
+\label{impl:dynamic analysis}
+
+% \section{ML M}
