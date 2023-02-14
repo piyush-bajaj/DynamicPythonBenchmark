@@ -48,7 +48,9 @@ parser.add_argument(
 parser.add_argument(
     "--lex_file", "-lf", type=str, help="Specify the path to file containing the includes.txt file to run the instrumentation"
 )
-
+parser.add_argument(
+    "--lex_test", "-lt", type=int, nargs='+', help="Specify the project no. to run LExecutor Tests for trace generation"
+)
 
 def printAllProjects():
     print("{:<8} {:<20} {:<50}".format("Number", "Project Name", "Repository URL"))
@@ -280,3 +282,32 @@ if __name__ == '__main__':
                     """output = subprocess.run(["./scripts/run-lexecutor-instrumentation.sh %s %s %s" %(proj_name, proj_no, path)
                     ], shell=True, stderr=subprocess.STDOUT)"""
 
+
+    if args.lex_test:
+        projects = args.lex_test
+        for project in projects:
+            if(project < 0 or project > 50):
+                print("Project number should be between 1 and 50")
+            else:
+                proj_name = str(data[project - 1][1])
+                proj_no = str(data[project - 1][0])
+                analysis = args.analysis
+                proj_flags = str(original_data[project - 1][1])
+                if(proj_flags == "rt"):
+                    proj_test_folder = str(original_data[project - 1][3])
+                elif(proj_flags == "t"):
+                    proj_test_folder = str(original_data[project - 1][2])
+                elif(proj_flags == "r"):
+                    proj_test_folder = ""
+
+                if args.save:
+                    # os.system("./scripts/run-test-lexecutor.sh %s %s %s %s >> %s 2>&1" %(proj_name, proj_no, proj_test_folder, args.save))
+                    output = subprocess.run(["./scripts/run-test-lexecutor.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
+                    ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT, timeout=args.timeout)
+                else:
+                    # os.system("./scripts/run-test-lexecutor.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder))
+                    output = subprocess.run(["./scripts/run-test-lexecutor.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
+                    ], shell=True, capture_output=True, timeout=args.timeout)
+                    #if output needs to be printed on the console then comment above and uncomment below
+                    """output = subprocess.run(["./scripts/run-test-lexecutor.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
+                    ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
