@@ -55,7 +55,7 @@ else
 fi
 
 # run instrument for given files or a single .txt file, other arguments can be added later using if else
-python -m lexecutor.Instrument --files ${@:3}
+python -m lexecutor.Instrument --files ${@:3} --iids /DyPyBench/iids.json
 
 #deactivate vm
 deactivate
