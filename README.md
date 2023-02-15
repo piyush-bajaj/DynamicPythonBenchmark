@@ -61,6 +61,16 @@ Master Thesis Project
     - python3 dypybench.py --instrument 1 2 3 4 --file ./text/includes.txt --analysis TraceAll
 3. Run DynaPyt Analysis
     - python3 dypybench.py --run 1 2 3 4 --analysis TraceAll
+4. Run LExecutor Instrumentation
+    - python3 dypybench.py --lex_instrument 1 2 3 4 --lex_file ./text/includes.txt
+5. Run tests to generate LExecutor trace
+    - python3 dypybench.py --lex_test 1 2 3 4
+6. Update DynaPyt source code
+    - python3 dypybench.py --update_dynapyt_source
+7. Update LExecutor source code
+    - python3 dypybench.py --update_LExecutor_source
+8. Update DynaPyt module for all projects
+    - python3 dypybench.py --update_dynapyt
 
 ### Available flags
 1. --list / -l 
@@ -70,7 +80,7 @@ Master Thesis Project
 3. --instrument / -i
     - specify projects for instrumentation
 4. --run / -r
-    - specify projects for analysis
+    - specify projects for analysis 
 5. --file / -f
     - specify path of includes.txt file for instrumentation
 6. --analysis / -a
@@ -79,9 +89,28 @@ Master Thesis Project
     - specify the file to save output
 8. --original
     - run tests on code present in original folder
+9. --update_dynapyt
+    - update dynapyt module in every project in original folder
+10. --update_dynapyt_source
+    - get or update dynapyt source code
+11. --update_LExecutor_source
+    - get or update LExecutor source code
+12. --lex_instrument / -li
+    - Specify the project no. to run LExecutor instrumentation
+13. --lex_file / -lf
+    - Specify the path to file containing the includes.txt file to run the instrumentation
+14. --lex_test / -lt
+    - Specify the project no. to run LExecutor Tests for trace generation
+15. --timeout
+    - Specify timeout to be used in seconds for running test suite and analysis, default is 600 seconds
 
-## Structure of includes.txt
-    - proj_no flag path
-        - proj_name: Project name for which the entry is
+## Structure of includes.txt for DynaPyt
+    - proj_name flag path
+        - proj_name: Project name for which the entry belongs to
         - flag: d for directory path or f for file path
-        - path: path of the file/directory to instrument
+        - path: path of the file/directory to instrument from the root of the project
+
+## Structure of includes.txt for LExecutor
+    - proj_name path
+        - proj_name: Project name for which the entry belongs to
+        - path: path of the file to instrument from the root of the project
