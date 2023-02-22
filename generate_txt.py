@@ -32,7 +32,7 @@ def get_files(dir, name):
             for file_path in files_arr:
                 files.append(file_path)
         elif path[-3:] == ".py":
-            if not ( path.__contains__("/vm") or path.__contains__("/build") or path.__contains__("setup.py") or path.__contains__("config.py")) :
+            if not ( path.__contains__("/vm") or path.__contains__("/build") or path.__contains__("setup.py") or path.__contains__("config.py") or path.__contains__("conftest.py")) :
                 with open('includes_lex.txt', 'a') as f:
                     f.write(name)
                     f.write(' ')

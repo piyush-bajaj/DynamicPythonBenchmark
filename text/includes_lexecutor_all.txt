@@ -163,7 +163,6 @@ PythonRobotics ./tests/test_rear_wheel_feedback.py
 PythonRobotics ./tests/test_rrt_star_reeds_shepp.py
 PythonRobotics ./tests/test_inverted_pendulum_lqr_control.py
 PythonRobotics ./tests/test_batch_informed_rrt_star.py
-PythonRobotics ./tests/conftest.py
 PythonRobotics ./tests/test_bspline_path.py
 PythonRobotics ./tests/test_rocket_powered_landing.py
 PythonRobotics ./tests/test_dynamic_window_approach.py
@@ -327,7 +326,6 @@ schedule ./test_schedule.py
 schedule ./schedule/__init__.py
 schedule ./docs/conf.py
 Pillow ./selftest.py
-Pillow ./conftest.py
 Pillow ./src/PIL/ImageFont.py
 Pillow ./src/PIL/PalmImagePlugin.py
 Pillow ./src/PIL/PaletteFile.py
@@ -473,7 +471,6 @@ Pillow ./Tests/test_file_container.py
 Pillow ./Tests/test_file_blp.py
 Pillow ./Tests/test_file_spider.py
 Pillow ./Tests/test_file_jpeg.py
-Pillow ./Tests/conftest.py
 Pillow ./Tests/test_pickle.py
 Pillow ./Tests/test_features.py
 Pillow ./Tests/test_file_xbm.py
@@ -864,7 +861,6 @@ click ./tests/test_shell_completion.py
 click ./tests/test_normalization.py
 click ./tests/test_basic.py
 click ./tests/test_compat.py
-click ./tests/conftest.py
 click ./tests/test_arguments.py
 click ./tests/test_types.py
 click ./tests/test_options.py
@@ -984,7 +980,6 @@ uvicorn ./tests/supervisors/test_multiprocess.py
 uvicorn ./tests/response.py
 uvicorn ./tests/test_default_headers.py
 uvicorn ./tests/test_lifespan.py
-uvicorn ./tests/conftest.py
 uvicorn ./tests/test_subprocess.py
 uvicorn ./tests/importer/__init__.py
 uvicorn ./tests/importer/test_importer.py
@@ -1077,7 +1072,6 @@ cerberus ./cerberus/tests/test_schema.py
 cerberus ./cerberus/tests/test_normalization.py
 cerberus ./cerberus/tests/test_rule_…length.py
 cerberus ./cerberus/tests/test_rule_contains.py
-cerberus ./cerberus/tests/conftest.py
 cerberus ./cerberus/tests/test_rule_schema.py
 cerberus ./cerberus/tests/test_rule_required.py
 cerberus ./cerberus/tests/test_errors.py
@@ -1167,7 +1161,6 @@ errbot ./tests/dependent_plugins/single.py
 errbot ./tests/dependent_plugins/circular2.py
 errbot ./tests/dependent_plugins/double.py
 errbot ./tests/matchall_test.py
-errbot ./tests/conftest.py
 errbot ./tests/plugin_management_test.py
 errbot ./tests/config-ci.py
 errbot ./tests/poller_plugin/poller_plugin.py
@@ -1448,7 +1441,6 @@ black ./tests/test_ipynb.py
 black ./tests/optional.py
 black ./tests/test_blackd.py
 black ./tests/test_format.py
-black ./tests/conftest.py
 black ./tests/test_trans.py
 black ./tests/util.py
 black ./tests/__init__.py
@@ -1675,7 +1667,6 @@ thefuck ./tests/specific/test_npm.py
 thefuck ./tests/specific/test_sudo.py
 thefuck ./tests/specific/__init__.py
 thefuck ./tests/specific/test_git.py
-thefuck ./tests/conftest.py
 thefuck ./tests/test_readme.py
 thefuck ./tests/test_types.py
 thefuck ./tests/test_ui.py
@@ -1683,7 +1674,6 @@ thefuck ./tests/test_logs.py
 thefuck ./tests/__init__.py
 thefuck ./tests/shells/test_generic.py
 thefuck ./tests/shells/test_tcsh.py
-thefuck ./tests/shells/conftest.py
 thefuck ./tests/shells/test_fish.py
 thefuck ./tests/shells/__init__.py
 thefuck ./tests/shells/test_zsh.py
@@ -2180,7 +2170,6 @@ arrow ./docs/conf.py
 arrow ./tests/test_formatter.py
 arrow ./tests/test_arrow.py
 arrow ./tests/test_factory.py
-arrow ./tests/conftest.py
 arrow ./tests/test_locales.py
 arrow ./tests/__init__.py
 arrow ./tests/test_util.py
@@ -2642,7 +2631,6 @@ seaborn ./tests/test_statistics.py
 seaborn ./tests/test_objects.py
 seaborn ./tests/test_miscplot.py
 seaborn ./tests/test_categorical.py
-seaborn ./tests/conftest.py
 seaborn ./tests/test_palettes.py
 seaborn ./tests/test_matrix.py
 seaborn ./tests/test_core.py
@@ -2894,7 +2882,6 @@ wtforms ./tests/validators/test_number_range.py
 wtforms ./tests/validators/test_email.py
 wtforms ./tests/validators/test_length.py
 wtforms ./tests/validators/test_regexp.py
-wtforms ./tests/conftest.py
 wtforms ./tests/test_widgets.py
 wtforms ./tests/test_form.py
 wtforms ./tests/common.py
@@ -3146,7 +3133,6 @@ geopy ./test/adapters/__init__.py
 geopy ./test/test_init.py
 geopy ./test/test_location.py
 geopy ./test/test_format.py
-geopy ./test/conftest.py
 geopy ./test/__init__.py
 geopy ./test/extra/rate_limiter.py
 geopy ./test/extra/__init__.py
@@ -3199,9 +3185,7 @@ geopy ./geopy/extra/rate_limiter.py
 geopy ./geopy/extra/__init__.py
 geopy ./geopy/units.py
 geopy ./docs/conf.py
-pyquery ./conftest.py
 pyquery ./docs/conf.py
-pyquery ./docs/conftest.py
 pyquery ./pyquery/pyquery.py
 pyquery ./pyquery/__init__.py
 pyquery ./pyquery/openers.py
@@ -3221,7 +3205,6 @@ requests ./tests/test_hooks.py
 requests ./tests/compat.py
 requests ./tests/test_lowlevel.py
 requests ./tests/test_packages.py
-requests ./tests/conftest.py
 requests ./tests/test_requests.py
 requests ./tests/__init__.py
 requests ./tests/test_help.py
@@ -3303,7 +3286,6 @@ scikit-learn ./asv_benchmarks/benchmarks/utils.py
 scikit-learn ./asv_benchmarks/benchmarks/manifold.py
 scikit-learn ./asv_benchmarks/benchmarks/svm.py
 scikit-learn ./doc/conf.py
-scikit-learn ./doc/conftest.py
 scikit-learn ./doc/sphinxext/github_link.py
 scikit-learn ./doc/sphinxext/allow_nan_estimators.py
 scikit-learn ./doc/sphinxext/doi_role.py
@@ -3319,7 +3301,6 @@ scikit-learn ./doc/tutorial/text_analytics/solutions/exercise_02_sentiment.py
 scikit-learn ./doc/tutorial/machine_learning_map/parse_path.py
 scikit-learn ./doc/tutorial/machine_learning_map/pyparsing.py
 scikit-learn ./doc/tutorial/machine_learning_map/svg2imagemap.py
-scikit-learn ./conftest.py
 scikit-learn ./examples/svm/plot_svm_scale_c.py
 scikit-learn ./examples/svm/plot_svm_regression.py
 scikit-learn ./examples/svm/plot_separating_hyperplane.py
@@ -3701,7 +3682,6 @@ scikit-learn ./sklearn/decomposition/_base.py
 scikit-learn ./sklearn/decomposition/_fastica.py
 scikit-learn ./sklearn/decomposition/_truncated_svd.py
 scikit-learn ./sklearn/_distributor_init.py
-scikit-learn ./sklearn/conftest.py
 scikit-learn ./sklearn/calibration.py
 scikit-learn ./sklearn/cross_decomposition/_pls.py
 scikit-learn ./sklearn/cross_decomposition/__init__.py
@@ -3739,7 +3719,6 @@ scikit-learn ./sklearn/_build_utils/__init__.py
 scikit-learn ./sklearn/_build_utils/pre_build_helpers.py
 scikit-learn ./sklearn/_build_utils/openmp_helpers.py
 scikit-learn ./sklearn/externals/_arff.py
-scikit-learn ./sklearn/externals/conftest.py
 scikit-learn ./sklearn/externals/_packaging/version.py
 scikit-learn ./sklearn/externals/_packaging/__init__.py
 scikit-learn ./sklearn/externals/_packaging/_structures.py
@@ -3816,7 +3795,6 @@ scikit-learn ./sklearn/utils/tests/test_deprecation.py
 scikit-learn ./sklearn/utils/tests/test_random.py
 scikit-learn ./sklearn/utils/tests/test_extmath.py
 scikit-learn ./sklearn/utils/tests/test_pprint.py
-scikit-learn ./sklearn/utils/tests/conftest.py
 scikit-learn ./sklearn/utils/tests/test_estimator_checks.py
 scikit-learn ./sklearn/utils/tests/test_mocking.py
 scikit-learn ./sklearn/utils/tests/test_fast_dict.py
@@ -4072,7 +4050,6 @@ scikit-learn ./sklearn/datasets/tests/data/openml/id_3/__init__.py
 scikit-learn ./sklearn/datasets/tests/data/openml/id_40966/__init__.py
 scikit-learn ./sklearn/datasets/tests/data/openml/id_42585/__init__.py
 scikit-learn ./sklearn/datasets/tests/test_california_housing.py
-scikit-learn ./sklearn/datasets/tests/conftest.py
 scikit-learn ./sklearn/datasets/tests/test_olivetti_faces.py
 scikit-learn ./sklearn/datasets/tests/test_lfw.py
 scikit-learn ./sklearn/datasets/tests/test_rcv1.py
@@ -4214,7 +4191,6 @@ elasticsearch-dsl-py ./examples/completion.py
 elasticsearch-dsl-py ./tests/test_utils.py
 elasticsearch-dsl-py ./tests/test_field.py
 elasticsearch-dsl-py ./tests/test_result.py
-elasticsearch-dsl-py ./tests/conftest.py
 elasticsearch-dsl-py ./tests/test_analysis.py
 elasticsearch-dsl-py ./tests/test_faceted_search.py
 elasticsearch-dsl-py ./tests/test_connections.py
@@ -4279,7 +4255,6 @@ marshmallow ./tests/test_validate.py
 marshmallow ./tests/test_schema.py
 marshmallow ./tests/foo_serializer.py
 marshmallow ./tests/test_registry.py
-marshmallow ./tests/conftest.py
 marshmallow ./tests/test_deserialization.py
 marshmallow ./tests/test_exceptions.py
 marshmallow ./tests/test_options.py
@@ -4407,7 +4382,6 @@ lektor ./tests/test_quickstart.py
 lektor ./tests/test_videotools.py
 lektor ./tests/test_pagination.py
 lektor ./tests/test_compat.py
-lektor ./tests/conftest.py
 lektor ./tests/test_images.py
 lektor ./tests/test_pluginsystem.py
 lektor ./tests/test_types.py
@@ -4531,7 +4505,6 @@ celery ./t/unit/security/__init__.py
 celery ./t/unit/security/case.py
 celery ./t/unit/apps/test_multi.py
 celery ./t/unit/apps/__init__.py
-celery ./t/unit/conftest.py
 celery ./t/unit/events/test_cursesmon.py
 celery ./t/unit/events/test_state.py
 celery ./t/unit/events/__init__.py
@@ -4598,7 +4571,6 @@ celery ./t/__init__.py
 celery ./t/integration/test_canvas.py
 celery ./t/integration/test_inspect.py
 celery ./t/integration/test_security.py
-celery ./t/integration/conftest.py
 celery ./t/integration/__init__.py
 celery ./t/integration/tasks.py
 celery ./t/integration/test_backend.py
@@ -4800,7 +4772,6 @@ jinja ./tests/test_filters.py
 jinja ./tests/test_security.py
 jinja ./tests/test_ext.py
 jinja ./tests/test_nodes.py
-jinja ./tests/conftest.py
 jinja ./tests/test_pickle.py
 jinja ./tests/test_inheritance.py
 jinja ./tests/test_lexnparse.py
@@ -4821,7 +4792,6 @@ jinja ./tests/test_tests.py
 jinja ./tests/test_compile.py
 pytest ./testing/test_stepwise.py
 pytest ./testing/test_pluginmanager.py
-pytest ./testing/test_conftest.py
 pytest ./testing/test_setupplan.py
 pytest ./testing/test_mark_expression.py
 pytest ./testing/test_unraisableexception.py
@@ -4856,7 +4826,6 @@ pytest ./testing/plugins_integration/django_settings.py
 pytest ./testing/plugins_integration/pytest_twisted_integration.py
 pytest ./testing/plugins_integration/pytest_asyncio_integration.py
 pytest ./testing/plugins_integration/bdd_wallet.py
-pytest ./testing/conftest.py
 pytest ./testing/acceptance_test.py
 pytest ./testing/python/raises.py
 pytest ./testing/python/approx.py
@@ -4887,7 +4856,6 @@ pytest ./testing/test_pastebin.py
 pytest ./testing/test_pathlib.py
 pytest ./testing/example_scripts/collect/package_init_given_as_arg/pkg/__init__.py
 pytest ./testing/example_scripts/collect/package_init_given_as_arg/pkg/test_foo.py
-pytest ./testing/example_scripts/collect/package_infinite_recursion/conftest.py
 pytest ./testing/example_scripts/collect/package_infinite_recursion/tests/test_basic.py
 pytest ./testing/example_scripts/collect/package_infinite_recursion/tests/__init__.py
 pytest ./testing/example_scripts/collect/collect_init_tests/tests/__init__.py
@@ -4903,7 +4871,6 @@ pytest ./testing/example_scripts/warnings/test_group_warnings_by_message_summary
 pytest ./testing/example_scripts/warnings/test_group_warnings_by_message_summary/test_1.py
 pytest ./testing/example_scripts/warnings/test_group_warnings_by_message.py
 pytest ./testing/example_scripts/issue88_initial_file_multinodes/test_hello.py
-pytest ./testing/example_scripts/issue88_initial_file_multinodes/conftest.py
 pytest ./testing/example_scripts/dataclasses/test_compare_dataclasses_field_comparison_off.py
 pytest ./testing/example_scripts/dataclasses/test_compare_dataclasses_with_custom_eq.py
 pytest ./testing/example_scripts/dataclasses/test_compare_dataclasses.py
@@ -4914,27 +4881,20 @@ pytest ./testing/example_scripts/dataclasses/test_compare_recursive_dataclasses.
 pytest ./testing/example_scripts/fixtures/test_fixture_named_request.py
 pytest ./testing/example_scripts/fixtures/custom_item/foo/__init__.py
 pytest ./testing/example_scripts/fixtures/custom_item/foo/test_foo.py
-pytest ./testing/example_scripts/fixtures/custom_item/conftest.py
 pytest ./testing/example_scripts/fixtures/test_getfixturevalue_dynamic.py
 pytest ./testing/example_scripts/fixtures/fill_fixtures/test_funcarg_lookup_modulelevel.py
 pytest ./testing/example_scripts/fixtures/fill_fixtures/test_detect_recursive_dependency_error.py
 pytest ./testing/example_scripts/fixtures/fill_fixtures/test_funcarg_lookupfails.py
-pytest ./testing/example_scripts/fixtures/fill_fixtures/test_extend_fixture_conftest_module/conftest.py
 pytest ./testing/example_scripts/fixtures/fill_fixtures/test_extend_fixture_conftest_module/test_extend_fixture_conftest_module.py
 pytest ./testing/example_scripts/fixtures/fill_fixtures/test_funcarg_basic.py
 pytest ./testing/example_scripts/fixtures/fill_fixtures/test_conftest_funcargs_only_available_in_subdir/sub2/test_in_sub2.py
-pytest ./testing/example_scripts/fixtures/fill_fixtures/test_conftest_funcargs_only_available_in_subdir/sub2/conftest.py
 pytest ./testing/example_scripts/fixtures/fill_fixtures/test_conftest_funcargs_only_available_in_subdir/sub2/__init__.py
-pytest ./testing/example_scripts/fixtures/fill_fixtures/test_conftest_funcargs_only_available_in_subdir/sub1/conftest.py
 pytest ./testing/example_scripts/fixtures/fill_fixtures/test_conftest_funcargs_only_available_in_subdir/sub1/__init__.py
 pytest ./testing/example_scripts/fixtures/fill_fixtures/test_conftest_funcargs_only_available_in_subdir/sub1/test_in_sub1.py
-pytest ./testing/example_scripts/fixtures/fill_fixtures/test_extend_fixture_conftest_conftest/conftest.py
-pytest ./testing/example_scripts/fixtures/fill_fixtures/test_extend_fixture_conftest_conftest/pkg/conftest.py
 pytest ./testing/example_scripts/fixtures/fill_fixtures/test_extend_fixture_conftest_conftest/pkg/__init__.py
 pytest ./testing/example_scripts/fixtures/fill_fixtures/test_extend_fixture_conftest_conftest/pkg/test_spam.py
 pytest ./testing/example_scripts/fixtures/fill_fixtures/test_extend_fixture_module_class.py
 pytest ./testing/example_scripts/fixtures/fill_fixtures/test_funcarg_lookup_classlevel.py
-pytest ./testing/example_scripts/config/collect_pytest_prefix/conftest.py
 pytest ./testing/example_scripts/config/collect_pytest_prefix/test_foo.py
 pytest ./testing/example_scripts/perf_examples/collect_stats/generate_folders.py
 pytest ./testing/example_scripts/perf_examples/collect_stats/template_test.py
@@ -4943,8 +4903,6 @@ pytest ./testing/example_scripts/tmpdir/tmp_path_fixture.py
 pytest ./testing/example_scripts/doctest/main_py/__main__.py
 pytest ./testing/example_scripts/doctest/main_py/test_normal_module.py
 pytest ./testing/example_scripts/acceptance/fixture_mock_integration.py
-pytest ./testing/example_scripts/conftest_usageerror/conftest.py
-pytest ./testing/example_scripts/marks/marks_considered_keywords/conftest.py
 pytest ./testing/example_scripts/marks/marks_considered_keywords/test_marks_as_keywords.py
 pytest ./testing/example_scripts/issue_519.py
 pytest ./testing/logging/test_formatter.py
@@ -4964,14 +4922,11 @@ pytest ./testing/io/test_wcwidth.py
 pytest ./testing/io/test_saferepr.py
 pytest ./testing/test_findpaths.py
 pytest ./doc/en/conf.py
-pytest ./doc/en/conftest.py
 pytest ./doc/en/example/xfail_demo.py
 pytest ./doc/en/example/assertion/test_failures.py
 pytest ./doc/en/example/assertion/test_setup_flow_example.py
 pytest ./doc/en/example/assertion/global_testmodule_config/test_hello_world.py
-pytest ./doc/en/example/assertion/global_testmodule_config/conftest.py
 pytest ./doc/en/example/assertion/failure_demo.py
-pytest ./doc/en/example/conftest.py
 pytest ./doc/en/example/fixtures/test_fixtures_order_scope.py
 pytest ./doc/en/example/fixtures/test_fixtures_order_autouse_temp_effects.py
 pytest ./doc/en/example/fixtures/test_fixtures_order_dependencies.py
@@ -4979,7 +4934,6 @@ pytest ./doc/en/example/fixtures/test_fixtures_order_autouse_multiple_scopes.py
 pytest ./doc/en/example/fixtures/test_fixtures_order_autouse.py
 pytest ./doc/en/example/fixtures/test_fixtures_request_different_scope.py
 pytest ./doc/en/example/pythoncollection.py
-pytest ./doc/en/example/nonpython/conftest.py
 pytest ./doc/en/example/nonpython/__init__.py
 pytest ./doc/en/example/multipython.py
 pytest ./src/py.py
@@ -5194,7 +5148,6 @@ moviepy ./tests/test_fx.py
 moviepy ./tests/test_BitmapClip.py
 moviepy ./tests/test_videotools.py
 moviepy ./tests/test_ImageSequenceClip.py
-moviepy ./tests/conftest.py
 moviepy ./tests/test_ffmpeg_reader.py
 moviepy ./tests/test_compositing.py
 moviepy ./tests/__init__.py
