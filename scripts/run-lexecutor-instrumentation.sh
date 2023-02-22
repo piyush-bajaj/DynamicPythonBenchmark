@@ -26,7 +26,7 @@ fi
 
 cd project$2
 
-#copy the dynypyt src if needed
+#copy the LExecutor src if needed
 if [[ -d "$ROOT_DIR/LExecutor" ]]
 then
     cp -r "$ROOT_DIR/LExecutor" "./LExecutor"
