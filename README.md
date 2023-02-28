@@ -4,7 +4,6 @@ Master Thesis Project
 ## Setting Up DyPyBench
 
 ### Requirements
-- Ubuntu >= 20.04
 - Python >= 3.8
 - pip >= 22.0
 - python3-virtualenv >= 20.16.6
@@ -13,16 +12,6 @@ Master Thesis Project
 - libavcodec-extra (project requirement)
 - Git >= 2.34
 - Docker >= 20.10
-
-### Steps to setup DyPyBench on Ubuntu Machine
-1. Clone DyPyBench Repository
-    - git clone https://github.com/sola-st/master-thesis-piyush-bajaj.git
-2. Change the permissions for the bash files
-    - chmod -R 777 ./scripts
-3. Initialize DyPyBench (download the project repositories and dependencies inside python virtual environement for each project) : Ensure the requirements are met before proceeding with this step.
-    - ./scripts/install-all-projects.sh > install.log 2>&1
-4. Check the installation
-    - Check the file install.log to see if there are any errors
 
 ### Steps to setup DyPyBench on Docker Container
 1. Clone DyPyBench Repository
@@ -66,11 +55,9 @@ Master Thesis Project
 5. Run tests to generate LExecutor trace
     - python3 dypybench.py --lex_test 1 2 3 4
 6. Update DynaPyt source code
-    - python3 dypybench.py --update_dynapyt_source
+    - python3 dypybench.py --update_DynaPyt_source
 7. Update LExecutor source code
     - python3 dypybench.py --update_LExecutor_source
-8. Update DynaPyt module for all projects
-    - python3 dypybench.py --update_dynapyt
 
 ### Available flags
 1. --list / -l 
@@ -89,19 +76,17 @@ Master Thesis Project
     - specify the file to save output
 8. --original
     - run tests on code present in original folder
-9. --update_dynapyt
-    - update dynapyt module in every project in original folder
-10. --update_dynapyt_source
+9. --update_DynaPyt_source
     - get or update dynapyt source code
-11. --update_LExecutor_source
+10. --update_LExecutor_source
     - get or update LExecutor source code
-12. --lex_instrument / -li
+11. --lex_instrument / -li
     - Specify the project no. to run LExecutor instrumentation
-13. --lex_file / -lf
+12. --lex_file / -lf
     - Specify the path to file containing the includes.txt file to run the instrumentation
-14. --lex_test / -lt
+13. --lex_test / -lt
     - Specify the project no. to run LExecutor Tests for trace generation
-15. --timeout
+14. --timeout
     - Specify timeout to be used in seconds for running test suite and analysis, default is 600 seconds
 
 ## Structure of includes.txt for DynaPyt
@@ -113,4 +98,4 @@ Master Thesis Project
 ## Structure of includes.txt for LExecutor
     - proj_name path
         - proj_name: Project name for which the entry belongs to
-        - path: path of the file to instrument from the root of the project
+        - path: path of the file to instrument from the root of DyPyBench

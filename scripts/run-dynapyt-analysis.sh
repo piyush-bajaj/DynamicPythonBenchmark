@@ -8,7 +8,9 @@ timestamp() {
 echo "Running dynapyt analysis on $1"
 
 #current working directory
-WORK_DIR=$(pwd)
+ROOT_DIR=/DyPyBench
+
+cd $ROOT_DIR
 
 #check if instrumentation is done first
 if [[ ! -d temp/project$2 ]]

@@ -7,11 +7,12 @@ timestamp() {
 
 echo "Running LExecutor instrumentation on $1"
 
-#current working directory
-ROOT_DIR=$(pwd)
+ROOT_DIR=/DyPyBench
+
+cd $ROOT_DIR
 
 #create and change to temp folder
-if [[ ! -d "temp" ]]
+if [[ ! -d "$ROOT_DIR/temp" ]]
 then
     mkdir "temp"
 fi
@@ -21,38 +22,35 @@ cd "temp"
 if [[ ! -d "project$2" ]]
 then
     #copy project folder to temp folder
-    cp -r "$ROOT_DIR/Project/project$2" .
+    cp -r "$ROOT_DIR/../Project/project$2" .
 fi
 
 cd project$2
 
-#copy the LExecutor src if needed
+PROJ_DIR=$(pwd)
+
 if [[ -d "$ROOT_DIR/LExecutor" ]]
 then
-    cp -r "$ROOT_DIR/LExecutor" "./LExecutor"
+    cd "$ROOT_DIR/LExecutor"
+else
+    echo "LExecutor not setup!!!!"
+    echo "Please setup LExecutor first"
+    exit
 fi
 
 #activate virtual env
-if [[ -d "vm/local" ]]
+if [[ -d ".vm/local" ]]
 then
-    source vm/local/bin/activate
-elif [[ -d "vm/bin" ]]
+    source .vm/local/bin/activate
+elif [[ -d ".vm/bin" ]]
 then
-    source vm/bin/activate
+    source .vm/bin/activate
 else
     echo "Unable to activate virtual env"
     exit
 fi
 
-#install LExecutor
-if [[ -d ./LExecutor ]]
-then
-    pip install -r ./LExecutor/requirements.txt
-    pip install -e ./LExecutor
-else
-    echo "LExecutor is not installed, please install it first before continuing"
-    exit
-fi
+cd $ROOT_DIR
 
 # run instrument for given files or a single .txt file, other arguments can be added later using if else
 python -m lexecutor.Instrument --files ${@:3} --iids /DyPyBench/iids.json

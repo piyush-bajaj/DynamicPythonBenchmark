@@ -1,6 +1,8 @@
 #!/usr/bin/bash
 
-ROOT_DIR=$(pwd)
+ROOT_DIR=/DyPyBench
+
+cd $ROOT_DIR
 
 #update the dynapyt source from the forked repo.
 if [[ ! -d DynaPyt ]]

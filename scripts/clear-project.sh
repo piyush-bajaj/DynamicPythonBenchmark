@@ -1,28 +1,15 @@
 #!/usr/bin/bash
 
-# Define a timestamp function
-timestamp() {
-  date +"%Y-%m-%dT%T.%3N%z" # current time
-}
-
-echo "Clear project folder for $1"
+echo "Clear temp project directory for $1"
 
 #current working directory
-WORK_DIR=$(pwd)
+WORK_DIR=/DyPyBench/temp
 
-#proceed only if temp folder exists
-if [[ -d temp ]]
+#check if dir exists else print error and exit
+if [[ -d "$WORK_DIR/project$2" ]]
 then
-    cd temp
+    rm -rf "$WORK_DIR/project$2"
 else
-    echo "Project directory does not exist"
+    echo "Project temp directory does not exist"
     exit
-fi
-
-#remove directory if it exists
-if [[ -d "project$2" ]]
-then
-    rm -rf "project$2"
-else
-    echo "Project does not exist"
 fi

@@ -1,14 +1,16 @@
 #!/usr/bin/bash
 
+
 # Define a timestamp function
 timestamp() {
   date +"%Y-%m-%dT%T.%3N%z" # current time
 }
 
-echo "Running test suite of $1"
+echo "Running test suite of $1 for LExecutor"
 
-#current working directory
-WORK_DIR=$(pwd)
+ROOT_DIR=/DyPyBench
+
+cd $ROOT_DIR
 
 if [[ ! -d "temp/project$2" ]]
 then
@@ -20,16 +22,19 @@ fi
 cd "temp/project$2"
 
 #activate virtual env
-if [[ -d "vm/local" ]]
+if [[ -d ".vm/local" ]]
 then
-    source vm/local/bin/activate
-elif [[ -d "vm/bin" ]]
+    source .vm/local/bin/activate
+elif [[ -d ".vm/bin" ]]
 then
-    source vm/bin/activate
+    source .vm/bin/activate
 else
     echo "Unable to activate virtual env"
     exit
 fi
+
+pip install -r $ROOT_DIR/LExecutor/requirements.txt
+pip install -e $ROOT_DIR/LExecutor/
 
 echo "\n--------------Test Time Start--------------\n"
 timestamp
@@ -46,5 +51,5 @@ echo "\n--------------Test Time End--------------\n"
 timestamp
 echo "\n--------------Test Time End--------------\n"
 
-#deactivate vm
+#deactivate .vm
 deactivate

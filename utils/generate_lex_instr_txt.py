@@ -6,14 +6,12 @@ import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    "--dir", "-d", type=str, help="Specify directory to list all python files")
-parser.add_argument(
-    "--name", "-n", type=str, help="Specify project name")
+    "--replace", "-r", type=str, help="pattern to replace root_dir in path", default="./temp")
 
 def setupProjects():
     global data
     data = []
-    with open("./text/github-url.txt", "r") as csv_file:
+    with open("/DyPyBench/text/github-url.txt", "r") as csv_file:
         csvReader = csv.reader(csv_file, delimiter=" ")
         for index, row in enumerate(csvReader):
             temp=[]
@@ -32,17 +30,17 @@ def get_files(dir, name):
             for file_path in files_arr:
                 files.append(file_path)
         elif path[-3:] == ".py":
-            if not ( path.__contains__("/vm") or path.__contains__("/build") or path.__contains__("setup.py") or path.__contains__("config.py") or path.__contains__("conftest.py")) :
-                with open('includes_lex.txt', 'a') as f:
+            if not ( path.__contains__("/.vm") or path.__contains__("/build") or path.__contains__("setup.py") or path.__contains__("config.py") or path.__contains__("conftest.py") or path.__contains__("conf.py")) :
+                with open('/DyPyBench/text/lexecutor_instrument_all.txt', 'a') as f:
                     f.write(name)
                     f.write(' ')
-                    print(root_dir)
-                    f.write(path.replace(os.path.abspath(root_dir), '.'))
+                    f.write(path.replace(os.path.abspath(root_dir), args.replace))
                     f.write('\n')
                     files.append(path)
     return files
 
 if __name__ == '__main__':
+    args = parser.parse_args()
     setupProjects()
     global root_dir
     global number
@@ -50,5 +48,6 @@ if __name__ == '__main__':
     for value in data:
         no, name, _ = value
         number = no
-        root_dir = '/DyPyBench/Project/project' + str(number)
-        get_files('Project/project' + str(no), name)
+        #root_dir = '/DyPyBench/Project/project' + str(number)
+        root_dir = '/DyPyBench/../Project'
+        get_files('/DyPyBench/../Project/project' + str(no), name)
