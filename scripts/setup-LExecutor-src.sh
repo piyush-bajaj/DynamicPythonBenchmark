@@ -5,7 +5,7 @@ ROOT_DIR=/DyPyBench
 cd $ROOT_DIR
 
 #update the LExecutor source from the forked repo.
-if [[ ! -d $ROOT_DIR/Lexecutor ]]
+if [[ ! -d $ROOT_DIR/LExecutor ]]
 then
     git clone https://github.com/michaelpradel/LExecutor.git $ROOT_DIR/LExecutor
     cd $ROOT_DIR/LExecutor
