@@ -37,9 +37,9 @@ fi
 if [[ $1 == "grab" ]]
 then
     #printf "import os\n\nos.system('python $WORK_DIR/temp/project$2/runtest.py --test-all')\n" > run_all_tests.py
-    printf "import pytest\n\npytest.main(['--import-mode=importlib', '$WORK_DIR/temp/project$2/$4'])\n" > run_all_tests.py
+    printf "import pytest\n\npytest.main(['--import-mode=importlib', '$ROOT_DIR/temp/project$2/$4'])\n" > run_all_tests.py
 else
-    printf "import pytest\n\npytest.main(['--import-mode=importlib', '$WORK_DIR/temp/project$2/$4'])\n" > run_all_tests.py
+    printf "import pytest\n\npytest.main(['--import-mode=importlib', '$ROOT_DIR/temp/project$2/$4'])\n" > run_all_tests.py
 fi
 
 #run analysis on the given project
