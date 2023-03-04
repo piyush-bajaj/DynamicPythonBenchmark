@@ -55,9 +55,9 @@ Master Thesis Project
 5. Run tests to generate LExecutor trace
     - python3 dypybench.py --lex_test 1 2 3 4
 6. Update DynaPyt source code
-    - python3 dypybench.py --update_DynaPyt_source
+    - python3 dypybench.py --update_dynapyt_source
 7. Update LExecutor source code
-    - python3 dypybench.py --update_LExecutor_source
+    - python3 dypybench.py --update_lex_source
 
 ### Available flags
 1. --list / -l 
@@ -76,9 +76,9 @@ Master Thesis Project
     - specify the file to save output
 8. --original
     - run tests on code present in original folder
-9. --update_DynaPyt_source
+9. --update_dynapyt_source
     - get or update dynapyt source code
-10. --update_LExecutor_source
+10. --update_lex_source
     - get or update LExecutor source code
 11. --lex_instrument / -li
     - Specify the project no. to run LExecutor instrumentation
