@@ -35,12 +35,12 @@ then
 fi
 
 #activate virtual env
-if [[ -d "vm/local" ]]
+if [[ -d ".vm/local" ]]
 then
-    source vm/local/bin/activate
-elif [[ -d "vm/bin" ]]
+    source .vm/local/bin/activate
+elif [[ -d ".vm/bin" ]]
 then
-    source vm/bin/activate
+    source .vm/bin/activate
 else
     echo "Unable to activate virtual env"
     exit
