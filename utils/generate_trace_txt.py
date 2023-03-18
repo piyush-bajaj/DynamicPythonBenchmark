@@ -16,15 +16,12 @@ def get_files(dir, ext):
     for content in dir_contents:
         path = os.path.join(os.path.abspath(dir), content)
         if os.path.isdir(path):
-            files_arr = get_files(path, ext)
-            for file_path in files_arr:
-                files.append(file_path)
+            get_files(path, ext)
         elif path[-3:] == ext:
-            with open('traces.txt', 'a') as f:
-                f.write(path.replace(args.dir,args.replace))
-                f.write('\n')
-                files.append(path)
-    return files
+            if path.__contains__('trace_'):
+                with open('traces.txt', 'a') as f:
+                    f.write(path.replace(args.dir,args.replace))
+                    f.write('\n')
             
 if __name__ == '__main__':
     args = parser.parse_args()
