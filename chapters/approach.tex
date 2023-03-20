@@ -1,12 +1,16 @@
-In this section, we describe the overall approach we adopt in this thesis to create a benchmark of executable python software and using this benchmark to generate a data set for training a machine learning model for program analysis and further use this trained model to perform some of the machine learning tasks in program analysis.
+In this chapter, we describe the approach which we have adopted to create the dynamic benchmark of executable python software. The overall workflow of the approach is shown in the Figure \ref{fig:overall_approach}.
 
-The overall workflow of our approach is shown in the Figure \ref{fig:overall_approach}. In the section \ref{approach:selection of projects}, we describe the details on how we select specific projects from the large corpus of python projects. We describe the installation and setup of the selected projects in the section \ref{approach:setup and install}. In section \ref{approach:command line interface} we describe the command line interface and what can be done using it. In section \ref{approach:dynamic analysis} we describe the various dynamic analysis that we can perform to generate data set for program analysis. We describe the machine learning model and its training data in the section \ref{approach:ml model}. Finally, in section \ref{approach:application} we describe how we can use this framework and the trained machine learning model for program analysis.
+With the provided approach, our benchmark aims to achieve the properties of being large-scale, diverse, ready to run, ready to analyze, compositional and long term. We start with a large corpus of open source python projects, from which we select python projects for our benchmark (Section \ref{approach:selection of projects}). We then install and setup the selected python projects along with analysis tools and frameworks using bash scripts(Section \ref{approach:setup and install}). Furthermore, we create a single command line base interface to provide an easy access to the benchmark for execution of various tasks such as dynamic analysis, trace file generation, etc. (Section \ref{approach:command line interface}). Finally, we package and export our benchmark to be used by developers and researchers (Section \ref{approach: packing and exporting}). 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=1\linewidth]{figures/approach/Approach2.png}
+\includegraphics[width=1\linewidth]{figures/approach/Approach_final.png}
 \caption[Approach]{\label{fig:overall_approach}Overall Approach of DyPyBench.}
 \end{figure}
+
+\section{Selection Criteria}
+\label{approach:selection criteria}
+The selection criteria enforces our benchmark to be large scale i.e., consisting of a large number of projects and diverse i.e., the projects must be from varied application domains. Github \cite{github} has a large number of open source projects written in the python programming languages which acts as a corpus for our benchmark. In order to select the projects which are well accepted in the community similar to the other accepted benchmarks such as ..., we add the criteria of a minimum threshold of stars on GitHub. We keep this threshold to be 1000 as too few stars would mean the project is not well accepted or is still pretty new, while 500 stars makes it popular but not so widely used. After filtering the projects based on GitHub stars, we select the projects from the corpus which belong to different application domains which are covered by the python projects. To name a few, the projects such as ... cover the domains ...respectively. Applying the selection criteria, we select 50 projects from the corpus of open source projects available on GitHub.
 
 \section{Selected Python Projects}
 \label{approach:selection of projects}
