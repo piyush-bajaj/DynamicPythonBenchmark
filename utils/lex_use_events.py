@@ -18,7 +18,7 @@ with open('/DyPyBench/traces.txt', 'r') as f:
         
 with open('/DyPyBench/lex_unique_use_events.csv', 'a') as f:
     for key, val in use_events.items():
-        f.write(key)
-        f.write('\t')
+        f.write(key.replace('project', ''))
+        f.write(',')
         f.write(str(val))
         f.write('\n')
