@@ -1,12 +1,41 @@
 In this chapter, we describe the approach which we have adopted to create the dynamic benchmark of executable python software. The overall workflow of the approach is shown in the Figure \ref{fig:overall_approach}.
 
-With the provided approach, our benchmark aims to achieve the properties of being large-scale, diverse, ready to run, ready to analyze, compositional and long term. We start with a large corpus of open source python projects, from which we select python projects for our benchmark (Section \ref{approach:selection of projects}). We then install and setup the selected python projects along with analysis tools and frameworks using bash scripts(Section \ref{approach:setup and install}). Furthermore, we create a single command line base interface to provide an easy access to the benchmark for execution of various tasks such as dynamic analysis, trace file generation, etc. (Section \ref{approach:command line interface}). Finally, we package and export our benchmark to be used by developers and researchers (Section \ref{approach: packing and exporting}). 
+With the provided approach, our benchmark aims to achieve the properties of being large-scale, diverse, ready to run, ready to analyze, compositional and long term. We start with a large corpus of open source python projects listed in the awesome-python project (Section \ref{approach:corpus of python projects}). The projects are selected from this large corpus based on the selection criteria as described in Section \ref{approach:selection criteria}. This selection gives us a collection of python projects in the form of GitHub URLs and certain flags in a text file (Section \ref{approach:collection of projects}). Bash scripts use this collection of projects in order to automate the installation of projects and their dependencies (Section \ref{approach:bash scripts}) which provides a set of installed python projects and the environment for use by developers and researchers as described in Section \ref{approach:installed projects}. With the help of a python script (Section \ref{approach:python script}), a single command line interface provides easy access to the benchmark which consists of the installed projects along with various analysis tools and frameworks (Section \ref{approach:command line interface}). The benchmark containing the installed projects along with its command line interface is packaged and exported as a docker container for use by researchers and developers (Section \ref{approach: packing and exporting}). The command line interface incorporates  analysis frameworks like LExecutor, DynaPyt and PyCG into the benchmark for execution of various tasks such as dynamic analysis, trace file generation, and static call graph generation respectively (Section \ref{approach:analysis framework}).
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=1\linewidth]{figures/approach/Approach_final.png}
+\includegraphics[width=1\linewidth]{figures/approach/DyPyBench.png}
 \caption[Approach]{\label{fig:overall_approach}Overall Approach of DyPyBench.}
 \end{figure}
+
+\section{Corpus of Python projects}
+\label{approach:corpus of python projects}
+Python's ease of use and popularity, as well as the usage in different domains has led to a large number of projects being developed and made available to the community as open source software. GitHub alone contains more than 510000 public repositories that have python as their primary programming language \cite{bing_chat}(Bing Chat??). However, GitHub does not state which of these projects belong to which application domain. Also, it is difficult to go through 51000 repositories to filter out the projects from different domains without any classification.
+% There are a large number of available python projects from a wide range of application domain for selection, however we need to classify them into specific domains.
+This classification issue is solved with the help of Awesome-Python project, which is an open source project available on GitHub. This project contains a list of some of the most useful and interesting open source python projects including libraries, frameworks and software. Additionally, the awesome-python project classifies the python projects based on different categories which in essence represent the application domain of the project.
+The awesome-python project acts as a corpus for our benchmark as it provides 679 python projects. It further classifies these projects into 92 main categories, out of which some of the categories can be further divided into sub-categories. Some of the categories and the number of projects in those are listed in table \ref{table:awesome-python}. For more details on the various categories and number of projects in each provided by the awesome-python project refer to the appendix \ref{appendix:awesome python projects}.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{lc}
+    \hline
+    \textbf{Category} & \textbf{Number of Projects}\\
+    \hline
+    Admin Panels    & 9\\
+    Code analysis   & 18\\
+    Computer vision & 7\\
+    Deep Learning   & 7\\
+    Documentation   & 3\\
+    Files   & 7\\
+    GUI development & 16\\
+    Robotics    & 2\\
+    Task Queues & 5\\
+    Web Frameworks  & 5\\
+    \hline
+    \end{tabular}
+    \caption{Project Categories (Awesome Python)}
+    \label{table:awesome-python}
+\end{table}
 
 \section{Selection Criteria}
 \label{approach:selection criteria}
