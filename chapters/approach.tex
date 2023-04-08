@@ -59,6 +59,16 @@ Applying the selection criteria as described in section \ref{approach:selection 
     \label{table:list of projects}
 \end{table}
 
+\section{Bash Scripts}
+\label{approach:bash scripts}
+With a list of 50 python projects as described in section \ref{approach:list of projects} we get a list of GitHub URLS and flags helpful in setup and installation of individual projects. In order to install and setup these projects for use in the benchmark, there are a number of steps performed for each project as listed below:
+\begin{itemize}
+    \item \textbf{Get the source code :} The list contains open source projects having their source code on GitHub which is cloned to a specific folder in the benchmark. 
+    \item \textbf{Create virtual environment :} The virtualenv \cite{virtualenv} package creates a virtual environment which avoid dependency conflicts and system pollution, dodge installation lockups and minimize reproducibility issues \cite{Why_Virtual_Env}.
+    \item \textbf{Install project and its dependencies :} The pip package manager \cite{pip_package_manager} installs the project and its module dependencies from the requirements.txt file or the setup.py file.
+\end{itemize}
+Manually performing these steps for each of the 50 projects is a mundane task which can be automated using bash scripts. Bash scripts can specify specific commands to run in a sequential order as required for the installation and setup. Bash scripts can also handle repetition and exceptions with loops and conditionals respectively. In this work, a bash script performs the task of cloning the repository, creating virtual environment and installing the project with its dependencies for each of the 50 projects from the list. There are many other bash scripts present in this work that help in automation of various tasks and can be run directly from the command line or from the python script as described in the section \ref{approach:python script}. One of these tasks is installation and updation of the analysis frameworks described in section \ref{approach:analysis framework}. Another task handled by the bash scripts is the execution of the test suites and analysis frameworks.
+
 \section{Selected Python Projects}
 \label{approach:selection of projects}
 Since Python is a very popular and general purpose programming language, it has been used in many domains and we have a large set of open source python projects available on the internet. In this thesis we target projects from many of these varied domains which are well accepted in the community and at the same time open sourced. Another important factor is the availability of test suites in the project source code. 
