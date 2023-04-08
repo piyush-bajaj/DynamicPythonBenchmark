@@ -76,6 +76,38 @@ By following the steps outlined in section \ref{approach:bash scripts}, we can e
 \label{approach:python script}
 Python scripts are user-friendly and offer extensive support for both standard and third-party libraries that can be utilized for automating tasks, data processing, and analysis. They are also easily extensible, allowing for the addition of new features without interfering with previous functionality. The availability of third-party libraries simplifies tasks such as file input/output and running external commands, which are necessary for our benchmark. The python script can be executed easily from the command line, providing a simple entry point to the desired tasks. In this work, we utilize a python script that creates a unified command line interface accepting various command line options, as detailed in section \ref{approach:access interface}. The python script serves as the primary entry point for the benchmark and triggers the execution of the bash scripts via the subprocess module \cite{python_subprocess}. It offers various functionalities such as running test suites, listing the projects in the benchmark, and executing analysis frameworks on the collection of projects described in section \ref{approach:collection of projects}. Additionally, the script allows for optional command line options with a varying number of arguments, guaranteeing that the benchmark can perform the necessary tasks on either a subset or the entire set of projects, making it compositional.%highly versatile.
 
+\section{Access interface}
+\label{approach:access interface}
+With the help of python script as described in section \ref{approach:python script} we have a single command line access interface to the functionalities of the benchmark. This ensures that the benchmark has a single interface command ready to use and perform analysis. This access interface provides various alternatives to the end user which can be specified as command line options to the python script. The available options are provided in the table \ref{table:access interface options}, where the first column specifies the option and the second column provides description of its usage.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ll}
+    \hline
+    \textbf{Option} & \textbf{Description}\\
+    \hline
+    list    & List the project number, name and GitHub URL\\
+    test    & Run test suite of specified projects\\
+    save    & Save standard output and error to file specified\\
+    timeout & Timeout in seconds for commands\\
+    update\_dynapyt\_source   & Clone or update source code of DynaPyt\\
+    update\_lex\_source   & Clone or update source code of LExecutor\\
+    instrument  & Instrument files for DynaPyt\\
+    file    & Specify file to use for instrumentation of DynaPyt\\
+    analysis    & Specify the analysis to perform for DynaPyt\\
+    run & Execute DynaPyt analysis for specified projects\\
+    lex\_instrument  & Instrument files for LExecutor\\
+    lex\_file    & Specify file to use for instrumentation of LExecutor\\
+    lex\_test    & Execute LExecutor for specified projects\\
+    pycg    & Execute PyCG for specified projects\\
+    \hline
+    \end{tabular}
+    \caption{Access Interface (Command Line Options)}
+    \label{table:access interface options}
+\end{table}
+
+The access interface allows to specify a variable number of projects for the options such as instrument, run, lex\_instrument, lex\_test and pycg. This makes the benchmark highly versatile by allowing to instrument and execute all the projects or subsets of projects.
+
 \section{Selected Python Projects}
 \label{approach:selection of projects}
 Since Python is a very popular and general purpose programming language, it has been used in many domains and we have a large set of open source python projects available on the internet. In this thesis we target projects from many of these varied domains which are well accepted in the community and at the same time open sourced. Another important factor is the availability of test suites in the project source code. 
