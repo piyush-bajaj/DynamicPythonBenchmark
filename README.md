@@ -26,16 +26,16 @@ Master Thesis Project
 
 ### Steps to use existing Docker Container of DyPyBench
 1. Pull the docker image from dockerhub (use the provided docker credentials for access)
-    - docker pull dypybench/dypybench:v0.6
+    - docker pull dypybench/dypybench:v1.0
 2. Run the docker image to start the container
-    - docker run -itd --name dypybenchv0.6 dypybench/dypybenchv0.6
+    - docker run -itd --name dypybench dypybench/dypybench:v1.0
 3. Login to the container
-    - docker start -i dypybenchv0.6
+    - docker start -i dypybench
 
 ### Copying files between Docker Container and Local Machine
 1. Using volume to map local directory to container directory
     - Start the container with the --volume flag and provide full folder paths
-        - docker run -itd --volume local_folder:container_folder --name dypybenchv0.6 dypybench/dypybenchv0.6
+        - docker run -itd --volume local_folder:container_folder --name dypybench dypybench/dypybench:v1.0
 2. Copy files or folders individually from running container to local machine
     - docker cp container_name:container_path local_path 
 3. Copy files or folders individually to running container from local machine
