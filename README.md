@@ -47,9 +47,9 @@ Master Thesis Project
 2. Run Test Suites of one or more available projects
     - python3 dypybench.py --test 1 2 3 4
 2. Run DynaPyt Instrumentation
-    - python3 dypybench.py --instrument 1 2 3 4 --file ./text/includes.txt --analysis TraceAll
+    - python3 dypybench.py --dynapyt_instrument 1 2 3 4 --dynapyt_file ./text/includes.txt --dynapyt_analysis TraceAll
 3. Run DynaPyt Analysis
-    - python3 dypybench.py --run 1 2 3 4 --analysis TraceAll
+    - python3 dypybench.py --dynapyt_run 1 2 3 4 --dynapyt_analysis TraceAll
 4. Run LExecutor Instrumentation
     - python3 dypybench.py --lex_instrument 1 2 3 4 --lex_file ./text/includes.txt
 5. Run tests to generate LExecutor trace
@@ -64,17 +64,17 @@ Master Thesis Project
     - list the projects
 2. --test / -t
     - specify projects for test
-3. --instrument / -i
+3. --dynapyt_instrument / -di
     - specify projects for instrumentation
-4. --run / -r
+4. --dynapyt_run / -dr
     - specify projects for analysis 
-5. --file / -f
+5. --dynapyt_file / -df
     - specify path of includes.txt file for instrumentation
-6. --analysis / -a
+6. --dynapyt_analysis / -da
     - name of the analysis to run
 7. --save / -s
     - specify the file to save output
-8. --original
+8. --test_original / -to
     - run tests on code present in original folder
 9. --update_dynapyt_source
     - get or update dynapyt source code

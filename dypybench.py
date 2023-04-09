@@ -5,19 +5,24 @@ import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    "--list", "-l", action="store_true", help="List all the projects DyPyBench supports")
+    "--list", "-l", action="store_true", help="List all the projects DyPyBench supports"
+)
 
 parser.add_argument(
-    "--timeout", type=int, help="Specify timeout to be used in seconds for execution of subprocesses", default=(60*10))
+    "--timeout", type=int, help="Specify timeout to be used in seconds for execution of subprocesses", default=(60*10)
+)
 
 parser.add_argument(
-    "--test", "-t", type=int, nargs='+', help="Specify the project number to run the test suite")
+    "--test", "-t", type=int, nargs='+', help="Specify the project number to run the test suite"
+)
 
 parser.add_argument(
-    "--original", action="store_true", help="Run tests on original code")
+    "--test_original", "-to", action="store_true", help="Run tests on original code"
+)
 
 parser.add_argument(
-    "--save", "-s", type=str, help="Specify file name to save the stdout and stderr combined")
+    "--save", "-s", type=str, help="Specify file name to save the stdout and stderr combined"
+)
 
 parser.add_argument(
     "--update_dynapyt_source", action="store_true", help="get dynapyt source code"
@@ -28,19 +33,19 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    "--instrument", "-i", type=int, nargs='+', help="Specify the project no. to run DynaPyt instrumentation"
+    "--dynapyt_instrument", "-di", type=int, nargs='+', help="Specify the project no. to run DynaPyt instrumentation"
 )
 
 parser.add_argument(
-    "--file", "-f", type=str, help="Specify the path to file containing the includes.txt file to run the instrumentation"
+    "--dynapyt_file", "-df", type=str, help="Specify the path to file containing the includes.txt file to run the instrumentation"
 )
 
 parser.add_argument(
-    "--analysis", "-a", help="Specify DynaPyt analysis to run"
+    "--dynapyt_analysis", "-da", help="Specify DynaPyt analysis to run"
 )
 
 parser.add_argument(
-    "--run", "-r", type=int, nargs='+', help="Specify the project no. to run DynaPyt Analysis"
+    "--dynapyt_run", "-dr", type=int, nargs='+', help="Specify the project no. to run DynaPyt Analysis"
 )
 
 parser.add_argument(
@@ -130,7 +135,7 @@ if __name__ == '__main__':
                 proj_name = str(data[project - 1][1])
                 proj_no = str(data[project - 1][0])
                 proj_flags = str(original_data[project - 1][1])
-                copy_folder = args.original
+                copy_folder = args.test_original
                 if(proj_flags == "rt"):
                     proj_test_folder = str(original_data[project - 1][3])
                 elif(proj_flags == "t"):
@@ -148,16 +153,16 @@ if __name__ == '__main__':
                     """output = subprocess.run(["/DyPyBench/scripts/run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
                     ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
 
-    if args.instrument:
-        projects = args.instrument
+    if args.dynapyt_instrument:
+        projects = args.dynapyt_instrument
         for project in projects:
             if(project < 0 or project > 50):
                 print("Project number should be between 1 and 50")
             else:
                 proj_name = str(data[project - 1][1])
                 proj_no = str(data[project - 1][0])
-                instr_file = args.file
-                analysis = args.analysis
+                instr_file = args.dynapyt_file
+                analysis = args.dynapyt_analysis
 
                 with open(instr_file, 'r') as inst_file:
                     csvReader = csv.reader(inst_file, delimiter=" ")
@@ -194,15 +199,15 @@ if __name__ == '__main__':
                         """output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
                         ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
 
-    if args.run:
-        projects = args.run
+    if args.dynapyt_run:
+        projects = args.dynapyt_run
         for project in projects:
             if(project < 0 or project > 50):
                 print("Project number should be between 1 and 50")
             else:
                 proj_name = str(data[project - 1][1])
                 proj_no = str(data[project - 1][0])
-                analysis = args.analysis
+                analysis = args.dynapyt_analysis
                 proj_flags = str(original_data[project - 1][1])
                 if(proj_flags == "rt"):
                     proj_test_folder = str(original_data[project - 1][3])
@@ -281,7 +286,6 @@ if __name__ == '__main__':
             else:
                 proj_name = str(data[project - 1][1])
                 proj_no = str(data[project - 1][0])
-                analysis = args.analysis
                 proj_flags = str(original_data[project - 1][1])
                 if(proj_flags == "rt"):
                     proj_test_folder = str(original_data[project - 1][3])
