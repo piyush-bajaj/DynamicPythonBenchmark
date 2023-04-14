@@ -55,7 +55,7 @@ pip install pycg
 #run pycg
 if [[ $4 == "file" ]]
 then
-    pycg --package ./project$2 $3 -o pycg_$2.json
+    pycg --package ./project$2 project$2/$3 -o pycg_$2.json
 elif [[ $4 == "folder" ]]
 then
     pycg --package ./project$2 $(find project$2/$3 -type f -name "*.py") -o pycg_$2.json
