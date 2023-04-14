@@ -60,6 +60,10 @@ parser.add_argument(
     "--lex_test", "-lt", type=int, nargs='+', help="Specify the project no. to run test suite for LExecutor"
 )
 
+parser.add_argument(
+    "--pycg", "-scg", type=int, nargs='+', help="Specify the project no. to setup PyCG for static call graph generation"
+)
+
 def printAllProjects():
     print("{:<8} {:<20} {:<50}".format("Number", "Project Name", "Repository URL"))
     print("{:<8} {:<20} {:<50}".format("-------", "--------------", "---------------------------------"))
@@ -304,4 +308,42 @@ if __name__ == '__main__':
                     ], shell=True, capture_output=True, timeout=args.timeout)
                     #if output needs to be printed on the console then comment above and uncomment below
                     """output = subprocess.run(["/DyPyBench/scripts/run-lex-test.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
+                    ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
+                    
+    if args.pycg:
+        projects = args.pycg
+        for project in projects:
+            if(project < 0 or project > 50):
+                print("Project number should be between 1 and 50")
+            else:
+                proj_name = str(data[project - 1][1])
+                proj_no = str(data[project - 1][0])
+                proj_flags = str(original_data[project - 1][1])
+                if(proj_flags == "rt"):
+                    proj_test_folder = str(original_data[project - 1][3])
+                elif(proj_flags == "t"):
+                    proj_test_folder = str(original_data[project - 1][2])
+                elif(proj_flags == "r"):
+                    proj_test_folder = ""
+
+                # add files from test folders to path for entry in pycg    
+                # files = []
+                # for line in original_data[proj_no]:
+                #     project_no, file_path = line
+                #     files.append(file_path)
+
+                # path = ' '.join([str(path) for path in files])
+                
+                flag = "folder"
+                if proj_test_folder.__contains__(".py"):
+                    flag = "file"                    
+
+                if args.save:
+                    output = subprocess.run(["/DyPyBench/scripts/run-pycg.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, flag)
+                    ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT, timeout=args.timeout)
+                else:
+                    output = subprocess.run(["/DyPyBench/scripts/run-pycg.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, flag)
+                    ], shell=True, capture_output=True, timeout=args.timeout)
+                    #if output needs to be printed on the console then comment above and uncomment below
+                    """output = subprocess.run(["/DyPyBench/scripts/run-lex-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, flag)
                     ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""

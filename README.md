@@ -54,40 +54,44 @@ Master Thesis Project
     - python3 dypybench.py --lex_instrument 1 2 3 4 --lex_file ./text/includes.txt
 5. Run tests to generate LExecutor trace
     - python3 dypybench.py --lex_test 1 2 3 4
-6. Update DynaPyt source code
+6. Run PyCG
+    - python3 dypybench.py --pycg 1 2 3 4
+7. Update DynaPyt source code
     - python3 dypybench.py --update_dynapyt_source
-7. Update LExecutor source code
+8. Update LExecutor source code
     - python3 dypybench.py --update_lex_source
 
 ### Available flags
 1. --list / -l 
-    - list the projects
+    - List the projects
 2. --test / -t
-    - specify projects for test
+    - Specify projects for test
 3. --dynapyt_instrument / -di
-    - specify projects for instrumentation
+    - Specify projects for DynaPyt instrumentation
 4. --dynapyt_run / -dr
-    - specify projects for analysis 
+    - Specify projects for DynaPyt analysis 
 5. --dynapyt_file / -df
-    - specify path of includes.txt file for instrumentation
+    - Specify path of includes.txt file for DynaPyt instrumentation
 6. --dynapyt_analysis / -da
-    - name of the analysis to run
+    - Specify name of the DynaPyt analysis to run
 7. --save / -s
-    - specify the file to save output
+    - Specify the file to save output
 8. --test_original / -to
-    - run tests on code present in original folder
+    - Run tests on code present in original folder
 9. --update_dynapyt_source
-    - get or update dynapyt source code
+    - Get or update DynaPyt source code
 10. --update_lex_source
-    - get or update LExecutor source code
+    - Get or update LExecutor source code
 11. --lex_instrument / -li
     - Specify the project no. to run LExecutor instrumentation
 12. --lex_file / -lf
-    - Specify the path to file containing the includes.txt file to run the instrumentation
+    - Specify the path to file containing the includes.txt file to run LExecutor instrumentation
 13. --lex_test / -lt
-    - Specify the project no. to run LExecutor Tests for trace generation
+    - Specify the project no. to run LExecutor for trace generation
 14. --timeout
     - Specify timeout to be used in seconds for running test suite and analysis, default is 600 seconds
+15. --pycg / -scg
+    - Specify project to generate static call graphs using PyCG
 
 ## Structure of includes.txt for DynaPyt
     - proj_name flag path
