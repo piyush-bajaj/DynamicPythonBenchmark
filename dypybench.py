@@ -132,6 +132,8 @@ if __name__ == '__main__':
 
     if args.test:
         projects = args.test
+        if 0 in projects:
+            projects = [x for x in range(1,51)]
         for project in projects:
             if(project < 0 or project > 50):
                 print("Project number should be between 1 and 50")
@@ -159,6 +161,8 @@ if __name__ == '__main__':
 
     if args.dynapyt_instrument:
         projects = args.dynapyt_instrument
+        if 0 in projects:
+            projects = [x for x in range(1,51)]
         for project in projects:
             if(project < 0 or project > 50):
                 print("Project number should be between 1 and 50")
@@ -205,6 +209,8 @@ if __name__ == '__main__':
 
     if args.dynapyt_run:
         projects = args.dynapyt_run
+        if 0 in projects:
+            projects = [x for x in range(1,51)]
         for project in projects:
             if(project < 0 or project > 50):
                 print("Project number should be between 1 and 50")
@@ -234,6 +240,8 @@ if __name__ == '__main__':
                     
     if args.lex_instrument:
         projects = args.lex_instrument
+        if 0 in projects:
+            projects = [x for x in range(1,51)]
         for project in projects:
             if(project < 0 or project > 50):
                 print("Project number should be between 1 and 50")
@@ -284,6 +292,8 @@ if __name__ == '__main__':
 
     if args.lex_test:
         projects = args.lex_test
+        if 0 in projects:
+            projects = [x for x in range(1,51)]
         for project in projects:
             if(project < 0 or project > 50):
                 print("Project number should be between 1 and 50")
@@ -312,6 +322,8 @@ if __name__ == '__main__':
                     
     if args.pycg:
         projects = args.pycg
+        if 0 in projects:
+            projects = [x for x in range(1,51)]
         for project in projects:
             if(project < 0 or project > 50):
                 print("Project number should be between 1 and 50")
