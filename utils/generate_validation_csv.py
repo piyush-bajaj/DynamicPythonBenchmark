@@ -20,11 +20,11 @@ if __name__ == '__main__':
                 match = re.search(r".* validation accuracy: .*", line)
                 
                 if match:
-                    accuracies = line.split('{')[1][0:-2].split(',')
+                    accuracies = line.split('{')[1].split('}')[0].split(',')
                     output.write(str(epoch))
                     output.write(',')                    
                     for index, element in enumerate(accuracies):
-                        acc = element.split(':')[1][1:-1]
+                        acc = element.split(':')[1][1:]
                         output.write(acc)
                         if index == 4:
                             output.write('\n')
