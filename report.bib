@@ -1,45 +1,3 @@
-% @book{Strunk-ElementsOfStyle,
-%   author = {William Strunk Jr. and E. B. White},
-%   title = {The Elements of Style},
-%   year = {2000},
-% }
- 
-% @book{Aho86-Compilers,
-%   author = {Alfred V. Aho and Ravi Sethi and Jeffrey D. Ullman},
-%   title = {Compilers: principles, techniques, and tools},
-%   publisher = {Addison-Wesley Longman Publishing Co., Inc.},
-%   year = {1986},
-%   isbn = {0-201-10088-6}
-% }
-
-% @inproceedings{HerlihyMoss1993-TransactionalMemory,
-%   author = {Maurice Herlihy and J. Eliot B. Moss},
-%   title = {Transactional Memory: Architectural Support For Lock-free Data Structures},
-%   booktitle = {Proc. of the 20th Intl. Symp. on Computer Architecture (ISCA'93)},
-%   year = {1993},
-%   pages = {289-300},
-% }
-
-% @article{FraserHanson1992-CodeGenerator,
-%   author = {Christopher Fraser and David Hanson and Todd Proebsting},
-%   title = {Engineering a Simple, Efficient Code Generator Generator},
-%   journal = {ACM Letters on Programming Languages and Systems},
-%   year = {1992},
-%   volume = {1},
-%   pages = {213--226},
-%   number = {3},
-%   month = sep,
-% }
-
-% @techreport{ArnoldFink2004-ArchitectureandPolicy,
-%   author = {Matthew Arnold and Stephen Fink and David Grove and Michael Hind
-% 	and Peter F. Sweeney},
-%   title = {Architecture and Policy for Adaptive Optimization in Virtual Machines},
-%   institution = {IBM Research Report 23429},
-%   year = {2004},
-%   month = nov,
-% }
-
 @misc{Benchmarking_2022,
   rights={Creative Commons Attribution-ShareAlike License},
   url={https://en.wikipedia.org/w/index.php?title=Benchmarking&oldid=1127768447},
@@ -243,7 +201,7 @@
 }
 
 @misc{JMH, 
- title={Java Microbenchmark Harness (JMH)_2023}, 
+ title={Java Microbenchmark Harness (JMH)\_2023}, 
  type={Java}, 
  rights={GPL-2.0}, 
  url={https://github.com/openjdk/jmh}, 
@@ -327,37 +285,186 @@
 }
 
 @misc{PyCharm_2023,
- title= {PyCharm},
- rights={Creative Commons Attribution-ShareAlike License}, 
- url={https://en.wikipedia.org/w/index.php?title=PyCharm&oldid=1147902283}, 
- abstractNote={PyCharm is an integrated development environment (IDE) used for programming in Python. It provides code analysis, a graphical debugger, an integrated unit tester, integration with version control systems, and supports web development with Django. PyCharm is developed by the Czech company JetBrains.It is cross-platform, working on Microsoft Windows, macOS and Linux. PyCharm has a Professional Edition, released under a proprietary license  and a Community Edition released under the Apache License. PyCharm Community Edition is less extensive than the Professional Edition.}, 
- note={Page Version ID: 1147902283}, 
- journal={Wikipedia}, 
- year={2023}, 
- month={Apr}, 
- language={en} 
+    title= {PyCharm},
+    rights={Creative Commons Attribution-ShareAlike License}, 
+    url={https://en.wikipedia.org/w/index.php?title=PyCharm&oldid=1147902283}, 
+    abstractNote={PyCharm is an integrated development environment (IDE) used for programming in Python. It provides code analysis, a graphical debugger, an integrated unit tester, integration with version control systems, and supports web development with Django. PyCharm is developed by the Czech company JetBrains.It is cross-platform, working on Microsoft Windows, macOS and Linux. PyCharm has a Professional Edition, released under a proprietary license  and a Community Edition released under the Apache License. PyCharm Community Edition is less extensive than the Professional Edition.}, 
+    note={Page Version ID: 1147902283}, 
+    journal={Wikipedia}, 
+    year={2023}, 
+    month={Apr}, 
+    language={en} 
 }
 
 @misc{PyDev_2023,
-  title={PyDev},
-  rights={Creative Commons Attribution-ShareAlike License},
-  url={https://en.wikipedia.org/w/index.php?title=PyDev&oldid=1147368803}, 
-  abstractNote={PyDev is a third-party plug-in for Eclipse. It is an Integrated Development Environment (IDE) used for programming in Python supporting code refactoring, graphical debugging, code analysis among other features.}, 
-  note={Page Version ID: 1147368803}, 
-  journal={Wikipedia}, 
-  year={2023}, 
-  month={Mar}, 
-  language={en}
+    title={PyDev},
+    rights={Creative Commons Attribution-ShareAlike License},
+    url={https://en.wikipedia.org/w/index.php?title=PyDev&oldid=1147368803}, 
+    abstractNote={PyDev is a third-party plug-in for Eclipse. It is an Integrated Development Environment (IDE) used for programming in Python supporting code refactoring, graphical debugging, code analysis among other features.}, 
+    note={Page Version ID: 1147368803}, 
+    journal={Wikipedia}, 
+    year={2023}, 
+    month={Mar}, 
+    language={en}
 }
 
 @article{PyCG_2021, 
-  title={PyCG: Practical Call Graph Generation in Python}, 
-  url={http://arxiv.org/abs/2103.00587}, 
-  abstractNote={Call graphs play an important role in different contexts, such as profiling and vulnerability propagation analysis. Generating call graphs in an efficient manner can be a challenging task when it comes to high-level languages that are modular and incorporate dynamic features and higher-order functions. Despite the language’s popularity, there have been very few tools aiming to generate call graphs for Python programs. Worse, these tools suffer from several effectiveness issues that limit their practicality in realistic programs. We propose a pragmatic, static approach for call graph generation in Python. We compute all assignment relations between program identifiers of functions, variables, classes, and modules through an inter-procedural analysis. Based on these assignment relations, we produce the resulting call graph by resolving all calls to potentially invoked functions. Notably, the underlying analysis is designed to be efficient and scalable, handling several Python features, such as modules, generators, function closures, and multiple inheritance. We have evaluated our prototype implementation, which we call PyCG, using two benchmarks: a micro-benchmark suite containing small Python programs and a set of macro-benchmarks with several popular real-world Python packages. Our results indicate that PyCG can efficiently handle thousands of lines of code in less than a second (0.38 seconds for 1k LoC on average). Further, it outperforms the state-of-the-art for Python in both precision and recall: PyCG achieves high rates of precision ~99.2\%, and adequate recall ~69.9\%. Finally, we demonstrate how PyCG can aid dependency impact analysis by showcasing a potential enhancement to GitHub’s “security advisory” notification service using a real-world example.}, 
-  note={arXiv:2103.00587 [cs]}, 
-  number={arXiv:2103.00587}, 
-  publisher={arXiv}, 
-  author={Salis, Vitalis and Sotiropoulos, Thodoris and Louridas, Panos and Spinellis, Diomidis and Mitropoulos, Dimitris}, 
-  year={2021}, 
-  month={Feb} 
+    title={PyCG: Practical Call Graph Generation in Python}, 
+    url={http://arxiv.org/abs/2103.00587}, 
+    abstractNote={Call graphs play an important role in different contexts, such as profiling and vulnerability propagation analysis. Generating call graphs in an efficient manner can be a challenging task when it comes to high-level languages that are modular and incorporate dynamic features and higher-order functions. Despite the language’s popularity, there have been very few tools aiming to generate call graphs for Python programs. Worse, these tools suffer from several effectiveness issues that limit their practicality in realistic programs. We propose a pragmatic, static approach for call graph generation in Python. We compute all assignment relations between program identifiers of functions, variables, classes, and modules through an inter-procedural analysis. Based on these assignment relations, we produce the resulting call graph by resolving all calls to potentially invoked functions. Notably, the underlying analysis is designed to be efficient and scalable, handling several Python features, such as modules, generators, function closures, and multiple inheritance. We have evaluated our prototype implementation, which we call PyCG, using two benchmarks: a micro-benchmark suite containing small Python programs and a set of macro-benchmarks with several popular real-world Python packages. Our results indicate that PyCG can efficiently handle thousands of lines of code in less than a second (0.38 seconds for 1k LoC on average). Further, it outperforms the state-of-the-art for Python in both precision and recall: PyCG achieves high rates of precision ~99.2\%, and adequate recall ~69.9\%. Finally, we demonstrate how PyCG can aid dependency impact analysis by showcasing a potential enhancement to GitHub’s “security advisory” notification service using a real-world example.}, 
+    note={arXiv:2103.00587 [cs]}, 
+    number={arXiv:2103.00587}, 
+    publisher={arXiv}, 
+    author={Salis, Vitalis and Sotiropoulos, Thodoris and Louridas, Panos and Spinellis, Diomidis and Mitropoulos, Dimitris}, 
+    year={2021}, 
+    month={Feb} 
 }
+
+@misc{Why_Virtual_Env,
+    title={Python Virtual Environments: A Primer – Real Python},
+    url={https://realpython.com/python-virtual-environments-a-primer/},
+    abstractNote={In this tutorial, you’ll learn how to use a Python virtual environment to manage your Python projects. You’ll also dive deep into the structure of virtual environments built using the venv module, as well as the reasoning behind using virtual environments.},
+    author={Python, Real},
+    language={en}
+}
+
+@misc{python_subprocess,
+    title={subprocess — Subprocess management},
+    url={https://docs.python.org/3/library/subprocess.html},
+    abstractNote={Source code: Lib/subprocess.py The subprocess module allows you to spawn new processes, connect to their input/output/error pipes, and obtain their return codes. This module intends to replace seve...},
+    journal={Python documentation}
+}
+
+@misc{Docker_2022,
+    title={Docker},
+    url={https://www.docker.com/},
+    abstractNote={Docker is a platform designed to help developers build, share, and run modern applications. We handle the tedious setup, so you can focus on the code.},
+    year={2022},
+    month={May},
+    language={en-US}
+}
+
+@misc{awesome_python_applications_github,
+    type={Jupyter Notebook}, 
+    title={Awesome Python Applications},
+    url={https://github.com/mahmoud/awesome-python-applications},
+    abstractNote={Free software that works great, and also happens to be open-source Python.},
+    author={Hashemi, Mahmoud},
+    year={2023},
+    month={Apr}
+}
+
+@misc{python_projects,
+    title={Python Projects},
+    rights={MIT}, 
+    url={https://github.com/practical-tutorials/project-based-learning},
+    abstractNote={Curated list of project-based tutorials},
+    publisher={practical-tutorials},
+    year={2023},
+    month={Apr}
+}
+
+@misc{docker_hub,
+    title={Docker Hub},
+    url={https://hub.docker.com/}
+}
+
+@inproceedings{Python_usage_study1,
+    address={New York, NY, USA},
+    series={FSE 2016},
+    title={Python predictive analysis for bug detection},
+    ISBN={978-1-4503-4218-6},
+    url={https://dl.acm.org/doi/10.1145/2950290.2950357},
+    DOI={10.1145/2950290.2950357},
+    abstractNote={Python is a popular dynamic language that allows quick software development. However, Python program analysis engines are largely lacking. In this paper, we present a Python predictive analysis. It first collects the trace of an execution, and then encodes the trace and unexecuted branches to symbolic constraints. Symbolic variables are introduced to denote input values, their dynamic types, and attribute sets, to reason about their variations. Solving the constraints identifies bugs and their triggering inputs. Our evaluation shows that the technique is highly effective in analyzing real-world complex programs with a lot of dynamic features and external library calls, due to its sophisticated encoding design based on traces. It identifies 46 bugs from 11 real-world projects, with 16 new bugs. All reported bugs are true positives.},
+    booktitle={Proceedings of the 2016 24th ACM SIGSOFT International Symposium on Foundations of Software Engineering},
+    publisher={Association for Computing Machinery},
+    author={Xu, Zhaogui and Liu, Peng and Zhang, Xiangyu and Xu, Baowen},
+    year={2016},
+    month={Nov},
+    pages={121–132},
+    collection={FSE 2016}
+}
+
+@misc{Python_usage_study2,
+    title={Python Performance Testing},
+    url={https://blog.sentry.io/2022/09/30/python-performance-testing-a-comprehensive-guide/},
+    abstractNote={The following guest post addresses how to improve your services’s performance with Sentry and other application profilers for Python. Check…},
+    journal={Product Blog • Sentry},
+    year={2022},
+    month={Sep},
+    language={en}
+}
+
+@misc{Python_usage3,
+    title={CVE-Search},
+    type={Python},
+    rights={AGPL-3.0},
+    url={https://github.com/cve-search/cve-search},
+    abstractNote={cve-search - a tool to perform local searches for known vulnerabilities},
+    publisher={cve-search},
+    year={2023},
+    month={Apr}
+}
+
+@article{SPEC_C++_2006,
+    title={C++ benchmarks in SPEC CPU2006},
+    volume={35},
+    ISSN={0163-5964},
+    DOI={10.1145/1241601.1241617},
+    abstractNote={In SPEC CPU2006, there are three C++ integer benchmarks and four floating-point C++ benchmarks. This paper describes the work of incorporating C++ benchmarks into SPEC CPU2006. It describes the base language standard supported and the basis for run rules adopted to maintain an even playing field for different compilers. It also describes issues that complicate porting C++ benchmarks. It describes some of the C++ Standard compliance issues that were technically interesting during the benchmark development phase, using as examples the behavior of const-correctness, nested class access of private member of enclosing class, and unneeded template instantiations.},
+    number={1},
+    journal={ACM SIGARCH Computer Architecture News},
+    author={Wong, Michael},
+    year={2007},
+    month={Mar},
+    pages={77–83}
+    }
+
+@inproceedings{SPEC_OMP_2012,
+    address={Berlin, Heidelberg},
+    series={Lecture Notes in Computer Science},
+    title={SPEC OMP2012 — An Application Benchmark Suite for Parallel Systems Using OpenMP},
+    ISBN={978-3-642-30961-8},
+    DOI={10.1007/978-3-642-30961-8_17},
+    abstractNote={This paper describes SPEC OMP2012, a benchmark developed by the SPEC High Performance Group. It consists of 15 OpenMP parallel applications from a wide range of fields. In addition to a performance metric based on the run time of the applications the benchmark adds an optional energy metric. The accompanying run rules detail how the benchmarks are executed and the results reported. They also cover the energy measurements. The first set of results provide scalability on three different platforms.},
+    booktitle={OpenMP in a Heterogeneous World},
+    publisher={Springer},
+    author={Müller, Matthias S. and Baron, John and Brantley, William C. and Feng, Huiyu and Hackenberg, Daniel and Henschel, Robert and Jost, Gabriele and Molka, Daniel and Parrott, Chris and Robichaux, Joe and Shelepugin, Pavel and van Waveren, Matthijs and Whitney, Brian and Kumaran, Kalyan},
+    editor={Chapman, Barbara M. and Massaioli, Federico and Müller, Matthias S. and Rorro, Marco},
+    year={2012},
+    pages={223–236},
+    collection={Lecture Notes in Computer Science},
+    language={en}
+}
+
+@article{SPEC_MPI_2007,
+    author = {Müller, Matthias S. and van Waveren, Matthijs and Lieberman, Ron and Whitney, Brian and Saito, Hideki and Kumaran, Kalyan and Baron, John and Brantley, William C. and Parrott, Chris and Elken, Tom and Feng, Huiyu and Ponder, Carl},
+    title = {SPEC MPI2007—an application benchmark suite for parallel systems using MPI},
+    journal = {Concurrency and Computation: Practice and Experience},
+    volume = {22},
+    number = {2},
+    pages = {191-205},
+    keywords = {benchmark, MPI, performance},
+    doi = {https://doi.org/10.1002/cpe.1535},
+    url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/cpe.1535},
+    eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/cpe.1535},
+    abstract = {Abstract The SPEC High-Performance Group has developed the benchmark suite SPEC MPI2007 and its run rules over the last few years. The purpose of the SPEC MPI2007 benchmark and its run rules is to further the cause of fair and objective benchmarking of high-performance computing systems. The rules help to ensure that the published results are meaningful, comparable to other results, and reproducible. MPI2007 includes 13 technical computing applications from the fields of computational fluid dynamics, molecular dynamics, electromagnetism, geophysics, ray tracing, and hydrodynamics. We describe the benchmark suite, and compare it with other benchmark suites. Copyright © 2009 John Wiley \& Sons, Ltd.},
+    year = {2010}
+}
+
+@misc{software_benchmarks,
+    title={How do you use software metrics and benchmarks to evaluate performance?},
+    url={https://www.linkedin.com/advice/3/how-do-you-use-software-metrics-benchmarks},
+    abstractNote={Software metrics and benchmarks are essential tools for evaluating the quality and performance of software products and processes. They can help you identify strengths, weaknesses, opportunities, and risks in your software development and delivery.},
+    language={en}
+}
+
+@misc{dynamic_analysis,
+    title={What Is Dynamic Analysis?},
+    url={https://totalview.io/blog/what-dynamic-analysis},
+    abstractNote={Find out why dynamic analysis is so important and how dynamic code analysis tools can simplify debugging in complex high-performance computing environments.},
+    journal={TotalView by Perforce},
+    language={en}
+}
+
