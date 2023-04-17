@@ -16,7 +16,7 @@ def get_files(dir1, dir2):
         if os.path.isdir(path):
             get_files(path, dir2)
         elif path[-5:] == ".json":
-            if path.__contains__('dynapyt.json'):
+            if path.__contains__('/dynapyt.json'):
                 proj_no = path.split('/')[-2].split('project')[1]
                 command = 'cp ' + path + ' ' + dir2 + '/dynapyt_' + proj_no + '.json'
                 print(command)
