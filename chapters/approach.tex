@@ -129,7 +129,7 @@ PyCG is a practical Python call graph generator that generates call graphs for P
 It efficiently supports higher-order functions, twisted class inheritance schemes, automatic discovery of imported modules for further analysis, and nested definitions \cite{PyCG_2021}.
 In this work, we use PyCG to generate static call graphs for the collection of projects.
 
-\section{Artifact packing and interface}
+\section{Artifact Packing and Interface}
 \label{approach:artifact packaging and interface}
 
 \subsection{Orchestration}
@@ -144,7 +144,7 @@ In this work, the python script acts as the primary entry point and triggers the
 This script offers functionalities such as listing the projects in the benchmark, running test suites and executing the analysis frameworks on the collection of projects.  
 The script accepts a variable number of arguments, which makes the benchmark compositional i.e., the script can perform the operation on all the projects or a subset of projects in the benchmark. 
 
-\subsection{Access interface}
+\subsection{Access Interface}
 \label{approach:access interface}
 Orchestration on the collection of projects as described in section \ref{approach:python script} provides us with a single command line access interface to the operations of the benchmark.
 In this work, the single command line interface access makes the benchmark ready-to-run and ready-to-analyze via this interface.
@@ -178,7 +178,7 @@ Some of these options such as dynapyt\_instrument, dynapyt\_run, lex\_instrument
     \label{table:access interface options}
 \end{table}
 
-\subsection{Packing and export}
+\subsection{Packing and Export}
 \label{approach:packing and exporting}
 The collection of projects, analysis frameworks and the access interface as described in sections \ref{approach:list of projects} through \ref{approach:access interface} together constitute the benchmark in this work.
 In order to make the benchmark easy to access and setup, it is packaged and exported along with all its components, such as python scripts, bash scripts, analysis frameworks and collection of projects inside a docker container.
