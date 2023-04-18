@@ -1,6 +1,6 @@
-In this chapter we outline some of the work done on benchmarks.
+In this chapter, we outline some of the work done on benchmarks.
 We also discuss some of the work done on dynamic analysis.
-Furthermore, we discuss some of the work done on neural network models for code prediction.
+Furthermore, we discuss some of the work done on neural network models for input prediction.
 
 \section{Benchmarks}
 In the context of software development, a benchmark is a standardized set of tests that are designed to measure the performance of a system or application.
@@ -12,10 +12,12 @@ One of the main benefits of dynamic benchmarks is that they provide a more accur
 % Because dynamic benchmarks can adapt to the behavior of the system being tested, they can capture a wider range of use cases and performance characteristics that may not be captured by static benchmarks alone.
 
 \textit{DaCapo Benchmark.} Traditional benchmarks, such as those developed for C, C++, and Fortran, typically focus on static properties, such as code complexity and code size.
-However, with the rise of managed languages like Java, there is a need for benchmarks that can account for dynamic properties, such as memory management and garbage collection.
+However, with the rise of languages like Java, there is a need for benchmarks that can account for dynamic properties, such as memory management and garbage collection.
 Dynamic benchmarks, such as the DaCapo benchmark suite, provide a more comprehensive evaluation of software systems by taking into account the interactions between architecture, compiler, virtual machine, memory management, and application. These benchmarks evaluate the performance of software systems under more realistic conditions, allowing researchers and developers to better understand how their systems will perform in the real world. \cite{DaCapo_2006}
 
 \textit{SPEC C++ Benchmark.} The SPEC C++ benchmarks are designed to evaluate the performance of C++ compilers, libraries, and hardware platforms. The benchmark suites include SPEC CPU2006 C++, SPEC OMP2012, and SPEC MPI2007, each with standardized input files and scripts used to execute the benchmarks on various hardware platforms and operating systems. These benchmarks are valuable for developers and researchers seeking to optimize the performance of C++ programs, as they provide insights into the performance characteristics of their code and can be used to compare the performance of different C++ compilers and libraries on different hardware platforms. \cite{SPEC_C++_2006, SPEC_OMP_2012, SPEC_MPI_2007}
+
+DaCapo and SPEC C++ Benchmark provide a dynamic benchmark for Java and C++. While there are similar benchmarks for many other programming languages, Python is not one of them. DyPyBench, thus provides such a benchmark for Python.    
 
 \section{Dynamic Analysis}
 Dynamic analysis is a software testing technique that involves evaluating the behavior of a running program or system in real-time.
@@ -27,8 +29,12 @@ Dynamic analysis can be particularly useful in complex software systems, where i
 
 \textit{DynaPyt Framework.} DynaPyt is the first general-purpose framework for heavy-weight dynamic analysis of Python programs. DynaPyt offers a wider range of analysis hooks and features selective instrumentation and execution modification. The framework is evaluated on 9 open-source Python projects totaling 1,268,545 lines of code and shows that it preserves the semantics of the original execution. DynaPyt's running time is in line with similar frameworks designed for other languages and is faster than analyses using Python's built-in tracing API. Several analyses are implemented, including detecting memory blow-ups, taint analysis for SQL injections, and warning about runtime performance anti-patterns. Implementation of new analyses for potential use cases is simple in DynaPyt. DynaPyt provides a valuable tool for developers and researchers seeking to optimize the performance and security of Python programs through dynamic analysis. \cite{DynaPyt2022}
 
+While DynaPyt provides us some sample analyses, DyPyBench adds a new one to its arsenal and uses it on a number of projects. This analyses is named as Call Graph and it generates run-time call graphs for the projects in DyPyBench. 
+
 \section{Neural Networks for Input Prediction}
 Neural networks for code prediction involve training models to predict the input that a software program requires based on contextual information, such as user behavior, previous inputs, or external events.
 These models have potential applications in automating programming tasks and facilitating collaboration between developers with varying levels of expertise.
 
 \textit{LExecutor.} Executing code is important for various program analysis tasks, but it can be difficult due to missing definitions, inputs, and dependencies. LExecutor is a learning-guided approach for executing arbitrary code snippets by letting a neural model predict missing values and injecting them into the execution. For instance, LExecutor injects likely values for undefined variables and likely return values of missing functions. The approach is evaluated on Python code from popular open-source projects and code snippets from Stack Overflow. The neural model predicts realistic values with an accuracy between 80.1\% and 94.2\%, allowing LExecutor to closely mimic real executions. As a result, LExecutor successfully executes significantly more code than other techniques, covering 50.1\% of all lines compared to 4.1\% when executing the code as-is. LExecutor provides a promising approach for executing underconstrained code snippets, enabling more comprehensive and accurate program analysis. \cite{LExecutor_2023}
+
+With more data, the neural model can learn more complex patterns and relationships, leading to a better understanding of the underlying data distribution. DyPyBench provides this extra data for LExecutor to generalize and improve the accuracy of the model.  
