@@ -117,7 +117,7 @@ if __name__ == '__main__':
             #if output needs to be printed on the console then comment above and uncomment below
             """output = subprocess.run(["/DyPyBench/scripts/setup-DynaPyt-src.sh"
             ], shell=True, stderr=subprocess.STDOUT)"""
-            
+
     if args.update_lex_source:
         print("Downloading the LExecutor source from git")
         if args.save:
@@ -148,7 +148,7 @@ if __name__ == '__main__':
                     proj_test_folder = str(original_data[project - 1][2])
                 elif(proj_flags == "r"):
                     proj_test_folder = ""
-                
+
                 if args.save:
                     output = subprocess.run(["/DyPyBench/scripts/run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
                     ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT, timeout=args.timeout)
@@ -237,7 +237,7 @@ if __name__ == '__main__':
                     #if output needs to be printed on the console then comment above and uncomment below
                     """output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
                     ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
-                    
+
     if args.lex_instrument:
         projects = args.lex_instrument
         if 0 in projects:
@@ -319,7 +319,7 @@ if __name__ == '__main__':
                     #if output needs to be printed on the console then comment above and uncomment below
                     """output = subprocess.run(["/DyPyBench/scripts/run-lex-test.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
                     ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
-                    
+
     if args.pycg:
         projects = args.pycg
         if 0 in projects:
@@ -338,17 +338,17 @@ if __name__ == '__main__':
                 elif(proj_flags == "r"):
                     proj_test_folder = ""
 
-                # add files from test folders to path for entry in pycg    
+                # add files from test folders to path for entry in pycg
                 # files = []
                 # for line in original_data[proj_no]:
                 #     project_no, file_path = line
                 #     files.append(file_path)
 
                 # path = ' '.join([str(path) for path in files])
-                
+
                 flag = "folder"
                 if proj_test_folder.__contains__(".py"):
-                    flag = "file"                    
+                    flag = "file"
 
                 if args.save:
                     output = subprocess.run(["/DyPyBench/scripts/run-pycg.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, flag)
