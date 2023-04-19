@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "--input_dir", "-d", type=str, help="Specify input directory", default="/DyPyBench/temp")
 parser.add_argument(
-    "--output_dir", "-r", type=str, help="Specify output directory", default="/DyPyBench/PyCG_output")
+    "--output_dir", "-r", type=str, help="Specify output directory", default="/DyPyBench/DynaPyt_output")
 
 def get_files(dir1, dir2):
     files = []
