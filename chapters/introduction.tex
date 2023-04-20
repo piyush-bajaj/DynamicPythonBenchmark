@@ -20,13 +20,13 @@ Such a benchmark would allow the evaluation of program performance from a wide r
 With the general-purpose python dynamic benchmark one could generate run-time analysis using tools such as systrace \cite{systrace} and DynaPyt \cite{DynaPyt2022}.
 A general-purpose benchmark can provide training data for machine learning (ML) and deep learning (DL) tasks of software engineering such as bug detection \cite{DeepBugs2018}, code completion \cite{code_completion}, quality analysis \cite{Code_analysis_1, Code_analysis_2}, code refactoring \cite{code_refactoring}, and testing \cite{testing_1, testing_2, testing_3} which improve the productivity, efficiency and quality of code.
 
-In this work, we provide a general-purpose dynamic benchmark of executable python software, named DyPyBench, which consists of 50 python projects including frameworks and libraries.
-The entire benchmark, encapsulated inside a docker container, can be setup using the docker image containing the projects, alongside the frameworks such as DynaPyt \cite{DynaPyt2022}, LExecutor \cite{LExecutor_2023} and PyCG \cite{PyCG_2021}.
-All of the python projects are open-sourced and available on GitHub \cite{github} including the analysis frameworks mentioned above.
+In this work, we provide such a general-purpose dynamic benchmark of executable python software. This benchmark is named DyPyBench and consists of 50 python projects including frameworks and libraries.
+The entire benchmark, encapsulated inside a docker container, can be setup using the docker image containing the projects, alongside the analysis frameworks such as DynaPyt \cite{DynaPyt2022} and PyCG \cite{PyCG_2021}. Additionally, the benchmark also integrates LExecutor \cite{LExecutor_2023}, which is a learning-guided approach for executing arbitrary code snippets in an underconstrained way. 
+All of the python projects are open-sourced and available on GitHub \cite{github} including the analysis frameworks and LExecutor.
 The chosen projects are popular and belong to diverse application domains such as audio e.g., pydub, command-line tools e.g., thefuck, and computer vision e.g., scikit-learn.
 The benchmark provided in this work provides a single command line access interface to run test suites and analysis.
 The access interface provides the necessary functionality to execute dynamic analysis through DynaPyt, produce trace files via LExecutor, and generate static call graphs using PyCG.
-This work aims to achieve the following goals for the dynamic benchmark:
+This work aims to achieve the following properties for the dynamic benchmark:
 \begin{itemize}
     \item Large-scale
     \item Diverse
@@ -37,24 +37,23 @@ This work aims to achieve the following goals for the dynamic benchmark:
     \item Extensibility
 \end{itemize}
 
-Developing a benchmark that meets the aforementioned objectives is a challenging endeavor that presents various obstacles. The following paragraphs discusses some of the challenges encountered during the development process and outlines the strategies implemented to overcome them.
+Developing a benchmark that meets the aforementioned properties is a challenging endeavor that presents various obstacles. The following paragraphs discusses some of the challenges encountered during the development process and outlines the strategies implemented to overcome them.
 
 One major challenge for DyPyBench is to incorporate a large and diverse set of projects from various application domains.
 Although numerous Python projects satisfying the criteria are available on GitHub, the benchmark can only accommodate a limited number of them.
-Moreover, GitHub lacks a classification system for projects according to their respective domains.
-To address this limitation, we apply rigorous selection criteria to choose projects from a pre-defined and classified list.
+% Moreover, GitHub lacks a classification system for projects according to their respective domains.
+To address this limitation, we apply rigorous selection criteria to choose projects from a predefined and classified list.
 Additionally, we consider GitHub stars as a metric to filter out non-reputable projects and ensure the inclusion of high-quality projects.
 
 DyPyBench faces another hurdle in executing projects effectively, which is essential for its role as a benchmarking tool that relies on dynamic analysis.
 The successful execution of projects is achieved through the execution of test suites for each project.
-Various methods exist for executing test suites, but DyPyBench has opted to utilize the widely adopted pytest library, which is capable of handling both pytest and unittest tests.
-
+% Various methods exist for executing test suites, but DyPyBench has opted to utilize the widely adopted pytest library, which is capable of handling both pytest and unittest tests.
 While not all projects include test suites that function flawlessly, it is crucial for test suites to run without errors to ensure the accurate operation of dynamic analysis tools.
 DyPyBench overcomes this challenge by either skipping problematic test suites or fixing them to ensure proper execution.
 
-In order for DyPyBench to be ready-to-run, all projects must be installed and able to execute their respective test suites.
-However, the differing library dependencies among the various projects pose a significant challenge for DyPyBench.
-This obstacle is overcome by employing Python virtual environments that isolate each project from one another, thereby preventing any dependency conflicts.
+% In order for DyPyBench to be ready-to-run, all projects must be installed and able to execute their respective test suites.
+% However, the differing library dependencies among the various projects pose a significant challenge for DyPyBench.
+% This obstacle is overcome by employing Python virtual environments that isolate each project from one another, thereby preventing any dependency conflicts.
 
 Ensuring the accessibility and longevity of DyPyBench for users presents another challenge.
 By packaging and exporting DyPyBench as a docker container, its accessibility is enhanced, as it eliminates operating system dependencies and provides a consistent, readily usable environment to all users.
@@ -64,21 +63,34 @@ The fluid nature of open-source projects often leads to regular modifications to
 Such changes can affect the execution environment of a project, consequently impacting the effectiveness of DyPyBench.
 To overcome this challenge, DyPyBench clones a stable and fixed version of the source code to ensure consistency in the execution environment.
 
-In this work, we utilize the benchmark we developed to demonstrate the effectiveness of each of the three incorporated analysis tools in three distinct applications.
-Firstly, LExecutor is utilized to generate a trace files, which are then used to develop a dataset for training and validating the neural network model used by the framework.
-Secondly, PyCG is used to produce a static call graph for the projects within DyPyBench, with the test files serving as the entry point for the execution.
-Lastly, by executing the test suites of the projects within DyPyBench with the assistance of DynaPyt, we generate dynamic call graphs.
+In order to evaluate the usefulness of the benchmark, we use LExecutor and the analysis frameworks for two distinct applications.
+First, we provide a large amount of training data for the neural model of LExecutor in an attempt to improve the accuracy of the model.
+DyPyBench is able to provide nearly 2.5 times the data compared to original training data used by the authors.
+With this new training data, the neural model is able to predict the true value with an accuracy between 71.86\% and 93.67\% in different experimental setups.
+Second, we provide some statistical analysis of call graphs generated using static and dynamic code analysis for Python.
+PyCG generates static call graphs, whereas DynaPyt generates run-time call graphs in DyPyBench.
+We see that on an average static and dynamic call graphs have x\% of common entries.
+Static call graphs always have more keys than dynamic call graphs.
+On an average, DynaPyt have x\% of keys which are not present in PyCG, whereas PyCG has y\% of keys which are missing from DynaPyt.
+
+% DyPyBench generates static call graphs using PyCG and run-time call graphs using DynaPyt and then compares these to find out the imprecision, matching and unmatched calls.
+% **
+% In this work, we utilize the benchmark we developed to demonstrate the effectiveness of each of the three incorporated analysis tools in three distinct applications.
+% Firstly, LExecutor is utilized to generate a trace files, which are then used to develop a dataset for training and validating the neural network model used by the framework.
+% Secondly, PyCG is used to produce a static call graph for the projects within DyPyBench, with the test files serving as the entry point for the execution.
+% Lastly, by executing the test suites of the projects within DyPyBench with the assistance of DynaPyt, we generate dynamic call graphs.
 
 % write some more on this evaluation
-DyPyBench and its applications in this work led to the following evaluation results. 
-DyPyBench was able to provide nearly 2.5 times the data for the LExecutor compared to the data used by the authors.
-Training and validation with 2.5x data provided us with an accuracy of 82 to 90 percentage for fine grained and coarse grained.
-The static call graphs and the dynamic call graphs generated were compared to get the following data. 
+% DyPyBench and its applications in this work led to the following evaluation results. 
+% DyPyBench was able to provide nearly 2.5 times the data for the LExecutor compared to the data used by the authors.
+% Training and validation with 2.5x data provided us with an accuracy of 82 to 90 percentage for fine grained and coarse grained.
+% The static call graphs and the dynamic call graphs generated were compared to get the following data. 
 
 In summary, this work contributes the following:
 \begin{itemize}
     \item A python benchmark containing 50 projects from varied application domains.
-    \item A benchmark with preinstalled tools for analysis of python projects.
-    \item A new and large dataset for training LExecutor to evalute its accuracy.
-    \item A collection of static and dynamic call graphs to compare and analyze them.
+    \item A benchmark with preinstalled frameworks for code analysis of python projects.
+    \item A new and large dataset for training a neural model of LExecutor.
+    \item A statistical analysis of static and run-time call graphs for Python.
+    % \item A collection of static and dynamic call graphs to compare and analyze them.
 \end{itemize}
