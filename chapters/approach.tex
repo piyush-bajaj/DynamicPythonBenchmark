@@ -142,6 +142,7 @@ In this work, we inncorporate two such frameworks, namely, DynaPyt,  which a gen
 The following sections explain the integration of these two frameworks.
 \subsection{DynaPyt}
 In this work, we use DynaPyt to perform dynamic analysis for generating call graphs.
+But it is possible to perform any dynamic analysis using DynaPyt.
 We first develop the Call Graph Analysis using the function pre\_call hook provided by DynaPyt.
 This is then used to instrument the source code of the project.
 Finally, the test suite of the instrumented project is executed which generates a run-time call graph.
@@ -164,7 +165,7 @@ The instrumentation and test suite execution are integrated into the access inte
 \section{Artifact Packaging and Interface}
 \label{approach:artifact packaging and interface}
 In this section, we first provide the details regarding the access interface we design to provide make the benchmark easily accessible (Section \ref{approach:access interface}).
-Then we talk about why we use Docker to package and export our benchmark and how it makes the benchmark extensible (Section \ref{approach: packing and exporting}).
+Then we talk about why we use Docker to package and export our benchmark and how it makes the benchmark extensible (Section \ref{approach:packing and exporting}).
 
 \subsection{Access Interface}
 \label{approach:access interface}
