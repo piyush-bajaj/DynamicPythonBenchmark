@@ -150,13 +150,13 @@ if __name__ == '__main__':
                     proj_test_folder = ""
 
                 if args.save:
-                    output = subprocess.run(["/DyPyBench/scripts/run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
+                    output = subprocess.run(["/DyPyBench/scripts/run-test.sh %s %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder, args.timeout)
                     ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT, timeout=args.timeout)
                 else:
-                    output = subprocess.run(["/DyPyBench/scripts/run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
+                    output = subprocess.run(["/DyPyBench/scripts/run-test.sh %s %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder, args.timeout)
                     ], shell=True, capture_output=True, timeout=args.timeout)
                     #if output needs to be printed on the console then comment above and uncomment below
-                    """output = subprocess.run(["/DyPyBench/scripts/run-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder)
+                    """output = subprocess.run(["/DyPyBench/scripts/run-test.sh %s %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder, args.timeout)
                     ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
 
     if args.dynapyt_instrument:
@@ -198,13 +198,13 @@ if __name__ == '__main__':
                 for line in instr_details[proj_no]:
                     project_no, flag, path = line
                     if args.save:
-                        output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
+                        output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag, args.timeout)
                         ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT, timeout=args.timeout)
                     else:
-                        output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
+                        output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag, args.timeout)
                         ], shell=True, capture_output=True, timeout=args.timeout)
                         #if output needs to be printed on the console then comment above and uncomment below
-                        """output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag)
+                        """output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag, args.timeout)
                         ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
 
     if args.dynapyt_run:
@@ -228,14 +228,14 @@ if __name__ == '__main__':
 
                 if args.save:
                     # os.system("/DyPyBench/scripts/run-dynapyt-analysis.sh %s %s %s %s >> %s 2>&1" %(proj_name, proj_no, analysis, proj_test_folder, args.save))
-                    output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
+                    output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-analysis.sh %s %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder, args.timeout)
                     ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT, timeout=args.timeout)
                 else:
                     # os.system("/DyPyBench/scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder))
-                    output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
+                    output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-analysis.sh %s %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder, args.timeout)
                     ], shell=True, capture_output=True, timeout=args.timeout)
                     #if output needs to be printed on the console then comment above and uncomment below
-                    """output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder)
+                    """output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-analysis.sh %s %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder, args.timeout)
                     ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
 
     if args.lex_instrument:
@@ -281,13 +281,13 @@ if __name__ == '__main__':
                 path = ' '.join([str(path) for path in files])
 
                 if args.save:
-                    output = subprocess.run(["/DyPyBench/scripts/run-lex-instrumentation.sh %s %s %s" %(proj_name, proj_no, path)
+                    output = subprocess.run(["/DyPyBench/scripts/run-lex-instrumentation.sh %s %s %s %s" %(proj_name, proj_no, args.timeout, path)
                     ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT, timeout=args.timeout)
                 else:
-                    output = subprocess.run(["/DyPyBench/scripts/run-lex-instrumentation.sh %s %s %s" %(proj_name, proj_no, path)
+                    output = subprocess.run(["/DyPyBench/scripts/run-lex-instrumentation.sh %s %s %s %s" %(proj_name, proj_no, args.timeout, path)
                     ], shell=True, capture_output=True, timeout=args.timeout)
                     #if output needs to be printed on the console then comment above and uncomment below
-                    """output = subprocess.run(["/DyPyBench/scripts/run-lex-instrumentation.sh %s %s %s" %(proj_name, proj_no, path)
+                    """output = subprocess.run(["/DyPyBench/scripts/run-lex-instrumentation.sh %s %s %s %s" %(proj_name, proj_no, args.timeout, path)
                     ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
 
     if args.lex_test:
@@ -310,14 +310,14 @@ if __name__ == '__main__':
 
                 if args.save:
                     # os.system("/DyPyBench/scripts/run-test-lexecutor.sh %s %s %s %s >> %s 2>&1" %(proj_name, proj_no, proj_test_folder, args.save))
-                    output = subprocess.run(["/DyPyBench/scripts/run-lex-test.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
+                    output = subprocess.run(["/DyPyBench/scripts/run-lex-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, args.timeout)
                     ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT, timeout=args.timeout)
                 else:
                     # os.system("/DyPyBench/scripts/run-test-lexecutor.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder))
-                    output = subprocess.run(["/DyPyBench/scripts/run-lex-test.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
+                    output = subprocess.run(["/DyPyBench/scripts/run-lex-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, args.timeout)
                     ], shell=True, capture_output=True, timeout=args.timeout)
                     #if output needs to be printed on the console then comment above and uncomment below
-                    """output = subprocess.run(["/DyPyBench/scripts/run-lex-test.sh %s %s %s" %(proj_name, proj_no, proj_test_folder)
+                    """output = subprocess.run(["/DyPyBench/scripts/run-lex-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, args.timeout)
                     ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
 
     if args.pycg:
@@ -351,11 +351,11 @@ if __name__ == '__main__':
                     flag = "file"
 
                 if args.save:
-                    output = subprocess.run(["/DyPyBench/scripts/run-pycg.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, flag)
+                    output = subprocess.run(["/DyPyBench/scripts/run-pycg.sh %s %s %s %s %s" %(proj_name, proj_no, proj_test_folder, flag, args.timeout)
                     ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT, timeout=args.timeout)
                 else:
-                    output = subprocess.run(["/DyPyBench/scripts/run-pycg.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, flag)
+                    output = subprocess.run(["/DyPyBench/scripts/run-pycg.sh %s %s %s %s %s" %(proj_name, proj_no, proj_test_folder, flag, args.timeout)
                     ], shell=True, capture_output=True, timeout=args.timeout)
                     #if output needs to be printed on the console then comment above and uncomment below
-                    """output = subprocess.run(["/DyPyBench/scripts/run-lex-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, flag)
+                    """output = subprocess.run(["/DyPyBench/scripts/run-pycg.sh %s %s %s %s %s" %(proj_name, proj_no, proj_test_folder, flag, args.timeout)
                     ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""

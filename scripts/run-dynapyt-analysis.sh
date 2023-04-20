@@ -43,7 +43,7 @@ else
 fi
 
 #run analysis on the given project
-python -m dynapyt.run_analysis --entry ./run_all_tests.py --analysis $3
+timeout -k 10s $5 python -m dynapyt.run_analysis --entry ./run_all_tests.py --analysis $3
 
 #deactivate vm
 deactivate

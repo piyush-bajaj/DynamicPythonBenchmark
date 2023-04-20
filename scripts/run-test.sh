@@ -48,9 +48,9 @@ echo "\n--------------Test Time Start--------------\n"
 
 if [[ $1 == "scikit-learn" ]]
 then
-    pytest --import-mode=importlib $3 #tests for scikit-learn need importlib to locate conftest
+    timeout -k 10 $5 pytest --import-mode=importlib $3 #tests for scikit-learn need importlib to locate conftest
 else
-    pytest $3
+    timeout -k 10 $5 pytest $3
 fi
 
 echo "\n--------------Test Time End--------------\n"
