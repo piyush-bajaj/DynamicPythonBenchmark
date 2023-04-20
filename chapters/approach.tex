@@ -1,5 +1,18 @@
 In this chapter, we describe the approach which we have adopted to create the dynamic benchmark of executable python software. The overall workflow of the approach is shown in the Figure \ref{fig:overall_approach}.
-With the provided approach, our benchmark aims to achieve the properties as listed below.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\linewidth]{figures/approach/DyPyBench3.png}
+\caption[Approach]{\label{fig:overall_approach}Overall Approach of DyPyBench}
+\end{figure}
+
+As can be seen from the figure \ref{fig:overall_approach}, we first apply the selection criteria to the corpus of python projects to select a number of projects (Section \ref{approach:project selection}.
+The list of projects is then used to prepare the benchmark by installing the projects and their dependencies using automation (Section \ref{approach:benchmark preparation}).
+We proceed by integrating the two analysis frameworks, DynaPyt and PyCG (Section \ref{approach:analysis framework}). 
+We also integrate LExecutor into the benchmark (Section \ref{approach:LExecutor}).
+Finally, we package and export the benchmark with an access interface for use by researchers and developers (Section \ref{approach:artifact packaging and interface}).   
+
+With the provided approach, we aim to achieve the properties as listed below.
 \begin{itemize}
     \item \textbf{Large-scale} The benchmark should comprise tens of real-world open-source projects, allowing users to evaluate their analyses on a wide range of code.
     \item \textbf{Diverse} The benchmark should contain projects from a diverse range of application domains that reflect the state of today's Python ecosystem.
@@ -10,30 +23,22 @@ With the provided approach, our benchmark aims to achieve the properties as list
     \item \textbf{Extensibility} The benchmark should be easily extensible, allowing users to add, remove or update the tools, frameworks and projects.  
 \end{itemize}
 
-We start with a large corpus of open source python projects listed in the awesome-python project (Section \ref{approach:corpus of python projects}). The projects are selected from this large corpus based on the selection criteria as described in Section \ref{approach:selection criteria}. This selection gives us a collection of python projects in the form of GitHub URLs and certain flags in a text file (Section \ref{approach:list of projects}). The collection of projects in the text file and bash scripts are used for automated installation of projects and their dependencies (Section \ref{approach:bash scripts}) providing us with a set of installed python projects and an environment which is ready to be used by developers and researchers as described in Section \ref{approach:collection of projects}. Orchestration (Section \ref{approach:python script}), with the help of python scripts provide a single command line interface access to the benchmark.  This access interface (Section \ref{approach:access interface}) incorporates  analysis frameworks like LExecutor, DynaPyt and PyCG into the benchmark for execution of various tasks such as dynamic analysis, trace file generation, and static call graph generation respectively (Section \ref{approach:analysis framework}). The benchmark containing the installed projects along with its access interface is packaged and exported as a docker container for use by researchers and developers (Section \ref{approach:packing and exporting}).
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=1\linewidth]{figures/approach/DyPyBench2.png}
-\caption[Approach]{\label{fig:overall_approach}Overall Approach of DyPyBench}
-\end{figure}
-
 \section{Projects Selection}
 \label{approach:project selection}
-In this section we discuss about the available python projects as a corpus and how we select the projects for our benchmark from this corpus.   
-
+In this section, first we discuss about the available python projects and why we use awesome-python as a corpus for our benchmark (Section \ref{approach:corpus of python projects}).
+Then we discuss about the three selection criteria which we use to select projects from the corpus to make our benchmark diverse and large-scale (Section \ref{approach:selection criteria}).
 \subsection{Corpus of Python Projects}
 \label{approach:corpus of python projects}
 Python's ease of use and popularity, as well as the usage in different domains has led to a large number of projects being developed and made available to the community as open-source projects.
 GitHub alone contains a lot of open-source repositories that have python as their primary programming language.
-However, there are some GitHub repositories which provide a collection of python projects such as Awesome Python \footnote{https://awesome-python.com/}, Awesome Python Applications \footnote{https://github.com/mahmoud/awesome-python-applications} and Python Projects \footnote{https://github.com/practical-tutorials/project-based-learning}.
-These collections of projects also provide us with a classification for the projects based on the application domains or other criteria.
-In this work, we use the awesome-python project which contains a list of some of the most useful and interesting open source python projects including libraries, frameworks and software. 
-The awesome-python project acts as a corpus for our benchmark as it contains a collection of 679 python projects.
-It further classifies these projects into 92 main categories, out of which some of the categories are further divided into sub-categories.
+Furthermore, there are some GitHub repositories which provide a collection of python projects such as Awesome Python \footnote{https://github.com/vinta/awesome-python/}, Awesome Python Applications \footnote{https://github.com/mahmoud/awesome-python-applications} and Python Projects \footnote{https://github.com/practical-tutorials/project-based-learning}.
+These collections of projects also provide us with a classification for the projects based on the application domains.
+In this work, we use the awesome-python project which contains a curated list of some of the awesome open-source python projects including libraries, frameworks and software. 
+The awesome-python project is the corpus of projects for our benchmark as it contains a collection of 679 python projects.
+Awesome-python further classifies these projects into 92 main categories, out of which some of the categories are further divided into sub-categories.
 These sub-categories contain the subset of the main category based on technology, tool and their intended usage.
 For example, the sub-categories for Distributed Computing are Batch Processing and Stream Processing which are the two intended ways of processing data.
-Some of the categories and the number of projects in those are listed in table \ref{table:awesome-python}. 
+The top 10 categories and the number of projects in those are listed in table \ref{table:awesome-python}.
 Appendix \ref{appendix:awesome python projects} provides more details on the various categories and number of projects in each category provided by awesome-python project.
 
 \begin{table}[ht]
@@ -42,55 +47,56 @@ Appendix \ref{appendix:awesome python projects} provides more details on the var
     \hline
     \textbf{Category} & \textbf{Number of Projects}\\
     \hline
-    Admin Panels    & 9\\
-    Code analysis   & 18\\
-    Computer vision & 7\\
-    Deep Learning   & 7\\
-    Documentation   & 3\\
-    Files   & 7\\
+    Testing & 30\\
+    Text Processing & 22\\
+    Science & 21\\
+    Code analysis & 18\\
+    Debugging Tools & 18\\
+    Specific Formats Processing & 18\\
+    Command Line Tools & 17\\
     GUI development & 16\\
-    Robotics    & 2\\
-    Task Queues & 5\\
-    Web Frameworks  & 5\\
+    Database Drivers & 15\\
+    Image Processing & 15\\
     \hline
     \end{tabular}
-    \caption{Project Categories (Awesome Python)}
+    \caption{Top 10 Project Categories (Awesome Python)}
     \label{table:awesome-python}
 \end{table}
 
 \subsection{Selection Criteria}
 \label{approach:selection criteria}
-For the selection process of our benchmark, there are three main criterion namely diverse domain, test suite execution with pytest and GitHub stars.
-As we need projects from different application domains to represent the wide usage of python, we employ the diverse domain criteria.
-This criteria ensures that the projects are selected from across multiple categories covering as many as possible provided by the corpus of python projects described in section \ref{approach:corpus of python projects}.
+To select projects for our benchmark, we use three criteria namely diverse domain, test suite execution with pytest and GitHub stars.
+To ensure the diversity property presented before, we sample the projects from across multiple categories covering as many application domains as possible provided by the awesome-python corpus.
 Since, in this work we are creating a dynamic benchmark we focus on the projects for which we can perform execution.
-Test suites provide us with files that can easily execute the code using testing libraries such as pytest, unittest, flake8, etc.
-As a result we include the criterion of the presence and execution of test suites.
-However, we only select the projects which run with pytest as it is a popular testing library and also compatible with unittest. 
+Test suites provide us with files that can easily execute the code using testing libraries such as pytest and unittest.
+Thus we select projects with test suites which can run using the popular pytest library that is also compatible with unittest. 
+Lastly, to ensure the criterion of GitHub stars, we select projects which have at least 500 stars on its GitHub repository. 
 The number of stars a project has on GitHub is an indication of how popular and well-regarded it is in the community.
-More stars generally mean more people have found the project useful and interesting, and it has a larger user base and community of contributors. \cite{github_stars}
-Since a benchmark must contain useful and meaningful projects, we include the criterion of a minimum 500 GitHub stars for the project selection.
-The minimum threshold is enough since it shows that atleast 500 people found the repository to be useful, which is a good number provided the number of projects developed in python.
+More stars generally mean more people have found the project useful and it has a larger user base and community of contributors \cite{github_stars}.
+We find 500 stars to be sufficient since it allows us to have the required number of well-regarded projects.  
 
 \section{Benchmark Preparation}
 \label{approach:benchmark preparation}
-In this section, we discuss the how we store the list of projects and use this list to install the projects for the benchmark. 
-
+In this section, we start with a discussion about how we use flags in a list of projects to automate the installation process (Section \ref{approach:list of projects}).
+We then discuss about how we use these flags in our work to install 50 projects (Section \ref{approach:bash scripts}).
+Finally, we discuss about the working environment which is created by the installation of the above 50 projects (Section \ref{approach:collection of projects}).
 \subsection{List of Python Projects}
 \label{approach:list of projects}
-Applying the selection criteria as described in section \ref{approach:selection criteria}, we gather 50 open-source python projects from diverse application domains. Each project has its own set of dependencies and source code structure.
-Although there are similar steps in installation and setup of these projects, there are some steps that vary from project to project such as dependency installation via requirements file.
-Also, because of the different source code structure the path of test directory and requirement files vary.
-Since, our goal is to install and setup these projects for use in our benchmark we need to handle these differences of setup, installation and execution of projects. 
-In this work, we take the help of a text file that contains the GitHub URL, flag and test details for each of the 50 projects to overcome the differences.
-This file can be referred to as the collection text file and each line in this file contains the details of one project in the benchmark.
-Furthermore, we can easily add, modify and delete projects to and from this file which makes the benchmark extensible.
-The GitHub URL helps us in obtaining the source code of the project needed by the analysis tools and frameworks.
-The flag indicates the presence or absence of requirements file to install dependencies for the project. If this flag indicates the presence then the collection text file also contains the path of the requirements file. The need for the path arises due the different structure of source code for individual projects.
-The collection text file also specifies the path of the test directory or the test file to be run using the pytest library.
-Simply stated, the collection text file is a list of 50 python projects with some details of the projects.
-Table \ref{table:list of projects} shows the structure of the collection text file containing the list of 50 python projects in the benchmark.
- The first row indicates the entry with the presence of requirements file, while the second row indicates the entry without the requirements file.
+Applying the selection criteria as described before, we select 50 open-source python projects.
+Although, the installation and setup of these projects follow similar steps, there are certain differences which vary from project to project.
+For example, the path and the name of requirements file to install dependencies varies for each project.
+Some of these differences can be attributed to the directory structure of source code present in the GitHub repository.
+In order to automate the process of installation and setup of projects, we need a way to work around these differences for each project.
+In this work, we use a list with specific flags inside a text file to handle the aforementioned differences.
+This structure of a single entry  which represents one project in this list is $ \textbf{project\_url requirement\_flag *requirement\_file test\_suite} $.
+In the structure, \textit{project\_url} corresponds to Git URL for the project, whereas \textit{requirement\_flag} represents the information pertaining to the presence or absence of requirement file.
+The \textit{requirement\_flag} can have 2 possible values, \textit{rt} and \textit{t}.
+The next flag in the entry is the \textit{requirement\_file}, which is the path of requirement file. 
+This flag is optional and is present only when the \textit{requirement\_flag} is \textit{rt}.
+The final flag in the entry is \textit{test\_suite} that contains the path of the test directory which is needed to execute tests.
+Furthermore, it is easy to add, modify or delete an entry from the text file which makes the benchmark extensible.
+Table \ref{table:list of projects} shows two example entries in the list.
+The first entry is a project with a requirement file present at src/requirements.txt and test suite in the directory tests, while the second entry does not contain a requirement file and its test suite is present in the directory src/tests.
 
 \begin{table}[ht]
     \centering
@@ -98,8 +104,8 @@ Table \ref{table:list of projects} shows the structure of the collection text fi
     % \hline
     % \textbf{GitHub URL} & \textbf{Flag} & \textbf{Requirement File} & \textbf{Test Path}\\
     \hline
-    https://github.com/test/test-project.git    & rt    & src/requirement.txt   & src/tests\\
-    https://github.com/test/test-project.git    & t    & src/tests\\
+    https://github.com/test/test-project.git & rt & src/requirement.txt & tests\\
+    https://github.com/tester/test-project.git & t & src/tests\\
     \hline
     \end{tabular}
     \caption{List of Projects (Collection Text File Structure)}
@@ -108,72 +114,65 @@ Table \ref{table:list of projects} shows the structure of the collection text fi
 
 \subsection{Installation of Projects}
 \label{approach:bash scripts}
-With the collections text file as described in section \ref{approach:list of projects}, the 50 chosen python projects are ready to be installed and setup in the benchmark. Since, we have the GitHub URL and requirement file flag available via the collections text file, a number of steps are performed for each project to install the project with its dependencies. These steps are listed below:
-\begin{itemize}
-    \item \textbf{Get the source code :} The list contains open source projects having their source code on GitHub which is cloned to a specific folder in the benchmark. 
-    \item \textbf{Create virtual environment :} The virtualenv \cite{virtualenv} package creates a virtual environment which avoid dependency conflicts and system pollution, dodge installation lockups and minimize reproducibility issues \cite{Why_Virtual_Env}.
-    \item \textbf{Install project and its dependencies :} The pip package manager \cite{pip_package_manager} installs the project and its module dependencies from the requirements.txt file or the setup.py file.
-\end{itemize}
-Manually performing these steps for each of the 50 projects is a mundane and repetitive task and may result in frustrating errors.
-Such tasks can be automated with the help of bash scripts which can run specific commands on the command line in a sequential order.
-Since the above mentioned steps need to be executed in a sequential fashion for each project we need to use loops in the bash script to handle repetition.
-The differences in the installation steps such as additional dependencies and installation with setup.py or source code can be handled with conditionals.
+The above list of projects with the specified flags in a text file is used to automatically install the projects with a single command.
+With the URL to the GitHub Repository and optional requirement file, we perform a series of steps to install each project with its required dependencies.
+Firstly, we clone the repository from the URL provided in the text file to get the source code.
+We then create a virtual environment to avoid dependency conflicts between different projects.
+Then we install the project to the virtual environment using the source code cloned before. 
+Finally, if there is a requirement file we install the dependencies specified in this file to the virtual environment.
+The mundane and repetitive task of performing these steps for each of the 50 projects is automated using scripts.
+Scripts can handle repetition through the use of loops such as for and while.
+They can also work with exceptional cases using conditionals such as if else statements.  
 
 \subsection{Execution Environment}
 \label{approach:collection of projects}
-By executing the steps outline in section \ref{approach:bash scripts} using the bash scripts, we have a collection of 50 installed and ready to use projects in the benchmark.
-This collection of projects form the pool of projects which can be used for analysis using different frameworks.
-The collection is stored in a folder with numbered sub-folders for each project, which makes it easy to use the individual projects.
-Each project has its dependencies installed within its own python virtual environment, which also includes pytest and any other necessary dependencies to run the project's test suite.
-To ensure the long-term use of the benchmark, a duplicate of the specific project from the collection is created whenever the analysis needs to be performed. 
-This ensures that the projects retain their source code and dependencies in the original folder, which may change due to the nature of the python and open-source ecosystems.
-The duplication also ensures that the projects are always available for use and do not require re-installation each time they are needed.   
+The automated installation of projects provide us with a collection of 50 python projects.
+This collection forms the pool of projects which our benchmark provides to perform code analysis or to generate training data for neural models.
+Each project installed using the automation is present inside a sub-folder in the collection.
+This makes it easier to work on individual projects when needed.
+When a particular project from the collection needs to used, a duplicate copy of the same is created.
+This ensures the long-term usage of the projects in the benchmark by preserving the projects and their virtual environments.
+The dynamic nature of python and open-source ecosystems results in frequent changes to the projects.
+Another advantage provided by duplication is avoiding the re-installation of projects which saves significant time and effort. 
 
 \section{Integrating Analysis Frameworks}
 \label{approach:analysis framework}
-With the collection of projects as described in section \ref{approach:collection of projects}, our benchmark aims to be ready-to-analyze these projects.
-In order to achieve this, three analysis frameworks are integrated in our benchmark namely, DynaPyt, LExecutor and PyCG. However, other analysis frameworks and tools can be easily added to the benchmark.
-Each of the three frameworks provided in this work helps with a different usage scenario.
+To satisfy the property of ready-to-analyze, we need to integrate some code analysis frameworks into our benchmark.
+In this work, we inncorporate two such frameworks, namely, DynaPyt,  which a general purpose dynamic analysis framework and PyCG, which is a static analysis framework to generate call graphs.
+The following sections explain the integration of these two frameworks.
 \subsection{DynaPyt}
-DynaPyt is a dynamic analysis framework which allows users to create arbitrary dynamic analysis.
-It also provides some builtin analysis such as Taint Analysis, Trace All Run-time Events and ML Memory Analysis which can be executed using python.\cite{DynaPyt2022}
-In this work, we create a bash script to run the python commands to instrument and run tests for DynaPyt. 
-We develop a Call Graph Analysis in using the function pre\_call hook.
-This analysis is then used to instrument the source code of the project to be analyzed.
-Finally, the test suite of the instrumented project is executed to generate a run-time call graph where the execution starts from the test case.
-\subsection{LExecutor}
-LExecutor is a learning-guided approach to predict missing values that otherwise would cause the program to get stuck, and to inject these values for executing arbitrary code snippets in under-constrained way.\cite{LExecutor_2023}
-Since it is a neural model, it provides a command to fine-tune the model and improve its accuracy using the training data.
-In this work, we use LExecutor to generate the training data to fine-tune the model.
-The training data is generated from the trace files provided by the execution of the test suite of the instrumented project.
+In this work, we use DynaPyt to perform dynamic analysis for generating call graphs.
+We first develop the Call Graph Analysis using the function pre\_call hook provided by DynaPyt.
+This is then used to instrument the source code of the project.
+Finally, the test suite of the instrumented project is executed which generates a run-time call graph.
+The steps of instrumentation and execution of tests is integrated into the access interface. 
+
 \subsection{PyCG}
-PyCG is a practical Python call graph generator that generates call graphs for Python code using static analysis.
-It efficiently supports higher-order functions, twisted class inheritance schemes, automatic discovery of imported modules for further analysis, and nested definitions \cite{PyCG_2021}.
-In this work, we use PyCG to generate static call graphs for the collection of projects by executing the command provided. 
+In this work, we use PyCG to generate call graphs for the collection of projects.
+The test files are provided as the entry point for generating the the call graphs.
+The required arguments and command to generate the call graphs based on static code analysis is integrated into the access interface.
 
-\section{Artifact Packing and Interface}
+\section{Integrating LExecutor}
+\label{approach:LExecutor}
+While code analysis provides a usage scenario of our benchmark, we add another usage scenario of collecting data for fine-tuning a neural model.
+This is done using LExecutor, which provides a command to fine-tune the model and improve its accuracy using the training data.
+In this work, we first instrument the project which we need to add into the training data.
+We then run the test suite of the instrumented project, which generates one or more trace files.
+These trace files are then fed to the LExecutor which provides a command to use the trace files and generate training data.
+The instrumentation and test suite execution are integrated into the access interface provided by the benchmark.
+
+\section{Artifact Packaging and Interface}
 \label{approach:artifact packaging and interface}
-
-\subsection{Orchestration}
-\islem{I didn't understand this part}
-\label{approach:python script}
-The collection of projects and the analysis frameworks as described in section \ref{approach:collection of projects} and section \ref{approach:analysis framework} provides us with the dynamic benchmark. 
-However, we need a way to make this benchmark easily accessible for the users.
-Orchestration of the projects and the analysis frameworks with the help of python script creates this easy access to the benchmark.
-Python scripts are user-friendly and offer extensive support for both standard and third-party libraries that can be utilized for automating tasks, data processing, and analysis.
-They are also easily extensible, allowing for the addition of new features without interfering with previous functionality.
-These scripts can be triggered from the CLI and can accept command line options.
-In this work, the python script acts as the primary entry point and triggers the execution of other scripts via the subprocess module \cite{python_subprocess}.
-This script offers functionalities such as listing the projects in the benchmark, running test suites and executing the analysis frameworks on the collection of projects.  
-The script accepts a variable number of arguments, which makes the benchmark compositional i.e., the script can perform the operation on all the projects or a subset of projects in the benchmark. 
+In this section, we first provide the details regarding the access interface we design to provide make the benchmark easily accessible (Section \ref{approach:access interface}).
+Then we talk about why we use Docker to package and export our benchmark and how it makes the benchmark extensible (Section \ref{approach: packing and exporting}).
 
 \subsection{Access Interface}
 \label{approach:access interface}
-Orchestration on the collection of projects as described in section \ref{approach:python script} provides us with a single command line access interface to the operations of the benchmark.
-In this work, the single command line interface access makes the benchmark ready-to-run and ready-to-analyze via this interface.
+To provide an easy access to the projects and the analysis frameworks in the benchmark, we create a single command line access interface.
+Along with easy access, we also aim to make the benchmark ready-to-run and ready-to-analyze with this interface. 
 The access interface provides various alternatives to the end user specified by the command line options.
-The available options to this interface are provided in the table \ref{table:access interface options}, where the first column specifies the option and the second column provides description of its usage.
-Some of these options such as dynapyt\_instrument, dynapyt\_run, lex\_instrument, lex\_test and pycg allow to specify a variable number of projects which makes the benchmark highly versatile.
+The available options are provided in the table \ref{table:access interface options}, where the first column specifies the option and the second column provides description of its usage.
+With the options \textit{dynapyt\_instrument}, \textit{dynapyt\_run}, \textit{lex\_instrument}, \textit{lex\_test} and \textit{pycg}, one can specify a variable number of projects which makes the benchmark highly versatile.
 
 \begin{table}[ht]
     \centering
@@ -201,12 +200,15 @@ Some of these options such as dynapyt\_instrument, dynapyt\_run, lex\_instrument
     \label{table:access interface options}
 \end{table}
 
-\subsection{Packing and Export}
+\subsection{Packaging and Export}
 \label{approach:packing and exporting}
-The collection of projects, analysis frameworks and the access interface as described in sections \ref{approach:list of projects} through \ref{approach:access interface} together constitute the benchmark in this work.
-In order to make the benchmark easy to access and setup, it is packaged and exported along with all its components, such as python scripts, bash scripts, analysis frameworks and collection of projects inside a docker container.
-Docker is a platform that allows applications to be wrapped and executed within a container, which provides a loosely isolated environment that eliminates the need to rely on the host's existing software.
-This container is then exported as an image on the dockerhub \cite{docker_hub} repository, which can be easily imported and run as a container by users on any major operating system. 
-By sharing the docker image, everyone can access the same container that works in the same way \cite{Docker_2022}.
-This approach of using docker provides the users with a complete and easily analyzable benchmark, and also ensures the longevity as the image is available ling after the project's release.
-Additionally, this approach allows for easy extensibility of the benchmark, as users can take it as a base image and make changes according to their needs, such as adding more analysis tools or modifying the collection of projects.
+In order to use the benchmark readily, it should contain all of its constituent parts and must be easy to setup.
+In this work, we package the benchmark containing the collection of projects, the analysis frameworks, LExecutor and the access interface into a Docker \cite{Docker_2022} image.
+This Docker image can be used to create containers to access the benchmark.  
+Since, Docker provides a loosely isolated environment for its containers we install all the operating system related dependencies into the image itself.
+The Docker image is then exported on the Docker Hub \cite{docker_hub} repository.
+This approach of using Docker image also makes the benchmark long lasting, since the image is available long after the release.
+Another advantage of using Docker is the simplicity of modifying the benchmark as per the need of the user.
+For example, one can add another analysis tool or change some projects in the benchmark or add new test cases for some projects.
+All of these can be done by importing the Docker image and making the changes as per the needs of the developer or a user.
+This makes our benchmark easily extensible.
