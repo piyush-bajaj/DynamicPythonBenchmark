@@ -7,21 +7,23 @@ There are many types of benchmarks that measure specific aspects of a computer s
 Benchmarks simulate real-world workloads and produce scores that can be compared across different systems or components.
 % However, benchmark results may not always be reliable due to factors such as hardware compatibility, software optimization, and testing conditions.
 To ensure accuracy and reliability, it is important to use multiple benchmarks, perform tests under different conditions, and interpret results carefully.
-Overall, benchmarks are an essential tool for evaluating computer systems and components, enabling users to optimize performance and make informed decisions about hardware and software configurations.
+Overall, benchmarks are an essential tool for evaluating computer systems and components, enabling users to optimize performance and make informed decisions about hardware and software configurations.\cite{Benchmarking_2022}
 
-\section{Docker}
-Docker is a platform that enables developers to containerize an application and its dependencies, making it easier to deploy and manage software across different environments.
-Docker containers are lightweight and portable, and Docker Hub is a cloud-based repository where developers can store and share their Docker containers.
-It provides a centralized platform for managing container images and features such as image management, automated builds, and security scanning, which help developers maintain the quality and security of their containers.
-Docker Hub also includes a registry service, which simplifies the deployment process and makes it easier to manage and scale applications in different environments.
-In summary, Docker and Docker Hub are powerful tools that enable developers to build, deploy, and manage software more efficiently and effectively through containerization and centralized repository management.
+% \section{Docker}
+% \islem{unncessary}
+% Docker is a platform that enables developers to containerize an application and its dependencies, making it easier to deploy and manage software across different environments.
+% Docker containers are lightweight and portable, and Docker Hub is a cloud-based repository where developers can store and share their Docker containers.
+% It provides a centralized platform for managing container images and features such as image management, automated builds, and security scanning, which help developers maintain the quality and security of their containers.
+% Docker Hub also includes a registry service, which simplifies the deployment process and makes it easier to manage and scale applications in different environments.
+% In summary, Docker and Docker Hub are powerful tools that enable developers to build, deploy, and manage software more efficiently and effectively through containerization and centralized repository management.
 
-\section{Scripting in Software Development}
-Scripting in software development refers to the use of scripting languages to automate various tasks, such as building and deploying software, managing databases, and testing software.
-Scripting is a way to execute a sequence of commands automatically, without the need for manual intervention.
-By using scripts, developers can save time and effort, and focus on other important tasks. Python and Bash are popular scripting languages used in software development.
-Python is known for its readability and ease of use across different operating systems.
-Bash is a Unix shell scripting language used primarily in Linux and Unix operating systems, and is powerful for system administration and automation.
+% \section{Scripting in Software Development}
+% \islem{unnecessary}
+% Scripting in software development refers to the use of scripting languages to automate various tasks, such as building and deploying software, managing databases, and testing software.
+% Scripting is a way to execute a sequence of commands automatically, without the need for manual intervention.
+% By using scripts, developers can save time and effort, and focus on other important tasks. Python and Bash are popular scripting languages used in software development.
+% Python is known for its readability and ease of use across different operating systems.
+% Bash is a Unix shell scripting language used primarily in Linux and Unix operating systems, and is powerful for system administration and automation.
 % Scripting enables developers and administrators to automate repetitive tasks and improve efficiency.
 
 \section{Code Analysis Frameworks}
@@ -31,8 +33,10 @@ They help developers to maintain code quality, improve security, and ensure comp
 Popular code analysis frameworks include SonarQube, Checkstyle, ESLint, and Fortify, among others.
 These frameworks are valuable tools for software developers as they provide detailed reporting and analysis features, enforce coding standards, identify potential errors, and help to remediate security vulnerabilities.
 Ultimately, code analysis frameworks help developers to write better, more secure, and higher-quality software code.
+In our benchmark, we use two code analysis frameworks.
+We use DynaPyt to perform dynamic analysis and PyCG to generate call graphs using static analysis of code.
 
-\section{DynaPyt}
+\subsection{DynaPyt}
 DynaPyt is a tool for dynamic analysis of Python code.
 It aims to provide insights into the behavior of Python programs, such as performance and memory usage, by analyzing the runtime behavior of code.
 DynaPyt provides several features, such as the ability to collect data on function calls, memory allocation, and object creation, and to visualize the results in a user-friendly interface.
@@ -41,15 +45,22 @@ The tool makes it possible to get a detailed understanding of the behavior of Py
 This information can be used to identify performance bottlenecks and optimize the program for better performance.
 With its ease of use, flexibility, and range of features, DynaPyt is a valuable tool for anyone working with Python code.
 
-\section{Neural Models for Code Analysis}
-Neural models or neural networks can be used in code analysis to improve the accuracy and efficiency of code analysis tasks.
-These models can be trained to classify code, generate code, and detect code smells, potential security vulnerabilities, coding errors, and violations of coding standards.
-By analyzing patterns and relationships within code, neural models can identify potential issues that may not be easily detected through manual code analysis.
-Neural models have the potential to provide developers with new tools for maintaining code quality, improving security, and ensuring compliance with coding standards and best practices.
+\subsection{PyCG}
+Call graphs are useful in various contexts, including profiling and vulnerability analysis.
+Despite Python's popularity, there are very few tools available for generating call graphs, and these tools suffer from effectiveness issues that limit their practicality.
+The article proposes a static approach for call graph generation in Python, which involves computing all assignment relations between program identifiers of functions, variables, classes, and modules through an inter-procedural analysis.
+The resulting call graph is produced by resolving all calls to potentially invoked functions.
+The proposed approach is designed to be efficient and scalable, handling several Python features such as modules, generators, function closures, and multiple inheritance.\cite{PyCG_2021}
 
-\section{Call Graphs}
-Call graphs are visual representations of the relationships between functions or methods in a program used in software development.
-They help developers understand the flow of control in a program, identify potential bottlenecks, optimize performance, and debug issues more quickly.
-Call graphs can be created manually or automatically using static and dynamic analysis techniques.
-Tools such as Eclipse Call Graph, Doxygen, and Graphviz provide different levels of detail and customization options for call graphs.
-In summary, call graphs are an essential tool for understanding and analyzing complex software systems, helping developers to visualize the relationships between functions and optimize code for better performance and maintainability.
+% \section{Neural Models for Code Analysis}
+% Neural models or neural networks can be used in code analysis to improve the accuracy and efficiency of code analysis tasks.
+% These models can be trained to classify code, generate code, and detect code smells, potential security vulnerabilities, coding errors, and violations of coding standards.
+% By analyzing patterns and relationships within code, neural models can identify potential issues that may not be easily detected through manual code analysis.
+% Neural models have the potential to provide developers with new tools for maintaining code quality, improving security, and ensuring compliance with coding standards and best practices.
+
+% \section{Call Graphs}
+% Call graphs are visual representations of the relationships between functions or methods in a program used in software development.
+% They help developers understand the flow of control in a program, identify potential bottlenecks, optimize performance, and debug issues more quickly.
+% Call graphs can be created manually or automatically using static and dynamic analysis techniques.
+% Tools such as Eclipse Call Graph, Doxygen, and Graphviz provide different levels of detail and customization options for call graphs.
+% In summary, call graphs are an essential tool for understanding and analyzing complex software systems, helping developers to visualize the relationships between functions and optimize code for better performance and maintainability.
