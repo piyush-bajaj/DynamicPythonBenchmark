@@ -1,0 +1,371 @@
+\section{install-all-projects.sh}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, columns=flexible, breaklines=true, numberblanklines=false}
+\lstset{basicstyle=\ttfamily}
+\lstset{frame=tb}
+\begin{lstlisting}[caption=install-all-projects.sh,label=code:install-all-projects.sh,language=Bash]
+#!/usr/bin/bash
+
+# Define a timestamp function
+timestamp() {
+  date +"%Y-%m-%dT%T.%3N%z" # current time
+}
+echo "Setup and Install Python projects and their test suites"
+
+#root directory
+ROOT_DIR=/DyPyBench
+echo "ROOT_DIR is $ROOT_DIR"
+
+cd $ROOT_DIR
+
+#echo "Please provide the complete location of url file"
+#read URL_FILE
+URL_FILE=$ROOT_DIR/text/github-url.txt
+
+# Create project folder to keep all the projects together inside one parent folder
+PROJ_DIR=$ROOT_DIR/../Project
+#if folder already present, then delete the folder
+if [[ -d "$PROJ_DIR" ]]
+then
+    rm -rf "$PROJ_DIR" 
+fi
+
+#create directory
+mkdir -p "$PROJ_DIR"
+cd "$PROJ_DIR"
+
+#WORK_DIR=$(pwd)
+
+#run a while loop to create .vm for all projects
+idx=1
+while read line
+do
+    echo $line
+
+    parts=($line)
+    URL=${parts[0]}
+    FLAGS=${parts[1]}
+
+    echo "\n--------------Setup Start Time--------------\n" 
+    timestamp
+    echo "\n--------------Setup Start Time--------------\n"
+
+    #change to working directory
+    cd $PROJ_DIR
+    #create directory for project
+    mkdir -p "project$idx"
+    #clone the repo to project directory
+    git clone "$URL" "project$idx"
+    #go into the project directory
+    cd "project$idx"
+    #check the git log for last commit on given date
+    #state of the projects was exported with a default date(2023-01-18), if you change this date projects might no longer function properly due to code changes in the repository.
+    CHECKOUT_ID=$(git log -n 1 --until=2023-01-18 --format="%H")
+    #checkout the project to this date
+    git checkout $CHECKOUT_ID
+    #create virtual env name .vm
+    virtualenv .vm
+    #activate virtual env
+    if [[ -d ".vm/local" ]]
+    then
+        source .vm/local/bin/activate
+    elif [[ -d ".vm/bin" ]]
+    then
+        source .vm/bin/activate
+    else
+        echo "Unable to create virtual env"
+        exit
+    fi
+
+    #install using pip install . 
+    echo "Running pip install ."
+    pip install .
+
+    if [[ $FLAGS == "r" || $FLAGS == "rt" ]]
+    then
+        REQ_FILE=${parts[2]}
+        if [[ $URL == "https://github.com/spotify/dh-virtualenv.git" ]]
+        then
+            #fix for dependency conflict issue
+            sed -i.bak '0,/invoke==0.13.0/s//invoke/' dev-requirements.txt
+        fi
+        echo "Running pip install requirements"
+        pip install -r $REQ_FILE
+    fi
+
+    #some projects need extra requirements for running test suites
+    if [[ $URL == "https://github.com/lorien/grab.git" ]]
+    then
+        pip install cssselect pyquery pymongo fastrq #required for running tests
+    elif [[ $URL == "https://github.com/psf/black.git" ]]
+    then
+        pip install aiohttp #required for running tests
+    elif [[ $URL == "https://github.com/errbotio/errbot.git" ]]
+    then
+        pip install mock #required for running tests
+    elif [[ $URL == "https://github.com/PyFilesystem/pyfilesystem2.git" ]]
+    then
+        pip install parameterized pyftpdlib psutil #required for running tests
+    elif [[ $URL == "https://github.com/wtforms/wtforms.git" ]]
+    then
+        pip install babel email_validator #required for running tests
+    elif [[ $URL == "https://github.com/geopy/geopy.git" ]]
+    then
+        pip install docutils #required for running tests
+    elif [[ $URL == "https://github.com/gawel/pyquery.git" ]]
+    then
+        pip install webtest #required for running tests
+    elif [[ $URL == "https://github.com/elastic/elasticsearch-dsl-py.git" ]]
+    then
+        pip install pytz #required for running tests
+    elif [[ $URL == "https://github.com/marshmallow-code/marshmallow.git" ]]
+    then
+        pip install pytz simplejson #required for running tests
+    elif [[ $URL == "https://github.com/pytest-dev/pytest.git" ]]
+    then
+        pip install hypothesis xmlschema #required for running tests
+    fi
+
+    #install pytest library
+    pip install pytest
+
+    #install dynapyt
+    #pip install dynapyt libcst pytest pytest-xdist aiopg
+
+    echo "\n--------------Setup End Time--------------\n"
+    timestamp
+    echo "\n--------------Setup End Time--------------\n"
+
+    ((idx++))
+    deactivate
+
+done < "$URL_FILE"
+
+
+# overwrite test files
+python3 "$ROOT_DIR/utils/overwrite-test-files.py"
+\end{lstlisting}
+
+\section{install-missing-projects.sh}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, columns=flexible, breaklines=true, numberblanklines=false}
+\lstset{basicstyle=\ttfamily}
+\lstset{frame=tb}
+
+\begin{lstlisting}[caption=install-missing-projects.sh,label=code:install-missing-projects.sh,language=Bash]
+#!/usr/bin/bash
+
+# Define a timestamp function
+timestamp() {
+  date +"%Y-%m-%dT%T.%3N%z" # current time
+}
+echo "Setup and Install Python projects and their test suites"
+
+#root directory
+ROOT_DIR=/DyPyBench
+echo "ROOT_DIR is $ROOT_DIR"
+
+cd $ROOT_DIR
+
+#echo "Please provide the complete location of url file"
+#read URL_FILE
+URL_FILE=$ROOT_DIR/text/github-url.txt
+
+# Create project folder to keep all the projects together inside one parent folder
+PROJ_DIR=$ROOT_DIR/../Project
+#if folder already present, then cd to the folder
+if [[ ! -d "$PROJ_DIR" ]]
+then
+    mkdir "$PROJ_DIR"
+fi
+
+cd "$PROJ_DIR"
+
+#WORK_DIR=$(pwd)
+
+#run a while loop to create .vm for all projects
+idx=1
+while read line
+do
+    echo $line
+
+    parts=($line)
+    URL=${parts[0]}
+    FLAGS=${parts[1]}
+
+    echo "$idx"
+    if [[ ! -d "$PROJ_DIR/project$idx" ]]
+    then
+        echo "\n--------------Setup Start Time--------------\n" 
+        timestamp
+        echo "\n--------------Setup Start Time--------------\n"
+
+        #change to working directory
+        cd $PROJ_DIR
+        #create directory for project
+        mkdir -p "project$idx"
+        #clone the repo to project directory
+        git clone "$URL" "project$idx"
+        #go into the project directory
+        cd "project$idx"
+        #check the git log for last commit on given date
+        #state of the projects was exported with a default date(2023-01-18), 
+        #if you change this date projects might no longer function properly due to code changes in the repository.
+        CHECKOUT_ID=$(git log -n 1 --until=2023-01-18 --format="%H")
+        #checkout the project to this date
+        git checkout $CHECKOUT_ID
+        #create virtual env name .vm
+        virtualenv .vm
+        #activate virtual env
+        if [[ -d ".vm/local" ]]
+        then
+            source .vm/local/bin/activate
+        elif [[ -d ".vm/bin" ]]
+        then
+            source .vm/bin/activate
+        else
+            echo "Unable to create virtual env"
+            exit
+        fi
+
+        #install using pip install . 
+        echo "Running pip install ."
+        pip install .
+
+        if [[ $FLAGS == "r" || $FLAGS == "rt" ]]
+        then
+            REQ_FILE=${parts[2]}
+            if [[ $URL == "https://github.com/spotify/dh-virtualenv.git" ]]
+            then
+                #fix for dependency conflict issue
+                sed -i.bak '0,/invoke==0.13.0/s//invoke/' dev-requirements.txt
+            fi
+            echo "Running pip install requirements"
+            pip install -r $REQ_FILE
+        fi
+
+        #some projects need extra requirements for running test suites
+        if [[ $URL == "https://github.com/lorien/grab.git" ]]
+        then
+            pip install cssselect pyquery pymongo fastrq #required for running tests
+        elif [[ $URL == "https://github.com/psf/black.git" ]]
+        then
+            pip install aiohttp #required for running tests
+        elif [[ $URL == "https://github.com/errbotio/errbot.git" ]]
+        then
+            pip install mock #required for running tests
+        elif [[ $URL == "https://github.com/PyFilesystem/pyfilesystem2.git" ]]
+        then
+            pip install parameterized pyftpdlib psutil #required for running tests
+        elif [[ $URL == "https://github.com/wtforms/wtforms.git" ]]
+        then
+            pip install babel email_validator #required for running tests
+        elif [[ $URL == "https://github.com/geopy/geopy.git" ]]
+        then
+            pip install docutils #required for running tests
+        elif [[ $URL == "https://github.com/gawel/pyquery.git" ]]
+        then
+            pip install webtest #required for running tests
+        elif [[ $URL == "https://github.com/elastic/elasticsearch-dsl-py.git" ]]
+        then
+            pip install pytz #required for running tests
+        elif [[ $URL == "https://github.com/marshmallow-code/marshmallow.git" ]]
+        then
+            pip install pytz simplejson #required for running tests
+        elif [[ $URL == "https://github.com/pytest-dev/pytest.git" ]]
+        then
+            pip install hypothesis xmlschema #required for running tests
+        fi
+
+        #install pytest library
+        pip install pytest
+
+        #install dynapyt
+        #pip install dynapyt libcst pytest pytest-xdist aiopg
+
+        echo "\n--------------Setup End Time--------------\n"
+        timestamp
+        echo "\n--------------Setup End Time--------------\n"
+
+        deactivate
+    else
+        echo "Project already setup"
+    fi
+    ((idx++))
+done < "$URL_FILE"
+
+# overwrite test files
+python3 "$ROOT_DIR/utils/overwrite-test-files.py"
+\end{lstlisting}
+
+\section{DynaPyt Analysis}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, columns=flexible, breaklines=true, numberblanklines=false}
+\lstset{basicstyle=\ttfamily}
+\lstset{frame=tb}
+
+\begin{lstlisting}[caption=Call Graph Analysis in DynaPyt,label=code:CallGraphAnalysis,language=Python]
+from typing import Callable, Tuple, Dict
+import logging
+import libcst as cst
+import libcst.matchers as m
+from .BaseAnalysis import BaseAnalysis
+from ..utils.nodeLocator import get_parent_by_type
+import json
+from inspect import getmodule
+
+class CallGraph(BaseAnalysis):
+    def __init__(self):
+        super(CallGraph, self).__init__()
+        logging.basicConfig(filename="dynapyt.json", format='%(message)s', level=logging.INFO)
+        self.graph = {}
+
+    '''
+    DynaPyt hook for pre function call
+    '''
+    def pre_call(self, dyn_ast: str, iid: int, function: Callable, pos_args: Tuple, kw_args: Dict):
+        ast, iids = self._get_ast(dyn_ast)
+        module = getmodule(function)
+        module = str(module).split(' ')[1] if module is not None else "''"
+        # calling function 
+        caller = get_parent_by_type(ast, iids.iid_to_location[iid], m.FunctionDef())
+        # called function
+        if hasattr(function, "__qualname__"):
+            callee = module[1:-1] + '.' + function.__qualname__ if module != "''" else function.__qualname__
+        else:
+            temp = str(function)
+            callee = temp
+        
+        #file name
+        key = dyn_ast.replace('.py.orig', '').replace('/','.')
+        
+        if caller is None:
+            f = key
+        else:
+            # if caller is a part of class, find the class name
+            caller_parent = get_parent_by_type(ast, iids.iid_to_location[iid], m.ClassDef())
+            if caller_parent is None:
+                f = key + '.' + caller.name.value
+            else:
+                f = key + '.' + caller_parent.name.value + '.' + caller.name.value
+
+        # if caller already added
+        if f in self.graph.keys():
+            temp = self.graph[f]
+            # filter dupilcate callees
+            if callee not in temp:
+                temp.append(callee)
+                self.graph[f] = temp
+        else:
+            self.graph[f] = [callee]
+    
+    def end_execution(self):
+        try:
+            logging.info(json.dumps(self.graph))
+        except Exception:
+            logging.info("{")
+            for idx, key in enumerate(self.graph):                
+                if not idx == (len(self.graph.keys()) - 1):
+                    logging.info("{} : {}, ".format(key, self.graph[key]))
+                else:
+                    logging.info("{} : {}".format(key, self.graph[key]))
+            logging.info("}")
+                
+\end{lstlisting}
