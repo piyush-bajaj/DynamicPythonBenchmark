@@ -61,7 +61,7 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    "--pycg", "-scg", type=int, nargs='+', help="Specify the project no. to setup PyCG for static call graph generation"
+    "--pycg", "-scg", type=int, nargs='+', help="Specify the project no. to run PyCG for static call graph generation"
 )
 
 def printAllProjects():
@@ -107,7 +107,7 @@ if __name__ == '__main__':
         printAllProjects()
 
     if args.update_dynapyt_source:
-        print("Downloading the dynapyt source from git")
+        # print("Downloading the dynapyt source from git")
         if args.save:
             output = subprocess.run(["/DyPyBench/scripts/setup-DynaPyt-src.sh"
             ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
@@ -119,7 +119,7 @@ if __name__ == '__main__':
             ], shell=True, stderr=subprocess.STDOUT)"""
 
     if args.update_lex_source:
-        print("Downloading the LExecutor source from git")
+        # print("Downloading the LExecutor source from git")
         if args.save:
             output = subprocess.run(["/DyPyBench/scripts/setup-LExecutor-src.sh"
             ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT)
