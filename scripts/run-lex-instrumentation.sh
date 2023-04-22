@@ -53,7 +53,7 @@ fi
 cd $ROOT_DIR
 
 # run instrument for given files or a single .txt file, other arguments can be added later using if else
-timeout -k 10 $3 python -m lexecutor.Instrument --files ${@:4} --iids /DyPyBench/iids.json --validate
+timeout -k 10s $3 python -m lexecutor.Instrument --files ${@:4} --iids /DyPyBench/iids.json --validate
 
 #deactivate vm
 deactivate

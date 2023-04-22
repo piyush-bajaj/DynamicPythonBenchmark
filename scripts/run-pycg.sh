@@ -55,10 +55,10 @@ pip install pycg
 #run pycg
 if [[ $4 == "file" ]]
 then
-    timeout -k 10 $5 pycg --package ./project$2 project$2/$3 -o pycg_$2.json
+    timeout -k 10s $5 pycg --package ./project$2 project$2/$3 -o pycg_$2.json
 elif [[ $4 == "folder" ]]
 then
-    timeout -k 10 $5 pycg --package ./project$2 $(find project$2/$3 -type f -name "*.py") -o pycg_$2.json
+    timeout -k 10s $5 pycg --package ./project$2 $(find project$2/$3 -type f -name "*.py") -o pycg_$2.json
     #pycg --package . $(find $3 -type f -regex "(test_.*\.py|.*_test\.py)") -o pycg_$2.json
 fi
 

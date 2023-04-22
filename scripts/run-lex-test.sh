@@ -42,9 +42,9 @@ echo "\n--------------Test Time Start--------------\n"
 
 if [[ $1 == "scikit-learn" ]]
 then
-    timeout -k 10 $4 pytest --import-mode=importlib $3 #tests for scikit-learn need importlib to locate conftest
+    timeout -k 10s $4 pytest --import-mode=importlib $3 #tests for scikit-learn need importlib to locate conftest
 else
-    timeout -k 10 $4 pytest $3
+    timeout -k 10s $4 pytest $3
 fi
 
 echo "\n--------------Test Time End--------------\n"

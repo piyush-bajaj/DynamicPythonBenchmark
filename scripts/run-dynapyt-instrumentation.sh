@@ -62,11 +62,11 @@ fi
 if [[ $5 == "d" ]]
 then
     #run instrumentation on the given directory
-    timeout -k 10 $6 python -m dynapyt.run_instrumentation --directory $3 --analysis $4
+    timeout -k 10s $6 python -m dynapyt.run_instrumentation --directory $3 --analysis $4
 elif [[ $5 == "f" ]]
 then
     #run instrumentation on the given file
-    timeout -k 10 $6 python -m dynapyt.instrument.instrument --files $3 --analysis $4
+    timeout -k 10s $6 python -m dynapyt.instrument.instrument --files $3 --analysis $4
 fi
 
 #deactivate vm
