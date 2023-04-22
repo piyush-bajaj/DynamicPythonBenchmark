@@ -19,7 +19,7 @@ URL_FILE=$ROOT_DIR/text/github-url.txt
 # Create project folder to keep all the projects together inside one parent folder
 PROJ_DIR=$ROOT_DIR/../Project
 #if folder already present, then delete the folder
-if [ -d "$PROJ_DIR" ]
+if [[ -d "$PROJ_DIR" ]]
 then
     rm -rf "$PROJ_DIR" 
 fi
