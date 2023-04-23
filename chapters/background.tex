@@ -1,13 +1,19 @@
 In this chapter, we provide an overview of the topics needed to understand the work done in this thesis.
 
 \section{Benchmarks}
+% \islem{there are no citations to any existing benchmarks}
 Benchmarks are tools used to measure the performance and efficiency of computer systems or components.
 They evaluate the speed and quality of hardware, software, and applications to optimize performance, identify bottlenecks, and make informed decisions about system configurations.
 There are many types of benchmarks that measure specific aspects of a computer system, such as processing power, memory speed, disk access time, or application performance.
 Benchmarks simulate real-world workloads and produce scores that can be compared across different systems or components.
+When it comes to evaluating the performance of a software system, there are two primary types of benchmarks: static benchmarks and dynamic benchmarks.
+Static benchmarks involve running a predetermined set of tests on a given system or application, with fixed input parameters and test conditions.
+% These benchmarks are useful for measuring the absolute performance of a system under a specific set of circumstances, and can be used to compare the performance of different systems or implementations against one another.
+Dynamic benchmarks involve running a set of tests that are designed to adapt and respond to the behavior of the system being tested. 
+These benchmarks are typically more complex than static benchmarks.
 % However, benchmark results may not always be reliable due to factors such as hardware compatibility, software optimization, and testing conditions.
-To ensure accuracy and reliability, it is important to use multiple benchmarks, perform tests under different conditions, and interpret results carefully.
-Overall, benchmarks are an essential tool for evaluating computer systems and components, enabling users to optimize performance and make informed decisions about hardware and software configurations.\cite{Benchmarking_2022}
+%To ensure accuracy and reliability, it is important to use multiple benchmarks, perform tests under different conditions, and interpret results carefully.
+Overall, benchmarks are an essential tool for evaluating computer systems and components, enabling users to optimize performance and make informed decisions about hardware and software configurations.\cite{Benchmarking_2022, Benchmarking_2023}
 
 % \section{Docker}
 % \islem{unncessary}
@@ -30,9 +36,9 @@ Overall, benchmarks are an essential tool for evaluating computer systems and co
 Code analysis frameworks are tools used in software development to analyze source code and identify potential issues, vulnerabilities, and errors.
 They help developers to maintain code quality, improve security, and ensure compliance with coding standards and best practices.
 % These frameworks identify issues such as code smells, potential security vulnerabilities, coding errors, and violations of coding standards.
-Popular code analysis frameworks include SonarQube, Checkstyle, ESLint, and Fortify, among others.
+Popular code analysis frameworks include SonarQube, Checkstyle, ESLint, and Fortify, among others. \cite{static_code_analysis_tools}
 These frameworks are valuable tools for software developers as they provide detailed reporting and analysis features, enforce coding standards, identify potential errors, and help to remediate security vulnerabilities.
-Ultimately, code analysis frameworks help developers to write better, more secure, and higher-quality software code.
+Ultimately, code analysis frameworks help developers to write better, more secure, and higher-quality software code. \cite{Code_analysis_1, Code_analysis_2, static_code_analysis}
 In our benchmark, we use two code analysis frameworks.
 We use DynaPyt to perform dynamic analysis and PyCG to generate call graphs using static analysis of code.
 
@@ -43,14 +49,14 @@ DynaPyt provides several features, such as the ability to collect data on functi
 The tool is designed to be easy to use and to work with existing Python code, making it accessible to a wide range of users, from researchers to developers.
 The tool makes it possible to get a detailed understanding of the behavior of Python programs.
 This information can be used to identify performance bottlenecks and optimize the program for better performance.
-With its ease of use, flexibility, and range of features, DynaPyt is a valuable tool for anyone working with Python code.
+With its ease of use, flexibility, and range of features, DynaPyt is a valuable tool for anyone working with Python code. \cite{DynaPyt2022}
 
 \subsection{PyCG}
 Call graphs are useful in various contexts, including profiling and vulnerability analysis.
 Despite Python's popularity, there are very few tools available for generating call graphs, and these tools suffer from effectiveness issues that limit their practicality.
 The article proposes a static approach for call graph generation in Python, which involves computing all assignment relations between program identifiers of functions, variables, classes, and modules through an inter-procedural analysis.
 The resulting call graph is produced by resolving all calls to potentially invoked functions.
-The proposed approach is designed to be efficient and scalable, handling several Python features such as modules, generators, function closures, and multiple inheritance.\cite{PyCG_2021}
+The proposed approach is designed to be efficient and scalable, handling several Python features such as modules, generators, function closures, and multiple inheritance. \cite{PyCG_2021}
 
 % \section{Neural Models for Code Analysis}
 % Neural models or neural networks can be used in code analysis to improve the accuracy and efficiency of code analysis tasks.
