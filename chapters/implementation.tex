@@ -79,8 +79,8 @@ The blue colored text indicates similarities, whereas the red colored text indic
     \caption{Execution of Projects (Similarities and Differences)}
     \label{fig:setup difference}
 \end{figure}
-As can be seen from the Figure \ref{fig:setup difference}, the two commands of \textbf{git clone} and \textbf{pytest} have different arguments depending on the project.
-Furthermore, the project Python Robotics executes an extra command of \textbf{pip install}, since this project provides us with a requirements.txt file.
+As can be seen from the Figure \ref{fig:setup difference}, the two commands of git clone and pytest have different arguments depending on the project.
+Furthermore, the project Python Robotics executes an extra command of pip install, since this project provides us with a requirements.txt file.
 A bash script can accept command-line arguments and use these to execute different commands or same command with different arguments.
 In this work, instead of the command-line arguments we use a text file to provide these arguments to the bash script.
 We create a github-url.txt file, which contains the arguments that the bash script needs.
@@ -96,8 +96,8 @@ https://github.com/flask-api/flask-api.git t flask_api/tests
 
 As seen in the Listing \ref{code:github-url-2}, each line contains a collection of space separated strings.
 The first line contains 4 strings in total whereas the second line contains only 3.
-The first string on both lines is the Git URL of the repository to clone and caters to the difference in the \textbf{git clone} command.
-The last string on both lines, i.e., 4th on line 1 and 3rd on ĺine 2, is the test directory path from the project root and caters to the \textbf{pytest command}.
+The first string on both lines is the Git URL of the repository to clone and caters to the difference in the git clone command.
+The last string on both lines, i.e., 4th on line 1 and 3rd on ĺine 2, is the test directory path from the project root and caters to the pytest command.
 The second string on both lines represents a flag wot indicate the presence or absence of the requirements file.
 The possible values for the flag are \textit{rt} or \textit{t}, where the first specifies the presence and second specifies the absence.
 If the requirement file is present then we specify the path to the requirement file from the project root, as done in line 1 as a third string in the collection. 
@@ -195,13 +195,13 @@ The script is executed from the command-line using the command as shown below.
 The command-line arguments to the script are parsed with the standard Python library of argparse.
 The script first reads the github-url.txt file and stores some information related to the projects.
 The information stored is the mapping from project number to name and the collection of strings arguments as described earlier in section \ref{impl:Automation for Installation}.
-The initial command-line arguments added to the script are \textit{\-\-list}, \textit{\-\-save}, \textit{\-\-test}, \textit{\-\-test\_original} and \textit{\-\-timeout}.
-The argument \textit{\-\-list}, prints the number, name and Git URL of all the projects in the benchmark.
-The argument \textit{\-\-save}, copies the output to the file specified.
-The argument \textit{\-\-test}, executes the test suite of the project number specified to this argument.
+The initial command-line arguments added to the script are \textit{\--\--list}, \textit{\--\--save}, \textit{\--\--test}, \textit{\--\--test\_original} and \textit{\--\--timeout}.
+The argument \textit{\--\--list}, prints the number, name and Git URL of all the projects in the benchmark.
+The argument \textit{\--\--save}, copies the output to the file specified.
+The argument \textit{\--\--test}, executes the test suite of the project number specified to this argument.
 Essentially, the python script triggers a new process using the subprocess module to execute the bash script provided to run the test suite with the arguments provided in github-url.txt.
-The argument \textit{\-\-test\_original} can be combined with \textit{\-\-test} and specifies the tests to be performed on the original copy of the code.  
-Lastly, the argument \textit{\-\-timeout}, kills the subprocess and any command from the bash script that is still running after the seconds specified to this argument.  
+The argument \textit{\--\--test\_original} can be combined with \textit{\--\--test} and specifies the tests to be performed on the original copy of the code.  
+Lastly, the argument \textit{\--\--timeout}, kills the subprocess and any command from the bash script that is still running after the seconds specified to this argument.  
 More arguments are added to this interface when we add the analysis frameworks and LExecutor.
 Each of those arguments executes a new process to execute a specific bash script.
 These arguments are explained in their respective sections later.
@@ -234,11 +234,11 @@ We create a copy of the files for which we add pytest marks and replace the file
 We also add this step of replacing files to the automation script of installation for future installations.
 
 We use the source code of LExecutor and DynaPyt in our benchmark.
-To access interface provides the arguments of \textit{\-\-udapte\_lex\_source} and \textit{\-\-update\_dynapyt\_source} to clone or update the source code of LExecutor and DynaPyt respectively from Git.
+To access interface provides the arguments of \textit{\--\--udapte\_lex\_source} and \textit{\--\--update\_dynapyt\_source} to clone or update the source code of LExecutor and DynaPyt respectively from Git.
 The following sections give more implementation details on the integration of LExecutor, PyCG and DynaPyt and the access interface arguments for them.
 
 \subsection{LExecutor}
-We clone the source code and create a python virtual environment with the dependencies from the bash script when the argument \textit{\-\-update\_lex\_source} is run from the access interface.
+We clone the source code and create a python virtual environment with the dependencies from the bash script when the argument \textit{\--\--update\_lex\_source} is run from the access interface.
 Since LExecutor works in two steps to generate traces files, we provide two bash scripts one for each step.
 The first script instruments the source code of the project and the second script generates trace files by executing the project.  
 The instrumentation is not necessarily done on all the source files, but rather the files that run during execution.
@@ -248,7 +248,7 @@ We also provide a python script to generate this text file, by parsing all the p
 Certain files are excluded from this text file to avoid issues with running test suite.
 However, this text file can be created by any means in the required format.
 The Listing \ref{code:lex_instrument.txt} shows sample entries from the above mentioned text file.
-This text file is specified to \textit{\-\-lex\_file} argument from the access interface.
+This text file is specified to \textit{\--\--lex\_file} argument from the access interface.
 \begin{lstlisting}[caption=lex\_instrument\_all.txt,label=code:lex_instrument.txt,language=Bash]
 grab ./temp/project1/tests/test_grab_pickle.py
 grab ./temp/project1/tests/test_spider_queue.py
@@ -259,14 +259,14 @@ errbot ./temp/project18/errbot/core_plugins/backup.py
 errbot ./temp/project18/errbot/core_plugins/acls.py
 \end{lstlisting}
 
-The argument \textit{\-\-lex\_instrument} triggers the first bash script to instrument the files specified in the above text file for the specified project.
+The argument \textit{\--\--lex\_instrument} triggers the first bash script to instrument the files specified in the above text file for the specified project.
 This script executes the command shown in Listing \ref{code:lex_instrument}.
 The parameter \$\{@:4\} is replaced by the space separated file paths. 
 \begin{lstlisting}[caption=LExecutor Instrumentation,label=code:lex_instrument,language=Bash]
 python -m lexecutor.Instrument --files ${@:4} --iids /DyPyBench/iids.json --validate
 \end{lstlisting}
 
-The second bash script mentioned above is triggered by the option \textit{\-\-lex\_test}, which simply runs the test suite of the specified project using command shown in Listing \ref{code:lex_test}.
+The second bash script mentioned above is triggered by the option \textit{\--\--lex\_test}, which simply runs the test suite of the specified project using command shown in Listing \ref{code:lex_test}.
 The parameter \$3 is replaced by the test suite directory specified in github-url.txt.
 \begin{lstlisting}[caption=LExecutor Test Suite Execution,label=code:lex_test,language=Bash]
 pytest $3
@@ -277,7 +277,7 @@ The instrumentation also generates a iids.json file which is used by the LExecut
 We use the various utility functions provided in the benchmark for gathering trace files, inspecting the output of trace files and training logs of LExecutor.
 
 \subsection{PyCG}
-The argument \textit{\-\-pycg} from the access interface triggers the execution of a bash script which first installs the pycg package to the virtual environment of the specified project.
+The argument \textit{\--\--pycg} from the access interface triggers the execution of a bash script which first installs the pycg package to the virtual environment of the specified project.
 Then the script triggers the PyCG commands as shown in the Listing \ref{code:pycg}.
 Only one of the two commands is executed based on the if condition shown on line 1, which checks if the test suite is a directory or a file.
 The command on line 6 specifies all the .py files in the test suite directory as the entry point for the call graphs.
@@ -295,7 +295,7 @@ As we can see from the Listing \ref{code:pycg}, the output file is generated for
 Utility functions provided in the benchmark are used to collect these JSON output files for further analysis.  
 
 \subsection{DynaPyt}
-The argument \textit{\-\-update\_dynapyt\_source} from the access interface, executes a bash script to clone the source code of DynaPyt.
+The argument \textit{\--\--update\_dynapyt\_source} from the access interface, executes a bash script to clone the source code of DynaPyt.
 Similar to LExecutor, DynaPyt works in two steps,i.e., instrumentation and execution.
 Each of these steps trigger separate bash scripts.
 % DynaPyt, first needs to instrument the source files and then execute these instrumented files to provide the results of analysis.
@@ -308,7 +308,7 @@ The first value is the project name, whereas the second value is the flag indica
 % The possible values for this flag are f for file and d for directory.
 The third value in the space separated entry is the path of directory or file, relative to the root of the project.
 Listing \ref{code:dynapyt_instrument.txt} shows some sample entries from this file.
-This text file is specified to \textit{\-\-dynapyt\_file} argument from the access interface.
+This text file is specified to \textit{\--\--dynapyt\_file} argument from the access interface.
 \begin{lstlisting}[caption=dynapyt\_instrument\_all.txt,label=code:dynapyt_instrument.txt,language=Bash]
 flask-api d ./flask_api
 schedule d ./schedule
@@ -325,7 +325,7 @@ Then, DynaPyt is installed with its dependencies into the virtual environment of
 Finally, the bash script runs the command to instrument the files or folder based on the flag provided by the above mentioned text file.
 The instrumentation is based on the hooks provided by DynaPyt for the particular analysis.
 Therefore, we need to provide the name of the analysis to be performed.
-We provide this with the argument \textit{\-\-dynapyt\_analysis} to the access interface.
+We provide this with the argument \textit{\--\--dynapyt\_analysis} to the access interface.
 The two instrumentation commands are shown in the Listing \ref{code:dynapyt_instrument}. 
 \begin{lstlisting}[caption=DynaPyt Instrumentation,label=code:dynapyt_instrument,language=Bash]
 if [[ $5 == "d" ]]
@@ -342,7 +342,7 @@ fi
 The execution of test suite to perform the dynamic analysis is done using another bash script.
 This script, first create an entry file to run all the tests using pytest module with the parameter import-mode set to importlib.
 The Listing \ref{code:run_all_test.py} shows a sample of the entry file created above.
-We then trigger the execution of tests with \textit{\-\-run\_analysis} module provided by dynapyt, specifiying the above entry file and the name of the analysis.
+We then trigger the execution of tests with \textit{\--\--run\_analysis} module provided by dynapyt, specifiying the above entry file and the name of the analysis.
 Listing \ref{code:dynapyt_test} shows the creation of the entry file on line 1 and execution with run\_analysis on line 3.
 \begin{lstlisting}[caption=DynaPyt Execution Entry File,label=code:run_all_test.py,language=Python]
 import pytest
@@ -363,4 +363,5 @@ We use the function pre\_call hook provided by DynaPyt and create the call graph
 A key in this dictionary is the fully qualified names of the caller method and the value for this key is a list of fully qualified names of called methods.
 At the end of the execution, i.e., after the all the test cases are run we output the dictionary to a JSON file.
 A python utility script provide by the benchmark collects all the JSON files from the projects that were dynamically analyzed.
-The code for this analysis is shown in Listing \ref{code:CallGraphAnalysis}.
+% Listing \ref{code:pre_call_hook} shows the logic where the called function.
+The complete code for the analysis is shown in the Listing \ref{code:CallGraphAnalysis}.
