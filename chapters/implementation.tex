@@ -3,8 +3,14 @@ We use various tools and libraries to accomplish the goals of ready-to-run, read
 In the following sections, we describe the steps we perform and the tools and libraries we use.
 The source code of this implementation is present on GitHub at \url{https://github.com/sola-st/master-thesis-piyush-bajaj/tree/automation}.
 
-% As seen from the Figure \ref{fig:implementaio_flow}, 
-We start our implementation with installation and setup of sample projects from the awesome-python corpus (Section \ref{impl:Sample Projects}).
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/implementation/implementaion_flow.png}
+    \caption{Implementation Flow}
+    \label{fig:implementation_flow}
+\end{figure}
+Figure \ref{fig:implementation_flow} shows the flow of implementation steps for the creation of DyPyBench. 
+We start with installation and setup of sample projects from the awesome-python corpus (Section \ref{impl:Sample Projects}).
 With these sample projects, we create an automation script to gather a list of 50 python projects for our benchmark (Section \ref{impl:Automation for Installation}).
 We then create a Docker image for our benchmark, and use the list of projects to install and setup the execution environment automatically (Section \ref{impl:Docker Image}).
 With the Docker environment ready with the projects, we create a command-line access interface to the benchmark (Section \ref{impl:Access Interface}).   
