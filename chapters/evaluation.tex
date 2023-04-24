@@ -5,6 +5,7 @@ In this chapter we discuss the experimental evaluation of DyPyBench. We do so by
 \textbf{RQ2:} How efficient is our benchmark to generate (valid and good) training data for the neural models?
 
 \textbf{RQ3:} How effective is DyPyBench to aid a comparison of static and dynamic call graph analysis?
+
 Before answering the above questions, we detail the experimental setup for DyPyBench, neural model training and the call graph generation using static and dynamic analysis frameworks.
 We further explain the evaluation criteria for measuring the effectiveness of DyPyBench.
 % for the neural model and the analysis frameworks.
@@ -66,7 +67,29 @@ The imprecision occurs when one callee in DynaPyt matches to two or more callees
 \section{Results}
 
 \subsection{Effectiveness of Test Suite}
+Addressing \textbf{RQ1}, we find that DyPyBench provides 45086 test cases and the running time of test suites is between 0.02 seconds and 1362.86 seconds.
+Overall, 41451 test cases pass where as 429 fail.
+The successful execution of such a high number of test cases makes our benchmark dynamic in nature.
+The number of projects which have 0 failed test cases in DyPyBench is 31, whereas 13 others have failed tests between 1 and 10.
+The number of test cases in each project varies from 1 to 10552.
+Figure \ref{fig:successful_tests} shows the percentage of passed test cases in all projects of DyPyBench.
+We see that 41 projects have more than 90\% passed test cases, while 46 have 80\% or more passed test cases.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/evaluation/perc_passed_tests.png}
+    \caption[Passed Test Case Percentage]{\label{fig:successful_tests}Percentage of Passed Tests in DyPyBench Projects}
+\end{figure}
 
+Since the execution of the project is important for dynamic analysis, the high pass percentage of 91.93\% for all tests cases is an advantage for efficient analysis.
+The running time for each project is shown in Table \ref{fig:test_run_times}.
+The total run time for all the projects in DyPyBench is 3568.86 seconds.
+There are 39 projects which run the test suite within 50 seconds.
+\begin{figure}[ht]
+    \centering
+    % \includegraphics[width=0.4\linewidth,height=1.3\linewidth]{figures/evaluation/test_runtime.png}
+    \includegraphics[width=1\linewidth]{figures/evaluation/tests_runtime2.png}
+    \caption[Test Suite Run Time]{\label{fig:test_run_times}Test Suite Run Time in DyPyBench Projects}
+\end{figure}
 
 \subsection{Effectiveness for Neural Model}
 Addressing \textbf{RQ2}, we find that DyPyBench contributes 547,830 new data points. 
@@ -125,3 +148,4 @@ Since, the neural model we start with is a pre-trained model, the accuracy range
 
 
 \subsection{Effectiveness for Analysis Frameworks}
+Addressing \textbf{RQ3}, we find that 
