@@ -1,16 +1,63 @@
 In this chapter we discuss the experimental evaluation of DyPyBench. We do so by answering the following questions:
-\begin{itemize}
-    \item What is the total time needed to run the installation of all projects and individual projects into the benchmark?
-    \item What are the differences in installation of different projects, apart from libraries and dependencies? Is the flow similar or too much different.
-    \item How much time is taken to run test suites of individual projects and all projects together? Are there differences in running the tests using pytest?
-    \item Application analysis of DyPyBench using DynaPyt
-    \begin{itemize}
-        \item How does the dynamic and static call graphs vary for different python projects?
-        \item Can we use the above to improve the static call graph generation ?
-    \end{itemize}
-    \item Application analysis of DyPyBench using LExecutor
-    \begin{itemize}
-        \item How much improvement can we bring to the LExecutor framework to run the unrunnable python code ?
-        \item How many unique use events our project contributes to the LExecutor ? Contribution of each project and whole benchmark.
-    \end{itemize}
-\end{itemize}
+
+\textbf{RQ1:} How effective are the test suites integrated into various python projects?
+
+\textbf{RQ2:} How efficient is our benchmark to generate training data for the neural models?
+
+\textbf{RQ3:} How effective is DyPyBench to aid a comparison of static and dynamic call graph analysis?
+
+Before answering the above questions, we detail the experimental setup for DyPyBench, neural model training and the call graph generation using static and dynamic analysis frameworks.
+We further explain the evaluation criteria for measuring the effectiveness of DyPyBench for the neural model and the analysis frameworks.
+Finally, we discuss the results of the evaluation.
+
+DyPyBench consists of 50 open-source python projects from different application domains list in Table \ref{table:50_installed_projects}.
+We download the source code of these projects along with their test suite into a Docker image which contains the neural model (LExecutor) and the static (PyCG) and dynamic (DynaPyt) analysis frameworks.
+We use these integrated test suites to execute the projects and collect various statistics and data.
+
+\section{Experimental Setup for LExecutor}
+We use DyPyBench to generate the training data for the neural model LExecutor.
+LExecutor instruments the files and then generates traces from these files during run-time.
+LExecutor provides its own instrumenter, and the accepts mandatory two arguments to perform instrumentation.
+The first is a JSON file to store the mapping of iids and the second is files to instrument.
+To generate the trace files, we execute the test suite consisting of the instrumented files.
+The trace files from the above step are used to generate training data in the form of .pt files for the neural model.
+For this task, LExecutor provides a module PrepareData which accepts the trace files and the JSON file created in the instrumentation step.
+To generate the .pt file, LExecutor works in two modes of abstraction, fine-grained and coarse-grained.
+At a time only one mode runs and this can be set in the Hyperparameters.py file.
+The Listing \ref{code:Hyperparameters.py} shows the possible entries for the abstraction mode.
+In this work, we generate the data using the two abstraction modes shown on line 1 and line 2 in the Listing \ref{code:Hyperparameters.py}. 
+The PrepareData module also generates a validation file in the .pt format.
+The trace entries are split into training and validation data based on the split provided in the Hyperparameters.py file as shown in Listing \ref{code:Hyperparameters.py} on line 3.
+\begin{lstlisting}[caption=Abstraction Modes in LExecutor,label=code:Hyperparameters.py,language=Python]
+    value_abstraction = "fine-grained"
+    value_abstraction = "coarse-grained-deterministic"
+    perc_train = 0.95
+\end{lstlisting}
+
+\section{Experimental Setup for PyCG}
+PyCG generates call graph based on static analysis of code.
+The call graphs is created in the JSON format, where the key is caller and the value is a list of called functions.
+PyCG accepts 3 arguments, the package contains the source files, the entry point files and the output file save the JSON.
+In DyPyBench, we provide the package as source code cloned from Git and the test files as entry point files for each project.
+The execution of the PyCG module then provides us with the call graph in the mentioned JSON format.
+
+\section{Experimental Setup for DynaPyt}
+DynaPyt instruments the files and the execution of the instrumented code provides us with the dynamic analysis.
+DynaPyt, has its own modules for instrumentation and analysis.
+We first use the instrumentation module to instrument the source files.
+To run the analysis, we create a entry file to run all the test files using the main function provided by the pytest module.
+Additionally, we provide the option of import-mode set to importlib to the pytest.main function.
+We add the Call Graph analysis is DynaPyt with the function pre\_call hook, and specify this analysis to the analysis module of DynaPyt.
+The analysis generates the output in the JSON format, with the key as caller and the value as a list of called functions.
+The JSON is stored in a file at the end of the execution of the analysis.
+Listing \ref{code:CallGraphAnalysis} provides the code for the analysis written in DynaPyt.
+
+\section{Evaluation Criteria}
+The evaluation criteria we use for measuring the effectiveness of DyPyBench for neural model is the number of data points we collect and the accuracy of the model.
+The number of data point refers to the number of unique use-value events used by LExecutor to train and validate the neural model.
+The accuracy of the model refers to the how correctly can the model predict the missing input value to execute the arbitrary code using LExecutor. 
+The evaluation criteria for effectiveness of DyPyBench for analysis frameworks is the data for statistical comparison of the static and dynamic analysis.
+With the call graphs from DynaPyt and PyCG, we compare the number of matching and non-matching callers and callees in both.
+While PyCG provides the fully classified names of the callees, DynaPyt only has prints the partially qualified names.
+This leads to an imprecision for DynaPyt, where one value in the list of callees represents multiple values from the list in PyCG.
+We also provide this imprecision in the statistical comparison.
