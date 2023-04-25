@@ -4,7 +4,7 @@ In this chapter we discuss the experimental evaluation of DyPyBench. We do so by
 
 \textbf{RQ2:} How efficient is our benchmark to generate (valid and good) training data for the neural models?
 
-\textbf{RQ3:} How effective is DyPyBench to aid a comparison of static and dynamic call graph analysis?
+\textbf{RQ3:} How effective is DyPyBench in providing data to aid a comparison of static and dynamic call graph?
 
 Before answering the above questions, we detail the experimental setup for DyPyBench, neural model training and the call graph generation using static and dynamic analysis frameworks.
 We further explain the evaluation criteria for measuring the effectiveness of DyPyBench.
@@ -148,4 +148,6 @@ Since, the neural model we start with is a pre-trained model, the accuracy range
 
 
 \subsection{Effectiveness for Analysis Frameworks}
-Addressing \textbf{RQ3}, we find that 
+Addressing \textbf{RQ3}, we find that DyPyBench provides 36326 caller functions for comparison and 62.13\% of callers in DynaPyt match with PyCG callers.
+The matching percentage of PyCG callers in DynaPyt is 10.7\%.
+The low percentage is due to the generation stratergy of PyCG, where each callee is also presented as a key.
