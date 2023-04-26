@@ -1,0 +1,19 @@
+Python has evolved from a language to write small scripts to one of the most popular programming languages.
+% It is heavily used in various domains, e.g., machine learning, data analysis, and server-side web applications.
+Besides being popular, Python also is a very dynamic language that does not require the programmer to provide type annotations and allows object structures to be modified during execution.
+These two properties make Python a prime candidate for dynamic program analyses to detect programming errors, security vulnerabilities, and performance issues.
+To test and evaluate dynamic analyses and runtime systems, researchers and practitioners commonly rely on benchmark suites.
+% For example, the DaCapo benchmark for Java, the SPEC CPU benchmark for C/C++, and ScalaBench for Scala offer such benchmarks.
+Unfortunately, there currently is no comprehensive benchmark of executable Python projects, which hampers the development of dynamic analyses.
+
+In this work, we present DyPyBench, a dynamic benchmark of executable Python software.
+The benchmark is large-scale, diverse, versatile, long-term, ready-to-analyze and ready-to-run and is useful for a wide range of applications. 
+The 50 projects in DyPyBench provide test suites that help to perform dynamic analyses.
+We provide this benchmark as a Docker image which makes it easier to use for researchers and practitioners.
+The benchmark also includes three tools for code analysis tasks, namely, LExecutor, DynaPyt and PyCG.
+
+We evaluate the usage of the benchmark with the three tools integrated in DyPyBench.
+Our benchmark provides 41451 successful test cases for dynamic analyses.
+The benchmark is used to generate 547830 data points for neural model training in LExecutor, which provide an accuracy in the range of 71.86\% and 93.67\%.
+Furthermore, we use the benchmark to generate static and dynamic call graphs using the tools PyCG and DynaPyt respectively.
+The comparison of these call graphs show us a match of 3147 caller functions and 2938 callees despite the limitations of DynaPyt and PyCG.
