@@ -22,7 +22,9 @@
 \usepackage[thickspace,thinqspace]{SIunits}     %
 \usepackage[plainpages=false,pdfpagelabels]{hyperref}    % enable hyperlinks in pdf/ps Docs
 \usepackage{listings}                           % to embed source code
-
+\usepackage{longtable}  %for use with long tables
+\usepackage{biblatex}
+\bibliography{report.bib}
 % -------------------------------------------------------------------------------------------------
 % Select type of thesis
 % -------------------------------------------------------------------------------------------------
@@ -61,8 +63,8 @@
 \chapter*{Abstract}
 Short summary of thesis.
 
-\chapter*{Zusammenfassung}
-Kurzfassung der Arbeit.
+% \chapter*{Zusammenfassung}
+% Kurzfassung der Arbeit.
 
 % Table of contents
 \tableofcontents
@@ -75,17 +77,21 @@ Kurzfassung der Arbeit.
 \label{s:Introduction}
 \input{chapters/introduction.tex}
 
-\chapter{Background and Motivation}
+\chapter{Background}
 \label{s:Background}
 \input{chapters/background.tex}
 
-\chapter{Methodology}
-\label{s:Methodology}
+\chapter{Approach}
+\label{s:Approach}
 \input{chapters/approach.tex}
 
 \chapter{Implementation}
 \label{s:Implementation}
-% \input{chapters/implementation.tex}
+\input{chapters/implementation.tex}
+
+\chapter{Experimental Setup}
+\label{s:Experimental Setup}
+\input{chapters/experimental setup.tex}
 
 \chapter{Evaluation}
 \label{s:Evaluation}
@@ -97,7 +103,7 @@ Kurzfassung der Arbeit.
 
 \chapter{Conclusion}
 \label{s:Conclusion}
-% \input{chapters/conclusion.tex}
+\input{chapters/conclusion.tex}
 
 \appendix
 \chapter{Tables}
@@ -234,7 +240,8 @@ Kurzfassung der Arbeit.
 % Bibliography
 % -------------------------------------------------------------------------------------------------
 \addcontentsline{toc}{chapter}{Bibliography}
-\bibliography{report}
+% \bibliography{report}
+\printbibliography
 
 \input{legal_issues}
 
