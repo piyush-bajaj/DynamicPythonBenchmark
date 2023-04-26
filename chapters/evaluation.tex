@@ -6,68 +6,8 @@ In this chapter we discuss the experimental evaluation of DyPyBench. We do so by
 
 \textbf{RQ3:} How effective is DyPyBench in providing data to aid a comparison of static and dynamic call graph?
 
-Before answering the above questions, we detail the experimental setup for DyPyBench, neural model training and the call graph generation using static and dynamic analysis frameworks.
-We further explain the evaluation criteria for measuring the effectiveness of DyPyBench.
-% for the neural model and the analysis frameworks.
-Finally, we discuss the evaluation and the results.
-
-DyPyBench consists of 50 open-source python projects from different application domains list in Table \ref{table:50_installed_projects}.
-We download the source code of these projects along with their test suite into a Docker image which contains the neural model (LExecutor) and the static (PyCG) and dynamic (DynaPyt) analysis frameworks.
-We use these integrated test suites to execute the projects and collect various statistics and data.
-
-\section{Experimental Setup for LExecutor}
-We use DyPyBench to generate the training data for the neural model LExecutor.
-LExecutor instruments the files and then generates traces from these files during run-time.
-LExecutor provides its own instrumenter, and the accepts mandatory two arguments to perform instrumentation.
-The first is a JSON file to store the mapping of iids and the second is files to instrument.
-To generate the trace files, we execute the test suite consisting of the instrumented files.
-The trace files from the above step are used to generate training data in the form of .pt files for the neural model.
-For this task, LExecutor provides a module PrepareData which accepts the trace files and the JSON file created in the instrumentation step.
-To generate the .pt file, LExecutor works in two modes of abstraction, fine-grained and coarse-grained.
-At a time only one mode runs and this can be set in the Hyperparameters.py file.
-The Listing \ref{code:Hyperparameters.py} shows the possible entries for the abstraction mode.
-In this work, we generate the data using the two abstraction modes shown on line 1 and line 2 in the Listing \ref{code:Hyperparameters.py}. 
-The PrepareData module also generates a validation file in the .pt format.
-The trace entries are split into training and validation data based on the split provided in the Hyperparameters.py file as shown in Listing \ref{code:Hyperparameters.py} on line 3.
-\begin{lstlisting}[caption=Abstraction Modes in LExecutor,label=code:Hyperparameters.py,language=Python]
-    value_abstraction = "fine-grained"
-    value_abstraction = "coarse-grained-deterministic"
-    perc_train = 0.95
-\end{lstlisting}
-
-\section{Experimental Setup for PyCG}
-PyCG generates call graph based on static analysis of code.
-The call graphs is created in the JSON format, where the key is caller and the value is a list of called functions.
-PyCG accepts 3 arguments, the package contains the source files, the entry point files and the output file save the JSON.
-In DyPyBench, we provide the package as source code cloned from Git and the test files as entry point files for each project.
-The execution of the PyCG module then provides us with the call graph in the mentioned JSON format.
-
-\section{Experimental Setup for DynaPyt}
-DynaPyt instruments the files and the execution of the instrumented code provides us with the dynamic analysis.
-DynaPyt, has its own modules for instrumentation and analysis.
-We first use the instrumentation module to instrument the source files.
-To run the analysis, we create a entry file to run all the test files using the main function provided by the pytest module.
-Additionally, we provide the option of import-mode set to importlib to the pytest.main function.
-We add the Call Graph analysis is DynaPyt with the function pre\_call hook, and specify this analysis to the analysis module of DynaPyt.
-The analysis generates the output in the JSON format, with the key as caller and the value as a list of called functions.
-The JSON is stored in a file at the end of the execution of the analysis.
-Listing \ref{code:CallGraphAnalysis} provides the code for the analysis written in DynaPyt.
-
-\section{Evaluation Criteria}
-We use different evaluation criteria for each of the three questions mentioned above.
-First, the criteria to measure the dynamic nature of DyPyBench is the statistics of executing test suites.
-These include the number of passed and failed test cases and also the running time of the test suites.
-Second, for measuring the effectiveness of DyPyBench for neural model the criteria is the number of data points we collect and the accuracy of the model.
-The number of data point refers to the number of unique use-value events used by LExecutor to train and validate the neural model.
-The accuracy of the model refers to the how correctly can the model predict the missing input value to execute the arbitrary code using LExecutor. 
-Lastly, the criteria for measuring the effectiveness for analysis frameworks is the statistics of static and dynamic call graph comparisons.
-The statistics include the imprecision and number of matching and non-matching callers and callees.
-The imprecision occurs when one callee in DynaPyt matches to two or more callees in PyCG, due the implementation differences of the two frameworks.
-
-\section{Results}
-
-\subsection{Effectiveness of Test Suite}
-Addressing \textbf{RQ1}, we find that DyPyBench provides 45086 test cases and the running time of test suites is between 0.02 seconds and 1362.86 seconds.
+\section{RQ1: Effectiveness of Test Suite}
+We find that DyPyBench provides 45086 test cases and the running time of test suites is between 0.02 seconds and 1362.86 seconds.
 Overall, 41451 test cases pass where as 429 fail.
 The successful execution of such a high number of test cases makes our benchmark dynamic in nature.
 The number of projects which have 0 failed test cases in DyPyBench is 31, whereas 13 others have failed tests between 1 and 10.
@@ -83,7 +23,7 @@ We see that 41 projects have more than 90\% passed test cases, while 46 have 80\
 Since the execution of the project is important for dynamic analysis, the high pass percentage of 91.93\% for all tests cases is an advantage for efficient analysis.
 The running time for each project is shown in Table \ref{fig:test_run_times}.
 The total run time for all the projects in DyPyBench is 3568.86 seconds.
-There are 39 projects which run the test suite within 50 seconds.
+There are 39 projects which run the test suite within 50 seconds, whereas 4 projects have a run time greater than 200 seconds.
 \begin{figure}[ht]
     \centering
     % \includegraphics[width=0.4\linewidth,height=1.3\linewidth]{figures/evaluation/test_runtime.png}
@@ -91,8 +31,10 @@ There are 39 projects which run the test suite within 50 seconds.
     \caption[Test Suite Run Time]{\label{fig:test_run_times}Test Suite Run Time in DyPyBench Projects}
 \end{figure}
 
-\subsection{Effectiveness for Neural Model}
-Addressing \textbf{RQ2}, we find that DyPyBench contributes 547,830 new data points. 
+\paragraph{Overall, we find that the included test suites makes it easier to run the projects which is an important requirement to make a benchmark dynamic. The successful execution of a high number of test cases and the lower running time makes DyPyBench, a dynamic benchmark readily available for use.}
+
+\section{RQ2: Effectiveness for Neural Model}
+DyPyBench contributes 547,830 new data points for LExecutor. 
 This results in the model accuracy between 71.86\% and 93.67\% after training the model.
 
 The new data points we found are generated from 37 projects in our benchmark and amount to nearly 2.5 times the data points used by LExecutor.
@@ -120,7 +62,7 @@ For each of the validation data-set we perform 2 experiments, one with the abstr
 \end{figure}
 
 Figure \ref{fig:lex_random} shows how the accuracy of the model varies with the number of epochs when the first validation data-set mentioned above is used.
-Each line in the Figure \ref{fig:lex_random} shows the accuracy for top-n predictions for the same input.
+Each line in the Figure \ref{fig:lex_random} shows the accuracy for top-n predictions for the same input variable.
 As can be seen, the accuracy for top-5 is the best followed by top-4 and so on.
 We mainly consider the accuracy of the first prediction, which starts at nearly 90\% and improves up to 93\% for both fine and coarse grained.
 
@@ -138,7 +80,6 @@ In this case, the accuracy ranges between the previous two experiments having th
 For the first and second validation data-set, we get the best model in the 7th and 8th epoch.
 However, for the third data-set the best model is found at the 4th epoch itself.
 Since, the neural model we start with is a pre-trained model, the accuracy range we found is similar to the one specified by LExecutor.
-
 \begin{figure}[ht]
     \centering
     \subfigure[Fine-grained]{\includegraphics[width=0.4\linewidth]{figures/evaluation/lex_project_fine.png}}
@@ -146,8 +87,54 @@ Since, the neural model we start with is a pre-trained model, the accuracy range
     \caption[Accuracy vs Epoch (Project Split)]{\label{fig:lex_project}Accuracy vs Epoch (Project Split) }
 \end{figure}
 
+\paragraph{The quantity and quality of data is an important aspect for training neural network models. The higher quantity does not guarantee the quality of data. DyPyBench, provides projects which generates a large quantity of data and we evaluate the quality by calculating the accuracy. We find DyPyBench to be a good and valid data generator for LExecutor based on the amount of data generated and the accuracy maintained by the model.}
 
-\subsection{Effectiveness for Analysis Frameworks}
-Addressing \textbf{RQ3}, we find that DyPyBench provides 36326 caller functions for comparison and 62.13\% of callers in DynaPyt match with PyCG callers.
-The matching percentage of PyCG callers in DynaPyt is 10.7\%.
-The low percentage is due to the generation stratergy of PyCG, where each callee is also presented as a key.
+\section{RQ3: Effectiveness for Analysis Frameworks}
+We find that DyPyBench provides 10799 key data points from DynaPyt and PyCG combined for comparison of call graphs.
+These key data points refer to the callers and are generated from 20 projects in DyPyBench.
+From the above, 6060 data points belongs to PyCG, and 4739 are from PyCG.
+With a manual verification of these data points, we find that PyCG provides a key for every entry in the list of callees, resulting in a higher number of keys in PyCG output.
+However, when we compare the key data points in DynaPyt with PyCG there are no matches found.
+Manually checking the this provides us the insight that the keys in PyCG have starting point as the root of the project while those in DynaPyt start from the root of the benchmark.
+We fix this issue, by replacing the keys in DynaPyt with the appropriate values.
+After the above fix, we get 3147 key data points present in both.
+66.41\% of keys in DynaPyt match with PyCG, while 51.93\% in PyCG are present in DynaPyt.
+Figure \ref{fig:caller counts}, shows the distribution of the keys amongst DynaPyt and PyCG.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.3\linewidth]{figures/evaluation/callercounts.png}
+    \caption[Distribution of Callers]{\label{fig:caller counts}Distribution of Callers }
+\end{figure}
+
+Next, we compare the number of value data points, which represent the callees.
+We only compare the callees which are a part of the matching callers or keys.
+There are a total of 16493 value data points provided by DyPyBench for comparison, out of which 10318 belong to DynaPyt and 6175 to PyCG.% of callees for the same callers
+The high number of values from DynaPyt is due to multiple callee entries of the same function, but from a different object.
+PyCG cannot detect callees based on objects since, it generates the call graphs from static analysis.
+Another factor that we saw from the manual inspection was the callee entries in DynaPyt for some private functions which PyCG is not able to provide. 
+A direct string comparison of the value data points in DynaPyt with PyCG shows a match of 1691 values.
+This match contributes to 16.38\% match from DynaPyt and 27.38\% from PyCG.
+With further manual verification, we find that certain data points essentially representing the same values do not match with a direct string comparison.
+Figure \ref{fig:unmatched_value_strings} shows the differences of string in value data points from DynaPyt and PyCG.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\linewidth]{figures/evaluation/string_compare.png}
+    \caption[Unmatched Same Callees]{\label{fig:unmatched_value_strings}Unmatched Same Callees }
+\end{figure}
+
+Since the callees shown above are essentially the same, we include these in our comparison.
+The number of matches in the value data points is now increased to 2938, which significantly increases the percentage contribution of PyCG matches to 47.58\% and DynaPyt to 28.47\%. 10182
+As mentioned before, DynaPyt contains multiple entries for callees with different objects, we remove duplicate entries of some of callees with similar patterns.
+Firstly, we replace the pattern \verb|<decouple.AutoConfig object at 0x7f94786106a0>| by \textit{decouple.AutoConfig} and pop the duplicate entries of \verb|decouple.AutoConfig|.
+Second, we replace the pattern \\\verb|BoundMethodWeakref(<tests.test_saferef._Sample1 object at 0x7f73338edb10>.x)| by \\\verb|BoundMethodWeakref(<tests.test_saferef._Sample1>.x)| and pop its duplicate entries.
+The above modification of values data points leads to decrease in total data points to 16358 which is a decrease of 136 callees from DynaPyt.
+This results in a slight increase in the matching percentage of callees from DynaPyt to 28.85\%.
+% However, we see that there are still patterns which should be included but are not
+Figure \ref{fig:callee_counts} shows the distribution of the values amongst DynaPyt and PyCG for the matched keys.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.3\linewidth]{figures/evaluation/calleecounts.png}
+    \caption[Distribution of Callees]{\label{fig:callee_counts}Distribution of Callees}
+\end{figure}
+
+\paragraph{Static and Dynamic Analysis are important tools for code analysis. A comparison of the two provides us an indication of how efficient is one over the other. DyPyBench helps with a comparison of call graphs generated using static and dynamic analysis. Although, DyPyBench provides comparable data from both approaches for call graphs, there are still certain errors present which would futher increase the percentage of matching callees and callers.}
