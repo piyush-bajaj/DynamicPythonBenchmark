@@ -1,13 +1,14 @@
-In this work, we describe the need for dynamic benchmarks and the lack of such a benchmark in Python.
-We then create DyPyBench with 50 projects which is large-scale, diverse, ready-to-run, ready-to-analyze, long-term and extensible.
-We export this benchmark as a readily available Docker image to be used by researchers and developers. 
+This work highlights the importance of dynamic benchmarks and identifies the lack of such benchmarks in Python.
+To address this gap, we present DyPyBench, a dynamic benchmark comprising 50 diverse and readily usable projects.
+Our benchmark is ready-to-run, extensible, and ready-to-analyze for researchers and developers.
 
-We evaluate DyPyyBench using tools such as LExecutor, DynaPyt and PyCG.
-The benchmark provides 41,451 successful test cases to execute projects.
-With the test cases, the benchmark generate 547,830 new data points for LExecutor and provides an accuracy between 71.86\% and 93.67\% for predicting the input values to execute arbitrary code.
-DyPyBench also generates data points for comparison of static and dynamic call graph analysis using DynaPyt and PyCG.
-We achieve the matching percentage of 51.93\% and 66.41\% for callers and 47.58\% and 28.58\% for callees in PyCG and DynaPyt respectively.  
+To evaluate the effectiveness of DyPyBench, we use various tools such as LExecutor, DynaPyt, and PyCG.
+Our benchmark provides 41,451 successful test cases, which generate 547,830 data points for LExecutor.
+The accuracy of the neural model for predicting input values to execute arbitrary code snippets ranges between 71.86\% and 93.67\%.
+Additionally, DyPyBench generates data points for comparing static and dynamic call graph analysis using DynaPyt and PyCG.
+We achieve matching percentages of 51.93\% and 66.41\% for callers and 47.58\% and 28.58\% for callees in PyCG and DynaPyt, respectively.
 
-The key insight of our approach is the usefulness of the dynamic benchmark for usage with different code analysis tools.
-By providing a Docker image with the integrated analysis tools, we make it easier for the benchmark to be readily available for use.
-We envision the usage of DyPyBench as a benchmark framework for dynamic analysis of Python projects to generate data aiding the research in code analysis tasks.
+The key insight of our is that DyPyBench is a versatile benchmark framework that can be used with various code analysis tools.
+By providing a readily available Docker image with integrated analysis tools, we make it easier for researchers and developers to use DyPyBench.
+
+We envision DyPyBench as a benchmark framework for dynamic analysis of Python projects that can generate valuable data to aid research in code analysis tasks.
