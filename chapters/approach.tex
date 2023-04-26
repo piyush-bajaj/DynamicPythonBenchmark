@@ -1,4 +1,6 @@
-In this chapter, we describe the approach which we have adopted to create the dynamic benchmark of executable python software. The overall workflow of the approach is shown in the Figure \ref{fig:overall_approach}.
+In this chapter, we describe the approach which we have adopted to create the dynamic benchmark of executable python software.
+We also explain the evaluation metric we use to measure the effectiveness of DyPyBench.
+The overall workflow of the approach is shown in the Figure \ref{fig:overall_approach}.
 
 \begin{figure}[ht]
 \centering
@@ -6,7 +8,7 @@ In this chapter, we describe the approach which we have adopted to create the dy
 \caption[Approach]{\label{fig:overall_approach}Overall Approach of DyPyBench}
 \end{figure}
 
-As can be seen from the figure \ref{fig:overall_approach}, we first apply the selection criteria to the corpus of python projects to select a number of projects (Section \ref{approach:project selection}.
+As can be seen from the Figure \ref{fig:overall_approach}, we first apply the selection criteria to the corpus of python projects to select a number of projects (Section \ref{approach:project selection}) to generate a list.
 The list of projects is then used to prepare the benchmark by installing the projects and their dependencies using automation (Section \ref{approach:benchmark preparation}).
 We proceed by integrating the two analysis frameworks, DynaPyt and PyCG (Section \ref{approach:analysis framework}). 
 We also integrate LExecutor into the benchmark (Section \ref{approach:LExecutor}).
@@ -213,3 +215,21 @@ Another advantage of using Docker is the simplicity of modifying the benchmark a
 For example, one can add another analysis tool or change some projects in the benchmark or add new test cases for some projects.
 All of these can be done by importing the Docker image and making the changes as per the needs of the developer or a user.
 This makes our benchmark easily extensible.
+
+\section{Evaluation Metric}
+In order to evaluate the benchmark created using our approach, we use the following metrics.
+Firstly, we evaluate the dynamic nature of the benchmark.
+To do so, we perform some statistical analysis on the integrated test suites of projects in the benchmark.
+These include running the test suites to find the running time, number of passed and failed test cases for each project and their combination, where running time refers to executing the entire test suite including failed, passed, skipped, xfailed, xpassed and error cases.
+Secondly, the efficiency for generating data for neural models is evaluated.
+This is done by comparing the number of data points collected and the range of validation accuracy for the model.
+Data points in the case of LExecutor refers to the unique use-value events which are used by the neural model to train and validate.
+The accuracy for the model is how correctly the model predicts the missing input values using LExecutor for the validation data.
+We train the model using the data points we generate and compare the validation accuracy to the original data points.
+Lastly, we evaluate the effectiveness to provide data for comparison of static and dynamic analysis for call graphs.
+This is done with the help of some statistical comparison of the call graphs generated using the projects in the benchmark.
+These comparisons include the number of matching callers and callees in DynaPyt and PyCG.
+The match refers to the matching string values of callers as keys and callees as values in DynaPyt and PyCG. 
+Furthermore, the percentage match with respect to DynaPyt and PyCG is also calculated.
+
+Overall, these evaluation metrics help us to understand the dynamic nature of the benchmark and its usefulness in usage for generating data to answer some research questions on code analysis.
