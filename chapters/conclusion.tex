@@ -1,0 +1,13 @@
+In this work, we describe the need for dynamic benchmarks and the lack of such a benchmark in Python.
+We then create DyPyBench with 50 projects which is large-scale, diverse, ready-to-run, ready-to-analyze, long-term and extensible.
+We export this benchmark as a readily available Docker image to be used by researchers and developers. 
+
+We evaluate DyPyyBench using tools such as LExecutor, DynaPyt and PyCG.
+The benchmark provides 41,451 successful test cases to execute projects.
+With the test cases, the benchmark generate 547,830 new data points for LExecutor and provides an accuracy between 71.86\% and 93.67\% for predicting the input values to execute arbitrary code.
+DyPyBench also generates data points for comparison of static and dynamic call graph analysis using DynaPyt and PyCG.
+We achieve the matching percentage of 51.93\% and 66.41\% for callers and 47.58\% and 28.58\% for callees in PyCG and DynaPyt respectively.  
+
+The key insight of our approach is the usefulness of the dynamic benchmark for usage with different code analysis tools.
+By providing a Docker image with the integrated analysis tools, we make it easier for the benchmark to be readily available for use.
+We envision the usage of DyPyBench as a benchmark framework for dynamic analysis of Python projects to generate data aiding the research in code analysis tasks.
