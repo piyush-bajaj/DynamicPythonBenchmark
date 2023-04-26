@@ -1,0 +1,108 @@
+In this chapter, we explain in detail about the experimental setup of DyPyBench for the different usage scenarios.
+
+DyPyBench consists of 50 open-source python projects from different application domains list in Table \ref{table:50_installed_projects}.
+We download the source code of these projects along with their test suite into a Docker image which contains the neural model (LExecutor) and the static (PyCG) and dynamic (DynaPyt) analysis frameworks.
+We use the integrated test suites to execute the projects and collect various statistics and data.
+In the below sections, we explain the setup for LExecutor, PyCG and DynaPyt.
+
+\section{LExecutor}
+We use DyPyBench to generate the training data for the neural model of LExecutor.
+LExecutor instruments the files and then generates traces from these files during run-time.
+LExecutor provides its own instrumenter, and the accepts mandatory two arguments to perform instrumentation.
+The first is a JSON file to store the mapping of iids and the second is files to instrument.
+To generate the trace files, we execute the test suite consisting of the instrumented files.
+The trace files from the above step are used to generate training data in the form of .pt files for the neural model.
+For this task, LExecutor provides a module PrepareData which accepts the trace files and the JSON file created in the instrumentation step.
+To generate the .pt file, LExecutor works in two modes of abstraction, fine-grained and coarse-grained.
+This can be set in the Hyperparameters.py file.
+Fine-grained abstraction distinguishes between different values of a type, such as positive, negative and zero in numbers and empty and non-empty for lists, string etc.
+Coarse-grained abstraction on the other-hand maps all the values of a type to a single class such as int, string, list etc. \cite{LExecutor_2023}
+The Listing \ref{code:Hyperparameters.py} shows the possible entries for the abstraction mode.
+In this work, we generate the data using the two abstraction modes shown on line 1 and line 2 in the Listing \ref{code:Hyperparameters.py}. 
+The PrepareData module also generates a validation file in the .pt format.
+The trace entries are split into training and validation data based on the split provided in the Hyperparameters.py file as shown in Listing \ref{code:Hyperparameters.py} on line 3.
+\begin{lstlisting}[caption=Abstraction Modes in LExecutor,label=code:Hyperparameters.py,language=Python]
+    value_abstraction = "fine-grained"
+    value_abstraction = "coarse-grained-deterministic"
+    perc_train = 0.95
+\end{lstlisting}
+
+\section{PyCG}
+PyCG generates call graph based on static analysis of code.
+The call graphs is created in the JSON format, where the key is caller and the value is a list of called functions.
+The Listing \ref{code:pycg.json} provides a sample entry from the PyCG.
+\begin{lstlisting}[caption=Key-Value Pair in PyCG,label=code:pycg.json,language=python]
+{
+    "tests.test_autoconfig.test_autoconfig_env": [
+        "decouple.AutoConfig",
+        "os.path.join",
+        "os.path.dirname",
+        "mock.patch.object"
+    ],
+    "decouple.AutoConfig": [],
+    "os.path.dirname": [],
+    "os.path.join": [],
+    "tests.test_autoconfig.test_autoconfig_ini": [
+        "decouple.AutoConfig",
+        "os.path.join",
+        "os.path.dirname",
+        "mock.patch.object"
+    ]
+}
+\end{lstlisting}
+
+As we can see from the Listing \ref{code:pycg.json}, the structure of the key is \textit{folder.file.class.method}.
+The folder structure for the file is present from the root of the project.
+While the other elements are filled in based on the structure of the caller method.
+For example, as shown on line 2 in Listing \ref{code:pycg.json} the caller is a function \textit{test\_autoconfig\_env} in the file \textit{test\_autoconfig} present in the folder \textit{tests}.
+The structure of the values or callees is \textit{module.function}.
+As seen in the Listing \ref{code:pycg.json} on line 4, the called function is \textit{join} of the module \textit{os.path}.
+PyCG accepts 3 arguments, the package contains the source files, the entry point files and the output file save the JSON.
+In DyPyBench, we provide the package as source code cloned from Git and the test files as entry point files for each project.
+The execution of the PyCG module then provides us with the call graph in the mentioned JSON format.
+
+\section{DynaPyt}
+DynaPyt instruments the files and the execution of the instrumented code provides us with the dynamic analysis.
+DynaPyt, has its own modules for instrumentation and analysis.
+We first use the instrumentation module to instrument the source files.
+To run the analysis, we create a entry file to run all the test files using the main function provided by the pytest module.
+Additionally, we provide the option of import-mode set to importlib to the pytest.main function.
+We add the Call Graph analysis is DynaPyt with the function pre\_call hook, and specify this analysis to the analysis module of DynaPyt.
+The analysis generates the output in the JSON format, with the key as caller and the value as a list of called functions.
+The JSON is stored in a file at the end of the execution of the analysis as provided in the Listing \ref{code:CallGraphAnalysis}.
+The Listing \ref{code:dynapyt.json} shows the sample JSON generated from DynaPyt.
+\begin{lstlisting}[caption=Key-Value Pair in DynaPyt,label=code:dynapyt.json,language=python]
+{
+    ".DyPyBench.temp.project22.decouple": [
+        "decouple.Undefined",
+        "collections.OrderedDict",
+        "decouple.AutoConfig",
+        "configparser.RawConfigParser.read_file"
+    ],
+    ".DyPyBench.temp.project22.tests.test_autoconfig.test_autoconfig_env": [
+        "decouple.AutoConfig",
+        "posixpath.dirname",
+        "posixpath.join",
+        "mock.mock._patch_object",
+        "<decouple.AutoConfig object at 0x7f9479012f20>"
+    ],
+    ".DyPyBench.temp.project22.tests.test_autoconfig.test_autoconfig_ini_in_subdir": [
+        "decouple.AutoConfig",
+        "posixpath.dirname",
+        "posixpath.join",
+        "posix.chdir",
+        "mock.mock._patch_object",
+        "<decouple.AutoConfig object at 0x7f947859fa60>"
+    ]
+}
+\end{lstlisting}
+
+As can be seen from the Listing \ref{code:dynapyt.json}, the structure of the key is \textit{folder.file.class.method}.
+The folder element represents the file path from the root of DyPyBench.
+While the other elements are present based on the structure of the caller method.
+For example, as shown on line 8 in Listing \ref{code:dynapyt.json} the caller is a function \textit{test\_autoconfig\_env} in the file \textit{test\_autoconfig} present in the folder \textit{/DyPyBench/temp/project22/tests}.
+The structure of the values or callees is \textit{module.function}.
+As seen in the Listing \ref{code:pycg.json} on line 4, the called function is \textit{OrderedDict} of the module \textit{collections}.
+Similarly, on line 11 the module is \textit{posixpath} and the method is \textit{join}.
+The callee on line 13 and 21 represents a case where the called function is \textit{AutoConfig} of the module \textit{decouple} with different objects indicated by the hex number at the end.
+These are essentially the same callees as provided on line 9 and 16, however, the dynamic nature of generation of the call graph provides such results.
