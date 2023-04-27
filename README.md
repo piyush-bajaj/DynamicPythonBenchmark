@@ -1,2 +1,0 @@
-# DyPyBench
-Master Thesis Project
