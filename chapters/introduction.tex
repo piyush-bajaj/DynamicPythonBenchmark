@@ -1,41 +1,34 @@
 Python is a popular and versatile programming language that is distinguished by its interpreted nature, high-level syntax, and support for a variety of programming paradigms.
 It makes use of dynamic typing and efficient memory management techniques, and its modular design makes it easy to extend and integrate programmable interfaces into pre-existing applications \cite{Python_language_wiki}.
-Furthermore, Python provides a variety of dynamic features, such as object creation, attribute access, module loading, and function definition, making it appealing to developers of all skill levels. 
+Furthermore, Python provides a variety of dynamic features, such as object creation, attribute access, module loading, and function definition, making it appealing to developers of all skill levels.
+Python also provides comprehensive libraries and has an extensive community support due to its popularity.
 
 Recent studies have demonstrated Python's widespread usage in various applications, including analysis, bug detection, performance assessment, and vulnerability testing \cite{Python_usage_study1, Python_usage_study2, Python_usage3}.
-This can be attributed to its accessible syntax, extensive community support, and comprehensive libraries.
-Python's robust support for data analysis, visualization, statistical analysis, and cross-platform compatibility renders it an exceptional choice for the development of cross-platform software and tools.
-Furthermore, Python is equipped with an assortment of testing and debugging tools, ranging from built-in frameworks like unittest and pytest to third-party tools such as PyCharm \cite{PyCharm_2023} and PyDev \cite{PyDev_2023} for debugging and code refactoring.
-These tools aid developers in identifying and resolving bugs while optimizing code performance.
+Python is used to make cross-platform software and tools for data analysis, visualization, game development, and web development such as Instagram \cite{Insta_architecture}, Spotify \cite{Spotify_python}, and Galcon \cite{game_python} to name a few.
+Scientific computing tasks such as simulations, modeling and numerical analysis are also built using Python \cite{python_scientific}.
+Besides, Python can also be used for automating repetitive tasks such as software testing, web scraping, and data processing \cite{python_automate}.
 
 In the realm of high-level programming languages, Python, along with Java and C++, are frequently employed for their potency, object-oriented structure, and dynamic features, rendering them suitable for intricate software development applications. 
-To assess the dynamic features of these languages, dynamic benchmarks can be employed, which involve gauging the performance of a system or application under real-world conditions.
+To gauge the performance of a system or application under real-world conditions, we employ dynamic benchmarks to assess the dynamic features of these languages.
+We employ benchmarks to gauge the performance and quality of a system or application.
+There are two types of performance benchmarks, static and dynamic based on code execution.
 Contrasting with static benchmarks that evaluate systems or applications under controlled circumstances, dynamic benchmarks endeavor to emulate actual usage patterns of users and applications to attain more accurate performance measurements.
-Java and C++ boast numerous dynamic benchmarks, such as Java Microbenchmark Harness (JMH) \cite{JMH}, The DaCapo Benchmark \cite{DaCapo_2006}, The Computer Language Benchmarks Game \cite{C++_Benchmark1}, and Boost.Benchmarks \cite{Boost_Benchmarks}.
-Although Python possesses some dynamic benchmarks, such as PyPerformance \cite{PyPerformance} and Apache Bench \cite{Apache_Benchmark}, they are not general-purpose benchmarks like those offered for Java and C++.
-These python benchmarks evaluate program performance for a single dynamic feature in a specific domain.
+There are numerous benchmarks available for Java, C++ and Python such as Java Microbenchmark Harness (JMH) \cite{JMH}, The DaCapo Benchmark \cite{DaCapo_2006}, The Computer Language Benchmarks Game \cite{C++_Benchmark1}, Boost.Benchmarks \cite{Boost_Benchmarks}, PyPerformance \cite{PyPerformance}, and Apache Bench \cite{Apache_Benchmark}. 
+While Java and C++ boast numerous dynamic benchmarks to compare the runtime performance of software projects, Python lacks such dynamic benchmarks for complex applications.
 
-While the existing python benchmarks evaluate single dynamic feature from a specific domain, a general-purpose benchmark would allow us to analyze the different dynamic features in the real world conditions.
-Such a benchmark would allow the evaluation of program performance from a wide range of application domains such as machine learning, web development, server development and virtual environments, brought to the table due to the popularity and wide spread usage of python.
-With the general-purpose python dynamic benchmark one could generate run-time analysis using tools such as systrace \cite{systrace} and DynaPyt \cite{DynaPyt2022}.
-A general-purpose benchmark can provide training data for machine learning (ML) and deep learning (DL) tasks of software engineering such as bug detection \cite{DeepBugs2018}, code completion \cite{code_completion}, quality analysis \cite{Code_analysis_1, Code_analysis_2}, code refactoring \cite{code_refactoring}, and testing \cite{testing_1, testing_2, testing_3} which improve the productivity, efficiency and quality of code.
+The popularity and the dynamism of Python makes it a prime candidate for dynamic analyses to detect programming errors, security vulnerabilities, and performance issues. 
+However, the lack of dynamic benchmarks for complex applications in Python hinders the development of dynamic analyses.
+To study the performance of software projects in Python under real-world conditions, a dynamic benchmark would be able to provide a framework to perform dynamic analyses.
+The dynamic benchmark would perform analyses using tools such as systrace \cite{systrace} and DynaPyt \cite{DynaPyt2022} covering a wide range of application domains provided by Python.
+Besides being a framework for dynamic analyses, the Python benchmark would allow generation of training data for machine learning and deep learning tasks in software engineering such as bug detection \cite{DeepBugs2018}, quality analysis \cite{Code_analysis_1, Code_analysis_2}, code refactoring \cite{code_refactoring}, and testing \cite{testing_1, testing_2, testing_3} to improve the productivity, efficiency and quality of code.
 
-In this work, we provide such a general-purpose dynamic benchmark of executable python software. This benchmark is named DyPyBench and consists of 50 python projects including frameworks and libraries.
-The entire benchmark, encapsulated inside a docker container, can be setup using the docker image containing the projects, alongside the analysis frameworks such as DynaPyt \cite{DynaPyt2022} and PyCG \cite{PyCG_2021}. Additionally, the benchmark also integrates LExecutor \cite{LExecutor_2023}, which is a learning-guided approach for executing arbitrary code snippets in an underconstrained way. 
-All of the python projects are open-sourced and available on GitHub \cite{github} including the analysis frameworks and LExecutor.
+In this work, we provide a general-purpose dynamic benchmark of executable python software. This benchmark is named DyPyBench and consists of 50 python projects including frameworks and libraries.
+The entire benchmark, encapsulated inside a docker container, can be setup using the docker image containing the projects, alongside the analysis frameworks such as DynaPyt \cite{DynaPyt2022} and PyCG \cite{PyCG_2021} to perform dynamic and static analysis respectively. Additionally, the benchmark also integrates LExecutor \cite{LExecutor_2023}, which is a learning-guided approach for executing arbitrary code snippets in an underconstrained way. 
+All the python projects in the benchmark are open source projects and available on GitHub \cite{github} including the analysis frameworks and LExecutor.
 The chosen projects are popular and belong to diverse application domains such as audio e.g., pydub, command-line tools e.g., thefuck, and computer vision e.g., scikit-learn.
 The benchmark provided in this work provides a single command line access interface to run test suites and analysis.
 The access interface provides the necessary functionality to execute dynamic analysis through DynaPyt, produce trace files via LExecutor, and generate static call graphs using PyCG.
-This work aims to achieve the following properties for the dynamic benchmark:
-\begin{itemize}
-    \item Large-scale
-    \item Diverse
-    \item Ready-to-run
-    \item Ready-to-analyze
-    \item Compositional
-    \item Long-term
-    \item Extensibility
-\end{itemize}
+Overall, this work aims to create a benchmark that achieves the properties of (1) large-scale which means large number of projects, (2) having diverse set of open source projects, (3) ready to run with a single interface, (4) ready-to-analyze dynamic features of projects, (5) compositional which means able to work with subset of projects, (6) long-term availability for usage and (7) extensible to add new projects and analyses. 
 
 Developing a benchmark that meets the aforementioned properties is a challenging endeavor that presents various obstacles. The following paragraphs discusses some of the challenges encountered during the development process and outlines the strategies implemented to overcome them.
 
@@ -75,20 +68,6 @@ We find that static and dynamic call graphs have 3147 and 2938 common caller and
 % Static call graphs always have more keys than dynamic call graphs.
 DynaPyt has 66.41\% of callers present in PyCG, whereas PyCG has 51.93\% of callers present in DynaPyt.
 For callees, DynaPyt has 28.85\% present in PyCG, wheras PyCG has 47.58\% present in DynaPyt.
-
-
-% DyPyBench generates static call graphs using PyCG and run-time call graphs using DynaPyt and then compares these to find out the imprecision, matching and unmatched calls.
-% **
-% In this work, we utilize the benchmark we developed to demonstrate the effectiveness of each of the three incorporated analysis tools in three distinct applications.
-% Firstly, LExecutor is utilized to generate a trace files, which are then used to develop a dataset for training and validating the neural network model used by the framework.
-% Secondly, PyCG is used to produce a static call graph for the projects within DyPyBench, with the test files serving as the entry point for the execution.
-% Lastly, by executing the test suites of the projects within DyPyBench with the assistance of DynaPyt, we generate dynamic call graphs.
-
-% write some more on this evaluation
-% DyPyBench and its applications in this work led to the following evaluation results. 
-% DyPyBench was able to provide nearly 2.5 times the data for the LExecutor compared to the data used by the authors.
-% Training and validation with 2.5x data provided us with an accuracy of 82 to 90 percentage for fine grained and coarse grained.
-% The static call graphs and the dynamic call graphs generated were compared to get the following data. 
 
 In summary, this work contributes the following:
 \begin{itemize}
