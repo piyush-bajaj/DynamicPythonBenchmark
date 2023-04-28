@@ -1,9 +1,8 @@
-In this chapter, we explain in detail about the experimental setup of DyPyBench for the different usage scenarios.
-
 DyPyBench consists of 50 open-source python projects from different application domains list in Table \ref{table:50_installed_projects}.
 We download the source code of these projects along with their test suite into a Docker image which contains the neural model (LExecutor) and the static (PyCG) and dynamic (DynaPyt) analysis frameworks.
 We use the integrated test suites to execute the projects and collect various statistics and data.
 In the below sections, we explain the setup for LExecutor, PyCG and DynaPyt.
+We also explain the evaluation metrics we use to measure the effectiveness of DyPyBench.
 
 \section{LExecutor}
 We use DyPyBench to generate the training data for the neural model of LExecutor.
@@ -106,3 +105,21 @@ As seen in the Listing \ref{code:pycg.json} on line 4, the called function is \t
 Similarly, on line 11 the module is \textit{posixpath} and the method is \textit{join}.
 The callee on line 13 and 21 represents a case where the called function is \textit{AutoConfig} of the module \textit{decouple} with different objects indicated by the hex number at the end.
 These are essentially the same callees as provided on line 9 and 16, however, the dynamic nature of generation of the call graph provides such results.
+
+\section{Evaluation Metrics}
+In order to evaluate the benchmark created using our approach, we use the following metrics.
+Firstly, we evaluate the dynamic nature of the benchmark.
+To do so, we perform some statistical analysis on the integrated test suites of projects in the benchmark.
+These include running the test suites to find the running time, number of passed and failed test cases for each project and their combination, where running time refers to executing the entire test suite including failed, passed, skipped, xfailed, xpassed and error cases.
+Secondly, the efficiency for generating data for neural models is evaluated.
+This is done by comparing the number of data points collected and the range of validation accuracy for the model.
+Data points in the case of LExecutor refers to the unique use-value events which are used by the neural model to train and validate.
+The accuracy for the model is how correctly the model predicts the missing input values using LExecutor for the validation data.
+We train the model using the data points we generate and compare the validation accuracy to the original data points.
+Lastly, we evaluate the effectiveness to provide data for comparison of static and dynamic analysis for call graphs.
+This is done with the help of some statistical comparison of the call graphs generated using the projects in the benchmark.
+These comparisons include the number of matching callers and callees in DynaPyt and PyCG.
+The match refers to the matching string values of callers as keys and callees as values in DynaPyt and PyCG. 
+Furthermore, the percentage match with respect to DynaPyt and PyCG is also calculated.
+
+Overall, these evaluation metrics help us to understand the dynamic nature of the benchmark and its usefulness in usage for generating data to answer some research questions on code analysis.

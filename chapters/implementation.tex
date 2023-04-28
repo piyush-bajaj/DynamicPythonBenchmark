@@ -1,6 +1,6 @@
 In this chapter, we describe the implementation details to create the dynamic benchmark DyPyBench based on our approach.
 We use various tools and libraries to accomplish the goals of ready-to-run, ready-to-analyze, versatile, extensible, diverse and large-scale for our benchmark.
-In the following sections, we describe the steps we perform and the tools and libraries we use.
+In the following sections, we describe the concrete steps we perform for implementation and the tools and libraries we use.
 The source code of this implementation is present on GitHub at \url{https://github.com/sola-st/master-thesis-piyush-bajaj/tree/automation}.
 
 \begin{figure}[ht]
@@ -9,6 +9,7 @@ The source code of this implementation is present on GitHub at \url{https://gith
     \caption{Implementation Flow}
     \label{fig:implementation_flow}
 \end{figure}
+
 Figure \ref{fig:implementation_flow} shows the flow of implementation steps for the creation of DyPyBench. 
 We start with installation and setup of sample projects from the awesome-python corpus (Section \ref{impl:Sample Projects}).
 With these sample projects, we create an automation script to gather a list of 50 python projects for our benchmark (Section \ref{impl:Automation for Installation}).
@@ -40,7 +41,7 @@ If the project is successfully installed, we add the pytest library to the virtu
 Finally, the test suite of the project is run using pytest. 
 The project is chosen only if the execution is successful ensuring the selection criteria of presence and execution of test suite.
 
-All of the above mentioned steps, from selecting a random project to running the test suite is performed a number of times till we get 5 different projects. 
+All the above steps are repeated a number of times to get 5 different projects.
 Each time a random project is selected, we ensure that it does not belong to a category which has been chosen before.
 This helps us fulfill the selection criteria of diverse domain mentioned in section \ref{approach:selection criteria}.
 Table \ref{table:first_5_projects} shows a list the projects which were chosen for installation till 5 of them satisfied all the selection criteria.
@@ -175,10 +176,12 @@ After copying the source files into the working directory of \textit{/DyPyBench}
 
 The Docker image created so far contains the source files for DyPyBench, automation scripts and the list of projects in the github-url.txt.
 We create a container from this image and run a bash script to automatically install and setup the projects from the list.
-This script performs the same steps as provided by the automation script in Listing \ref{code:project_selection_automation.sh} except for execution of the test suite and overwriting test files.
-Test suite execution is not needed since we already have the projects that satisfy our selection criteria, whereas the requirement of overwriting test files is explained later. 
-After installing the projects from the list, we have the create the image from this container and export it on Docker Hub where the image name is dypybench/dypybench and the tag is v1.0.
-Figure \ref{fig:dypybench docker} shows the image on the Docker Hub website \footnote{https://hub.docker.com/}.
+This script performs the same steps as provided by the automation script in Listing \ref{code:project_selection_automation.sh} except for two steps.
+First is the non execution of the test suite and second is the overwriting of test files.
+Test suite execution is not needed since we in this step we are providing the selected projects for the benchmark and test execution was a selection criteria.
+We overwrite test files to skip the failed test cases for analysis frameworks to work efficiently. 
+After installing the projects from the list, we create the image from this container and export it on Docker Hub where the image name is dypybench/dypybench and the tag is v1.0.
+Figure \ref{fig:dypybench docker} shows the created image on the Docker Hub website \footnote{https://hub.docker.com/}, available as a public repository.
 
 \begin{figure}[ht]
 \centering
@@ -255,6 +258,8 @@ Certain files are excluded from this text file to avoid issues with running test
 However, this text file can be created by any means in the required format.
 The Listing \ref{code:lex_instrument.txt} shows sample entries from the above mentioned text file.
 This text file is specified to \textit{\--\--lex\_file} argument from the access interface.
+
+\newpage
 \begin{lstlisting}[caption=lex\_instrument\_all.txt,label=code:lex_instrument.txt,language=Bash]
 grab ./temp/project1/tests/test_grab_pickle.py
 grab ./temp/project1/tests/test_spider_queue.py
@@ -279,7 +284,6 @@ pytest $3
 \end{lstlisting}
 
 The instrumentation also generates a iids.json file which is used by the LExecutor to convert the traces files into training data for the neural model.
-% In this work, we provide some utility functions related to LExecutor.
 We use the various utility functions provided in the benchmark for gathering trace files, inspecting the output of trace files and training logs of LExecutor.
 
 \subsection{PyCG}
@@ -304,14 +308,12 @@ Utility functions provided in the benchmark are used to collect these JSON outpu
 The argument \textit{\--\--update\_dynapyt\_source} from the access interface, executes a bash script to clone the source code of DynaPyt.
 Similar to LExecutor, DynaPyt works in two steps,i.e., instrumentation and execution.
 Each of these steps trigger separate bash scripts.
-% DynaPyt, first needs to instrument the source files and then execute these instrumented files to provide the results of analysis.
 DynaPyt uses different modules to instrument directory and files.
 We need to specify the files and folders which are to be instrumented.
 Similar to LExecutor, we provide a text file which contains the list of directories and files which we want to instrument.
 However, the format of the file is different compared to LExecutor.
 This text file, has 3 space separated values on each line.
 The first value is the project name, whereas the second value is the flag indicating file (f) or directory (d).
-% The possible values for this flag are f for file and d for directory.
 The third value in the space separated entry is the path of directory or file, relative to the root of the project.
 Listing \ref{code:dynapyt_instrument.txt} shows some sample entries from this file.
 This text file is specified to \textit{\--\--dynapyt\_file} argument from the access interface.
@@ -333,6 +335,8 @@ The instrumentation is based on the hooks provided by DynaPyt for the particular
 Therefore, we need to provide the name of the analysis to be performed.
 We provide this with the argument \textit{\--\--dynapyt\_analysis} to the access interface.
 The two instrumentation commands are shown in the Listing \ref{code:dynapyt_instrument}. 
+
+\newpage
 \begin{lstlisting}[caption=DynaPyt Instrumentation,label=code:dynapyt_instrument,language=Bash]
 if [[ $5 == "d" ]]
 then
@@ -348,7 +352,7 @@ fi
 The execution of test suite to perform the dynamic analysis is done using another bash script.
 This script, first create an entry file to run all the tests using pytest module with the parameter import-mode set to importlib.
 The Listing \ref{code:run_all_test.py} shows a sample of the entry file created above.
-We then trigger the execution of tests with \textit{\--\--run\_analysis} module provided by dynapyt, specifiying the above entry file and the name of the analysis.
+We then trigger the execution of tests with \textit{run\_analysis} module provided by dynapyt, specifiying the above entry file and the name of the analysis.
 Listing \ref{code:dynapyt_test} shows the creation of the entry file on line 1 and execution with run\_analysis on line 3.
 \begin{lstlisting}[caption=DynaPyt Execution Entry File,label=code:run_all_test.py,language=Python]
 import pytest
@@ -371,6 +375,8 @@ At the end of the execution, i.e., after the all the test cases are run we outpu
 A python utility script provide by the benchmark collects all the JSON files from the projects that were dynamically analyzed.
 Listing \ref{code:pre_call_hook} shows the code of the pre\_call hook implemented for the analysis.
 The complete code for the analysis is shown in the Listing \ref{code:CallGraphAnalysis}.
+
+\newpage
 \begin{lstlisting}[caption=Function Pre-Call Hook in Call Graph Analysis,label=code:pre_call_hook,language=Python,linerange={19-53}]
 from typing import Callable, Tuple, Dict
 import logging

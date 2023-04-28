@@ -6,39 +6,45 @@ In this chapter we discuss the experimental evaluation of DyPyBench. We do so by
 
 \textbf{RQ3:} How effective is DyPyBench in providing data to aid a comparison of static and dynamic call graph?
 
-\section{RQ1: Effectiveness of Test Suite}
-We find that DyPyBench provides 45086 test cases and the running time of test suites is between 0.02 seconds and 1362.86 seconds.
-Overall, 41451 test cases pass where as 429 fail.
-The successful execution of such a high number of test cases makes our benchmark dynamic in nature.
-The number of projects which have 0 failed test cases in DyPyBench is 31, whereas 13 others have failed tests between 1 and 10.
+\section{RQ1: How helpful are test suites to make DyPyBench dynamic in nature?}
+
+DyPyBench provides a total of 45086 test cases out of which 41451 test cases pass and 429 fail.   
 The number of test cases in each project varies from 1 to 10552.
+On average, each project has 902 test cases out of which 829 pass.  
+The number of projects which have 0 failed test cases in DyPyBench is 31, whereas 13 others have failed tests between 1 and 10.
 Figure \ref{fig:successful_tests} shows the percentage of passed test cases in all projects of DyPyBench.
 We see that 41 projects have more than 90\% passed test cases, while 46 have 80\% or more passed test cases.
+Overall, the pass percentage of 91.93\% is achieved for the test cases of all projects in DyPyBench.
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\linewidth]{figures/evaluation/perc_passed_tests.png}
-    \caption[Passed Test Case Percentage]{\label{fig:successful_tests}Percentage of Passed Tests in DyPyBench Projects}
+    \caption[Passed Test Case Percentage ]{\label{fig:successful_tests}Percentage of Passed Tests in DyPyBench Projects}
 \end{figure}
 
-Since the execution of the project is important for dynamic analysis, the high pass percentage of 91.93\% for all tests cases is an advantage for efficient analysis.
-The running time for each project is shown in Table \ref{fig:test_run_times}.
+The running time of test suite varies from 0.02 seconds and 1362.86 seconds.
+Figure \ref{fig:test_run_times} shows the run time of each project.
 The total run time for all the projects in DyPyBench is 3568.86 seconds.
+On average, the running time per test case is 0.079 seconds, whereas the average time to run a test suite is 71.38 seconds. 
 There are 39 projects which run the test suite within 50 seconds, whereas 4 projects have a run time greater than 200 seconds.
 \begin{figure}[ht]
     \centering
-    % \includegraphics[width=0.4\linewidth,height=1.3\linewidth]{figures/evaluation/test_runtime.png}
     \includegraphics[width=1\linewidth]{figures/evaluation/tests_runtime2.png}
     \caption[Test Suite Run Time]{\label{fig:test_run_times}Test Suite Run Time in DyPyBench Projects}
 \end{figure}
 
-\paragraph{Overall, we find that the included test suites makes it easier to run the projects which is an important requirement to make a benchmark dynamic. The successful execution of a high number of test cases and the lower running time makes DyPyBench, a dynamic benchmark readily available for use.}
+\paragraph{Takeaway.} Overall, the included test suites make it easier to run the projects which is an important requirement to make a benchmark dynamic.
+DyPyBench provides 45086 test cases with a pass percentage of 91.93\%. 
+With an average running time of 71.38 seconds for a single test suite, DyPyBench provides faster feedback and an increased productivity.
+The availability of test suites make DyPyBench readily available for use, whereas the high pass percentage of test cases coupled with low run-time makes it dynamic in nature.
 
-\section{RQ2: Effectiveness for Neural Model}
+\section{RQ2: How helpful is DyPyBench in providing data for neural code analysis? (Application example of LExecutor)}
+
 DyPyBench contributes 547,830 new data points for LExecutor. 
 This results in the model accuracy between 71.86\% and 93.67\% after training the model.
 
-The new data points we found are generated from 37 projects in our benchmark and amount to nearly 2.5 times the data points used by LExecutor.
-The Figure \ref{fig:Lex_projects_events} shows the data points from each project labelled with project number.
+The new data points we collect are generated from 37 projects in our benchmark and amount to nearly 2.5 times the data points used by LExecutor.
+Figure \ref{fig:Lex_projects_events} shows the data points from each project labelled with project number.
 As can be seen from the Figure \ref{fig:Lex_projects_events}, the distribution of these data points vary from project to project.
 This can be attributed to the number of files in each project that are instrumented. 
 \begin{figure}[ht]
@@ -87,9 +93,14 @@ Since, the neural model we start with is a pre-trained model, the accuracy range
     \caption[Accuracy vs Epoch (Project Split)]{\label{fig:lex_project}Accuracy vs Epoch (Project Split) }
 \end{figure}
 
-\paragraph{The quantity and quality of data is an important aspect for training neural network models. The higher quantity does not guarantee the quality of data. DyPyBench, provides projects which generates a large quantity of data and we evaluate the quality by calculating the accuracy. We find DyPyBench to be a good and valid data generator for LExecutor based on the amount of data generated and the accuracy maintained by the model.}
+\paragraph{Takeaway.} The quantity and quality of data is an important aspect for training neural network models. The higher quantity does not always guarantee the quality of data.
+DyPyBench, provides projects which generates 547,830 data points for LExecutor, which results in a large quantity of data.
+The quality of these data points is calculated based on the effect on accuracy.
+The data points collected from DyPyBench, provide an accuracy in the range 71.86\% and 93.67\% for Top-1 predictions, which resonates with the accuracy provided by LExecutor without our data points.
+Overall, DyPyBench is a good and valid data generator for neural analysis as it provides large quantity of good quality data.   
 
-\section{RQ3: Effectiveness for Analysis Frameworks}
+\section{RQ3: How helpful is DyPyBench in providing data for comparing static and dynamic analysis frameworks? (Application example of DynaPyt and PyCG)}
+
 We find that DyPyBench provides 10799 key data points from DynaPyt and PyCG combined for comparison of call graphs.
 These key data points refer to the callers and are generated from 20 projects in DyPyBench.
 From the above, 6060 data points belongs to PyCG, and 4739 are from PyCG.
@@ -102,8 +113,13 @@ After the above fix, we get 3147 key data points present in both.
 Figure \ref{fig:caller counts}, shows the distribution of the keys amongst DynaPyt and PyCG.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.3\linewidth]{figures/evaluation/callercounts.png}
+    \includegraphics[width=0.5\linewidth]{figures/evaluation/callercounts.png}
     \caption[Distribution of Callers]{\label{fig:caller counts}Distribution of Callers }
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/evaluation/calleecounts.png}
+    \caption[Distribution of Callees]{\label{fig:callee_counts}Distribution of Callees}
 \end{figure}
 
 Next, we compare the number of value data points, which represent the callees.
@@ -118,7 +134,7 @@ With further manual verification, we find that certain data points essentially r
 Figure \ref{fig:unmatched_value_strings} shows the differences of string in value data points from DynaPyt and PyCG.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.6\linewidth]{figures/evaluation/string_compare.png}
+    \includegraphics[width=0.8\linewidth]{figures/evaluation/string_compare.png}
     \caption[Unmatched Same Callees]{\label{fig:unmatched_value_strings}Unmatched Same Callees }
 \end{figure}
 
@@ -129,12 +145,12 @@ Firstly, we replace the pattern \verb|<decouple.AutoConfig object at 0x7f9478610
 Second, we replace the pattern \\\verb|BoundMethodWeakref(<tests.test_saferef._Sample1 object at 0x7f73338edb10>.x)| by \\\verb|BoundMethodWeakref(<tests.test_saferef._Sample1>.x)| and pop its duplicate entries.
 The above modification of values data points leads to decrease in total data points to 16358 which is a decrease of 136 callees from DynaPyt.
 This results in a slight increase in the matching percentage of callees from DynaPyt to 28.85\%.
-% However, we see that there are still patterns which should be included but are not
+However, after manual verification of the callees we find patterns which should be included in the match but fail due to the module structure differences from DynaPyt and PyCG.
 Figure \ref{fig:callee_counts} shows the distribution of the values amongst DynaPyt and PyCG for the matched keys.
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.3\linewidth]{figures/evaluation/calleecounts.png}
-    \caption[Distribution of Callees]{\label{fig:callee_counts}Distribution of Callees}
-\end{figure}
 
-\paragraph{Static and Dynamic Analysis are important tools for code analysis. A comparison of the two provides us an indication of how efficient is one over the other. DyPyBench helps with a comparison of call graphs generated using static and dynamic analysis. Although, DyPyBench provides comparable data from both approaches for call graphs, there are still certain errors present which would futher increase the percentage of matching callees and callers.}
+\paragraph{Takeaway.} Static and dynamic analysis are important tools for code analysis.
+A comparison of the two provides us an indication of how efficient is one over the other.
+DyPyBench generates data for comparison of static and dynamic analysis of call graphs using DynaPyt and PyCG.
+With more than 50\% matching callers from both frameworks, DyPyBench provides relevant data for comparison between the two.
+A low percentage (28.85\%) of match for the callees provides us a deeper insight into execution flow of Python programs to compare the two analysis approaches.
+Although, DyPyBench provides comparable data, there are certain limitations incorporated into the callee entries which impact the match percentage and need manual comparison of the two.
