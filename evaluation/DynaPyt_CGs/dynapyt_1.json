@@ -1,0 +1,2366 @@
+{
+  "grab.base": [
+    "typing.TypeVar",
+    "builtins.set"
+  ],
+  "grab.document": [
+    "_thread._local",
+    "logging.getLogger",
+    "builtins.object"
+  ],
+  "grab.util.timeout": [
+    "builtins.object"
+  ],
+  "grab.transport": [
+    "logging.getLogger"
+  ],
+  "grab.util.types": [
+    "typing.TypeVar"
+  ],
+  "grab.client": [
+    "grab.extensions.RedirectExtension"
+  ],
+  "grab.extensions.RedirectExtension.__init__": [
+    "http.cookiejar.CookieJar"
+  ],
+  "grab.base.BaseExtension.__set_name__": [
+    "dict.items",
+    "list.append"
+  ],
+  "grab.grab": [
+    "grab.extensions.CookiesExtension"
+  ],
+  "grab.extensions.CookiesExtension.__init__": [
+    "http.cookiejar.CookieJar"
+  ],
+  "tests.util": [
+    "logging.getLogger",
+    "posixpath.realpath",
+    "posixpath.dirname"
+  ],
+  "tests.test_ext_rex": [
+    "str.encode"
+  ],
+  "tests.test_ext_text": [
+    "str.encode"
+  ],
+  "grab.spider.service.base": [
+    "logging.getLogger"
+  ],
+  "grab.spider.base": [
+    "logging.getLogger",
+    "random.SystemRandom"
+  ],
+  "tests.test_spider_queue": [
+    "MarkDecorator(mark=Mark(name='skip', args=(), kwargs={}))",
+    "MarkDecorator(mark=Mark(name='skipif', args=(), kwargs={}))"
+  ],
+  "tests.util.BaseTestCase.setUpClass": [
+    "tests.util.start_server"
+  ],
+  "tests.util.start_server": [
+    "test_server.server.TestServer",
+    "test_server.server.TestServer.start",
+    "logging.Logger.debug"
+  ],
+  "tests.test_ext_form.TestHtmlForms.setUp": [
+    "test_server.server.TestServer.reset",
+    "grab.document.Document"
+  ],
+  "grab.document.Document.__init__": [
+    "builtins.isinstance",
+    "email.message.Message",
+    "grab.document.Document.process_encoding",
+    "builtins.ValueError"
+  ],
+  "grab.document.Document.process_encoding": [
+    "grab.document.Document.get_body_chunk",
+    "unicodec.main.detect_content_encoding",
+    "email.message.Message.get",
+    "unicodec.normalization.normalize_encoding_name"
+  ],
+  "tests.test_ext_form.TestHtmlForms.test_choose_form1": [
+    "unittest.case.TestCase.assertRaises",
+    "grab.document.Document.choose_form",
+    "grab.document.Document.get_cached_form",
+    "unittest.case.TestCase.assertEqual",
+    "lxml.etree._Element.get"
+  ],
+  "grab.document.Document.choose_form": [
+    "dict.get",
+    "grab.document.Document.select",
+    "builtins.IndexError",
+    "str.format",
+    "grab.errors.GrabMisuseError",
+    "selection.base.Selector.node",
+    "typing.cast"
+  ],
+  "grab.document.Document.tree": [
+    "grab.document.Document.build_html_tree",
+    "grab.document.Document.build_xml_tree"
+  ],
+  "grab.document.Document.build_html_tree": [
+    "grab.document.Document.unicode_body",
+    "str.encode",
+    "grab.document.Document._build_dom"
+  ],
+  "grab.document.Document.unicode_body": [
+    "unicodec.main.decode_content"
+  ],
+  "grab.document.Document._build_dom": [
+    "builtins.hasattr",
+    "lxml.html.HTMLParser",
+    "dict.setdefault",
+    "grab.document.Document.wrap_io",
+    "lxml.etree.parse",
+    "lxml.etree._ElementTree.getroot",
+    "lxml.etree.XMLParser"
+  ],
+  "grab.document.Document.wrap_io": [
+    "builtins.isinstance",
+    "_io.BytesIO"
+  ],
+  "grab.document.Document.select": [
+    "selection.backend_lxml.XpathSelector",
+    "selection.backend_lxml.LxmlNodeSelector.select"
+  ],
+  "grab.document.Document.get_cached_form": [
+    "builtins.isinstance",
+    "builtins.ValueError"
+  ],
+  "tests.test_ext_form.TestHtmlForms.test_choose_form2": [
+    "grab.document.Document",
+    "grab.document.Document.choose_form",
+    "grab.document.Document.get_cached_form",
+    "unittest.case.TestCase.assertEqual",
+    "lxml.etree._Element.get"
+  ],
+  "tests.test_ext_form.TestHtmlForms.test_choose_form3": [
+    "grab.document.Document",
+    "grab.document.Document.choose_form",
+    "grab.document.Document.get_cached_form",
+    "unittest.case.TestCase.assertEqual",
+    "lxml.etree._Element.get"
+  ],
+  "tests.test_ext_form.TestHtmlForms.test_choose_form4": [
+    "grab.document.Document",
+    "grab.document.Document.choose_form",
+    "grab.document.Document.get_cached_form",
+    "unittest.case.TestCase.assertEqual",
+    "lxml.etree._Element.get"
+  ],
+  "tests.test_ext_form.TestHtmlForms.test_disabled_radio": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "grab.document.Document.get_form_request"
+  ],
+  "grab.client.request": [
+    "grab.util.types.resolve_entity",
+    "grab.client.HttpClient.request",
+    "tests.test_grab_functions.RequestFuncTestCase.test_request_custom_grab.<locals>.DummyHttpClient.request"
+  ],
+  "grab.util.types.resolve_entity": [
+    "builtins.issubclass",
+    "grab.client.HttpClient",
+    "builtins.isinstance",
+    "inspect.isclass",
+    "typing.cast",
+    "tests.test_grab_functions.RequestFuncTestCase.test_request_custom_grab.<locals>.DummyHttpClient",
+    "tests.test_util_types.ResolveHttpClientEntityTestCase.test_resolve_entity_class.<locals>.SuperHttpClient",
+    "tests.test_util_types.ResolveHttpClientEntityTestCase.test_resolve_entity_default.<locals>.SuperHttpClient"
+  ],
+  "grab.base.BaseClient.__init__": [
+    "grab.base.BaseTransport.resolve_entity",
+    "dict.values",
+    "grab.extensions.RedirectExtension.reset",
+    "grab.extensions.CookiesExtension.reset"
+  ],
+  "grab.base.BaseTransport.resolve_entity": [
+    "grab.transport.Urllib3Transport",
+    "builtins.isinstance",
+    "builtins.issubclass",
+    "tests.test_util_types.ResolveTransportEntityTestCase.test_resolve_transport_entity_class.<locals>.SuperTransport",
+    "tests.test_util_types.ResolveTransportEntityTestCase.test_resolve_transport_entity_default.<locals>.SuperTransport",
+    "None"
+  ],
+  "grab.transport.Urllib3Transport.__init__": [
+    "object.__init__",
+    "grab.transport.Urllib3Transport.build_pool",
+    "logging.getLogger",
+    "logging.Logger.setLevel",
+    "grab.transport.Urllib3Transport.reset"
+  ],
+  "grab.transport.Urllib3Transport.build_pool": [
+    "certifi.core.where",
+    "urllib3.poolmanager.PoolManager"
+  ],
+  "grab.extensions.CookiesExtension.reset": [
+    "grab.extensions.CookiesExtension.clear"
+  ],
+  "grab.extensions.CookiesExtension.clear": [
+    "http.cookiejar.CookieJar.clear"
+  ],
+  "grab.client.HttpClient.request": [
+    "builtins.isinstance",
+    "grab.base.BaseClient.request"
+  ],
+  "grab.base.BaseClient.request": [
+    "grab.base.BaseRequest.create_from_mapping",
+    "grab.base.Retry",
+    "grab.extensions.RedirectExtension.process_init_retry",
+    "grab.extensions.CookiesExtension.process_request_pre",
+    "grab.transport.Urllib3Transport.reset",
+    "grab.transport.Urllib3Transport.request",
+    "grab.transport.Urllib3Transport.wrap_transport_error",
+    "grab.client.HttpClient.process_request_result",
+    "grab.extensions.RedirectExtension.process_retry",
+    "typing.cast"
+  ],
+  "grab.base.BaseRequest.create_from_mapping": [
+    "grab.request.HttpRequest"
+  ],
+  "grab.request.HttpRequest.__init__": [
+    "grab.request.HttpRequest._process_timeout_param"
+  ],
+  "grab.request.HttpRequest._process_timeout_param": [
+    "builtins.isinstance",
+    "grab.util.timeout.Timeout",
+    "builtins.float"
+  ],
+  "grab.extensions.CookiesExtension.process_request_pre": [
+    "grab.extensions.CookiesExtension.update",
+    "grab.util.cookies.build_cookie_header",
+    "dict.get"
+  ],
+  "grab.extensions.CookiesExtension.update": [
+    "urllib.parse.urlsplit",
+    "dict.items",
+    "grab.util.cookies.create_cookie",
+    "http.cookiejar.CookieJar.set_cookie"
+  ],
+  "grab.util.cookies.build_cookie_header": [
+    "builtins.dict",
+    "grab.util.cookies.MockRequest",
+    "typing.cast",
+    "http.cookiejar.CookieJar.add_cookie_header",
+    "grab.util.cookies.MockRequest.get_new_headers",
+    "dict.get"
+  ],
+  "grab.util.cookies.MockRequest.__init__": [
+    "urllib.parse.urlparse"
+  ],
+  "grab.transport.Urllib3Transport.request": [
+    "grab.transport.Urllib3Transport.select_pool_for_request",
+    "grab.transport.Urllib3Transport.log_request",
+    "grab.transport.Urllib3Transport.wrap_transport_error",
+    "urllib3.util.retry.Retry",
+    "urllib3.util.timeout.Timeout",
+    "grab.request.HttpRequest.compile_request_data",
+    "time.time",
+    "urllib3.poolmanager.PoolManager.urlopen",
+    "urllib3.poolmanager.ProxyManager.urlopen",
+    "builtins.str",
+    "grab.errors.GrabInvalidResponse"
+  ],
+  "grab.transport.Urllib3Transport.log_request": [
+    "logging.Logger.debug",
+    "str.format"
+  ],
+  "grab.request.HttpRequest.compile_request_data": [
+    "copy.copy",
+    "urllib.parse.urlencode",
+    "str.encode",
+    "builtins.len",
+    "grab.util.structures.merge_with_dict",
+    "urllib3.filepost.encode_multipart_formdata",
+    "typing.cast"
+  ],
+  "grab.client.HttpClient.process_request_result": [
+    "grab.transport.Urllib3Transport.prepare_response",
+    "grab.extensions.CookiesExtension.process_response_post"
+  ],
+  "grab.transport.Urllib3Transport.prepare_response": [
+    "grab.transport.Urllib3Transport.get_response_header_items",
+    "str.encode",
+    "bytes.decode",
+    "grab.transport.Urllib3Transport.read_with_timeout",
+    "email.message.Message",
+    "urllib3.response.HTTPResponse.get_redirect_location",
+    "grab.util.cookies.extract_response_cookies",
+    "grab.document.Document",
+    "urllib3.response.HTTPResponse.release_conn",
+    "tests.test_grab_response_body_processing.CustomDocument"
+  ],
+  "grab.transport.Urllib3Transport.get_response_header_items": [
+    "typing.cast",
+    "urllib3._collections.HTTPHeaderDict.items"
+  ],
+  "grab.transport.Urllib3Transport.read_with_timeout": [
+    "time.time",
+    "urllib3.response.HTTPResponse.read",
+    "builtins.len",
+    "list.append",
+    "bytes.join"
+  ],
+  "grab.util.cookies.extract_response_cookies": [
+    "http.cookiejar.CookieJar",
+    "grab.util.cookies.MockResponse",
+    "typing.cast",
+    "builtins.dict",
+    "grab.util.cookies.MockRequest",
+    "http.cookiejar.CookieJar.extract_cookies",
+    "builtins.list"
+  ],
+  "grab.extensions.RedirectExtension.process_retry": [
+    "grab.extensions.RedirectExtension.find_redirect_url",
+    "urllib.parse.urljoin",
+    "grab.errors.GrabTooManyRedirectsError"
+  ],
+  "grab.document.Document.get_form_request": [
+    "grab.document.Document.form_fields",
+    "grab.document.Document.clean_submit_controls",
+    "urllib.parse.urljoin",
+    "dict.items",
+    "builtins.list",
+    "str.upper",
+    "lxml.etree._Element.get"
+  ],
+  "grab.document.Document.form": [
+    "typing.cast",
+    "builtins.enumerate",
+    "builtins.list",
+    "builtins.len",
+    "builtins.sorted",
+    "grab.document.Document.choose_form",
+    "builtins.IndexError"
+  ],
+  "grab.document.Document.form_fields": [
+    "builtins.dict",
+    "grab.document.Document.process_form_fields",
+    "builtins.getattr",
+    "lxml.etree._Element.get",
+    "grab.document.Document.build_fields_to_remove"
+  ],
+  "grab.document.Document.process_form_fields": [
+    "dict.items",
+    "builtins.list",
+    "builtins.isinstance",
+    "builtins.len",
+    "collections.abc.MutableSet.pop"
+  ],
+  "grab.document.Document.build_fields_to_remove": [
+    "builtins.set",
+    "lxml.etree._Element.get",
+    "set.add",
+    "builtins.getattr",
+    "set.remove"
+  ],
+  "grab.document.Document.clean_submit_controls": [
+    "builtins.set",
+    "lxml.etree._Element.get",
+    "set.add",
+    "builtins.sorted"
+  ],
+  "tests.test_ext_form.TestHtmlForms.test_html_without_forms": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertRaises"
+  ],
+  "tests.test_ext_form.TestHtmlForms.test_set_methods1": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertRaises",
+    "grab.document.Document.get_cached_form",
+    "grab.document.Document.set_input",
+    "lxml.etree._Element.get",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "grab.document.Document.set_input": [
+    "grab.document.Document.choose_form_by_element",
+    "builtins.getattr",
+    "str.lower"
+  ],
+  "grab.document.Document.choose_form_by_element": [
+    "grab.document.Document.select",
+    "selection.base.SelectorList.node",
+    "lxml.etree._Element.getparent"
+  ],
+  "tests.test_ext_form.TestHtmlForms.test_set_methods2": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "grab.document.Document.set_input_by_id",
+    "grab.document.Document.get_cached_form",
+    "lxml.etree._Element.get",
+    "unittest.case.TestCase.assertEqual",
+    "grab.document.Document.choose_form",
+    "grab.document.Document.set_input_by_number"
+  ],
+  "grab.document.Document.set_input_by_id": [
+    "grab.document.Document.choose_form_by_element",
+    "selection.backend_lxml.XpathSelector",
+    "selection.backend_lxml.LxmlNodeSelector.select",
+    "selection.base.SelectorList.node",
+    "lxml.etree._Element.get",
+    "grab.document.Document.set_input"
+  ],
+  "grab.document.Document.set_input_by_number": [
+    "selection.backend_lxml.XpathSelector",
+    "selection.backend_lxml.LxmlNodeSelector.select",
+    "selection.base.Selector.node",
+    "lxml.etree._Element.get",
+    "grab.document.Document.set_input"
+  ],
+  "tests.test_ext_form.TestHtmlForms.test_set_methods3": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "grab.document.Document.set_input_by_xpath",
+    "grab.document.Document.get_cached_form",
+    "lxml.etree._Element.get",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "grab.document.Document.set_input_by_xpath": [
+    "grab.document.Document.select",
+    "selection.base.SelectorList.node",
+    "lxml.etree._Element.getparent",
+    "lxml.etree._Element.get",
+    "grab.document.Document.set_input"
+  ],
+  "tests.test_ext_form.TestHtmlForms.test_submit": [
+    "test_server.server.TestServer.get_url",
+    "str.encode",
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "grab.client.request",
+    "grab.document.Document.set_input",
+    "grab.document.Document.get_form_request",
+    "tests.test_ext_form.TestHtmlForms.assert_equal_qs"
+  ],
+  "grab.util.structures.merge_with_dict": [
+    "dict.items"
+  ],
+  "tests.test_ext_form.TestHtmlForms.assert_equal_qs": [
+    "urllib.parse.parse_qsl",
+    "builtins.set",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_form.TestHtmlForms.test_submit_remove_from_post_argument": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "grab.document.Document.get_form_request",
+    "tests.test_ext_form.TestHtmlForms.assert_equal_qs"
+  ],
+  "tests.util.BaseTestCase.tearDownClass": [
+    "test_server.server.TestServer.stop"
+  ],
+  "tests.test_ext_form.TestJustAnotherChunkHtmlForms.setUp": [
+    "test_server.server.TestServer.reset",
+    "grab.document.Document"
+  ],
+  "tests.test_ext_form.TestJustAnotherChunkHtmlForms.test_checkbox_checked_but_disabled": [
+    "grab.document.Document",
+    "grab.document.Document.form_fields",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_ext_form.TestJustAnotherChunkHtmlForms.test_checkbox_multi_checked": [
+    "grab.document.Document",
+    "grab.document.Document.form_fields",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_form.TestJustAnotherChunkHtmlForms.test_checkbox_no_checked": [
+    "grab.document.Document",
+    "grab.document.Document.form_fields",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_ext_form.TestJustAnotherChunkHtmlForms.test_checkbox_one_checked": [
+    "grab.document.Document",
+    "grab.document.Document.form_fields",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_form.TestJustAnotherChunkHtmlForms.test_field_disabled": [
+    "grab.document.Document",
+    "grab.document.Document.form_fields",
+    "dict.keys",
+    "builtins.set",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_form.TestJustAnotherChunkHtmlForms.test_select_disabled": [
+    "grab.document.Document",
+    "grab.document.Document.form_fields",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_ext_form.TestJustAnotherChunkHtmlForms.test_select_multiple_multi_selected": [
+    "grab.document.Document",
+    "grab.document.Document.form_fields",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_form.TestJustAnotherChunkHtmlForms.test_select_multiple_no_options": [
+    "grab.document.Document",
+    "grab.document.Document.form_fields",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_ext_form.TestJustAnotherChunkHtmlForms.test_select_multiple_one_selected": [
+    "grab.document.Document",
+    "grab.document.Document.form_fields",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_form.TestJustAnotherChunkHtmlForms.test_select_not_multiple": [
+    "grab.document.Document",
+    "grab.document.Document.form_fields",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_form.TestJustAnotherChunkHtmlForms.test_set_input_by_xpath_regex": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "grab.document.Document.set_input_by_xpath",
+    "grab.document.Document.get_form_request",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_form.TestJustAnotherChunkHtmlForms.test_unicode_textarea_form": [
+    "str.encode",
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "grab.document.Document.get_form_request",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_ext_lxml.LXMLExtensionTest.setUpClass": [
+    "tests.util.BaseTestCase.setUpClass"
+  ],
+  "tests.test_ext_lxml.LXMLExtensionTest.setUp": [
+    "test_server.server.TestServer.reset",
+    "str.encode",
+    "grab.document.Document",
+    "lxml.html.fromstring"
+  ],
+  "tests.test_ext_lxml.LXMLExtensionTest.test_cdata_issue": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "lxml.etree._Element.xpath",
+    "typing.cast",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "grab.document.Document.build_xml_tree": [
+    "grab.document.Document.unicode_body",
+    "str.encode",
+    "grab.document.Document._build_dom"
+  ],
+  "tests.test_ext_lxml.LXMLExtensionTest.test_css_list": [
+    "lxml.html.HtmlMixin.cssselect",
+    "lxml.etree._Element.get",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_lxml.LXMLExtensionTest.test_empty_document": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "grab.document.Document.select",
+    "selection.base.SelectorList.exists"
+  ],
+  "tests.test_ext_lxml.LXMLExtensionTest.test_lxml_text_content_fail": [
+    "lxml.etree._Element.xpath",
+    "typing.cast",
+    "lxml.html.HtmlMixin.text_content",
+    "_ElementUnicodeResult.strip",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_lxml.LXMLExtensionTest.test_lxml_xpath": [
+    "lxml.etree._Element.xpath",
+    "typing.cast",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_lxml.LXMLExtensionTest.test_xml_declaration": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "grab.document.Document.select",
+    "selection.base.SelectorList.text",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_lxml.LXMLExtensionTest.test_xpath": [
+    "grab.document.Document.select",
+    "selection.base.SelectorList.node",
+    "lxml.etree._Element.get",
+    "unittest.case.TestCase.assertEqual",
+    "unittest.case.TestCase.assertRaises"
+  ],
+  "tests.test_ext_lxml.LXMLExtensionTest.test_xpath_exists": [
+    "grab.document.Document.select",
+    "selection.base.SelectorList.exists",
+    "unittest.case.TestCase.assertTrue",
+    "unittest.case.TestCase.assertFalse"
+  ],
+  "tests.test_ext_lxml.LXMLExtensionTest.test_xpath_list": [
+    "grab.document.Document.select",
+    "selection.base.SelectorList.node_list",
+    "lxml.etree._Element.get",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_lxml.LXMLExtensionTest.test_xpath_number": [
+    "grab.document.Document.select",
+    "selection.base.SelectorList.number",
+    "unittest.case.TestCase.assertEqual",
+    "unittest.case.TestCase.assertRaises"
+  ],
+  "tests.test_ext_lxml.LXMLExtensionTest.test_xpath_text": [
+    "grab.document.Document.select",
+    "selection.base.SelectorList.text",
+    "unittest.case.TestCase.assertEqual",
+    "unittest.case.TestCase.assertRaises"
+  ],
+  "tests.test_ext_lxml.LXMLExtensionTest.tearDownClass": [
+    "tests.util.BaseTestCase.tearDownClass"
+  ],
+  "tests.test_ext_pyquery.ExtensionPyqueryTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_ext_pyquery.ExtensionPyqueryTestCase.test_national_utf_symbol": [
+    "str.encode",
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "<html><body><p>P.S. Bir daha \u00f6z fikrimi xat\u0131rlad\u0131m ki,rhen ve qelben sene ba\u011fl\u0131 insan ba\u015fqas\u0131na ehtiyac duymaz.</p></body></html>",
+    "lxml.html.HtmlMixin.text_content",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "grab.document.Document.pyquery": [
+    "pyquery.pyquery.PyQuery"
+  ],
+  "tests.test_ext_pyquery.ExtensionPyqueryTestCase.test_pyquery_handler": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "<html><body><h1>Hello world</h1><footer>2014</footer></body></html>",
+    "pyquery.pyquery.PyQuery.text",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_rex.ExtensionRexTestCase.setUp": [
+    "test_server.server.TestServer.reset",
+    "grab.document.Document"
+  ],
+  "tests.test_ext_rex.ExtensionRexTestCase.test_assert_rex": [
+    "re.compile",
+    "grab.document.Document.rex_assert",
+    "str.encode"
+  ],
+  "grab.document.Document.rex_assert": [
+    "grab.document.Document.rex_search"
+  ],
+  "grab.document.Document.rex_search": [
+    "builtins.isinstance",
+    "grab.document.Document.unicode_body",
+    "Pattern.search",
+    "re.compile",
+    "builtins.IndexError"
+  ],
+  "tests.test_ext_rex.ExtensionRexTestCase.test_assert_rex_text": [
+    "grab.document.Document.rex_text",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "grab.document.Document.rex_text": [
+    "grab.document.Document.rex_search",
+    "Match.group"
+  ],
+  "tests.test_ext_rex.ExtensionRexTestCase.test_rex1": [
+    "re.compile",
+    "grab.document.Document.rex_search",
+    "Match.group",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_rex.ExtensionRexTestCase.test_rex2": [
+    "str.encode",
+    "re.compile",
+    "grab.document.Document.rex_search",
+    "Match.group",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_rex.ExtensionRexTestCase.test_rex3": [
+    "str.encode",
+    "re.compile",
+    "unittest.case.TestCase.assertRaises",
+    "grab.document.Document.rex_search"
+  ],
+  "tests.test_ext_rex.ExtensionRexTestCase.test_rex4": [
+    "re.compile",
+    "grab.document.Document.rex_search",
+    "Match.group",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_ext_rex.ExtensionRexTestCase.test_rex5": [
+    "re.compile",
+    "unittest.case.TestCase.assertRaises",
+    "grab.document.Document.rex_search"
+  ],
+  "tests.test_ext_text.TextExtensionTest.setUp": [
+    "test_server.server.TestServer.reset",
+    "grab.document.Document"
+  ],
+  "tests.test_ext_text.TextExtensionTest.test_assert_substring": [
+    "grab.document.Document.text_assert",
+    "str.encode",
+    "unittest.case.TestCase.assertRaises"
+  ],
+  "grab.document.Document.text_assert": [
+    "grab.document.Document.text_search",
+    "builtins.str",
+    "str.format",
+    "builtins.IndexError"
+  ],
+  "grab.document.Document.text_search": [
+    "builtins.isinstance",
+    "grab.document.Document.unicode_body"
+  ],
+  "tests.test_ext_text.TextExtensionTest.test_assert_substrings": [
+    "grab.document.Document.text_assert_any",
+    "str.encode",
+    "unittest.case.TestCase.assertRaises"
+  ],
+  "grab.document.Document.text_assert_any": [
+    "grab.document.Document.text_search",
+    "builtins.map",
+    "str.join",
+    "builtins.IndexError"
+  ],
+  "tests.test_ext_text.TextExtensionTest.test_search": [
+    "str.encode",
+    "grab.document.Document.text_search",
+    "unittest.case.TestCase.assertTrue",
+    "unittest.case.TestCase.assertFalse"
+  ],
+  "tests.test_grab_api.GrabApiTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_grab_api.GrabApiTestCase.test_clone": [
+    "grab.client.HttpClient",
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.HttpClient.request",
+    "unittest.case.TestCase.assertTrue",
+    "grab.base.BaseClient.clone"
+  ],
+  "grab.base.BaseClient.clone": [
+    "copy.deepcopy"
+  ],
+  "grab.transport.Urllib3Transport.__getstate__": [
+    "dict.copy"
+  ],
+  "grab.transport.Urllib3Transport.__setstate__": [
+    "dict.items",
+    "builtins.setattr",
+    "grab.transport.Urllib3Transport.build_pool"
+  ],
+  "tests.test_grab_api.GrabApiTestCase.test_document": [
+    "grab.document.Document",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_grab_api.GrabApiTestCase.test_document_invalid_input": [
+    "unittest.case.TestCase.assertRaises"
+  ],
+  "tests.test_grab_api.GrabApiTestCase.test_empty_clone": [
+    "grab.client.HttpClient",
+    "grab.base.BaseClient.clone"
+  ],
+  "tests.test_grab_charset.GrabCharsetDetectionTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_grab_charset.GrabCharsetDetectionTestCase.test_charset_html5": [
+    "grab.document.Document",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_grab_charset.GrabCharsetDetectionTestCase.test_dash2_issue": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "grab.document.Document.select",
+    "selection.base.SelectorList.text",
+    "builtins.chr",
+    "unittest.case.TestCase.assertFalse",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_grab_charset.GrabCharsetDetectionTestCase.test_encoding_lowercase": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_grab_charset.GrabCharsetDetectionTestCase.test_encoding_option": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertEqual",
+    "str.encode"
+  ],
+  "tests.test_grab_charset.GrabCharsetDetectionTestCase.test_invalid_charset": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_grab_charset_issue.LXMLExtensionTest.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_grab_charset_issue.LXMLExtensionTest.test_dash_issue": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "grab.document.Document.select",
+    "selection.base.SelectorList.text",
+    "builtins.chr",
+    "unittest.case.TestCase.assertFalse",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_grab_charset_issue.LXMLExtensionTest.test_invalid_charset": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request"
+  ],
+  "tests.test_grab_cookies.TestCookies.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_grab_cookies.TestCookies.test_multiple_cookies": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "SimpleCookie.values",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "grab.util.cookies.create_cookie": [
+    "str.startswith",
+    "http.cookiejar.Cookie"
+  ],
+  "grab.util.cookies.MockRequest.get_full_url": [
+    "dict.get"
+  ],
+  "grab.util.cookies.MockRequest.unverifiable": [
+    "grab.util.cookies.MockRequest.is_unverifiable"
+  ],
+  "grab.util.cookies.MockRequest.origin_req_host": [
+    "grab.util.cookies.MockRequest.get_origin_req_host"
+  ],
+  "grab.util.cookies.MockRequest.get_origin_req_host": [
+    "grab.util.cookies.MockRequest.get_host"
+  ],
+  "grab.util.cookies.MockRequest.get_host": [
+    "urllib.parse.urlparse"
+  ],
+  "tests.test_grab_cookies.TestCookies.test_parsing_response_cookies": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "grab.extensions.CookiesExtension.process_response_post": [
+    "http.cookiejar.CookieJar.set_cookie"
+  ],
+  "tests.test_grab_cookies.TestCookies.test_path": [
+    "grab.grab.Grab",
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.HttpClient.request",
+    "builtins.len",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_grab_cookies.TestCookies.test_redirect_session": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "grab.grab.Grab",
+    "test_server.server.TestServer.get_url",
+    "grab.client.HttpClient.request",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "grab.extensions.RedirectExtension.find_redirect_url": [
+    "typing.cast"
+  ],
+  "tests.test_grab_cookies.TestCookies.test_session": [
+    "grab.grab.Grab",
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.HttpClient.request",
+    "unittest.case.TestCase.assertTrue",
+    "SimpleCookie.values",
+    "unittest.case.TestCase.assertEqual",
+    "grab.extensions.CookiesExtension.clear",
+    "unittest.case.TestCase.assertFalse"
+  ],
+  "tests.test_grab_cookies.TestCookies.test_unicode_cookie": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request"
+  ],
+  "tests.test_grab_cookies.TestCookies.callback": [
+    "str.encode"
+  ],
+  "tests.test_grab_document.GrabDocumentTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_grab_document.GrabDocumentTestCase.test_document_copy_works": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "grab.document.Document.select",
+    "selection.base.SelectorList.text",
+    "unittest.case.TestCase.assertEqual",
+    "grab.document.Document.copy"
+  ],
+  "grab.document.Document.copy": [
+    "copy.deepcopy",
+    "copy.copy",
+    "grab.document.Document"
+  ],
+  "tests.test_grab_document.GrabDocumentTestCase.test_normalize_pairs_dict": [
+    "grab.document.normalize_pairs",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "grab.document.normalize_pairs": [
+    "builtins.isinstance",
+    "dict.items",
+    "builtins.list"
+  ],
+  "tests.test_grab_document.GrabDocumentTestCase.test_normalize_pairs_list": [
+    "grab.document.normalize_pairs",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_grab_error.GrabErrorTestCase.test_original_exceptions_urllib2": [
+    "grab.client.request",
+    "builtins.isinstance",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "grab.transport.Urllib3Transport.wrap_transport_error": [
+    "grab.errors.GrabConnectionError",
+    "grab.errors.GrabTimeoutError"
+  ],
+  "grab.errors.OriginalExceptionGrabError.__init__": [
+    "builtins.len",
+    "Exception.__init__"
+  ],
+  "tests.test_grab_functions.RequestFuncTestCase.test_request_custom_grab": [
+    "grab.client.request",
+    "builtins.isinstance",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_grab_functions.DummyHttpClient.request": [
+    "tests.test_grab_functions.RequestFuncTestCase.test_request_custom_grab.<locals>.DummyDocument"
+  ],
+  "tests.test_grab_get_request.GrabSimpleTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_grab_get_request.GrabSimpleTestCase.test_body_content": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_grab_get_request.GrabSimpleTestCase.test_get": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_grab_get_request.GrabSimpleTestCase.test_parsing_response_headers": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_grab_get_request.GrabSimpleTestCase.test_status_code": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_grab_pickle.TestGrab.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_grab_pickle.TestGrab.test_pickle_grab": [
+    "grab.grab.Grab",
+    "_pickle.dumps"
+  ],
+  "tests.test_grab_post_request.TestPostFeature.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_grab_post_request.TestPostFeature.test_empty_post": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertEqual",
+    "test_server.structure.HttpHeaderStorage.get"
+  ],
+  "tests.test_grab_post_request.TestPostFeature.test_multipart_post": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_grab_post_request.TestPostFeature.test_patch": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertEqual",
+    "test_server.structure.HttpHeaderStorage.get"
+  ],
+  "tests.test_grab_post_request.TestPostFeature.test_post": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_grab_post_request.TestPostFeature.test_put": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertEqual",
+    "test_server.structure.HttpHeaderStorage.get"
+  ],
+  "tests.test_grab_proxy.TestProxy.setUpClass": [
+    "tests.util.BaseTestCase.setUpClass",
+    "builtins.range",
+    "test_server.server.TestServer",
+    "test_server.server.TestServer.start"
+  ],
+  "tests.test_grab_proxy.TestProxy.setUp": [
+    "tests.util.BaseTestCase.setUp",
+    "dict.values",
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.util.BaseTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_grab_proxy.TestProxy.test_proxy_option": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "grab.client.request",
+    "unittest.case.TestCase.assertEqual",
+    "test_server.structure.HttpHeaderStorage.get"
+  ],
+  "grab.transport.Urllib3Transport.select_pool_for_request": [
+    "certifi.core.where",
+    "urllib3.poolmanager.ProxyManager"
+  ],
+  "tests.test_grab_proxy.TestProxy.tearDownClass": [
+    "tests.util.BaseTestCase.tearDownClass",
+    "dict.values",
+    "test_server.server.TestServer.stop"
+  ],
+  "tests.test_grab_redirect.GrabRedirectTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_grab_redirect.GrabRedirectTestCase.test_redirect_limit": [
+    "test_server.server.TestServer.get_url",
+    "tests.test_grab_redirect.build_location_callback",
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "unittest.case.TestCase.assertRaises",
+    "grab.client.request",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_grab_redirect.callback": [
+    "typing.cast"
+  ],
+  "tests.test_grab_redirect.GrabRedirectTestCase.test_redirect_utf_location": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "unittest.case.TestCase.assertRaises",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request"
+  ],
+  "tests.test_grab_redirect.GrabRedirectTestCase.callback": [
+    "test_server.server.TestServer.get_url",
+    "str.encode"
+  ],
+  "tests.test_grab_request.GrabRequestTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_grab_request.GrabRequestTestCase.test_delete_method": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_grab_request.GrabRequestTestCase.test_get_method": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_grab_request.GrabRequestTestCase.test_head_with_invalid_bytes": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request"
+  ],
+  "tests.test_grab_request.GrabRequestTestCase.test_put_method": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertEqual",
+    "test_server.structure.HttpHeaderStorage.get"
+  ],
+  "tests.test_grab_response.TestResponse.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_grab_response.TestResponse.test_custom_charset": [
+    "str.encode",
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "grab.document.Document.unicode_body",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_grab_response.TestResponse.test_save": [
+    "tests.util.temp_dir",
+    "posixpath.join",
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "grab.document.Document.save",
+    "io.open",
+    "BufferedReader.read",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.util.temp_dir": [
+    "tempfile.mkdtemp",
+    "shutil.rmtree"
+  ],
+  "grab.document.Document.save": [
+    "posixpath.split",
+    "genericpath.exists",
+    "io.open",
+    "BufferedWriter.write"
+  ],
+  "tests.test_grab_response.TestResponse.test_xml_declaration": [
+    "str.encode",
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "grab.document.Document.unicode_body",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_grab_response_body_processing.GrabSimpleTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_grab_response_body_processing.GrabSimpleTestCase.test_body": [
+    "tests.test_grab_response_body_processing.CustomHttpClient",
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.HttpClient.request",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_grab_response_body_processing.GrabSimpleTestCase.test_doc_tree_notags_document": [
+    "grab.document.Document",
+    "grab.document.Document.select",
+    "selection.base.SelectorList.text",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_grab_response_body_processing.GrabSimpleTestCase.test_empty_response": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "grab.client.HttpClient",
+    "test_server.server.TestServer.get_url",
+    "grab.client.HttpClient.request",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_grab_response_body_processing.GrabSimpleTestCase.test_explicit_custom_charset": [
+    "str.encode",
+    "grab.document.Document",
+    "grab.document.Document.select",
+    "selection.base.SelectorList.text",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_grab_response_body_processing.GrabSimpleTestCase.test_external_set_document_body": [
+    "grab.client.HttpClient",
+    "test_server.server.TestServer.get_url",
+    "grab.client.HttpClient.request",
+    "unittest.case.TestCase.assertRaises"
+  ],
+  "grab.document.Document.body": [
+    "grab.errors.GrabMisuseError"
+  ],
+  "tests.test_grab_response_body_processing.GrabSimpleTestCase.test_github_html_processing": [
+    "posixpath.join",
+    "io.open",
+    "BufferedReader.read",
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "grab.client.HttpClient",
+    "test_server.server.TestServer.get_url",
+    "grab.client.HttpClient.request",
+    "grab.document.Document.select",
+    "builtins.list",
+    "selection.backend_lxml.LxmlNodeSelector.attr",
+    "urllib.parse.urljoin",
+    "list.append",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_grab_response_body_processing.GrabSimpleTestCase.test_json": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "grab.client.HttpClient",
+    "test_server.server.TestServer.get_url",
+    "grab.client.HttpClient.request",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "grab.document.Document.json": [
+    "bytes.decode",
+    "json.loads"
+  ],
+  "tests.test_grab_timeout.GrabTimeoutCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_grab_timeout.GrabTimeoutCase.test_timeout_enough_to_complete": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request"
+  ],
+  "tests.test_grab_timeout.GrabTimeoutCase.test_timeout_raises": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "unittest.case.TestCase.assertRaises",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request"
+  ],
+  "tests.test_grab_transport.TestTransportTestCase.test_default_transport": [
+    "grab.client.HttpClient",
+    "builtins.isinstance",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_grab_url_processing.GrabUrlProcessingTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_grab_url_processing.GrabUrlProcessingTestCase.test_nonascii_path": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_grab_url_processing.GrabUrlProcessingTestCase.test_nonascii_query": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_grab_url_processing.GrabUrlProcessingTestCase.test_null_byte_url": [
+    "test_server.server.TestServer.get_url",
+    "str.rstrip",
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "grab.client.request",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_grab_url_processing.GrabUrlProcessingTestCase.test_urllib3_idna_error": [
+    "unittest.case.TestCase.assertRaises",
+    "grab.client.request",
+    "builtins.str",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_grab_xml_processing.GrabXMLProcessingTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_grab_xml_processing.GrabXMLProcessingTestCase.test_declaration_bug": [
+    "grab.document.Document",
+    "grab.document.Document.text_search",
+    "unittest.case.TestCase.assertTrue",
+    "grab.document.Document.select",
+    "selection.base.SelectorList.text",
+    "unittest.case.TestCase.assertEqual",
+    "grab.document.Document.rex_search"
+  ],
+  "tests.test_grab_xml_processing.GrabXMLProcessingTestCase.test_xml_with_declaration": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "grab.client.request",
+    "grab.document.Document.select",
+    "selection.base.SelectorList.text",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_proxylist.ProxyListTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_proxylist.ProxyListTestCase.test_file_proxy_source": [
+    "tests.util.temp_file",
+    "tests.test_proxylist.ProxyListTestCase.generate_plist_file",
+    "proxylist.proxylist.ProxyList.from_local_file",
+    "proxylist.proxylist.ProxyList.size",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.util.temp_file": [
+    "tempfile.mkstemp",
+    "posix.close",
+    "posix.unlink"
+  ],
+  "tests.test_proxylist.ProxyListTestCase.generate_plist_file": [
+    "io.open",
+    "BufferedWriter.write"
+  ],
+  "tests.test_proxylist.ProxyListTestCase.test_get_next_proxy": [
+    "tests.util.temp_file",
+    "tests.test_proxylist.ProxyListTestCase.generate_plist_file",
+    "proxylist.proxylist.ProxyList.from_local_file",
+    "proxylist.proxylist.ProxyList.get_next_server",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_proxylist.ProxyListTestCase.test_web_proxy_source": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "proxylist.proxylist.ProxyList.from_network_file",
+    "proxylist.proxylist.ProxyList.size",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_request.HttpRequestTestCase.test_constructor_timeout_integer": [
+    "grab.request.HttpRequest",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_request.HttpRequestTestCase.test_constructor_timeout_not_specified": [
+    "grab.request.HttpRequest",
+    "builtins.isinstance",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_request.HttpRequestTestCase.test_constructor_timeout_not_specified_default_values": [
+    "grab.request.HttpRequest",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_request.HttpRequestTestCase.test_constructor_timeout_object": [
+    "grab.util.timeout.Timeout",
+    "grab.request.HttpRequest",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_server.RawTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_server.RawTestCase.test_response": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "urllib.request.urlopen",
+    "urllib3.packages.six.moves.http_client.HTTPResponse.read",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_server.RawTestCase.test_sequential_responses": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "urllib.request.urlopen",
+    "urllib3.packages.six.moves.http_client.HTTPResponse.read",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider.BasicSpiderTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_spider.BasicSpiderTestCase.test_check_task_limits_invalid_value": [
+    "tests.test_spider.BasicSpiderTestCase.test_check_task_limits_invalid_value.<locals>.TestSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "unittest.case.TestCase.assertRaises"
+  ],
+  "grab.spider.base.Spider.__init__": [
+    "queue.Queue",
+    "procstat.stat.Stat",
+    "grab.spider.queue_backend.memory.MemoryTaskQueue",
+    "dict.get",
+    "builtins.int",
+    "grab.spider.service.network.NetworkServiceThreaded",
+    "grab.spider.service.task_dispatcher.TaskDispatcherService",
+    "grab.spider.service.parser.ParserService",
+    "grab.spider.base.Spider.task_generator",
+    "grab.spider.service.task_generator.TaskGeneratorService",
+    "tests.test_spider.BasicSpiderTestCase.testz_generator.<locals>.TestSpider.task_generator",
+    "tests.test_spider_error.SpiderErrorTestCase.test_generator_with_invalid_url.<locals>.SomeSpider.task_generator",
+    "tests.test_spider_error.SpiderErrorTestCase.test_redirect_with_invalid_url.<locals>.TestSpider.task_generator",
+    "tests.test_spider_error.SpiderErrorTestCase.test_stat_error_name_threaded_urllib3.<locals>.SimpleSpider.task_generator",
+    "tests.test_spider_misc.MiscTest.test_null_grab_bug.<locals>.SimpleSpider.task_generator",
+    "tests.test_spider_redirect.BasicSpiderTestCase.test_redirect_with_invalid_byte.<locals>.TestSpider.task_generator",
+    "tests.test_spider_task.TestSpiderTestCase.test_task_generator_no_yield.<locals>.TestSpider.task_generator",
+    "grab.spider.errors.SpiderMisuseError"
+  ],
+  "grab.spider.queue_backend.memory.MemoryTaskQueue.__init__": [
+    "grab.spider.queue_backend.base.BaseTaskQueue.__init__",
+    "queue.PriorityQueue"
+  ],
+  "grab.spider.service.network.NetworkServiceThreaded.__init__": [
+    "grab.spider.service.base.BaseService.__init__",
+    "builtins.range",
+    "grab.spider.service.base.BaseService.create_worker",
+    "list.append",
+    "grab.spider.service.base.BaseService.register_workers"
+  ],
+  "grab.spider.service.base.BaseService.create_worker": [
+    "grab.spider.service.base.ServiceWorker"
+  ],
+  "grab.spider.service.base.ServiceWorker.__init__": [
+    "grab.spider.service.base.ServiceWorker.worker_callback_wrapper",
+    "threading.Thread",
+    "grab.spider.service.base.ServiceWorker.build_thread_name",
+    "threading.Event"
+  ],
+  "grab.spider.service.base.ServiceWorker.build_thread_name": [
+    "builtins.hasattr"
+  ],
+  "grab.spider.service.base.BaseService.register_workers": [
+    "builtins.list"
+  ],
+  "grab.spider.service.task_dispatcher.TaskDispatcherService.__init__": [
+    "grab.spider.service.base.BaseService.__init__",
+    "queue.Queue",
+    "grab.spider.service.base.BaseService.create_worker",
+    "grab.spider.service.base.BaseService.register_workers"
+  ],
+  "grab.spider.service.parser.ParserService.__init__": [
+    "grab.spider.service.base.BaseService.__init__",
+    "queue.Queue",
+    "builtins.range",
+    "grab.spider.service.base.BaseService.create_worker",
+    "list.append",
+    "grab.spider.service.base.BaseService.register_workers"
+  ],
+  "grab.spider.service.task_generator.TaskGeneratorService.__init__": [
+    "grab.spider.service.base.BaseService.__init__",
+    "builtins.max",
+    "grab.spider.service.base.BaseService.create_worker",
+    "grab.spider.service.base.BaseService.register_workers"
+  ],
+  "grab.spider.task.Task.__init__": [
+    "grab.spider.task.Task.check_init_kwargs",
+    "builtins.isinstance",
+    "grab.request.HttpRequest",
+    "grab.spider.task.Task.process_delay_option",
+    "dict.items",
+    "builtins.setattr",
+    "grab.errors.GrabMisuseError",
+    "grab.spider.errors.SpiderMisuseError"
+  ],
+  "grab.spider.base.Spider.add_task": [
+    "grab.spider.base.Spider.generate_task_priority",
+    "str.startswith",
+    "grab.spider.queue_backend.memory.MemoryTaskQueue.put",
+    "grab.spider.base.Spider.collect_runtime_event",
+    "traceback.format_stack",
+    "str.join",
+    "logging.Logger.error",
+    "grab.spider.errors.SpiderError"
+  ],
+  "grab.spider.base.Spider.generate_task_priority": [
+    "random.Random.randint"
+  ],
+  "grab.spider.queue_backend.memory.MemoryTaskQueue.put": [
+    "queue.Queue.put"
+  ],
+  "grab.spider.base.Spider.run": [
+    "time.time",
+    "grab.spider.base.Spider.prepare",
+    "grab.spider.base.Spider.process_initial_urls",
+    "grab.spider.service.task_dispatcher.TaskDispatcherService.start",
+    "grab.spider.service.base.BaseService.start",
+    "queue.Queue.get",
+    "grab.spider.base.Spider.is_idle_confirmed",
+    "grab.spider.base.Spider.shutdown_services",
+    "procstat.stat.Stat.shutdown",
+    "tests.test_spider.BasicSpiderTestCase.test_fallback_handler_by_default_name.<locals>.TestSpider.prepare",
+    "tests.test_spider.BasicSpiderTestCase.test_fallback_handler_by_fallback_name.<locals>.TestSpider.prepare",
+    "tests.test_spider.BasicSpiderTestCase.test_handler_result_invalid.<locals>.TestSpider.prepare",
+    "tests.test_spider.BasicSpiderTestCase.test_handler_result_none.<locals>.TestSpider.prepare",
+    "tests.test_spider_error.SpiderErrorTestCase.test_stat_error_name_threaded_urllib3.<locals>.SimpleSpider.prepare",
+    "tests.test_spider_multiprocess.BasicSpiderTestCase.SimpleSpider.prepare",
+    "tests.test_spider_stat.BasicSpiderTestCase.test_counters_and_collections.<locals>.TestSpider.prepare",
+    "tests.test_spider_stat.BasicSpiderTestCase.test_render_stats.<locals>.TestSpider.prepare"
+  ],
+  "grab.spider.service.task_dispatcher.TaskDispatcherService.start": [
+    "grab.spider.service.base.ServiceWorker.start"
+  ],
+  "grab.spider.service.base.ServiceWorker.start": [
+    "threading.Thread.start"
+  ],
+  "grab.spider.service.base.ServiceWorker.wrapper": [
+    "grab.spider.service.task_dispatcher.TaskDispatcherService.worker_callback",
+    "grab.spider.service.task_generator.TaskGeneratorService.worker_callback",
+    "grab.spider.service.parser.ParserService.worker_callback",
+    "grab.spider.service.parser.ParserService.supervisor_callback",
+    "grab.spider.service.network.NetworkServiceThreaded.worker_callback",
+    "logging.Logger.error",
+    "sys.exc_info",
+    "typing.cast",
+    "queue.Queue.put"
+  ],
+  "grab.spider.service.task_dispatcher.TaskDispatcherService.worker_callback": [
+    "threading.Event.is_set",
+    "grab.spider.service.base.ServiceWorker.process_pause_signal",
+    "queue.Queue.get",
+    "grab.spider.base.Spider.srv_process_service_result"
+  ],
+  "grab.spider.service.base.ServiceWorker.process_pause_signal": [
+    "threading.Event.is_set",
+    "threading.Event.set",
+    "threading.Event.wait"
+  ],
+  "grab.spider.service.base.BaseService.start": [
+    "grab.spider.service.base.BaseService.iterate_workers",
+    "grab.spider.service.base.ServiceWorker.start"
+  ],
+  "grab.spider.service.base.BaseService.iterate_workers": [
+    "builtins.isinstance"
+  ],
+  "grab.spider.service.task_generator.TaskGeneratorService.worker_callback": [
+    "grab.spider.base.Spider.get_task_queue",
+    "threading.Event.is_set",
+    "grab.spider.service.base.ServiceWorker.process_pause_signal",
+    "grab.spider.queue_backend.memory.MemoryTaskQueue.size",
+    "queue.Queue.qsize",
+    "builtins.max",
+    "builtins.range",
+    "builtins.next",
+    "queue.Queue.put"
+  ],
+  "grab.spider.queue_backend.memory.MemoryTaskQueue.size": [
+    "queue.Queue.qsize",
+    "builtins.len"
+  ],
+  "grab.spider.service.parser.ParserService.worker_callback": [
+    "threading.Event.is_set",
+    "grab.spider.service.base.ServiceWorker.process_pause_signal",
+    "queue.Queue.get",
+    "threading.Event.set",
+    "grab.spider.base.Spider.find_task_handler",
+    "grab.spider.service.parser.ParserService.execute_task_handler",
+    "procstat.stat.Stat.inc",
+    "threading.Event.clear",
+    "sys.exc_info",
+    "queue.Queue.put"
+  ],
+  "grab.spider.service.parser.ParserService.supervisor_callback": [
+    "threading.Event.is_set",
+    "grab.spider.service.base.ServiceWorker.process_pause_signal",
+    "grab.spider.service.parser.ParserService.check_pool_health",
+    "time.sleep"
+  ],
+  "grab.spider.service.parser.ParserService.check_pool_health": [
+    "grab.spider.service.base.ServiceWorker.is_alive",
+    "procstat.stat.Stat.inc",
+    "grab.spider.service.base.BaseService.create_worker",
+    "list.append",
+    "grab.spider.service.base.ServiceWorker.start",
+    "list.remove"
+  ],
+  "grab.spider.service.base.ServiceWorker.is_alive": [
+    "threading.Thread.is_alive"
+  ],
+  "grab.spider.service.network.NetworkServiceThreaded.worker_callback": [
+    "threading.Event.is_set",
+    "grab.spider.service.base.ServiceWorker.process_pause_signal",
+    "grab.spider.base.Spider.get_task_from_queue",
+    "threading.Event.set",
+    "grab.spider.base.Spider.srv_process_task",
+    "time.sleep",
+    "threading.Event.clear"
+  ],
+  "grab.spider.base.Spider.get_task_from_queue": [
+    "grab.spider.queue_backend.memory.MemoryTaskQueue.get",
+    "grab.spider.queue_backend.memory.MemoryTaskQueue.size"
+  ],
+  "grab.spider.queue_backend.memory.MemoryTaskQueue.get": [
+    "datetime.utcnow",
+    "builtins.enumerate",
+    "queue.Queue.get"
+  ],
+  "grab.spider.base.Spider.srv_process_task": [
+    "tests.test_spider.BasicSpiderTestCase.test_check_task_limits_invalid_value.<locals>.TestSpider.check_task_limits",
+    "grab.spider.base.Spider.log_rejected_task",
+    "grab.spider.base.Spider.check_task_limits",
+    "grab.spider.base.Spider.create_grab_instance",
+    "grab.spider.base.Spider.process_grab_proxy",
+    "procstat.stat.Stat.inc",
+    "grab.client.HttpClient.request",
+    "queue.Queue.put",
+    "grab.spider.base.Spider.get_fallback_handler",
+    "tests.test_spider.BasicSpiderTestCase.test_fallback_handler_by_default_name.<locals>.TestSpider.task_page_fallback",
+    "tests.test_spider.BasicSpiderTestCase.test_fallback_handler_by_fallback_name.<locals>.TestSpider.fallback_zz",
+    "dict.update"
+  ],
+  "grab.spider.base.Spider.is_idle_confirmed": [
+    "grab.spider.base.Spider.is_idle_estimated",
+    "grab.spider.service.base.BaseService.pause",
+    "grab.spider.service.base.BaseService.resume"
+  ],
+  "grab.spider.base.Spider.is_idle_estimated": [
+    "grab.spider.service.base.BaseService.is_alive",
+    "grab.spider.queue_backend.memory.MemoryTaskQueue.size",
+    "queue.Queue.qsize",
+    "grab.spider.service.base.BaseService.is_busy",
+    "grab.spider.service.network.NetworkServiceThreaded.get_active_threads_number"
+  ],
+  "grab.spider.service.base.BaseService.is_alive": [
+    "grab.spider.service.base.BaseService.iterate_workers",
+    "grab.spider.service.base.ServiceWorker.is_alive"
+  ],
+  "grab.spider.base.Spider.log_rejected_task": [
+    "grab.spider.errors.SpiderError",
+    "grab.spider.base.Spider.collect_runtime_event"
+  ],
+  "grab.spider.service.base.BaseService.is_busy": [
+    "grab.spider.service.base.BaseService.iterate_workers",
+    "threading.Event.is_set"
+  ],
+  "grab.spider.service.network.NetworkServiceThreaded.get_active_threads_number": [
+    "grab.spider.service.base.BaseService.iterate_workers",
+    "threading.Event.is_set"
+  ],
+  "grab.spider.service.base.BaseService.pause": [
+    "grab.spider.service.base.BaseService.iterate_workers",
+    "grab.spider.service.base.ServiceWorker.pause"
+  ],
+  "grab.spider.service.base.ServiceWorker.pause": [
+    "threading.Event.clear",
+    "threading.Event.set",
+    "threading.Event.wait",
+    "grab.spider.service.base.ServiceWorker.is_alive"
+  ],
+  "grab.spider.base.Spider.shutdown_services": [
+    "grab.spider.service.base.BaseService.resume",
+    "grab.spider.service.base.BaseService.stop",
+    "time.time",
+    "grab.spider.service.base.BaseService.is_alive",
+    "procstat.stat.Stat.render_moment",
+    "grab.spider.base.Spider.shutdown",
+    "grab.spider.queue_backend.memory.MemoryTaskQueue.clear",
+    "grab.spider.queue_backend.memory.MemoryTaskQueue.close",
+    "logging.Logger.debug",
+    "time.sleep",
+    "logging.Logger.error",
+    "tests.test_spider_multiprocess.BasicSpiderTestCase.SimpleSpider.shutdown"
+  ],
+  "grab.spider.service.base.BaseService.resume": [
+    "grab.spider.service.base.BaseService.iterate_workers",
+    "grab.spider.service.base.ServiceWorker.resume"
+  ],
+  "grab.spider.service.base.ServiceWorker.resume": [
+    "threading.Event.clear",
+    "threading.Event.set"
+  ],
+  "grab.spider.service.base.BaseService.stop": [
+    "grab.spider.service.base.BaseService.iterate_workers",
+    "grab.spider.service.base.ServiceWorker.stop"
+  ],
+  "grab.spider.service.base.ServiceWorker.stop": [
+    "threading.Event.set"
+  ],
+  "grab.spider.queue_backend.memory.MemoryTaskQueue.clear": [
+    "contextlib.suppress",
+    "queue.Queue.get"
+  ],
+  "tests.test_spider.BasicSpiderTestCase.test_fallback_handler_by_default_name": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider.BasicSpiderTestCase.test_fallback_handler_by_default_name.<locals>.TestSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider.TestSpider.__init__": [
+    "grab.spider.base.Spider.__init__"
+  ],
+  "grab.spider.base.Spider.create_grab_instance": [
+    "grab.grab.Grab"
+  ],
+  "grab.spider.base.Spider.srv_process_service_result": [
+    "builtins.isinstance",
+    "grab.spider.base.Spider.srv_process_network_result",
+    "grab.spider.base.Spider.find_task_handler",
+    "builtins.getattr",
+    "grab.spider.base.Spider.process_parser_error",
+    "queue.Queue.put",
+    "grab.spider.errors.SpiderError",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.task.Task.clone",
+    "str.replace",
+    "procstat.stat.Stat.inc"
+  ],
+  "grab.spider.base.Spider.srv_process_network_result": [
+    "grab.spider.base.Spider.log_network_result_stats",
+    "grab.spider.task.Task.get",
+    "grab.spider.base.Spider.is_valid_network_response_code",
+    "grab.spider.base.Spider.log_failed_network_result",
+    "grab.spider.base.Spider.add_task",
+    "procstat.stat.Stat.inc",
+    "queue.Queue.put"
+  ],
+  "grab.spider.base.Spider.log_network_result_stats": [
+    "procstat.stat.Stat.inc"
+  ],
+  "grab.spider.task.Task.get": [
+    "builtins.getattr"
+  ],
+  "grab.spider.base.Spider.log_failed_network_result": [
+    "builtins.isinstance",
+    "procstat.stat.Stat.inc"
+  ],
+  "grab.spider.base.Spider.collect_runtime_event": [
+    "dict.setdefault",
+    "list.append"
+  ],
+  "grab.spider.base.Spider.get_fallback_handler": [
+    "builtins.hasattr",
+    "builtins.getattr",
+    "typing.cast"
+  ],
+  "tests.test_spider.TestSpider.task_page_fallback": [
+    "list.append"
+  ],
+  "tests.test_spider.BasicSpiderTestCase.test_fallback_handler_by_fallback_name": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider.BasicSpiderTestCase.test_fallback_handler_by_fallback_name.<locals>.TestSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider.TestSpider.fallback_zz": [
+    "list.append"
+  ],
+  "tests.test_spider.BasicSpiderTestCase.test_fatal_error": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider.BasicSpiderTestCase.test_fatal_error.<locals>.TestSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "unittest.case.TestCase.assertRaises"
+  ],
+  "grab.spider.base.Spider.find_task_handler": [
+    "grab.spider.task.Task.get",
+    "builtins.getattr",
+    "typing.cast",
+    "grab.spider.errors.NoTaskHandler"
+  ],
+  "grab.spider.service.parser.ParserService.execute_task_handler": [
+    "tests.test_spider.BasicSpiderTestCase.test_fatal_error.<locals>.TestSpider.task_page",
+    "sys.exc_info",
+    "queue.Queue.put",
+    "tests.test_spider.BasicSpiderTestCase.test_handler_result_invalid.<locals>.TestSpider.task_page",
+    "tests.test_spider.BasicSpiderTestCase.test_handler_result_none.<locals>.TestSpider.task_page",
+    "tests.test_spider.SimpleSpider.task_baz",
+    "tests.test_spider.BasicSpiderTestCase.test_task_queue_clear.<locals>.TestSpider.task_page",
+    "tests.test_spider.BasicSpiderTestCase.testz_generator.<locals>.TestSpider.task_page",
+    "tests.test_spider_misc.MiscTest.test_null_grab_bug.<locals>.SimpleSpider.task_one",
+    "tests.test_spider_misc.MiscTest.test_null_grab_bug.<locals>.SimpleSpider.task_two",
+    "tests.test_spider_multiprocess.BasicSpiderTestCase.SimpleSpider.task_page",
+    "tests.test_spider_proxy.SimpleSpider.task_baz",
+    "tests.test_spider_stat.BasicSpiderTestCase.test_counters_and_collections.<locals>.TestSpider.task_page_valid",
+    "tests.test_spider_stat.BasicSpiderTestCase.test_counters_and_collections.<locals>.TestSpider.task_page_fail",
+    "tests.test_spider_stat.BasicSpiderTestCase.test_render_stats.<locals>.TestSpider.task_page",
+    "tests.test_spider_task.TestSpiderTestCase.test_initial_urls.<locals>.TestSpider.task_initial",
+    "tests.test_spider_task.TestSpiderTestCase.test_response_not_valid.<locals>.SomeSimpleSpider.task_page",
+    "tests.test_spider_task.TestSpiderTestCase.test_task_callback.<locals>.TestSpider.task_page",
+    "<tests.test_spider_task.TestSpiderTestCase.test_task_callback.<locals>.FuncWithState object at 0x7fec7c31dc60>",
+    "tests.test_spider_task.TestSpiderTestCase.test_task_clone_post_request.<locals>.TestSpider.task_foo",
+    "tests.test_spider_task.TestSpiderTestCase.test_task_generator_no_yield.<locals>.TestSpider.task_page",
+    "tests.test_spider_task.TestSpiderTestCase.test_task_raw.<locals>.TestSpider.task_page",
+    "tests.test_spider_task.SimpleSpider.task_baz",
+    "tests.test_spider_task.TestSpiderTestCase.test_worker_restored.<locals>.TestSpider.task_page"
+  ],
+  "grab.spider.base.Spider.process_parser_error": [
+    "str.lower",
+    "procstat.stat.Stat.inc",
+    "traceback.format_exception",
+    "str.join",
+    "logging.Logger.error",
+    "builtins.str",
+    "grab.spider.base.Spider.collect_runtime_event"
+  ],
+  "tests.test_spider.BasicSpiderTestCase.test_handler_result_invalid": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider.BasicSpiderTestCase.test_handler_result_invalid.<locals>.TestSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "unittest.case.TestCase.assertRaises"
+  ],
+  "tests.test_spider.BasicSpiderTestCase.test_handler_result_none": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider.BasicSpiderTestCase.test_handler_result_none.<locals>.TestSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run"
+  ],
+  "tests.test_spider.BasicSpiderTestCase.test_network_limit": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider.BasicSpiderTestCase.test_network_limit.<locals>.CustomSimpleSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.util.timeout.Timeout",
+    "grab.request.HttpRequest",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider.BasicSpiderTestCase.test_spider": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider.SimpleSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider.SimpleSpider.task_baz": [
+    "grab.document.Document.unicode_body",
+    "grab.spider.base.Spider.collect_runtime_event"
+  ],
+  "tests.test_spider.BasicSpiderTestCase.test_task_limit": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider.BasicSpiderTestCase.test_task_limit.<locals>.CustomSimpleSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.util.timeout.Timeout",
+    "grab.request.HttpRequest",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "unittest.case.TestCase.assertEqual",
+    "tests.test_spider.SimpleSpider",
+    "dict.get"
+  ],
+  "tests.test_spider.BasicSpiderTestCase.test_task_queue_clear": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider.BasicSpiderTestCase.test_task_queue_clear.<locals>.TestSpider",
+    "builtins.range",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.queue_backend.memory.MemoryTaskQueue.size",
+    "unittest.case.TestCase.assertEqual",
+    "grab.spider.base.Spider.run"
+  ],
+  "tests.test_spider.TestSpider.task_page": [
+    "grab.spider.base.Spider.stop",
+    "procstat.stat.Stat.inc"
+  ],
+  "tests.test_spider.BasicSpiderTestCase.test_task_retry": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider.SimpleSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider.BasicSpiderTestCase.testz_generator": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider.BasicSpiderTestCase.testz_generator.<locals>.TestSpider",
+    "grab.spider.base.Spider.run",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider.TestSpider.task_generator": [
+    "builtins.range",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task"
+  ],
+  "tests.test_spider_error.SpiderErrorTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_spider_error.SpiderErrorTestCase.test_generator_with_invalid_url": [
+    "tests.test_spider_error.SpiderErrorTestCase.test_generator_with_invalid_url.<locals>.SomeSpider",
+    "grab.spider.base.Spider.run"
+  ],
+  "tests.test_spider_error.SomeSpider.task_generator": [
+    "grab.spider.task.Task"
+  ],
+  "tests.test_spider_error.SpiderErrorTestCase.test_redirect_with_invalid_url": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider_error.SpiderErrorTestCase.test_redirect_with_invalid_url.<locals>.TestSpider",
+    "grab.spider.base.Spider.run"
+  ],
+  "tests.test_spider_error.TestSpider.__init__": [
+    "grab.spider.base.Spider.__init__"
+  ],
+  "tests.test_spider_error.TestSpider.task_generator": [
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task"
+  ],
+  "tests.test_spider_error.SpiderErrorTestCase.test_stat_error_name_threaded_urllib3": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider_error.SpiderErrorTestCase.test_stat_error_name_threaded_urllib3.<locals>.SimpleSpider",
+    "grab.spider.base.Spider.run",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_spider_error.SimpleSpider.task_generator": [
+    "test_server.server.TestServer.get_url",
+    "grab.request.HttpRequest",
+    "grab.spider.task.Task"
+  ],
+  "tests.test_spider_misc.MiscTest.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_spider_misc.MiscTest.test_null_grab_bug": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider_misc.MiscTest.test_null_grab_bug.<locals>.SimpleSpider",
+    "grab.spider.base.Spider.run",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider_misc.SimpleSpider.task_generator": [
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task"
+  ],
+  "tests.test_spider_misc.SimpleSpider.task_one": [
+    "procstat.stat.Stat.inc",
+    "grab.spider.task.Task"
+  ],
+  "tests.test_spider_misc.SimpleSpider.task_two": [
+    "procstat.stat.Stat.inc"
+  ],
+  "tests.test_spider_multiprocess.BasicSpiderTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_spider_multiprocess.BasicSpiderTestCase.test_spider_nonmp_changes": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider_multiprocess.BasicSpiderTestCase.SimpleSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider_multiprocess.SimpleSpider.__init__": [
+    "grab.spider.base.Spider.__init__"
+  ],
+  "tests.test_spider_multiprocess.SimpleSpider.task_page": [
+    "grab.spider.task.Task.get",
+    "grab.spider.task.Task"
+  ],
+  "tests.test_spider_proxy.TestSpiderProxyCase.setUpClass": [
+    "tests.util.BaseTestCase.setUpClass",
+    "builtins.range",
+    "test_server.server.TestServer",
+    "test_server.server.TestServer.start"
+  ],
+  "tests.test_spider_proxy.TestSpiderProxyCase.setUp": [
+    "tests.util.BaseTestCase.setUp",
+    "dict.values",
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_spider_proxy.TestSpiderProxyCase.test_setup_proxylist5": [
+    "tests.util.temp_file",
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "dict.values",
+    "io.open",
+    "TextIOWrapper.write",
+    "tests.test_spider_proxy.SimpleSpider",
+    "grab.spider.base.Spider.load_proxylist",
+    "builtins.range",
+    "test_server.server.TestServer.get_url",
+    "grab.request.HttpRequest",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "test_server.structure.HttpHeaderStorage.get",
+    "unittest.case.TestCase.assertEqual",
+    "builtins.set",
+    "builtins.len",
+    "builtins.str"
+  ],
+  "grab.spider.base.Spider.load_proxylist": [
+    "builtins.isinstance",
+    "proxylist.proxylist.ProxyList.from_local_file"
+  ],
+  "tests.test_spider_proxy.SimpleSpider.task_baz": [
+    "email.message.Message.get",
+    "builtins.int",
+    "builtins.str",
+    "grab.spider.base.Spider.collect_runtime_event"
+  ],
+  "grab.spider.task.Task.__eq__": [
+    "builtins.isinstance"
+  ],
+  "tests.test_spider_proxy.TestSpiderProxyCase.tearDownClass": [
+    "tests.util.BaseTestCase.tearDownClass",
+    "dict.values",
+    "test_server.server.TestServer.stop"
+  ],
+  "tests.test_spider_redirect.BasicSpiderTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_spider_redirect.BasicSpiderTestCase.test_redirect_with_invalid_byte": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider_redirect.BasicSpiderTestCase.test_redirect_with_invalid_byte.<locals>.TestSpider",
+    "grab.spider.base.Spider.run",
+    "builtins.len",
+    "unittest.case.TestCase.assertEqual",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_spider_redirect.TestSpider.task_generator": [
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task"
+  ],
+  "tests.test_spider_redirect.BasicSpiderTestCase.callback": [
+    "test_server.server.TestServer.get_url",
+    "str.encode"
+  ],
+  "tests.test_spider_stat.BasicSpiderTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_spider_stat.BasicSpiderTestCase.test_counters_and_collections": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider_stat.BasicSpiderTestCase.test_counters_and_collections.<locals>.TestSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "unittest.case.TestCase.assertEqual",
+    "builtins.len"
+  ],
+  "tests.test_spider_stat.TestSpider.prepare": [
+    "procstat.stat.Stat.inc"
+  ],
+  "tests.test_spider_stat.TestSpider.task_page_valid": [
+    "procstat.stat.Stat.inc"
+  ],
+  "tests.test_spider_stat.TestSpider.task_page_fail": [
+    "builtins.Exception"
+  ],
+  "tests.test_spider_stat.BasicSpiderTestCase.test_render_stats": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider_stat.BasicSpiderTestCase.test_render_stats.<locals>.TestSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "grab.spider.base.Spider.render_stats"
+  ],
+  "grab.spider.base.Spider.render_stats": [
+    "dict.items",
+    "builtins.sorted",
+    "list.append",
+    "grab.spider.queue_backend.memory.MemoryTaskQueue.size",
+    "time.time",
+    "builtins.divmod",
+    "datetime.utcnow",
+    "datetime.strftime",
+    "str.join"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_add_task_invalid_url_no_error": [
+    "tests.test_spider_task.TestSpiderTestCase.test_add_task_invalid_url_no_error.<locals>.TestSpider",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.queue_backend.memory.MemoryTaskQueue.size",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_add_task_invalid_url_raise_error": [
+    "tests.test_spider_task.TestSpiderTestCase.test_add_task_invalid_url_raise_error.<locals>.TestSpider",
+    "grab.spider.task.Task",
+    "unittest.case.TestCase.assertRaises",
+    "grab.spider.queue_backend.memory.MemoryTaskQueue.size",
+    "unittest.case.TestCase.assertEqual",
+    "grab.spider.base.Spider.add_task"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_constructor_positional_args_name_ok": [
+    "grab.request.HttpRequest",
+    "grab.spider.task.Task",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_initial_urls": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "test_server.server.TestServer.get_url",
+    "tests.test_spider_task.TestSpiderTestCase.test_initial_urls.<locals>.TestSpider",
+    "grab.spider.base.Spider.run",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "grab.spider.base.Spider.process_initial_urls": [
+    "grab.request.HttpRequest",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task"
+  ],
+  "tests.test_spider_task.TestSpider.task_initial": [
+    "procstat.stat.Stat.inc"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_response_not_valid": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider_task.TestSpiderTestCase.test_response_not_valid.<locals>.SomeSimpleSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider_task.SomeSimpleSpider.task_page": [
+    "procstat.stat.Stat.inc"
+  ],
+  "grab.spider.task.Task.clone": [
+    "copy.deepcopy",
+    "grab.spider.task.Task",
+    "dict.items",
+    "grab.spider.task.Task.process_delay_option",
+    "builtins.setattr"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_task_callback": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider_task.TestSpiderTestCase.test_task_callback.<locals>.FuncWithState",
+    "tests.test_spider_task.TestSpiderTestCase.test_task_callback.<locals>.TestSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "builtins.sorted",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider_task.TestSpider.task_page": [
+    "list.append",
+    "procstat.stat.Stat.inc",
+    "builtins.str",
+    "grab.spider.base.Spider.collect_runtime_event"
+  ],
+  "tests.test_spider_task.FuncWithState.__call__": [
+    "list.append"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_task_clone": [
+    "tests.test_spider_task.SimpleSpider",
+    "grab.spider.task.Task",
+    "grab.spider.task.Task.clone",
+    "grab.spider.base.Spider.add_task"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_task_clone_post_request": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider_task.TestSpiderTestCase.test_task_clone_post_request.<locals>.TestSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.request.HttpRequest",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider_task.TestSpider.task_foo": [
+    "grab.spider.task.Task.get",
+    "grab.spider.task.Task.clone"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_task_clone_with_url_param": [
+    "grab.spider.task.Task",
+    "grab.spider.task.Task.clone",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_task_comparison": [
+    "grab.spider.task.Task",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_task_constructor_invalid_args": [
+    "unittest.case.TestCase.assertRaises",
+    "grab.spider.task.Task",
+    "grab.request.HttpRequest"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_task_generator_no_yield": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider_task.TestSpiderTestCase.test_task_generator_no_yield.<locals>.TestSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_task_get_fallback_handler": [
+    "grab.spider.task.Task",
+    "tests.test_spider_task.TestSpiderTestCase.test_task_get_fallback_handler.<locals>.TestSpider",
+    "grab.spider.base.Spider.get_fallback_handler",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_task_invalid_name": [
+    "unittest.case.TestCase.assertRaises"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_task_nohandler_error": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider_task.TestSpiderTestCase.test_task_nohandler_error.<locals>.TestSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "unittest.case.TestCase.assertRaises"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_task_priority": [
+    "tests.test_spider_task.SimpleSpider",
+    "grab.spider.task.Task",
+    "unittest.case.TestCase.assertEqual",
+    "grab.spider.base.Spider.add_task",
+    "unittest.case.TestCase.assertTrue",
+    "unittest.case.TestCase.assertRaises"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_task_raw": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider_task.TestSpiderTestCase.test_task_raw.<locals>.TestSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "dict.get",
+    "builtins.len",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_task_useragent": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider_task.SimpleSpider",
+    "test_server.server.TestServer.get_url",
+    "grab.request.HttpRequest",
+    "grab.spider.task.Task",
+    "grab.spider.task.Task.clone",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "test_server.structure.HttpHeaderStorage.get",
+    "unittest.case.TestCase.assertEqual"
+  ],
+  "tests.test_spider_task.TestSpiderTestCase.test_worker_restored": [
+    "test_server.server.Response",
+    "test_server.server.TestServer.add_response",
+    "tests.test_spider_task.TestSpiderTestCase.test_worker_restored.<locals>.TestSpider",
+    "builtins.range",
+    "test_server.server.TestServer.get_url",
+    "grab.spider.task.Task",
+    "grab.spider.base.Spider.add_task",
+    "grab.spider.base.Spider.run",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_urllib3.GrabApiTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_urllib3.GrabApiTestCase.test_invalid_url": [
+    "unittest.case.TestCase.assertRaises",
+    "grab.client.request"
+  ],
+  "tests.test_urllib3.GrabApiTestCase.test_urllib3_idna_error": [
+    "urllib3.poolmanager.PoolManager",
+    "unittest.case.TestCase.assertRaises"
+  ],
+  "tests.test_util_types.ResolveHttpClientEntityTestCase.test_resolve_entity_class": [
+    "grab.util.types.resolve_entity",
+    "builtins.isinstance",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_util_types.ResolveHttpClientEntityTestCase.test_resolve_entity_default": [
+    "grab.util.types.resolve_entity",
+    "builtins.isinstance",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_util_types.ResolveHttpClientEntityTestCase.test_resolve_entity_instance": [
+    "tests.test_util_types.ResolveHttpClientEntityTestCase.test_resolve_entity_instance.<locals>.SuperHttpClient",
+    "grab.util.types.resolve_entity",
+    "builtins.isinstance",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_util_types.ResolveHttpClientEntityTestCase.test_resolve_entity_none_nodefault": [
+    "unittest.case.TestCase.assertRaises",
+    "grab.util.types.resolve_entity"
+  ],
+  "tests.test_util_types.ResolveTransportEntityTestCase.test_resolve_transport_entity_class": [
+    "grab.base.BaseTransport.resolve_entity",
+    "builtins.isinstance",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_util_types.ResolveTransportEntityTestCase.test_resolve_transport_entity_default": [
+    "grab.base.BaseTransport.resolve_entity",
+    "builtins.isinstance",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_util_types.ResolveTransportEntityTestCase.test_resolve_transport_entity_instance": [
+    "tests.test_util_types.ResolveTransportEntityTestCase.test_resolve_transport_entity_instance.<locals>.SuperTransport",
+    "grab.base.BaseTransport.resolve_entity",
+    "builtins.isinstance",
+    "unittest.case.TestCase.assertTrue"
+  ],
+  "tests.test_util_types.ResolveTransportEntityTestCase.test_resolve_transport_entity_none_nodefault": [
+    "unittest.case.TestCase.assertRaises",
+    "grab.base.BaseTransport.resolve_entity"
+  ],
+  "tests.test_xml_security.GrabSimpleTestCase.setUp": [
+    "test_server.server.TestServer.reset"
+  ],
+  "tests.test_xml_security.GrabSimpleTestCase.test_lxml_security_bug": [
+    "tests.util.temp_dir",
+    "posixpath.join",
+    "io.open",
+    "TextIOWrapper.write",
+    "str.lstrip",
+    "str.replace",
+    "str.encode",
+    "_io.BytesIO",
+    "lxml.etree.parse",
+    "lxml.etree._ElementTree.xpath",
+    "typing.cast",
+    "unittest.case.TestCase.assertEqual"
+  ]
+}
