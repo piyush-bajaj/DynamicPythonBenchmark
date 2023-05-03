@@ -56,7 +56,7 @@ The fluid nature of open-source projects often leads to regular modifications to
 Such changes can affect the execution environment of a project, consequently impacting the effectiveness of DyPyBench.
 To overcome this challenge, DyPyBench clones a stable and fixed version of the source code to ensure consistency in the execution environment.
 
-In order to evaluate the dynamic nature of the benchmark, we run test suites and find that overall 91.83\% of test cases out of 45,086 execute successfully in 1362.56 seconds.
+In order to evaluate the dynamic nature of the benchmark, we run test suites and find that overall 91.83\% of test cases out of 45,086 execute successfully in 1,362.56 seconds.
 % In order to evaluate the usefulness of the benchmark, we use LExecutor and the analysis frameworks for two distinct applications.
 For evaluation of the usefulness of the benchmark, we use LExecutor and the analysis frameworks for two distinct applications.
 First, we provide a large amount of training data for the neural model of LExecutor in an attempt to improve the accuracy of the model.
@@ -64,7 +64,7 @@ DyPyBench is able to provide nearly 2.5 times the data compared to original trai
 With this new training data, the neural model is able to predict the true value with an accuracy between 71.86\% and 93.67\% in different experimental setups.
 Second, we provide some statistical analysis of call graphs generated using static and dynamic code analysis for Python.
 PyCG generates static call graphs, whereas DynaPyt generates run-time call graphs in DyPyBench.
-We find that static and dynamic call graphs have 3147 and 2938 common caller and callee entries respectively.
+We find that static and dynamic call graphs have 3,147 and 2,938 common caller and callee entries respectively.
 % Static call graphs always have more keys than dynamic call graphs.
 DynaPyt has 66.41\% of callers present in PyCG, whereas PyCG has 51.93\% of callers present in DynaPyt.
 For callees, DynaPyt has 28.85\% present in PyCG, wheras PyCG has 47.58\% present in DynaPyt.

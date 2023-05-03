@@ -8,8 +8,8 @@ In this chapter we discuss the experimental evaluation of DyPyBench. We do so by
 
 \section{RQ1: How helpful are test suites to make DyPyBench dynamic in nature?}
 
-DyPyBench provides a total of 45086 test cases out of which 41451 test cases pass and 429 fail.   
-The number of test cases in each project varies from 1 to 10552.
+DyPyBench provides a total of 45,086 test cases out of which 41,451 test cases pass and 429 fail.   
+The number of test cases in each project varies from 1 to 10,552.
 On average, each project has 902 test cases out of which 829 pass.  
 The number of projects which have 0 failed test cases in DyPyBench is 31, whereas 13 others have failed tests between 1 and 10.
 Figure \ref{fig:successful_tests} shows the percentage of passed test cases in all projects of DyPyBench.
@@ -22,9 +22,9 @@ Overall, the pass percentage of 91.93\% is achieved for the test cases of all pr
     \caption[Passed Test Case Percentage ]{\label{fig:successful_tests}Percentage of Passed Tests in DyPyBench Projects}
 \end{figure}
 
-The running time of test suite varies from 0.02 seconds and 1362.86 seconds.
+The running time of test suite varies from 0.02 seconds and 1,362.86 seconds.
 Figure \ref{fig:test_run_times} shows the run time of each project.
-The total run time for all the projects in DyPyBench is 3568.86 seconds.
+The total run time for all the projects in DyPyBench is 3,568.86 seconds.
 On average, the running time per test case is 0.079 seconds, whereas the average time to run a test suite is 71.38 seconds. 
 There are 39 projects which run the test suite within 50 seconds, whereas 4 projects have a run time greater than 200 seconds.
 \begin{figure}[ht]
@@ -34,7 +34,7 @@ There are 39 projects which run the test suite within 50 seconds, whereas 4 proj
 \end{figure}
 
 \paragraph{Takeaway.} Overall, the included test suites make it easier to run the projects which is an important requirement to make a benchmark dynamic.
-DyPyBench provides 45086 test cases with a pass percentage of 91.93\%. 
+DyPyBench provides 45,086 test cases with a pass percentage of 91.93\%. 
 With an average running time of 71.38 seconds for a single test suite, DyPyBench provides faster feedback and an increased productivity.
 The availability of test suites make DyPyBench readily available for use, whereas the high pass percentage of test cases coupled with low run-time makes it dynamic in nature.
 
@@ -124,11 +124,11 @@ Figure \ref{fig:caller counts}, shows the distribution of the keys amongst DynaP
 
 Next, we compare the number of value data points, which represent the callees.
 We only compare the callees which are a part of the matching callers or keys.
-There are a total of 16493 value data points provided by DyPyBench for comparison, out of which 10318 belong to DynaPyt and 6175 to PyCG.% of callees for the same callers
+There are a total of 16,493 value data points provided by DyPyBench for comparison, out of which 10,318 belong to DynaPyt and 6,175 to PyCG.% of callees for the same callers
 The high number of values from DynaPyt is due to multiple callee entries of the same function, but from a different object.
 PyCG cannot detect callees based on objects since, it generates the call graphs from static analysis.
 Another factor that we saw from the manual inspection was the callee entries in DynaPyt for some private functions which PyCG is not able to provide. 
-A direct string comparison of the value data points in DynaPyt with PyCG shows a match of 1691 values.
+A direct string comparison of the value data points in DynaPyt with PyCG shows a match of 1,691 values.
 This match contributes to 16.38\% match from DynaPyt and 27.38\% from PyCG.
 With further manual verification, we find that certain data points essentially representing the same values do not match with a direct string comparison.
 Figure \ref{fig:unmatched_value_strings} shows the differences of string in value data points from DynaPyt and PyCG.
@@ -139,11 +139,11 @@ Figure \ref{fig:unmatched_value_strings} shows the differences of string in valu
 \end{figure}
 
 Since the callees shown above are essentially the same, we include these in our comparison.
-The number of matches in the value data points is now increased to 2938, which significantly increases the percentage contribution of PyCG matches to 47.58\% and DynaPyt to 28.47\%. 10182
+The number of matches in the value data points is now increased to 2,938, which significantly increases the percentage contribution of PyCG matches to 47.58\% and DynaPyt to 28.47\%.
 As mentioned before, DynaPyt contains multiple entries for callees with different objects, we remove duplicate entries of some of callees with similar patterns.
 Firstly, we replace the pattern \verb|<decouple.AutoConfig object at 0x7f94786106a0>| by \textit{decouple.AutoConfig} and pop the duplicate entries of \verb|decouple.AutoConfig|.
 Second, we replace the pattern \\\verb|BoundMethodWeakref(<tests.test_saferef._Sample1 object at 0x7f73338edb10>.x)| by \\\verb|BoundMethodWeakref(<tests.test_saferef._Sample1>.x)| and pop its duplicate entries.
-The above modification of values data points leads to decrease in total data points to 16358 which is a decrease of 136 callees from DynaPyt.
+The above modification of values data points leads to decrease in total data points to 16,358 which is a decrease of 136 callees from DynaPyt.
 This results in a slight increase in the matching percentage of callees from DynaPyt to 28.85\%.
 However, after manual verification of the callees we find patterns which should be included in the match but fail due to the module structure differences from DynaPyt and PyCG.
 Figure \ref{fig:callee_counts} shows the distribution of the values amongst DynaPyt and PyCG for the matched keys.
