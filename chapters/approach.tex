@@ -1,4 +1,4 @@
-In this chapter, we describe the approach which we have adopted to create the dynamic benchmark of executable python software.
+In this chapter, we describe the approach which we have adopted to create the dynamic benchmark of executable Python software.
 The overall workflow of the approach is shown in the Figure \ref{fig:overall_approach}.
 
 \begin{figure}[ht]
@@ -7,7 +7,7 @@ The overall workflow of the approach is shown in the Figure \ref{fig:overall_app
 \caption[Approach]{\label{fig:overall_approach}Overall Approach of DyPyBench}
 \end{figure}
 
-As can be seen from the Figure \ref{fig:overall_approach}, we first apply the selection criteria to the corpus of python projects to select a number of projects (Section \ref{approach:project selection}) to generate a list.
+As can be seen from the Figure \ref{fig:overall_approach}, we first apply the selection criteria to the corpus of Python projects to select a number of projects (Section \ref{approach:project selection}) to generate a list.
 The list of projects is then used to prepare the benchmark by installing the projects and their dependencies using automation (Section \ref{approach:benchmark preparation}).
 We proceed by integrating the two analysis frameworks, DynaPyt and PyCG (Section \ref{approach:analysis framework}). 
 We also integrate LExecutor into the benchmark (Section \ref{approach:LExecutor}).
@@ -26,16 +26,16 @@ With the provided approach, we aim to achieve the properties as listed below.
 
 \section{Projects Selection}
 \label{approach:project selection}
-In this section, first we discuss about the available python projects and why we use awesome-python as a corpus for our benchmark (Section \ref{approach:corpus of python projects}).
+In this section, first we discuss about the available Python projects and why we use awesome-python as a corpus for our benchmark (Section \ref{approach:corpus of python projects}).
 Then we discuss about the three selection criteria which we use to select projects from the corpus to make our benchmark diverse and large-scale (Section \ref{approach:selection criteria}).
 \subsection{Corpus of Python Projects}
 \label{approach:corpus of python projects}
 Python's ease of use and popularity, as well as the usage in different domains has led to a large number of projects being developed and made available to the community as open-source projects.
-GitHub alone contains a lot of open-source repositories that have python as their primary programming language.
-Furthermore, there are some GitHub repositories which provide a collection of python projects such as Awesome Python \footnote{https://github.com/vinta/awesome-python/}, Awesome Python Applications \footnote{https://github.com/mahmoud/awesome-python-applications} and Python Projects \footnote{https://github.com/practical-tutorials/project-based-learning}.
+GitHub alone contains a lot of open-source repositories that have Python as their primary programming language.
+Furthermore, there are some GitHub repositories which provide a collection of Python projects such as Awesome Python \footnote{https://github.com/vinta/awesome-python/}, Awesome Python Applications \footnote{https://github.com/mahmoud/awesome-python-applications} and Python Projects \footnote{https://github.com/practical-tutorials/project-based-learning}.
 These collections of projects also provide us with a classification for the projects based on the application domains.
-In this work, we use the awesome-python project which contains a curated list of some of the awesome open-source python projects including libraries, frameworks and software. 
-The awesome-python project is the corpus of projects for our benchmark as it contains a collection of 679 python projects.
+In this work, we use the awesome-python project which contains a curated list of some of the awesome open-source Python projects including libraries, frameworks and software. 
+The awesome-python project is the corpus of projects for our benchmark as it contains a collection of 679 Python projects.
 Awesome-python further classifies these projects into 92 main categories, out of which some of the categories are further divided into sub-categories.
 These sub-categories contain the subset of the main category based on technology, tool and their intended usage.
 For example, the sub-categories for Distributed Computing are Batch Processing and Stream Processing which are the two intended ways of processing data.
@@ -83,7 +83,7 @@ We then discuss about how we use these flags in our work to install 50 projects 
 Finally, we discuss about the working environment which is created by the installation of the above 50 projects (Section \ref{approach:collection of projects}).
 \subsection{List of Python Projects}
 \label{approach:list of projects}
-Applying the selection criteria as described before, we select 50 open-source python projects.
+Applying the selection criteria as described before, we select 50 open-source Python projects.
 Although, the installation and setup of these projects follow similar steps, there are certain differences which vary from project to project.
 For example, the path and the name of requirements file to install dependencies varies for each project.
 Some of these differences can be attributed to the directory structure of source code present in the GitHub repository.
@@ -127,13 +127,13 @@ They can also work with exceptional cases using conditionals such as if else sta
 
 \subsection{Execution Environment}
 \label{approach:collection of projects}
-The automated installation of projects provide us with a collection of 50 python projects.
+The automated installation of projects provide us with a collection of 50 Python projects.
 This collection forms the pool of projects which our benchmark provides to perform code analysis or to generate training data for neural models.
 Each project installed using the automation is present inside a sub-folder in the collection.
 This makes it easier to work on individual projects when needed.
 When a particular project from the collection needs to used, a duplicate copy of the same is created.
 This ensures the long-term usage of the projects in the benchmark by preserving the projects and their virtual environments.
-The dynamic nature of python and open-source ecosystems results in frequent changes to the projects.
+The dynamic nature of Python and open-source ecosystems results in frequent changes to the projects.
 Another advantage provided by duplication is avoiding the re-installation of projects which saves significant time and effort. 
 
 \section{Integrating Analysis Frameworks}

@@ -22,9 +22,9 @@ To study the performance of software projects in Python under real-world conditi
 The dynamic benchmark would perform analyses using tools such as systrace \cite{systrace} and DynaPyt \cite{DynaPyt2022} covering a wide range of application domains provided by Python.
 Besides being a framework for dynamic analyses, the Python benchmark would allow generation of training data for machine learning and deep learning tasks in software engineering such as bug detection \cite{DeepBugs2018}, quality analysis \cite{Code_analysis_1, Code_analysis_2}, code refactoring \cite{code_refactoring}, and testing \cite{testing_1, testing_2, testing_3} to improve the productivity, efficiency and quality of code.
 
-In this work, we provide a general-purpose dynamic benchmark of executable python software. This benchmark is named DyPyBench and consists of 50 python projects including frameworks and libraries.
+In this work, we provide a general-purpose dynamic benchmark of executable Python software. This benchmark is named DyPyBench and consists of 50 Python projects including frameworks and libraries.
 The entire benchmark, encapsulated inside a docker container, can be setup using the docker image containing the projects, alongside the analysis frameworks such as DynaPyt \cite{DynaPyt2022} and PyCG \cite{PyCG_2021} to perform dynamic and static analysis respectively. Additionally, the benchmark also integrates LExecutor \cite{LExecutor_2023}, which is a learning-guided approach for executing arbitrary code snippets in an underconstrained way. 
-All the python projects in the benchmark are open source projects and available on GitHub \cite{github} including the analysis frameworks and LExecutor.
+All the Python projects in the benchmark are open source projects and available on GitHub \cite{github} including the analysis frameworks and LExecutor.
 The chosen projects are popular and belong to diverse application domains such as audio e.g., pydub, command-line tools e.g., thefuck, and computer vision e.g., scikit-learn.
 The benchmark provided in this work provides a single command line access interface to run test suites and analysis.
 The access interface provides the necessary functionality to execute dynamic analysis through DynaPyt, produce trace files via LExecutor, and generate static call graphs using PyCG.
@@ -71,8 +71,8 @@ For callees, DynaPyt has 28.85\% present in PyCG, wheras PyCG has 47.58\% presen
 
 In summary, this work contributes the following:
 \begin{itemize}
-    \item A python benchmark containing 50 projects from varied application domains.
-    \item A benchmark with preinstalled frameworks for code analysis of python projects.
+    \item A Python benchmark containing 50 projects from varied application domains.
+    \item A benchmark with preinstalled frameworks for code analysis of Python projects.
     \item A new and large dataset for training a neural model of LExecutor.
     \item A statistical analysis of static and run-time call graphs for Python.
     % \item A collection of static and dynamic call graphs to compare and analyze them.

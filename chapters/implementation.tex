@@ -12,7 +12,7 @@ The source code of this implementation is present on GitHub at \url{https://gith
 
 Figure \ref{fig:implementation_flow} shows the flow of implementation steps for the creation of DyPyBench. 
 We start with installation and setup of sample projects from the awesome-python corpus (Section \ref{impl:Sample Projects}).
-With these sample projects, we create an automation script to gather a list of 50 python projects for our benchmark (Section \ref{impl:Automation for Installation}).
+With these sample projects, we create an automation script to gather a list of 50 Python projects for our benchmark (Section \ref{impl:Automation for Installation}).
 We then create a Docker image for our benchmark, and use the list of projects to install and setup the execution environment automatically (Section \ref{impl:Docker Image}).
 With the Docker environment ready with the projects, we create a command-line access interface to the benchmark (Section \ref{impl:Access Interface}).   
 We integrate LExecutor, PyCG and DynaPyt to the benchmark and provide options for their usage through the access interface (Section \ref{impl:Integrating Tools}).
@@ -36,7 +36,7 @@ We start by manually picking a random project from one of the categories in the 
 Then the number of stars for the project repository on GitHub is checked.
 If the project has less than 500 stars we choose another project randomly, otherwise we proceed with the picked project.
 This helps us to ensure the GitHub stars selection criteria mentioned in section \ref{approach:selection criteria}.
-We proceed by cloning the source code of the project and installing it in a python virtual environment.
+We proceed by cloning the source code of the project and installing it in a Python virtual environment.
 If the project is successfully installed, we add the pytest library to the virtual environment.
 Finally, the test suite of the project is run using pytest. 
 The project is chosen only if the execution is successful ensuring the selection criteria of presence and execution of test suite.
@@ -114,7 +114,7 @@ The automation script we create, starts by creating a Project directory if it do
 Then we read the github-url.txt file we created before line by line and perform the following steps for each line.
 First, we split the space separated strings to get the arguments as described before.
 We then create a numbered sub-folder for the project to be installed and clone the source code from the Git URL into the sub-folder.
-Inside the sub-folder, we create a python virtual environment \textit{.vm} and activate this environment.
+Inside the sub-folder, we create a Python virtual environment \textit{.vm} and activate this environment.
 We then install the project using the source code.
 Next, we check if the flag provided is \textit{rt}, if yes, then we install the dependencies using the requirements file.
 We then check, if the the project needs some extra dependencies to execute test suite and install those if needed.
@@ -191,12 +191,12 @@ Figure \ref{fig:dypybench docker} shows the created image on the Docker Hub webs
 
 \section{Access Interface}
 \label{impl:Access Interface}
-In order to allow easy access to the collection of projects in the Docker image, we create a single command-line interface with python script.
+In order to allow easy access to the collection of projects in the Docker image, we create a single command-line interface with Python script.
 Python scripts are user-friendly and offer extensive support for both standard and third-party libraries that can be utilized for automating tasks, data processing, and analysis.
 They are also easily extensible, allowing for the addition of new features without affecting the previous functionality.
 These scripts can be triggered from the command-line and also accept command line options.
 
-In this work, we create a python script, dypybench.py, which acts as a single point of entry to trigger the execution of various tasks within the benchmark.
+In this work, we create a Python script, dypybench.py, which acts as a single point of entry to trigger the execution of various tasks within the benchmark.
 The script is executed from the command-line using the command as shown below.
 
 \verb$python3 dypybench.py <args>$
@@ -208,7 +208,7 @@ The initial command-line arguments added to the script are \textit{\--\--list}, 
 The argument \textit{\--\--list}, prints the number, name and Git URL of all the projects in the benchmark.
 The argument \textit{\--\--save}, copies the output to the file specified.
 The argument \textit{\--\--test}, executes the test suite of the project number specified to this argument.
-Essentially, the python script triggers a new process using the subprocess module to execute the bash script provided to run the test suite with the arguments provided in github-url.txt.
+Essentially, the Python script triggers a new process using the subprocess module to execute the bash script provided to run the test suite with the arguments provided in github-url.txt.
 The argument \textit{\--\--test\_original} can be combined with \textit{\--\--test} and specifies the tests to be performed on the original copy of the code.  
 Lastly, the argument \textit{\--\--timeout}, kills the subprocess and any command from the bash script that is still running after the seconds specified to this argument.  
 More arguments are added to this interface when we add the analysis frameworks and LExecutor.
@@ -239,7 +239,7 @@ pytestmark = pytest.mark.skip("skip for dypybench")
 @pytest.mark.skip("skip for dypybench")
 \end{lstlisting}
 
-We create a copy of the files for which we add pytest marks and replace the files in the original project directory using a python script provided in the utility.
+We create a copy of the files for which we add pytest marks and replace the files in the original project directory using a Python script provided in the utility.
 We also add this step of replacing files to the automation script of installation for future installations.
 
 We use the source code of LExecutor and DynaPyt in our benchmark.
@@ -247,13 +247,13 @@ To access interface provides the arguments of \textit{\--\--udapte\_lex\_source}
 The following sections give more implementation details on the integration of LExecutor, PyCG and DynaPyt and the access interface arguments for them.
 
 \subsection{LExecutor}
-We clone the source code and create a python virtual environment with the dependencies from the bash script when the argument \textit{\--\--update\_lex\_source} is run from the access interface.
+We clone the source code and create a Python virtual environment with the dependencies from the bash script when the argument \textit{\--\--update\_lex\_source} is run from the access interface.
 Since LExecutor works in two steps to generate traces files, we provide two bash scripts one for each step.
 The first script instruments the source code of the project and the second script generates trace files by executing the project.  
 The instrumentation is not necessarily done on all the source files, but rather the files that run during execution.
 In this work, we provide the files to be instrumented inside a text file as a list.
 The text file contains a list of two space separated values, the first specifies the name of the project and the second specifies the path of the file to be instrumented.
-We also provide a python script to generate this text file, by parsing all the projects and filtering out the source files.
+We also provide a Python script to generate this text file, by parsing all the projects and filtering out the source files.
 Certain files are excluded from this text file to avoid issues with running test suite.
 However, this text file can be created by any means in the required format.
 The Listing \ref{code:lex_instrument.txt} shows sample entries from the above mentioned text file.
@@ -372,7 +372,7 @@ This analysis is named CallGraph and we use the output of this analysis for comp
 We use the function pre\_call hook provided by DynaPyt and create the call graph in the form of dictionary.
 A key in this dictionary is the fully qualified names of the caller method and the value for this key is a list of fully qualified names of called methods.
 At the end of the execution, i.e., after the all the test cases are run we output the dictionary to a JSON file.
-A python utility script provide by the benchmark collects all the JSON files from the projects that were dynamically analyzed.
+A Python utility script provide by the benchmark collects all the JSON files from the projects that were dynamically analyzed.
 Listing \ref{code:pre_call_hook} shows the code of the pre\_call hook implemented for the analysis.
 The complete code for the analysis is shown in the Listing \ref{code:CallGraphAnalysis}.
 
