@@ -52,7 +52,7 @@ This can be attributed to the number of files in each project that are instrumen
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\linewidth]{figures/evaluation/lex_data_points.png}
-    \caption[Unique Value-use Events]{\label{fig:Lex_projects_events}Unique Value-use Events in DyPyBench Projects}
+    \caption[Unique Value-use Events]{\label{fig:Lex_projects_events}Unique Value-use Events in DyPyBench Projects.}
 \end{figure}
 
 To evaluate the accuracy of the neural model based on the new data points, we perform a total of 6 experiments using different validation data and the abstraction modes.
@@ -66,7 +66,7 @@ For each of the validation data-set we perform 2 experiments, one with the abstr
     \centering
     \subfigure[Fine-grained]{\includegraphics[width=0.4\linewidth]{figures/evaluation/lex_random_fine.png}}
     \subfigure[Coarse-grained]{\includegraphics[width=0.4\linewidth]{figures/evaluation/lex_random_coarse.png}}
-    \caption[Accuracy vs Epoch (Random Split)]{\label{fig:lex_random}Accuracy vs Epoch (Random Split) }
+    \caption[Accuracy vs Epoch (Random Split)]{\label{fig:lex_random}Accuracy vs Epoch (Random Split). }
 \end{figure}
 
 Figure \ref{fig:lex_random} shows how the accuracy of the model varies with the number of epochs when the first validation data-set mentioned above is used.
@@ -78,7 +78,7 @@ We mainly consider the accuracy of the first prediction, which starts at nearly 
     \centering
     \subfigure[Fine-grained]{\includegraphics[width=0.4\linewidth]{figures/evaluation/lex_original_fine.png}}
     \subfigure[Coarse-grained]{\includegraphics[width=0.4\linewidth]{figures/evaluation/lex_original_coarse.png}}
-    \caption[Accuracy vs Epoch (Original Data)]{\label{fig:lex_original}Accuracy vs Epoch (Original Data) }
+    \caption[Accuracy vs Epoch (Original Data)]{\label{fig:lex_original}Accuracy vs Epoch (Original Data). }
 \end{figure}
 
 Similarly, Figure \ref{fig:lex_original} shows the accuracy versus epoch for validation data-set used by the LExecutor.
@@ -92,7 +92,7 @@ Since, the neural model we start with is a pre-trained model, the accuracy range
     \centering
     \subfigure[Fine-grained]{\includegraphics[width=0.4\linewidth]{figures/evaluation/lex_project_fine.png}}
     \subfigure[Coarse-grained]{\includegraphics[width=0.4\linewidth]{figures/evaluation/lex_project_coarse.png}}
-    \caption[Accuracy vs Epoch (Project Split)]{\label{fig:lex_project}Accuracy vs Epoch (Project Split) }
+    \caption[Accuracy vs Epoch (Project Split)]{\label{fig:lex_project}Accuracy vs Epoch (Project Split). }
 \end{figure}
 
 \paragraph{Takeaway.} The quantity and quality of data is an important aspect for training neural network models. The higher quantity does not always guarantee the quality of data.
@@ -116,12 +116,12 @@ Figure \ref{fig:caller counts}, shows the distribution of the keys amongst DynaP
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.5\linewidth]{figures/evaluation/callercounts.png}
-    \caption[Distribution of Callers]{\label{fig:caller counts}Distribution of Callers }
+    \caption[Distribution of Callers]{\label{fig:caller counts}Distribution of Callers. }
 \end{figure}
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.5\linewidth]{figures/evaluation/calleecounts.png}
-    \caption[Distribution of Callees]{\label{fig:callee_counts}Distribution of Callees}
+    \caption[Distribution of Callees]{\label{fig:callee_counts}Distribution of Callees.}
 \end{figure}
 
 Next, we compare the number of value data points, which represent the callees.
@@ -137,7 +137,7 @@ Figure \ref{fig:unmatched_value_strings} shows the differences of string in valu
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\linewidth]{figures/evaluation/string_compare.png}
-    \caption[Unmatched Same Callees]{\label{fig:unmatched_value_strings}Unmatched Same Callees }
+    \caption[Unmatched Same Callees]{\label{fig:unmatched_value_strings}Unmatched Same Callees. }
 \end{figure}
 
 Since the callees shown above are essentially the same, we include these in our comparison.

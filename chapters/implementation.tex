@@ -6,7 +6,7 @@ The source code of this implementation is present on GitHub at \url{https://gith
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\linewidth]{figures/implementation/implementaion_flow.png}
-    \caption{Implementation Flow}
+    \caption{Implementation Flow.}
     \label{fig:implementation_flow}
 \end{figure}
 
@@ -27,7 +27,7 @@ Source code of these projects is fetched from GitHub repository which is provide
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth, height=1\linewidth]{figures/implementation/Awesome-Python-website3.png}
-    \caption{Awesome Python Website}
+    \caption{Awesome Python Website.}
     \label{fig:awesome-python-website}
 \end{figure}
 
@@ -65,7 +65,7 @@ We installed some operating system libraries and module dependencies for some of
     Image Processing & - & pillow & 10.3k & Yes\\
     \hline
     \end{tabular}
-    \caption{First five Projects for DyPyBench (Criteria : Test Suite Execution)}
+    \caption{First Five Projects for DyPyBench (Criteria : Test Suite Execution).}
     \label{table:first_5_projects}
 \end{table}
 
@@ -83,7 +83,7 @@ The blue colored text indicates similarities, whereas the red colored text indic
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\linewidth]{figures/implementation/Setup-difference.png}
-    \caption{Execution of Projects (Similarities and Differences)}
+    \caption{Execution of Projects (Similarities and Differences).}
     \label{fig:setup difference}
 \end{figure}
 As can be seen from the Figure \ref{fig:setup difference}, the two commands of git clone and pytest have different arguments depending on the project.
@@ -142,7 +142,7 @@ We use Ubuntu as the base image, since we performed the previous steps in our im
 Also, we created bash files which can only run on Linux based systems.
 We first create a simple image for the benchmark with the required system dependencies and the source code files of DyPyBench.
 This image is created using the Dockerfile provided in Listing \ref{code:Dockerfile}.
-\begin{lstlisting}[caption=Dockerfile,label=code:Dockerfile,language=Bash]
+\begin{lstlisting}[caption=Dockerfile.,label=code:Dockerfile,language=Bash]
 FROM ubuntu:latest
 
 WORKDIR /DyPyBench
@@ -186,7 +186,7 @@ Figure \ref{fig:dypybench docker} shows the created image on the Docker Hub webs
 \begin{figure}[ht]
 \centering
 \includegraphics[width=1\linewidth]{figures/implementation/docker_hub.png}
-\caption[DyPyBench Docker Hub]{\label{fig:dypybench docker}Docker Hub}
+\caption[DyPyBench Docker Hub]{\label{fig:dypybench docker}Docker Hub.}
 \end{figure}
 
 \section{Access Interface}
@@ -221,7 +221,7 @@ The usage of the script and the command line options are shown in the Figure \re
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\linewidth]{figures/implementation/command-line-options.png}
-    \caption[Command Line Options]{\label{fig:command-line-options}Command Line Options}
+    \caption[Command Line Options]{\label{fig:command-line-options}Command Line Options.}
 \end{figure}
 
 \section{Integrating Code Analysis and Neural Network Tools}
@@ -233,7 +233,7 @@ To handle this challenge, we skip the test cases which fail using a pytest marke
 In some cases we need to skip entire files, since all the test cases in the file fails.
 The two types of pytest markers are as shown in the Listing \ref{code:pytest_marker}.
 The marker shown on line 1 skips the entire file from execution, whereas line 3 shows the marker that skips only the test function.
-\begin{lstlisting}[caption=Skip Test Case using Pytest Marker,label=code:pytest_marker,language=Python]
+\begin{lstlisting}[caption=Skip Test Case using Pytest Marker.,label=code:pytest_marker,language=Python]
 pytestmark = pytest.mark.skip("skip for dypybench")
 
 @pytest.mark.skip("skip for dypybench")
@@ -273,13 +273,13 @@ errbot ./temp/project18/errbot/core_plugins/acls.py
 The argument \textit{\--\--lex\_instrument} triggers the first bash script to instrument the files specified in the above text file for the specified project.
 This script executes the command shown in Listing \ref{code:lex_instrument}.
 The parameter \$\{@:4\} is replaced by the space separated file paths. 
-\begin{lstlisting}[caption=LExecutor Instrumentation,label=code:lex_instrument,language=Bash]
+\begin{lstlisting}[caption=LExecutor Instrumentation.,label=code:lex_instrument,language=Bash]
 python -m lexecutor.Instrument --files ${@:4} --iids /DyPyBench/iids.json --validate
 \end{lstlisting}
 
 The second bash script mentioned above is triggered by the option \textit{\--\--lex\_test}, which simply runs the test suite of the specified project using command shown in Listing \ref{code:lex_test}.
 The parameter \$3 is replaced by the test suite directory specified in github-url.txt.
-\begin{lstlisting}[caption=LExecutor Test Suite Execution,label=code:lex_test,language=Bash]
+\begin{lstlisting}[caption=LExecutor Test Suite Execution.,label=code:lex_test,language=Bash]
 pytest $3
 \end{lstlisting}
 
@@ -291,7 +291,7 @@ The argument \textit{\--\--pycg} from the access interface triggers the executio
 Then the script triggers the PyCG commands as shown in the Listing \ref{code:pycg}.
 Only one of the two commands is executed based on the if condition shown on line 1, which checks if the test suite is a directory or a file.
 The command on line 6 specifies all the .py files in the test suite directory as the entry point for the call graphs.
-\begin{lstlisting}[caption=PyCG Execution,label=code:pycg,language=Bash]
+\begin{lstlisting}[caption=PyCG Execution.,label=code:pycg,language=Bash]
 if [[ $4 == "file" ]]
 then
     pycg --package ./project$2 project$2/$3 -o pycg_$2.json
@@ -337,7 +337,7 @@ We provide this with the argument \textit{\--\--dynapyt\_analysis} to the access
 The two instrumentation commands are shown in the Listing \ref{code:dynapyt_instrument}. 
 
 \newpage
-\begin{lstlisting}[caption=DynaPyt Instrumentation,label=code:dynapyt_instrument,language=Bash]
+\begin{lstlisting}[caption=DynaPyt Instrumentation.,label=code:dynapyt_instrument,language=Bash]
 if [[ $5 == "d" ]]
 then
     #run instrumentation on the given directory
@@ -354,12 +354,12 @@ This script, first create an entry file to run all the tests using pytest module
 The Listing \ref{code:run_all_test.py} shows a sample of the entry file created above.
 We then trigger the execution of tests with \textit{run\_analysis} module provided by dynapyt, specifiying the above entry file and the name of the analysis.
 Listing \ref{code:dynapyt_test} shows the creation of the entry file on line 1 and execution with run\_analysis on line 3.
-\begin{lstlisting}[caption=DynaPyt Execution Entry File,label=code:run_all_test.py,language=Python]
+\begin{lstlisting}[caption=DynaPyt Execution Entry File.,label=code:run_all_test.py,language=Python]
 import pytest
 
 pytest.main(['--import-mode=importlib','/home/piyush/Documents/MT/CallGraph/flask-api/flask_api/tests/'])
 \end{lstlisting}
-\begin{lstlisting}[caption=DynaPyt Test Suite Execution,label=code:dynapyt_test,language=Bash]
+\begin{lstlisting}[caption=DynaPyt Test Suite Execution.,label=code:dynapyt_test,language=Bash]
 printf "import pytest\n\npytest.main(['--import-mode=importlib', '$ROOT_DIR/temp/project$2/$4'])\n" > run_all_tests.py
 
 python -m dynapyt.run_analysis --entry ./run_all_tests.py --analysis $3
@@ -377,7 +377,7 @@ Listing \ref{code:pre_call_hook} shows the code of the pre\_call hook implemente
 The complete code for the analysis is shown in the Listing \ref{code:CallGraphAnalysis}.
 
 \newpage
-\begin{lstlisting}[caption=Function Pre-Call Hook in Call Graph Analysis,label=code:pre_call_hook,language=Python,linerange={19-53}]
+\begin{lstlisting}[caption=Function Pre-Call Hook in Call Graph Analysis.,label=code:pre_call_hook,language=Python,linerange={19-53}]
 from typing import Callable, Tuple, Dict
 import logging
 import libcst as cst
