@@ -31,7 +31,7 @@ Source code of these projects is fetched from GitHub repository which is provide
     \label{fig:awesome-python-website}
 \end{figure}
 
-We decide to select 5 sample projects to start our implementation.
+We decide to select five sample projects to start our implementation.
 We start by manually picking a random project from one of the categories in the awesome-python corpus.
 Then the number of stars for the project repository on GitHub is checked.
 If the project has less than 500 stars we choose another project randomly, otherwise we proceed with the picked project.
@@ -41,11 +41,11 @@ If the project is successfully installed, we add the pytest library to the virtu
 Finally, the test suite of the project is run using pytest. 
 The project is chosen only if the execution is successful ensuring the selection criteria of presence and execution of test suite.
 
-All the above steps are repeated a number of times to get 5 different projects.
+All the above steps are repeated a number of times to get five different projects.
 Each time a random project is selected, we ensure that it does not belong to a category which has been chosen before.
 This helps us fulfill the selection criteria of diverse domain mentioned in section \ref{approach:selection criteria}.
-Table \ref{table:first_5_projects} shows a list the projects which were chosen for installation till 5 of them satisfied all the selection criteria.
-The 5 projects with \textbf{Yes} in the Criteria column were chosen as the sample projects for further tasks for our benchmark.
+Table \ref{table:first_5_projects} shows a list the projects which were chosen for installation till five of them satisfied all the selection criteria.
+The five projects with \textbf{Yes} in the Criteria column were chosen as the sample projects for further tasks for our benchmark.
 We installed some operating system libraries and module dependencies for some of the projects listed in Table \ref{table:first_5_projects} for them to work properly.  
 
 \begin{table}[ht]
@@ -65,13 +65,13 @@ We installed some operating system libraries and module dependencies for some of
     Image Processing & - & pillow & 10.3k & Yes\\
     \hline
     \end{tabular}
-    \caption{First 5 Projects for DyPyBench (Criteria : Test Suite Execution)}
+    \caption{First five Projects for DyPyBench (Criteria : Test Suite Execution)}
     \label{table:first_5_projects}
 \end{table}
 
 \section{Automation for Installation}
 \label{impl:Automation for Installation}
-The installation and setup of the 5 sample projects helped us in understanding the general steps required for installing 50 steps.
+The installation and setup of the five sample projects helped us in understanding the general steps required for installing 50 steps.
 Although, it is possible to install all the 50 projects manually, however, we need to ensure our selection criteria are met.
 To do so, we might need to perform the installation of much more projects than 50.
 In order to make it easier and quicker to get the list of 50 projects which satisfy our needs, we automate the process of installation and execution of projects.
@@ -123,7 +123,7 @@ We proceed by installing the pytest library to the virtual environment.
 Finally, we execute the test suite using pytest.
 The automation bash script we create for installation and execution to gather a list 50 projects is provided in Listing \ref{code:project_selection_automation.sh}.
 
-With the sample projects, we get 5 entries in github-url.txt.
+With the sample projects, we get five entries in github-url.txt.
 The next step is to include more projects in this list.
 For this, we start by picking random projects from awesome-python and check for GitHub stars selection criteria.
 If the criteria is met, we add an entry to github-url.txt file as per the format.
