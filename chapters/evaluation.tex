@@ -1,12 +1,15 @@
 In this chapter we discuss the experimental evaluation of DyPyBench. We do so by answering the following questions:
 
-\textbf{RQ1:} How do the included test suites in Python projects within DyPyBench contribute to a dynamic benchmark?
+% \textbf{RQ1:} How do the included test suites in Python projects within DyPyBench contribute to a dynamic benchmark?
+\textbf{RQ1:} How the included test suites of Python projects make our benchmark dynamic ?
 
-\textbf{RQ2:} How efficient is our benchmark to generate (valid and good) training data for the neural models?
+% \textbf{RQ2:} How efficient is our benchmark to generate (valid and good) training data for the neural models?
+\textbf{RQ2:} Can our benchmark generate large and valid data to train neural models ?
 
-\textbf{RQ3:} How effective is DyPyBench in providing data to aid a comparison of static and dynamic call graph?
+% \textbf{RQ3:} How effective is DyPyBench in providing data to aid a comparison of static and dynamic call graph?
+\textbf{RQ3:} Can we use our benchmark to compare static and dynamic analysis? 
 
-\section{RQ1: How helpful are test suites to make DyPyBench dynamic in nature?}
+\section{RQ1: How the Included Test Suites Make DyPyBench Dynamic ?}
 
 DyPyBench provides a total of 45,086 test cases out of which 41,451 test cases pass and 429 fail.   
 The number of test cases in each project varies from 1 to 10,552.
@@ -19,7 +22,7 @@ Overall, the pass percentage of 91.93\% is achieved for the test cases of all pr
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\linewidth]{figures/evaluation/perc_passed_tests.png}
-    \caption[Passed Test Case Percentage ]{\label{fig:successful_tests}Percentage of Passed Tests in DyPyBench Projects}
+    \caption[Passed Test Case Percentage ]{\label{fig:successful_tests}Percentage of Passed Tests in DyPyBench Projects.}
 \end{figure}
 
 The running time of test suite varies from 0.02 seconds and 1,362.86 seconds.
@@ -30,7 +33,7 @@ There are 39 projects which run the test suite within 50 seconds, whereas 4 proj
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\linewidth]{figures/evaluation/tests_runtime2.png}
-    \caption[Test Suite Run Time]{\label{fig:test_run_times}Test Suite Run Time in DyPyBench Projects}
+    \caption[Test Suite Run Time]{\label{fig:test_run_times}Test Suite Run Time in DyPyBench Projects.}
 \end{figure}
 
 \paragraph{Takeaway.} Overall, the included test suites make it easier to run the projects which is an important requirement to make a benchmark dynamic.
@@ -38,8 +41,7 @@ DyPyBench provides 45,086 test cases with a pass percentage of 91.93\%.
 With an average running time of 71.38 seconds for a single test suite, DyPyBench provides faster feedback and an increased productivity.
 The availability of test suites make DyPyBench readily available for use, whereas the high pass percentage of test cases coupled with low run-time makes it dynamic in nature.
 
-\section{RQ2: How helpful is DyPyBench in providing data for neural code analysis?}
-
+\section{RQ2: Can DyPyBench Provide Data for Neural Code Analysis ?}
 DyPyBench contributes 547,830 new data points for LExecutor. 
 This results in the model accuracy between 71.86\% and 93.67\% after training the model.
 
@@ -99,16 +101,16 @@ The quality of these data points is calculated based on the effect on accuracy.
 The data points collected from DyPyBench, provide an accuracy in the range 71.86\% and 93.67\% for Top-1 predictions, which resonates with the accuracy provided by LExecutor without our data points.
 Overall, DyPyBench is a good and valid data generator for neural analysis as it provides large quantity of good quality data.   
 
-\section{RQ3: How helpful is DyPyBench in providing data for comparing static and dynamic analysis frameworks?}
+\section{RQ3: Can DyPyBench be Used to Compare Static and Dynamic Call Graphs ? }
 
-We find that DyPyBench provides 10799 key data points from DynaPyt and PyCG combined for comparison of call graphs.
+DyPyBench provides 10,799 key data points from DynaPyt and PyCG combined for comparison of call graphs.
 These key data points refer to the callers and are generated from 20 projects in DyPyBench.
-From the above, 6060 data points belongs to PyCG, and 4739 are from PyCG.
+From the above, 6,060 data points belongs to PyCG, and 4,739 are from PyCG.
 With a manual verification of these data points, we find that PyCG provides a key for every entry in the list of callees, resulting in a higher number of keys in PyCG output.
 However, when we compare the key data points in DynaPyt with PyCG there are no matches found.
 Manually checking the this provides us the insight that the keys in PyCG have starting point as the root of the project while those in DynaPyt start from the root of the benchmark.
 We fix this issue, by replacing the keys in DynaPyt with the appropriate values.
-After the above fix, we get 3147 key data points present in both.
+After the above fix, we get 3,147 key data points present in both.
 66.41\% of keys in DynaPyt match with PyCG, while 51.93\% in PyCG are present in DynaPyt.
 Figure \ref{fig:caller counts}, shows the distribution of the keys amongst DynaPyt and PyCG.
 \begin{figure}[ht]
@@ -139,7 +141,7 @@ Figure \ref{fig:unmatched_value_strings} shows the differences of string in valu
 \end{figure}
 
 Since the callees shown above are essentially the same, we include these in our comparison.
-The number of matches in the value data points is now increased to 2,938, which significantly increases the percentage contribution of PyCG matches to 47.58\% and DynaPyt to 28.47\%.
+The number of matches in the value data points is now increased to 2,938, which significantly increases the percentage contribution of PyCG matches to 47.58\% and DynaPyt to 28.47\%. 10182
 As mentioned before, DynaPyt contains multiple entries for callees with different objects, we remove duplicate entries of some of callees with similar patterns.
 Firstly, we replace the pattern \verb|<decouple.AutoConfig object at 0x7f94786106a0>| by \textit{decouple.AutoConfig} and pop the duplicate entries of \verb|decouple.AutoConfig|.
 Second, we replace the pattern \\\verb|BoundMethodWeakref(<tests.test_saferef._Sample1 object at 0x7f73338edb10>.x)| by \\\verb|BoundMethodWeakref(<tests.test_saferef._Sample1>.x)| and pop its duplicate entries.
