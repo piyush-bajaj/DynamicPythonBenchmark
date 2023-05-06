@@ -13,7 +13,7 @@ Dynamic benchmarks involve running a set of tests that are designed to adapt and
 These benchmarks are typically more complex than static benchmarks.
 % However, benchmark results may not always be reliable due to factors such as hardware compatibility, software optimization, and testing conditions.
 %To ensure accuracy and reliability, it is important to use multiple benchmarks, perform tests under different conditions, and interpret results carefully.
-Overall, benchmarks are an essential tool for evaluating computer systems and components, enabling users to optimize performance and make informed decisions about hardware and software configurations.\cite{Benchmarking_2022, Benchmarking_2023}
+Overall, benchmarks are an essential tool for evaluating computer systems and components, enabling users to optimize performance and make informed decisions about hardware and software configurations \cite{Benchmarking_2022, Benchmarking_2023}.
 
 % \section{Docker}
 % \islem{unncessary}
@@ -36,14 +36,14 @@ Overall, benchmarks are an essential tool for evaluating computer systems and co
 Code analysis frameworks are tools used in software development to analyze source code and identify potential issues, vulnerabilities, and errors.
 They help developers to maintain code quality, improve security, and ensure compliance with coding standards and best practices.
 % These frameworks identify issues such as code smells, potential security vulnerabilities, coding errors, and violations of coding standards.
-Popular code analysis frameworks include SonarQube, Checkstyle, ESLint, and Fortify, among others. \cite{static_code_analysis_tools}
+Popular code analysis frameworks include SonarQube, Checkstyle, ESLint, and Fortify, among others \cite{static_code_analysis_tools}.
 These frameworks are valuable tools for software developers as they provide detailed reporting and analysis features, enforce coding standards, identify potential errors, and help to remediate security vulnerabilities.
-Ultimately, code analysis frameworks help developers to write better, more secure, and higher-quality software code. \cite{Code_analysis_1, Code_analysis_2, static_code_analysis}
+Ultimately, code analysis frameworks help developers to write better, more secure, and higher-quality software code \cite{Code_analysis_1, Code_analysis_2, static_code_analysis}.
 In our benchmark, we use two code analysis frameworks.
 We use DynaPyt to perform dynamic analysis and PyCG to generate call graphs using static analysis of code.
 
 \subsection{DynaPyt}
-DynaPyt \cite{DynaPyt2022} is a tool for dynamic analysis of Python code.
+DynaPyt  \cite{DynaPyt2022} is a tool for dynamic analysis of Python code.
 It aims to provide insights into the behavior of Python programs, such as performance and memory usage, by analyzing the runtime behavior of code.
 DynaPyt provides several features, such as the ability to collect data on function calls, memory allocation, and object creation, and to visualize the results in a user-friendly interface.
 The tool is designed to be easy to use and to work with existing Python code, making it accessible to a wide range of users, from researchers to developers.
@@ -54,9 +54,9 @@ With its ease of use, flexibility, and range of features, DynaPyt is a valuable 
 \subsection{PyCG}
 Call graphs are useful in various contexts, including profiling and vulnerability analysis.
 Despite Python's popularity, there are very few tools available for generating call graphs, and these tools suffer from effectiveness issues that limit their practicality.
-PyCG \cite{PyCG_2021} proposes a static approach for call graph generation in Python, which involves computing all assignment relations between program identifiers of functions, variables, classes, and modules through an inter-procedural analysis.
+PyCG proposes a static approach for call graph generation in Python, which involves computing all assignment relations between program identifiers of functions, variables, classes, and modules through an inter-procedural analysis.
 The resulting call graph is produced by resolving all calls to potentially invoked functions.
-The proposed approach is designed to be efficient and scalable, handling several Python features such as modules, generators, function closures, and multiple inheritance.
+The proposed approach is designed to be efficient and scalable, handling several Python features such as modules, generators, function closures, and multiple inheritance \cite{PyCG_2021}.
 
 % \section{Neural Models for Code Analysis}
 % Neural models or neural networks can be used in code analysis to improve the accuracy and efficiency of code analysis tasks.
