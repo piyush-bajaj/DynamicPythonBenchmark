@@ -24,12 +24,25 @@ Master Thesis Project
     - docker start -i dypybench
     - ./scripts/install-all-projects.sh > install.log 2>&1
 
-### Steps to use existing Docker Container of DyPyBench
-1. Pull the docker image from dockerhub (use the provided docker credentials for access)
+### Steps to use existing Docker Image of DyPyBench from DockerHub
+1. Pull the docker image from dockerhub
     - docker pull dypybench/dypybench:v1.0
 2. Run the docker image to start the container
     - docker run -itd --name dypybench dypybench/dypybench:v1.0
 3. Login to the container
+    - docker start -i dypybench
+
+### Steps to use existing Docker Image of DyPyBench from Zenodo
+1. Download the docker image provided in tar format.
+    - dypybench.tar (Image of DyPyBench) https://doi.org/10.5281/zenodo.7886366
+    - dypybench_lexecutor.tar (Image with LExecutor analysis experiment) https://doi.org/10.5281/zenodo.7887295
+    - dypybench_pycg.tar (Image with PyCG analysis experiment) https://doi.org/10.5281/zenodo.7892216
+    - dypybench_dynapyt.tar (Image with DynaPyt analysis experiment) https://doi.org/10.5281/zenodo.7892216
+2. Load the docker image from tar file
+    - docker load --input dypybench.tar
+3. Run the docker image to start the container
+    - docker run -itd --name dypybench dypybench
+4. Login to the container
     - docker start -i dypybench
 
 ### Copying files between Docker Container and Local Machine
