@@ -58,6 +58,7 @@ Appendix \ref{appendix:tables} provides more details on the various categories a
     GUI development & 16\\
     Database Drivers & 15\\
     Image Processing & 15\\
+    Others (82) & 483\\
     \hline
     \end{tabular}
     \caption{Top Ten Project Categories (Awesome Python).}
@@ -68,7 +69,7 @@ Appendix \ref{appendix:tables} provides more details on the various categories a
 \label{approach:selection criteria}
 To select projects for our benchmark, we use three criteria namely diverse domain, test suite execution with pytest and GitHub stars.
 To ensure the diversity property presented before, we sample the projects from across multiple categories covering as many application domains as possible provided by the awesome-python corpus.
-Since, in this work we are creating a dynamic benchmark we focus on the projects for which we can perform execution.
+Since, the suggested approach creates a dynamic benchmark we focus on the projects for which we can perform execution.
 Test suites provide us with files that can easily execute the code using testing libraries such as pytest and unittest.
 Thus we select projects with test suites which can run using the popular pytest library that is also compatible with unittest. 
 Lastly, to ensure the criterion of GitHub stars, we select projects which have at least 500 stars on its GitHub repository. 
@@ -81,14 +82,14 @@ We find 500 stars to be sufficient since it allows us to have the required numbe
 In this section, we start with a discussion about how we use flags in a list of projects to automate the installation process (Section \ref{approach:list of projects}).
 We then discuss about how we use these flags in our work to install 50 projects (Section \ref{approach:bash scripts}).
 Finally, we discuss about the working environment which is created by the installation of the above 50 projects (Section \ref{approach:collection of projects}).
-\subsection{List of Python Projects}
+\subsection{Collecting and Structuring a List of Projects}
 \label{approach:list of projects}
 Applying the selection criteria as described before, we select 50 open-source Python projects.
 Although, the installation and setup of these projects follow similar steps, there are certain differences which vary from project to project.
 For example, the path and the name of requirements file to install dependencies varies for each project.
 Some of these differences can be attributed to the directory structure of source code present in the GitHub repository.
 In order to automate the process of installation and setup of projects, we need a way to work around these differences for each project.
-In this work, we use a list with specific flags inside a text file to handle the aforementioned differences.
+In this approach, we use a list with specific flags inside a text file to handle the aforementioned differences.
 This structure of a single entry  which represents one project in this list is $ \textbf{project\_url requirement\_flag *requirement\_file test\_suite} $.
 In the structure, \textit{project\_url} corresponds to Git URL for the project, whereas \textit{requirement\_flag} represents the information pertaining to the presence or absence of requirement file.
 The \textit{requirement\_flag} can have 2 possible values, \textit{rt} and \textit{t}.
@@ -139,7 +140,7 @@ Another advantage provided by duplication is avoiding the re-installation of pro
 \section{Integrating Analysis Frameworks}
 \label{approach:analysis framework}
 To satisfy the property of ready-to-analyze, we need to integrate some code analysis frameworks into our benchmark.
-In this work, we inncorporate two such frameworks, namely, DynaPyt,  which a general purpose dynamic analysis framework and PyCG, which is a static analysis framework to generate call graphs.
+In our project, we inncorporate two such frameworks, namely, DynaPyt,  which a general purpose dynamic analysis framework and PyCG, which is a static analysis framework to generate call graphs.
 The following sections explain the integration of these two frameworks.
 \subsection{DynaPyt}
 In this work, we use DynaPyt to perform dynamic analysis for generating call graphs.
@@ -158,7 +159,7 @@ The required arguments and command to generate the call graphs based on static c
 \label{approach:LExecutor}
 While code analysis provides a usage scenario of our benchmark, we add another usage scenario of collecting data for fine-tuning a neural model.
 This is done using LExecutor, which provides a command to fine-tune the model and improve its accuracy using the training data.
-In this work, we first instrument the project which we need to add into the training data.
+In our approach, we first instrument the project which we need to add into the training data.
 We then run the test suite of the instrumented project, which generates one or more trace files.
 These trace files are then fed to the LExecutor which provides a command to use the trace files and generate training data.
 The instrumentation and test suite execution are integrated into the access interface provided by the benchmark.
@@ -205,7 +206,7 @@ With the options \textit{dynapyt\_instrument}, \textit{dynapyt\_run}, \textit{le
 \subsection{Packaging and Export}
 \label{approach:packing and exporting}
 In order to use the benchmark readily, it should contain all of its constituent parts and must be easy to setup.
-In this work, we package the benchmark containing the collection of projects, the analysis frameworks, LExecutor and the access interface into a Docker \cite{Docker_2022} image.
+In the suggested approach, we package the benchmark containing the collection of projects, the analysis frameworks, LExecutor and the access interface into a Docker \cite{Docker_2022} image.
 This Docker image can be used to create containers to access the benchmark.  
 Since, Docker provides a loosely isolated environment for its containers we install all the operating system related dependencies into the image itself.
 The Docker image is then exported on the Docker Hub \cite{docker_hub} repository.

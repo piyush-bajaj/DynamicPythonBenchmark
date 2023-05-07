@@ -144,35 +144,23 @@ We first create a simple image for the benchmark with the required system depend
 This image is created using the Dockerfile provided in Listing \ref{code:Dockerfile}.
 \begin{lstlisting}[caption=Dockerfile.,label=code:Dockerfile,language=Bash]
 FROM ubuntu:latest
-
 WORKDIR /DyPyBench
-
 RUN apt-get update
-
 RUN apt-get install python3 -yq
-
 RUN apt install python3-pip -yq
-
 RUN apt install python3-virtualenv -yq
-
 RUN apt install git -yq
-
 RUN apt install nano -yq
-
 RUN apt install libjpeg8-dev -yq
-
 RUN apt-get install ffmpeg libavcodec-extra -yq
-
 RUN pip install --upgrade pip setuptools wheel
-
 COPY . .
-
 RUN chmod -R 777 ./scripts 
 \end{lstlisting}
 
 We can see from the Listing \ref{code:Dockerfile}, we install git, nano, python3, python3-pip and python3-virtualenv to our image.
 We also install libjpeg8-dev, ffmpeg and libavcodec-extra as these are needed by Pillow and pydub projects.
-After copying the source files into the working directory of \textit{/DyPyBench} on line 23, we modify the permissions of the scripts folder to allow execution of bash scripts.
+After copying the source files into the working directory of \textit{/DyPyBench} on line 13, we modify the permissions of the scripts folder to allow execution of bash scripts.
 
 The Docker image created so far contains the source files for DyPyBench, automation scripts and the list of projects in the github-url.txt.
 We create a container from this image and run a bash script to automatically install and setup the projects from the list.
@@ -182,6 +170,7 @@ Test suite execution is not needed since we in this step we are providing the se
 We overwrite test files to skip the failed test cases for analysis frameworks to work efficiently. 
 After installing the projects from the list, we create the image from this container and export it on Docker Hub where the image name is dypybench/dypybench and the tag is v1.0.
 Figure \ref{fig:dypybench docker} shows the created image on the Docker Hub website \footnote{https://hub.docker.com/}, available as a public repository.
+The Docker image is also available publicly on Zenodo \cite{bajaj_piyush_2023_7886366}.
 
 \begin{figure}[ht]
 \centering
