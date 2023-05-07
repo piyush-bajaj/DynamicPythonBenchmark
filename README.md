@@ -106,6 +106,9 @@ Master Thesis Project
 15. --pycg / -scg
     - Specify project to generate static call graphs using PyCG
 
+#### Note
+The code for DynaPyt Call Graph Analysis is present at https://github.com/piyush-bajaj/DynaPyt/blob/1999cf26c2e90ad379e0fd9b8f203cc80c66fd6a/src/dynapyt/analyses/CallGraph.py
+
 ## Structure of includes.txt for DynaPyt
     - proj_name flag path
         - proj_name: Project name for which the entry belongs to
