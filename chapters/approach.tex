@@ -82,12 +82,22 @@ We find 500 stars to be sufficient since it allows us to have the required numbe
 In this section, we start with a discussion about how we use flags in a list of projects to automate the installation process (Section \ref{approach:list of projects}).
 We then discuss about how we use these flags in our work to install 50 projects (Section \ref{approach:bash scripts}).
 Finally, we discuss about the working environment which is created by the installation of the above 50 projects (Section \ref{approach:collection of projects}).
+
 \subsection{Collecting and Structuring a List of Projects}
 \label{approach:list of projects}
 Applying the selection criteria as described before, we select 50 open-source Python projects.
 Although, the installation and setup of these projects follow similar steps, there are certain differences which vary from project to project.
 For example, the path and the name of requirements file to install dependencies varies for each project.
 Some of these differences can be attributed to the directory structure of source code present in the GitHub repository.
+The Figure \ref{fig:setup} shows the installation steps for two sample Python projects.
+The blue colored text indicates similarities, whereas the red colored text indicates the differences.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/approach/Setup-differences.png}
+    \caption{Installation and Execution of Projects (Similarities and Differences).}
+    \label{fig:setup}
+\end{figure}
+
 In order to automate the process of installation and setup of projects, we need a way to work around these differences for each project.
 In this approach, we use a list with specific flags inside a text file to handle the aforementioned differences.
 This structure of a single entry  which represents one project in this list is $ \textbf{project\_url requirement\_flag *requirement\_file test\_suite} $.
@@ -140,7 +150,7 @@ Another advantage provided by duplication is avoiding the re-installation of pro
 \section{Integrating Analysis Frameworks}
 \label{approach:analysis framework}
 To satisfy the property of ready-to-analyze, we need to integrate some code analysis frameworks into our benchmark.
-In our project, we inncorporate two such frameworks, namely, DynaPyt,  which a general purpose dynamic analysis framework and PyCG, which is a static analysis framework to generate call graphs.
+In our project, we incorporate two such frameworks, namely, DynaPyt,  which a general purpose dynamic analysis framework and PyCG, which is a static analysis framework to generate call graphs.
 The following sections explain the integration of these two frameworks.
 \subsection{DynaPyt}
 In this work, we use DynaPyt to perform dynamic analysis for generating call graphs.
@@ -215,3 +225,36 @@ Another advantage of using Docker is the simplicity of modifying the benchmark a
 For example, one can add another analysis tool or change some projects in the benchmark or add new test cases for some projects.
 All of these can be done by importing the Docker image and making the changes as per the needs of the developer or a user.
 This makes our benchmark easily extensible.
+
+With the suggested approach, we create a dynamic benchmark which can perform dynamic analyses.
+The benchmark aims to achieve certain properties as stated before through our approach.
+% We discuss the accomplishment of the properties through our approach in the following paragraph.
+Table \ref{table:properties} shows how our approach accomplishes the various properties for the benchmark.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ll}
+    \hline
+    \textbf{Property} & \textbf{How is it accomplished?}\\
+    \hline
+    Large-scale & 50 Projects in the benchmark\\
+    Diverse & Popular projects from various application domains\\
+    Ready-to-run & Single command-line access interface to execute projects\\
+    Ready-to-analyze & Integrated tools such as DynaPyt, PyCG and LExecutor\\
+    Compositional & Access interface allows to specify one or more projects\\
+    Long-term & Packaged and exported as a Docker image with artifacts\\
+    Extensible & Usage of text files and Docker\\
+    \hline
+    \end{tabular}
+    \caption{How are the Properties of Benchmark Accomplished?}
+    \label{table:properties}
+\end{table}
+
+As can be seen from the Table \ref{table:properties}, the 50 projects selected using the selection criteria in our approach makes the benchmark large-scale.
+Our approach uses the awesome-python as the corpus since it provides popular and open-source projects from a wide variety of application domains which makes our benchmark diverse.
+The single command-line access interface we create using our approach to execute different tasks in the benchmark accomplishes the property of ready-to-run.
+Additionally, the integration of tools for code analysis such as DynaPyt and PyCG in our approach ensures the ready-to-analyze property of the benchmark.
+The property of composition is achieved through the use of access interface, which allows the specification of one or more projects as arguments for the task to be performed using the benchmark.
+The selected approach packages all the selected projects and tools into a Docker image and publicly exports the Docker image for usage by developers and researchers increasing the longevity of the benchmark.
+In our approach, we use text files to store the flags for installation and execution of projects which can be easily modified which makes the benchmark extensible.
+The Docker image can be used as a base to add more tools for code analysis further increasing the extensibility.

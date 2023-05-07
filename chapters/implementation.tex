@@ -185,7 +185,7 @@ Python scripts are user-friendly and offer extensive support for both standard a
 They are also easily extensible, allowing for the addition of new features without affecting the previous functionality.
 These scripts can be triggered from the command-line and also accept command line options.
 
-In this work, we create a Python script, dypybench.py, which acts as a single point of entry to trigger the execution of various tasks within the benchmark.
+In this implementation, we create a Python script, dypybench.py, which acts as a single point of entry to trigger the execution of various tasks within the benchmark.
 The script is executed from the command-line using the command as shown below.
 
 \verb$python3 dypybench.py <args>$
@@ -240,7 +240,7 @@ We clone the source code and create a Python virtual environment with the depend
 Since LExecutor works in two steps to generate traces files, we provide two bash scripts one for each step.
 The first script instruments the source code of the project and the second script generates trace files by executing the project.  
 The instrumentation is not necessarily done on all the source files, but rather the files that run during execution.
-In this work, we provide the files to be instrumented inside a text file as a list.
+In our implementation, we provide the files to be instrumented inside a text file as a list.
 The text file contains a list of two space separated values, the first specifies the name of the project and the second specifies the path of the file to be instrumented.
 We also provide a Python script to generate this text file, by parsing all the projects and filtering out the source files.
 Certain files are excluded from this text file to avoid issues with running test suite.
@@ -316,7 +316,7 @@ supervisor d ./supervisor
 streamparse d ./streamparse
 \end{lstlisting}
 
-In this work, we provide two such text files are provided for instrumentation, one which includes all the source files and the test files and the other which excludes test files.
+In this implementation, we provide two such text files for instrumentation, one which includes all the source files and the test files and the other which excludes test files.
 To instrument the code, the first bash script first copies the DynaPyt source code that was cloned to the specific project directory.
 Then, DynaPyt is installed with its dependencies into the virtual environment of the specific project.
 Finally, the bash script runs the command to instrument the files or folder based on the flag provided by the above mentioned text file.
