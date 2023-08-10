@@ -9,7 +9,9 @@ parser.add_argument(
     "--output_dir", "-r", type=str, help="Specify output directory", default="/DyPyBench/PyCG_output")
 
 def get_files(dir1, dir2):
-    files = []
+    """
+    filter out pycg json files and store them to folder, keep the same name.
+    """
     dir_contents = os.listdir(dir1)
     for content in dir_contents:
         path = os.path.join(os.path.abspath(dir1), content)
@@ -21,7 +23,10 @@ def get_files(dir1, dir2):
                 print(command)
                 output = subprocess.run([command
                     ], shell=True, stderr=subprocess.STDOUT)
-            
+
+"""
+Utility to gather all files generated using the PyCG call graph analysis
+"""      
 if __name__ == '__main__':
     args = parser.parse_args()
     get_files(args.input_dir, args.output_dir)

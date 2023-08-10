@@ -1,7 +1,8 @@
 import argparse
 import subprocess
 import csv
-import os
+
+# argparse for arguments
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -9,7 +10,7 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    "--timeout", type=int, help="Specify timeout to be used in seconds for execution of subprocesses", default=(60*10)
+    "--timeout", type=int, help="Specify timeout to be used in seconds for execution of subprocesses", default=(60*10) # default to 60 mins
 )
 
 parser.add_argument(
@@ -65,6 +66,9 @@ parser.add_argument(
 )
 
 def printAllProjects():
+    """
+    Pretty print the list of all the projects in the benchmark.
+    """
     print("{:<8} {:<20} {:<50}".format("Number", "Project Name", "Repository URL"))
     print("{:<8} {:<20} {:<50}".format("-------", "--------------", "---------------------------------"))
     for value in data:
@@ -72,6 +76,9 @@ def printAllProjects():
         print("{:<8} {:<20} {:<50}".format(no, name, url))
 
 def setupProjects():
+    """
+    Read the text file containing the list of projects and their flags, and save it for local usage
+    """
     global data
     global original_data
     data = []
@@ -86,26 +93,51 @@ def setupProjects():
             data.append(temp)
             original_data.append(row)
 
-def get_project_name(proj_no):
+def get_project_name(proj_no:int) -> str:
+    """
+    Get project name from project number as shown in the list
+
+    Args:
+        proj_no (int): Project Number
+
+    Returns:
+        str: Project Name
+    """
     for value in data:
-        no, name, url = value
+        no, name, _ = value
         if(proj_no == no):
             return name
 
-def get_project_no(proj_name):
+def get_project_no(proj_name:str) -> str:
+    """
+    Get project number from project name as shown in the list
+
+    Args:
+        proj_name (str): Project Name
+
+    Returns:
+        str: Project Number in String format
+    """
     for value in data:
-        no, name, url = value
+        no, name, _ = value
         if(proj_name == name):
             return str(no)
 
+
+"""
+Main code for DyPyBench
+"""
 if __name__ == '__main__':
     args = parser.parse_args()
 
+    # setup project data for use with every option of benchmark
     setupProjects()
 
+    # list the projects in benchmark
     if args.list:
         printAllProjects()
 
+    # update DynaPyt source code
     if args.update_dynapyt_source:
         # print("Downloading the dynapyt source from git")
         if args.save:
@@ -118,6 +150,7 @@ if __name__ == '__main__':
             """output = subprocess.run(["/DyPyBench/scripts/setup-DynaPyt-src.sh"
             ], shell=True, stderr=subprocess.STDOUT)"""
 
+    # update Lexecutor source code
     if args.update_lex_source:
         # print("Downloading the LExecutor source from git")
         if args.save:
@@ -130,9 +163,10 @@ if __name__ == '__main__':
             """output = subprocess.run(["/DyPyBench/scripts/setup-LExecutor-src.sh"
             ], shell=True, stderr=subprocess.STDOUT)"""
 
+    # execute tests in benchmark
     if args.test:
         projects = args.test
-        if 0 in projects:
+        if 0 in projects: # execute for all projects in case 0 is provided
             projects = [x for x in range(1,51)]
         for project in projects:
             if(project < 0 or project > 50):
@@ -141,7 +175,7 @@ if __name__ == '__main__':
                 proj_name = str(data[project - 1][1])
                 proj_no = str(data[project - 1][0])
                 proj_flags = str(original_data[project - 1][1])
-                copy_folder = args.test_original
+                copy_folder = args.test_original # check if tests to be done on the original folder
                 if(proj_flags == "rt"):
                     proj_test_folder = str(original_data[project - 1][3])
                 elif(proj_flags == "t"):
@@ -159,9 +193,10 @@ if __name__ == '__main__':
                     """output = subprocess.run(["/DyPyBench/scripts/run-test.sh %s %s %s %s %s" %(proj_name, proj_no, proj_test_folder, copy_folder, args.timeout)
                     ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
 
+    # execute DynaPyt instrumentation
     if args.dynapyt_instrument:
         projects = args.dynapyt_instrument
-        if 0 in projects:
+        if 0 in projects: # execute for all projects in case 0 is provided
             projects = [x for x in range(1,51)]
         for project in projects:
             if(project < 0 or project > 50):
@@ -172,12 +207,14 @@ if __name__ == '__main__':
                 instr_file = args.dynapyt_file
                 analysis = args.dynapyt_analysis
 
+                # read txt file to get the files to instrument
+                # file contains the path, file or directory flag and project name
                 with open(instr_file, 'r') as inst_file:
                     csvReader = csv.reader(inst_file, delimiter=" ")
                     instr_details = {}
                     for row in csvReader:
                         project_name, flag, path = row
-                        project_no = get_project_no(project_name)
+                        project_no = get_project_no(project_name) # map name to number
                         if project_no in instr_details.keys():
                             temp = instr_details[project_no]
                             temp.append((project_no, flag, path))
@@ -185,6 +222,7 @@ if __name__ == '__main__':
                         else:
                             instr_details[project_no] = [(project_no, flag, path)]
 
+                # clear the previously instrumented files for the project
                 if args.save:
                     output = subprocess.run(["/DyPyBench/scripts/clear-project.sh %s %s" %(proj_name, proj_no)
                             ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT, timeout=args.timeout)
@@ -195,6 +233,7 @@ if __name__ == '__main__':
                     """output = subprocess.run(["/DyPyBench/scripts/clear-project.sh %s %s" %(proj_name, proj_no)
                     ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
 
+                # instrument files for each project
                 for line in instr_details[proj_no]:
                     project_no, flag, path = line
                     if args.save:
@@ -207,9 +246,10 @@ if __name__ == '__main__':
                         """output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-instrumentation.sh %s %s %s %s %s %s" %(proj_name, proj_no, path, analysis, flag, args.timeout)
                         ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
 
+    # execute tests for DynaPyt analysis on instrumented code 
     if args.dynapyt_run:
         projects = args.dynapyt_run
-        if 0 in projects:
+        if 0 in projects: # execute for all projects in case 0 is provided
             projects = [x for x in range(1,51)]
         for project in projects:
             if(project < 0 or project > 50):
@@ -227,20 +267,19 @@ if __name__ == '__main__':
                     proj_test_folder = ""
 
                 if args.save:
-                    # os.system("/DyPyBench/scripts/run-dynapyt-analysis.sh %s %s %s %s >> %s 2>&1" %(proj_name, proj_no, analysis, proj_test_folder, args.save))
                     output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-analysis.sh %s %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder, args.timeout)
                     ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT, timeout=args.timeout)
                 else:
-                    # os.system("/DyPyBench/scripts/run-dynapyt-analysis.sh %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder))
                     output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-analysis.sh %s %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder, args.timeout)
                     ], shell=True, capture_output=True, timeout=args.timeout)
                     #if output needs to be printed on the console then comment above and uncomment below
                     """output = subprocess.run(["/DyPyBench/scripts/run-dynapyt-analysis.sh %s %s %s %s %s" %(proj_name, proj_no, analysis, proj_test_folder, args.timeout)
                     ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
 
+    # execute LExecutor instrumentation
     if args.lex_instrument:
         projects = args.lex_instrument
-        if 0 in projects:
+        if 0 in projects: # execute for all projects in case 0 is provided
             projects = [x for x in range(1,51)]
         for project in projects:
             if(project < 0 or project > 50):
@@ -250,12 +289,14 @@ if __name__ == '__main__':
                 proj_no = str(data[project - 1][0])
                 instr_file = args.lex_file
 
+                # read txt file to get the files to instrument
+                # file contains the path and project name
                 with open(instr_file, 'r') as inst_file:
                     csvReader = csv.reader(inst_file, delimiter=" ")
                     instr_details = {}
                     for row in csvReader:
                         project_name, path = row
-                        project_no = get_project_no(project_name)
+                        project_no = get_project_no(project_name) # map name to number
                         if project_no in instr_details.keys():
                             temp = instr_details[project_no]
                             temp.append((project_no, path))
@@ -263,6 +304,7 @@ if __name__ == '__main__':
                         else:
                             instr_details[project_no] = [(project_no, path)]
 
+                # clear the previously instrumented files for the project
                 if args.save:
                     output = subprocess.run(["/DyPyBench/scripts/clear-project.sh %s %s" %(proj_name, proj_no)
                             ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT, timeout=args.timeout)
@@ -273,6 +315,7 @@ if __name__ == '__main__':
                     """output = subprocess.run(["/DyPyBench/scripts/clear-project.sh %s %s" %(proj_name, proj_no)
                     ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
 
+                # gather files for each project
                 files = []
                 for line in instr_details[proj_no]:
                     project_no, file_path = line
@@ -280,6 +323,7 @@ if __name__ == '__main__':
 
                 path = ' '.join([str(path) for path in files])
 
+                # instrument files for each project
                 if args.save:
                     output = subprocess.run(["/DyPyBench/scripts/run-lex-instrumentation.sh %s %s %s %s" %(proj_name, proj_no, args.timeout, path)
                     ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT, timeout=args.timeout)
@@ -290,9 +334,10 @@ if __name__ == '__main__':
                     """output = subprocess.run(["/DyPyBench/scripts/run-lex-instrumentation.sh %s %s %s %s" %(proj_name, proj_no, args.timeout, path)
                     ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
 
+    # execute tests for LExecutor trace file generation on the instrumented code
     if args.lex_test:
         projects = args.lex_test
-        if 0 in projects:
+        if 0 in projects: # execute for all projects in case 0 is provided
             projects = [x for x in range(1,51)]
         for project in projects:
             if(project < 0 or project > 50):
@@ -309,20 +354,19 @@ if __name__ == '__main__':
                     proj_test_folder = ""
 
                 if args.save:
-                    # os.system("/DyPyBench/scripts/run-test-lexecutor.sh %s %s %s %s >> %s 2>&1" %(proj_name, proj_no, proj_test_folder, args.save))
                     output = subprocess.run(["/DyPyBench/scripts/run-lex-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, args.timeout)
                     ], shell=True, stdout=open(args.save,'a+',1), stderr=subprocess.STDOUT, timeout=args.timeout)
                 else:
-                    # os.system("/DyPyBench/scripts/run-test-lexecutor.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder))
                     output = subprocess.run(["/DyPyBench/scripts/run-lex-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, args.timeout)
                     ], shell=True, capture_output=True, timeout=args.timeout)
                     #if output needs to be printed on the console then comment above and uncomment below
                     """output = subprocess.run(["/DyPyBench/scripts/run-lex-test.sh %s %s %s %s" %(proj_name, proj_no, proj_test_folder, args.timeout)
                     ], shell=True, stderr=subprocess.STDOUT, timeout=args.timeout)"""
 
+    # execute PyCG to generate call graphs on static code
     if args.pycg:
         projects = args.pycg
-        if 0 in projects:
+        if 0 in projects: # execute for all projects in case 0 is provided
             projects = [x for x in range(1,51)]
         for project in projects:
             if(project < 0 or project > 50):
@@ -338,14 +382,7 @@ if __name__ == '__main__':
                 elif(proj_flags == "r"):
                     proj_test_folder = ""
 
-                # add files from test folders to path for entry in pycg
-                # files = []
-                # for line in original_data[proj_no]:
-                #     project_no, file_path = line
-                #     files.append(file_path)
-
-                # path = ' '.join([str(path) for path in files])
-
+                # PyCG searches for all .py files in folder, so restrict in case of only a single test file for test suite. 
                 flag = "folder"
                 if proj_test_folder.__contains__(".py"):
                     flag = "file"

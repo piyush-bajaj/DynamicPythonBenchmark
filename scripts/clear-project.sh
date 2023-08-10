@@ -1,5 +1,9 @@
 #!/usr/bin/bash
 
+# args
+# $1 = project name
+# $2 = project number
+
 echo "Clear temp project directory for $1"
 
 #current working directory

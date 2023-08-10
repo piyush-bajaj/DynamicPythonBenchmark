@@ -1,5 +1,12 @@
 #!/usr/bin/bash
 
+# args
+# $1 = project name
+# $2 = project number
+# $3 = analysis name
+# $4 = test folder/file
+# $5 = timeout in seconds
+
 # Define a timestamp function
 timestamp() {
   date +"%Y-%m-%dT%T.%3N%z" # current time
@@ -34,13 +41,7 @@ else
     exit
 fi
 
-if [[ $1 == "grab" ]]
-then
-    #printf "import os\n\nos.system('python $WORK_DIR/temp/project$2/runtest.py --test-all')\n" > run_all_tests.py
-    printf "import pytest\n\npytest.main(['--import-mode=importlib', '$ROOT_DIR/temp/project$2/$4'])\n" > run_all_tests.py
-else
-    printf "import pytest\n\npytest.main(['--import-mode=importlib', '$ROOT_DIR/temp/project$2/$4'])\n" > run_all_tests.py
-fi
+printf "import pytest\n\npytest.main(['--import-mode=importlib', '$ROOT_DIR/temp/project$2/$4'])\n" > run_all_tests.py
 
 #run analysis on the given project
 timeout -k 10s $5 python -m dynapyt.run_analysis --entry ./run_all_tests.py --analysis $3

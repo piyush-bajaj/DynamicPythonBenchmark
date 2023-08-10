@@ -1,5 +1,10 @@
 #!/usr/bin/bash
 
+# args
+# $1 = project name
+# $2 = project number
+# $3 = test folder/file
+# $4 = timeout in seconds
 
 # Define a timestamp function
 timestamp() {

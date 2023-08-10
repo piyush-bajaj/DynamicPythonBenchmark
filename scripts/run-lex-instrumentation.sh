@@ -1,5 +1,11 @@
 #!/usr/bin/bash
 
+# args
+# $1 = project name
+# $2 = project number
+# $3 = timeout in seconds
+# $4 = file paths
+
 # Define a timestamp function
 timestamp() {
   date +"%Y-%m-%dT%T.%3N%z" # current time

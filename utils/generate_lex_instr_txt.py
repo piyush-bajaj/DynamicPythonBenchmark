@@ -1,4 +1,3 @@
-import glob
 import argparse
 import os
 import csv
@@ -9,6 +8,9 @@ parser.add_argument(
     "--replace", "-r", type=str, help="pattern to replace root_dir in path", default="./temp")
 
 def setupProjects():
+    """
+    Read the text file containing the list of projects and their flags, and save it for local usage
+    """
     global data
     data = []
     with open("/DyPyBench/text/github-url.txt", "r") as csv_file:
@@ -21,6 +23,9 @@ def setupProjects():
             data.append(temp)
 
 def get_files(dir, name):
+    """
+    Search all .py files with exceptions as mentioned and output their paths to txt
+    """
     files = []
     dir_content = os.listdir(dir)
     for content in dir_content:
@@ -39,6 +44,9 @@ def get_files(dir, name):
                     files.append(path)
     return files
 
+"""
+Utility to generate txt file for instrumentation of files of LExecutor
+"""
 if __name__ == '__main__':
     args = parser.parse_args()
     setupProjects()
@@ -48,6 +56,5 @@ if __name__ == '__main__':
     for value in data:
         no, name, _ = value
         number = no
-        #root_dir = '/DyPyBench/Project/project' + str(number)
         root_dir = '/DyPyBench/../Project'
         get_files('/DyPyBench/../Project/project' + str(no), name)

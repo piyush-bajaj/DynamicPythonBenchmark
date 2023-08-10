@@ -8,8 +8,11 @@ parser.add_argument(
 parser.add_argument(
     "--output_dir", "-r", type=str, help="Specify output directory", default="/DyPyBench/DynaPyt_output")
 
+
 def get_files(dir1, dir2):
-    files = []
+    """
+    filter out dynapyt.json files and store them to project_no.json, name change since all projects have same name
+    """
     dir_contents = os.listdir(dir1)
     for content in dir_contents:
         path = os.path.join(os.path.abspath(dir1), content)
@@ -22,7 +25,10 @@ def get_files(dir1, dir2):
                 print(command)
                 output = subprocess.run([command
                     ], shell=True, stderr=subprocess.STDOUT)
-            
+
+"""
+Utility to gather all files generated using the DynaPyt call graph analysis
+"""   
 if __name__ == '__main__':
     args = parser.parse_args()
     get_files(args.input_dir, args.output_dir)

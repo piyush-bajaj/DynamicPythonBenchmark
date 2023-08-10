@@ -7,7 +7,9 @@ parser.add_argument(
 parser.add_argument(
     "--output", "-o", type=str, help="Specify destination file")
 
-
+"""
+Utility to validation accuracy from csv for LExecutor 
+"""
 if __name__ == '__main__':
     args = parser.parse_args()
     
